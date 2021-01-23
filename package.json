@@ -21,9 +21,11 @@
     "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.20",
     "jest": "^26.6.3",
     "parcel": "^1.12.4",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.3"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -31,7 +33,7 @@
       "json",
       "ts"
     ],
-    "testRegex": "(spec|test)[.]js",
+    "testRegex": "(test|spec)\\.(jsx?|tsx?)$",
     "coverageDirectory": "../Coverage",
     "setupFiles": [
       "./Test/SetupJest.js"
