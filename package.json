@@ -32,12 +32,12 @@
       "ts"
     ],
     "testRegex": "(spec|test)[.]js",
-    "coverageDirectory": "../coverage",
+    "coverageDirectory": "../Coverage",
     "setupFiles": [
-      "./test/setupJest.js"
+      "./Test/SetupJest.js"
     ],
     "collectCoverageFrom": [
-      "./src/**"
+      "./Src/**"
     ]
   }
 }

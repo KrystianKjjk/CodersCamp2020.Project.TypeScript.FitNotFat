@@ -26,7 +26,7 @@ jobs:
         if: always()
         with:
           name: fitnotfat-dist
-          path: ./dist
+          path: ./Dist
   deploy-on-github-pages:
     name: "Deploy app to GitHub Pages from main branch source code"
     if: github.ref == 'refs/heads/master'
@@ -36,13 +36,13 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: fitnotfat-dist
-          path: ./dist
+          path: ./Dist
       - name: Deploy app as GitHub Pages
         uses: peaceiris/actions-gh-pages@v3.7.0-6
         if: ${{ github.event_name != 'pull_request' && always() }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: "./dist"
+          publish_dir: "./Dist"
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           force_orphan: true
