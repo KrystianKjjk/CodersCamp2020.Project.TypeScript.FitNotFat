@@ -1,0 +1,43 @@
+{
+  "name": "coderscamp2020.project.typescript.fitnotfat",
+  "version": "1.0.0",
+  "description": "FitNotFat Application - CodersCamp 2021 Typescript project",
+  "main": "index.html",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "format": "prettier --write \"src/**/*.js\" \"src/**/*.ts\" \"test/**/*.js\" \"test/**/*.ts\"",
+    "start:dev": "parcel -p 8765 watch index.html"
+  },
+  "keywords": [
+    "fitnotfat",
+    "diet",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "regenerator-runtime": "^0.13.7"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "parcel": "^1.12.4",
+    "prettier": "^2.2.1"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "testRegex": "(spec|test)[.]js",
+    "coverageDirectory": "../Coverage",
+    "setupFiles": [
+      "./Test/SetupJest.js"
+    ],
+    "collectCoverageFrom": [
+      "./Src/**"
+    ]
+  }
+}
