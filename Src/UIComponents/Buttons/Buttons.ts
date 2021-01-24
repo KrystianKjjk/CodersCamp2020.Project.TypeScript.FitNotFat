@@ -17,9 +17,11 @@ function generateButton(label:string , onClick:Function, infill:boolean) {
     button.innerText = label;
 
     if(infill){
-        button.style.backgroundColor = "rgb(215,25,55)";
+        button.style.backgroundColor = "#DA1B36";
+        button.style.color = "white";
     } else {
         button.style.backgroundColor = "white";
+        button.style.color = "#DA1B36";
     }
     
     button.addEventListener('click', (e) => {
