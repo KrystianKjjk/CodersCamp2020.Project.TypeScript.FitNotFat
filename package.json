@@ -9,7 +9,6 @@
     "test:cov": "jest --coverage",
     "format": "prettier --write \"Src/**/*.js\" \"Src/**/*.ts\" \"test/**/*.js\" \"test/**/*.ts\"",
     "start:dev": "parcel -p 8765 watch index.html",
-    "compile": "tsc",
     "build": "parcel build index.html --public-url ./"
   },
   "keywords": [
