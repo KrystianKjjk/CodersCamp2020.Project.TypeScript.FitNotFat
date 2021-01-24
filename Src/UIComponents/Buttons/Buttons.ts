@@ -1,4 +1,4 @@
-function generateButton(label:string , onClick:Function, infill:boolean) {
+function generateButton(label:string, onClick:Function, infill:boolean) :HTMLButtonElement {
     
     if (typeof label !== 'string') {
       throw Error('Label should be a string.');
