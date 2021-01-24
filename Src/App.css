@@ -1,5 +1,5 @@
 @import './UIComponents/Buttons/Buttons.css';
 
-body {
+* {
     font-family: 'Montserrat', sans-serif;
 }
