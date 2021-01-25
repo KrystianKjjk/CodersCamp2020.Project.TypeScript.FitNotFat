@@ -1,17 +1,102 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Montserrat;
+}
+
 .dashboard {
     position: relative;
-    height: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 1fr 4fr;
 
     background: #E6E6E6;
 }
 
 .ellipse1 {
     position: absolute;
-    width: 525.22px;
-    height: 740.8px;
-    left: 464.58px;
-    top: 382.25px;
+    z-index: 1;
+    width: 500px;
+    height: 750px;
 
-    background: #DDB6FF;
-    transform: rotate(78deg);
+    top: 50%;
+    left: -100px;
+    
+    filter: blur(20px);
+    border-radius: 60%;
+    background: rgba(221,182,255, 0.75);
+    transform: rotate(60deg);
+}
+
+.ellipse2 {
+    position: absolute;
+    width: 500px;
+    height: 750px;
+    
+    left: 80%;
+    top: -200px;
+
+    filter: blur(20px);
+    border-radius: 60%;
+
+    background: rgba(255, 204, 194, 0.75);
+    transform: rotate(80deg);
+}
+
+.main-menu {
+    position: relative;
+    z-index: 10;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+
+    padding: 3em;
+    border-right: solid rgba(255, 255, 255, 0.1) 2px;
+}
+
+.vertical-line {
+    border-right: solid rgba(0, 0, 0, 0.1) 1px;
+    height: 100%;
+    position: absolute;
+    left: calc(100% - 3px);
+    top: 0;
+}
+
+.logo {
+    margin-left: 3rem;
+    font-size: 30px;
+    line-height: 34px;
+    padding-bottom: 1em;
+}
+
+.menu-option {
+    margin-left: 1.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    padding: 1em 0;
+}
+
+svg {
+    margin: auto 1em;
+}
+
+.profile-btn {
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 22px;
+    background: #FFFFFF;
+    padding: 1em 0.5em;
+    border: none;
+    border-radius: 30px;
 }
