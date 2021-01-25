@@ -4,14 +4,9 @@ function generateButton(label:string, onClick:Function, infill:boolean) :HTMLBut
     button.className = 'button';
     button.innerText = label;
 
-    if(infill){
-        button.style.backgroundColor = "#DA1B36";
-        button.style.color = "white";
-    } else {
-        button.style.backgroundColor = "white";
-        button.style.color = "#DA1B36";
-    }
-    
+    button.style.backgroundColor = infill ? "#DA1B36" : "white";       
+    button.style.color = infill ? "white": "#DA1B36";  
+
     button.addEventListener('click', (e) => {
         onClick();
     }); 
