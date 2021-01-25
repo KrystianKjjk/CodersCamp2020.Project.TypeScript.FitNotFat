@@ -1,0 +1,17 @@
+.dashboard {
+    position: relative;
+    height: 100%;
+
+    background: #E6E6E6;
+}
+
+.ellipse1 {
+    position: absolute;
+    width: 525.22px;
+    height: 740.8px;
+    left: 464.58px;
+    top: 382.25px;
+
+    background: #DDB6FF;
+    transform: rotate(78deg);
+}
