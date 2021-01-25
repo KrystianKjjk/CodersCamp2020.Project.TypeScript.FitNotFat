@@ -1,17 +1,5 @@
 function generateButton(label:string, onClick:Function, infill:boolean) :HTMLButtonElement {
-    
-    if (typeof label !== 'string') {
-      throw Error('Label should be a string.');
-    }
-
-    if (typeof onClick !== 'function'){
-      throw Error('OnClick should be a function.');
-    }
-
-    if (typeof infill !== 'boolean'){
-        throw Error('Infill should be a boolean');
-      }
-    
+   
     const button:HTMLButtonElement = document.createElement('button');
     button.className = 'button';
     button.innerText = label;
