@@ -1,5 +1,9 @@
+@import './UIComponents/Buttons/Buttons.css';
 @import './UIComponents/ModalWindow/ModalWindow.css';
 
+* {
+    font-family: 'Montserrat', sans-serif;
+}
 
 body {
     margin: 0;
