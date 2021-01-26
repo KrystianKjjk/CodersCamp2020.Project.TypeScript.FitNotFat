@@ -7,17 +7,6 @@ body {
     font-family: Montserrat;
 }
 
-.dashboard {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-
-    display: grid;
-    grid-template-columns: 300px 1fr;
-
-    background: #E6E6E6;
-}
-
 .ellipse1 {
     position: absolute;
     z-index: 1;
@@ -48,14 +37,23 @@ body {
     transform: rotate(80deg);
 }
 
+.dashboard {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 300px 1fr;
+
+    background: #E6E6E6;
+}
+
 .main-menu {
     position: relative;
     z-index: 10;
     
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: left;
 
     padding: 2em;
     border-right: solid rgba(255, 255, 255, 0.1) 2px;
@@ -74,10 +72,13 @@ body {
 }
 
 .logo {
-    margin-left: 3rem;
+    margin-left: 1.5rem;
     font-size: 30px;
     line-height: 34px;
     padding-bottom: 1em;
+}
+span.active {
+    color: #DA1B36;
 }
 
 .menu-option {
@@ -85,20 +86,41 @@ body {
     flex-wrap: wrap;
     align-items: center;
     font-size: 22px;
-    margin: 1em 0;
+    margin: 1.5rem 0;
+}
+.menu-option:hover {
+    cursor: pointer;
+}
+
+.menu-option path {
+    fill: #4A484E;
+}
+.active path {
+    fill: #DA1B36;
 }
 
 .my-diary-submenu {
-    display: none;
+    display: flex;
     flex-direction: column;
     list-style-type: none;
 }
-
 .submenu-option {
+    display: none;
     margin-top: 1em;
     margin-left: 3.5em;
 }
-
+.submenu-option:hover {
+    cursor: pointer;
+}
+.active:hover {
+    cursor: default;
+}
+.active .submenu-option{
+    display: block;
+}
+.submenu-option.active {
+    color: #DA1B36;
+}
 .submenu-option:last-child {
     margin-bottom: 0;
 }
@@ -120,4 +142,10 @@ svg {
     padding: 1em 0;
     border: none;
     border-radius: 30px;
+}
+.profile-btn:hover {
+    cursor: pointer;
+}
+.profile-btn.active:hover {
+    cursor: default;
 }
