@@ -1,0 +1,7 @@
+.tile-white {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 1% 1%;
+    height: max-content;
+    width: max-content;
+}
