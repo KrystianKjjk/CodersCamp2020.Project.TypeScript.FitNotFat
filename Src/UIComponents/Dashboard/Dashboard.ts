@@ -65,7 +65,8 @@ const arrowSVG = `<svg width="11" height="17" viewBox="0 0 11 17" fill="none" xm
 
 
 
-function dashboard(): HTMLDivElement {
+function dashboard(overviewComp: HTMLElement, myDiaryFoodComp: HTMLElement, myDiaryExercisesComp: HTMLElement, 
+                    myGoalsComp: HTMLElement, myWeightsComp: HTMLElement, myProfileComp: HTMLElement): HTMLDivElement {
     let dashboard = createStyledElement('div', 'dashboard') as HTMLDivElement;
     
     dashboard.appendChild( createStyledElement('div', 'ellipse1') );
@@ -73,18 +74,53 @@ function dashboard(): HTMLDivElement {
     
     let mainMenu = createStyledElement('div', 'main-menu')
     mainMenu.appendChild( createStyledElement('div', 'vertical-line') )
-    let logo = createStyledElement('div', 'logo');
-    logo.innerHTML = 'FitNotFat';
-    let overview = createStyledElement('div', 'menu-option', `${overviewSVG} Overview`);
-    let myDiary = createStyledElement('div', 'menu-option', `${myDiarySVG} My diary`);
-    let myGoals = createStyledElement('div', 'menu-option', `${myGoalsSVG} My goals`);
-    let myWeights = createStyledElement('div', 'menu-option', `${myWeightsSVG} My weights`);
+    
+    let logo = createStyledElement('div', 'logo', 'FitNotFat');
+    
+    let menuList = createStyledElement('ul', 'menu');
+    let overview = createStyledElement('li', 'menu-option', `${overviewSVG} Overview`);
+    let myDiary = createStyledElement('li', 'menu-option', `${myDiarySVG} My diary`);
+    let myGoals = createStyledElement('li', 'menu-option', `${myGoalsSVG} My goals`);
+    let myWeights = createStyledElement('li', 'menu-option', `${myWeightsSVG} My weights`);
+    
+    let activeElem = overview;
+    overview.classList.add('active');
+    [overview, myGoals, myWeights].forEach((element) => {
+        element.addEventListener('click', (e) => {
+            element.classList.add('active');
+            menuList.querySelectorAll("menu-option").forEach((elem) => elem.classList.remove('active'));
+            menuList.querySelectorAll("submenu-option").forEach((elem) => elem.classList.remove('active'));
+            menuList.querySelectorAll("path").forEach((path) => {path.style.fill = "#4A484E";});
+            element.querySelectorAll("path").forEach((path) => {path.style.fill = "#DA1B36";});
+        })
+    })
+
+    let myDiaryFood = createStyledElement('li', 'submenu-option', `Food`);
+    let myDiaryExercises = createStyledElement('li', 'submenu-option', `Exercises`);
+    let myDiarySubmenu = createStyledElement('ul', 'my-diary-submenu');
+    myDiarySubmenu.append(myDiaryFood, myDiaryExercises);
+    myDiary.appendChild(myDiarySubmenu);
+
+    myDiary.addEventListener('click', (e) => {
+        let active = myDiarySubmenu.style.display !== "none";
+        myDiarySubmenu.style.display = active ? "none" : "flex";
+    })
+
+    
 
     let profileBtn = createStyledElement('button', 'profile-btn', `${userSVG} Username ${arrowSVG}`);
     
-    mainMenu.append(logo, overview, myDiary, myGoals, myWeights, profileBtn);
+    menuList.append(overview, myDiary, myGoals, myWeights);
+    mainMenu.append(logo, menuList, profileBtn);
 
     dashboard.appendChild(mainMenu);
+    
+    overviewComp.style.display = 'initial';
+    [myDiaryFoodComp, myDiaryExercisesComp, myGoalsComp, myWeightsComp, myProfileComp].forEach((element => {
+        element.style.display = 'none';
+    }))
+    
+    dashboard.append(overviewComp, myDiaryFoodComp, myDiaryExercisesComp, myGoalsComp, myWeightsComp, myProfileComp);
     
     return dashboard;
 }

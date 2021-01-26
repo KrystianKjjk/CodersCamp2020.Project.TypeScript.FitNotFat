@@ -13,7 +13,7 @@ body {
     overflow: hidden;
 
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 300px 1fr;
 
     background: #E6E6E6;
 }
@@ -57,8 +57,12 @@ body {
     justify-content: flex-start;
     align-items: left;
 
-    padding: 3em;
+    padding: 2em;
     border-right: solid rgba(255, 255, 255, 0.1) 2px;
+}
+
+.menu {
+    list-style-type: none;
 }
 
 .vertical-line {
@@ -77,11 +81,26 @@ body {
 }
 
 .menu-option {
-    margin-left: 1.5rem;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     font-size: 22px;
-    padding: 1em 0;
+    margin: 1em 0;
+}
+
+.my-diary-submenu {
+    display: none;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+.submenu-option {
+    margin-top: 1em;
+    margin-left: 3.5em;
+}
+
+.submenu-option:last-child {
+    margin-bottom: 0;
 }
 
 svg {
@@ -89,14 +108,16 @@ svg {
 }
 
 .profile-btn {
-    margin-bottom: 3rem;
+    position: absolute;
+    bottom: 10%;
+
     display: flex;
     align-items: center;
     justify-content: center;
     
     font-size: 22px;
     background: #FFFFFF;
-    padding: 1em 0.5em;
+    padding: 1em 0;
     border: none;
     border-radius: 30px;
 }
