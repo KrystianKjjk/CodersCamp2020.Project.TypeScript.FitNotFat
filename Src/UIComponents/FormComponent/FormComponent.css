@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    /* background: #E5E5E5; */
+}
+
+p {
+    font-weight: 400;
+    font-size: 50px;
+    color: #4A484E;
+    letter-spacing: 0.055em;
+}
+
+.steps-bar {
+    width: 100%;
+    height: 1em;
+    /* height: 14px; */
+    background: rgba(228, 177, 137, 0.7);
+    border-radius: 5px;
+}
+
+.red-step {
+    width: 50%;
+    background-color: #DA1B36;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100vh;
+}
+
+.next {
+    display: flex;
+}
+
+button {
+    width: 50%;
+    height: 5%;
+    background-color: #DA1B36;
+}
+
+.name,
+.birth-date,
+.height,
+.current-weight,
+.goal-weight {
+    background: #FFFFFF;
+    border: 1px solid #4A484E;
+    /* box-sizing: border-box; */
+    box-shadow: 2px 4px 4px rgba(74, 72, 78, 0.25);
+    border-radius: 7px;
+    height: 5%;
+}
