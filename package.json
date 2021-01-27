@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@testing-library/dom": "^7.29.4",
     "@types/jest": "^26.0.20",
     "jest": "^26.0.0",
     "parcel": "^1.12.4",
