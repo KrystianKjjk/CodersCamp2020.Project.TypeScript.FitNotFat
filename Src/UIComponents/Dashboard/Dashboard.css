@@ -77,7 +77,7 @@ body {
     line-height: 34px;
     padding-bottom: 1em;
 }
-span.active {
+.logo span {
     color: #DA1B36;
 }
 

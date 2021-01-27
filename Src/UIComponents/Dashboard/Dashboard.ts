@@ -20,7 +20,7 @@ function dashboard(components: {'overview': HTMLElement,
     
     let mainMenu = createStyledElement('div', ['main-menu'])
     mainMenu.appendChild(createStyledElement('div', ['vertical-line']))
-    let logo = createStyledElement('div', ['logo'], '<span class="active">Fit</span>NotFat');
+    let logo = createStyledElement('div', ['logo'], '<span>Fit</span>NotFat');
     let menuList = createStyledElement('ul', ['menu']);
     let overview = createStyledElement('li', ['menu-option', 'active'], `${overviewSVG} Overview`, 'overview');
     let myDiary = createStyledElement('li', ['menu-option'], `${myDiarySVG} My diary`, 'diary-food');
@@ -31,26 +31,15 @@ function dashboard(components: {'overview': HTMLElement,
     let myWeights = createStyledElement('li', ['menu-option'], `${myWeightsSVG} My weights`, 'weights');
     let profileBtn = createStyledElement('button', ['profile-btn'], `${userSVG} Username ${arrowSVG}`, 'profile');
 
-    [overview, myGoals, myWeights, profileBtn].forEach((element) => {
-        element.addEventListener('click', (e) => {
-            menuList.querySelectorAll(".menu-option").forEach((elem) => elem.classList.remove('active'));
-            menuList.querySelectorAll(".submenu-option").forEach((elem) => elem.classList.remove('active'));
-            element.classList.add('active');
-        });
-    });
-    myDiary.addEventListener('click', (e) => {
-        menuList.querySelectorAll(".menu-option").forEach((elem) => elem.classList.remove('active'));
-        menuList.querySelectorAll(".submenu-option").forEach((elem) => elem.classList.remove('active'));
-        myDiary.classList.add('active');
-        myDiaryFood.classList.add('active');
-    });
-    [myDiaryFood, myDiaryExercises].forEach((element) => {
+    [overview, myGoals, myDiary, myDiaryFood, myDiaryExercises, myWeights, profileBtn].forEach((element) => {
         element.addEventListener('click', (e) => {
             e.stopPropagation();
-            menuList.querySelectorAll(".submenu-option").forEach((elem) => elem.classList.remove('active'));
+            element.parentElement.querySelectorAll(".active").forEach((elem) => elem.classList.remove('active'));
             element.classList.add('active');
+            element.querySelector('li').classList.add('active');
         });
     });
+
     [overview, myDiary, myDiaryFood, myDiaryExercises, myGoals, myWeights, profileBtn].forEach((element) => {
         element.addEventListener('click', (e) => {
             Object.values(components).forEach((element => {
