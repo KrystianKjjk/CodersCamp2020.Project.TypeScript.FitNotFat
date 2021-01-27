@@ -5,7 +5,7 @@ function saveInLocalStorage(name:string, object:object){
 
 //function to retrieve the data per specified key
 function readFromLocalStorage(name:string) {
-    let retrievedObject = localStorage.getItem(name);
+    let retrievedObject = JSON.parse(localStorage.getItem(name));
     return retrievedObject;
 }
 

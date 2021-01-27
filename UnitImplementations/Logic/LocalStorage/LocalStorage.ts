@@ -11,5 +11,9 @@ let name = 'kotek';
 saveInLocalStorage(name, dummyobject);
 
 console.log('Data saved...');
+
+const retrievedData = readFromLocalStorage(name);
 console.log('Data gathered:');
-console.log(readFromLocalStorage(name));
+console.log(retrievedData);
+console.log(`Sample value read: ${retrievedData.race}`);
+
