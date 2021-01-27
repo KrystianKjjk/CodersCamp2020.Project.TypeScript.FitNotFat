@@ -15,7 +15,7 @@ describe('Tile component tests', () => {
   test('has correct class name applied', () => {
     const testingDiv = generateTileComponent(content);
 
-    expect(testingDiv.className).toEqual('tile-white');
+    expect(testingDiv.className).toEqual('tile');
   });
 
   test('has child', () => {
