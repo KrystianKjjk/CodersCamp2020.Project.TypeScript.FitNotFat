@@ -1,7 +1,7 @@
 import {overviewSVG, myDiarySVG, myGoalsSVG, myWeightsSVG, userSVG, arrowSVG} from './Icons';
 
 function createStyledElement(tagName: string, classNames: string[], innerHTML?: string, dataComponent?: string): HTMLElement {
-    let element = document.createElement(tagName);
+    const element = document.createElement(tagName);
     element.classList.add(...classNames);
     if(innerHTML) element.innerHTML = innerHTML;
     if(dataComponent) element.setAttribute('data-component', dataComponent);
@@ -14,27 +14,27 @@ function dashboard(components: {'overview': HTMLElement,
                                 'goals': HTMLElement, 
                                 'weights': HTMLElement, 
                                 'profile': HTMLElement}): HTMLDivElement {
-    let myDashboard = createStyledElement('div', ['dashboard']) as HTMLDivElement;
+    const myDashboard = createStyledElement('div', ['dashboard']) as HTMLDivElement;
     myDashboard.appendChild(createStyledElement('div', ['ellipse1']));
     myDashboard.appendChild(createStyledElement('div', ['ellipse2']));
     
-    let mainMenu = createStyledElement('div', ['main-menu'])
+    const mainMenu = createStyledElement('div', ['main-menu'])
     mainMenu.appendChild(createStyledElement('div', ['vertical-line']))
-    let logo = createStyledElement('div', ['logo'], '<span>Fit</span>NotFat');
-    let overview = createStyledElement('div', ['menu-option', 'active'], `${overviewSVG} Overview`, 'overview');
-    let myDiary = createStyledElement('div', ['menu-option'], `${myDiarySVG} My diary`, 'diary-food');
-    let myDiarySubmenu = createStyledElement('ul', ['my-diary-submenu']);
-    let myDiaryFood = createStyledElement('li', ['submenu-option'], `Food`, 'diary-food');
-    let myDiaryExercises = createStyledElement('li', ['submenu-option'], `Exercises`, 'diary-exercises');
-    let myGoals = createStyledElement('div', ['menu-option'], `${myGoalsSVG} My goals`, 'goals');
-    let myWeights = createStyledElement('div', ['menu-option'], `${myWeightsSVG} My weights`, 'weights');
-    let profileBtn = createStyledElement('button', ['profile-btn'], `${userSVG} Username ${arrowSVG}`, 'profile');
+    const logo = createStyledElement('div', ['logo'], '<span>Fit</span>NotFat');
+    const overview = createStyledElement('div', ['menu-option', 'active'], `${overviewSVG} Overview`, 'overview');
+    const myDiary = createStyledElement('div', ['menu-option'], `${myDiarySVG} My diary`, 'diary-food');
+    const myDiarySubmenu = createStyledElement('ul', ['my-diary-submenu']);
+    const myDiaryFood = createStyledElement('li', ['submenu-option'], `Food`, 'diary-food');
+    const myDiaryExercises = createStyledElement('li', ['submenu-option'], `Exercises`, 'diary-exercises');
+    const myGoals = createStyledElement('div', ['menu-option'], `${myGoalsSVG} My goals`, 'goals');
+    const myWeights = createStyledElement('div', ['menu-option'], `${myWeightsSVG} My weights`, 'weights');
+    const profileBtn = createStyledElement('button', ['profile-btn'], `${userSVG} Username ${arrowSVG}`, 'profile');
     [overview, myGoals, myDiary, myDiaryFood, myDiaryExercises, myWeights, profileBtn].forEach((element) => {
         element.addEventListener('click', (e) => {
             e.stopPropagation();
             element.parentElement.querySelectorAll(".active").forEach((elem) => elem.classList.remove('active'));
             element.classList.add('active');
-            let suboption = element.querySelector('li');
+            const suboption = element.querySelector('li');
             if(suboption) suboption.classList.add('active');
         });
     });
@@ -53,7 +53,7 @@ function dashboard(components: {'overview': HTMLElement,
     mainMenu.append(logo, overview, myDiary, myGoals, myWeights, profileBtn);
     myDashboard.appendChild(mainMenu);
 
-    let dashboardView = document.createElement('div');
+    const dashboardView = document.createElement('div');
     dashboardView.append(...Object.values(components));
     myDashboard.appendChild(dashboardView)
     return myDashboard;

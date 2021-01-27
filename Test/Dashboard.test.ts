@@ -1,36 +1,36 @@
 import dashboard from '../Src/UIComponents/Dashboard/Dashboard';
 import { getByText } from '@testing-library/dom';
 
-let overview = document.createElement('div');
+const overview = document.createElement('div');
 overview.innerHTML = "Overview";
-let myDiaryFood = document.createElement('div');
+const myDiaryFood = document.createElement('div');
 myDiaryFood.innerHTML = "Food";
-let myDiaryExercises = document.createElement('div');
+const myDiaryExercises = document.createElement('div');
 myDiaryExercises.innerHTML = "Exercises";
-let myGoals = document.createElement('div');
+const myGoals = document.createElement('div');
 myGoals.innerHTML = "Goals";
-let myWeights = document.createElement('div');
+const myWeights = document.createElement('div');
 myWeights.innerHTML = "Weights";
-let myProfile = document.createElement('div');
+const myProfile = document.createElement('div');
 myProfile.innerHTML = "Profile";
 
-let testDashboard = dashboard({
+const testDashboard = dashboard({
     'overview': overview, 
     'diary-food': myDiaryFood, 
     'diary-exercises': myDiaryExercises, 
     'goals': myGoals, 
     'weights': myWeights, 
     'profile': myProfile});
-let mainMenu = testDashboard.querySelector('.main-menu') as HTMLElement;
-let overviewOpt = getByText(mainMenu, 'Overview');
-let myDiaryOpt = getByText(mainMenu, 'My diary');
-let myDiaryFoodOpt = getByText(mainMenu, 'Food');
-let myDiaryExercisesOpt = getByText(mainMenu, 'Exercises');
-let myGoalsOpt = getByText(mainMenu, 'My goals');
-let myWeightsOpt = getByText(mainMenu, 'My weights');
-let myProfileBtn = mainMenu.querySelector('.profile-btn') as HTMLElement;
+const mainMenu = testDashboard.querySelector('.main-menu') as HTMLElement;
+const overviewOpt = getByText(mainMenu, 'Overview');
+const myDiaryOpt = getByText(mainMenu, 'My diary');
+const myDiaryFoodOpt = getByText(mainMenu, 'Food');
+const myDiaryExercisesOpt = getByText(mainMenu, 'Exercises');
+const myGoalsOpt = getByText(mainMenu, 'My goals');
+const myWeightsOpt = getByText(mainMenu, 'My weights');
+const myProfileBtn = mainMenu.querySelector('.profile-btn') as HTMLElement;
 
-let chosenView = testDashboard.lastElementChild as HTMLElement;
+const chosenView = testDashboard.lastElementChild as HTMLElement;
 describe('Dashboard test', () => {
 
     test('returns div', () => {
