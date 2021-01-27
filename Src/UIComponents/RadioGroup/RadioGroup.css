@@ -1,0 +1,17 @@
+.radio-header {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.125em;
+    color: rgba(0, 0, 0, 0.95);
+}
+
+.radio-label-text {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.125em;
+    color: #4A484E;
+}
+
+input[type="radio"] {
+ color: red;
+}

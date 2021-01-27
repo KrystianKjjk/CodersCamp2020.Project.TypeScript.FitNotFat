@@ -1,4 +1,9 @@
-const selectOption = (options: Record<string, string>, onSelect: (string) => void, placeholder: string = "") => {
+interface SelectOption {
+    key: string,
+    label: string,
+} 
+
+const selectOption = (options: SelectOption[], onSelect: (string) => void, placeholder: string = "") => {
     const select = document.createElement('select');
     select.onchange = event => onSelect((event.target as HTMLSelectElement).value);
 
@@ -8,12 +13,12 @@ const selectOption = (options: Record<string, string>, onSelect: (string) => voi
     option.selected = true;
     option.disabled = true;
     select.appendChild(option);
-    
-    Object.entries(options).forEach(entry => {
-        const [value, label] = entry;
+
+    options.forEach(singleOption => {
+        const {key, label} = singleOption;
         const option = document.createElement('option')
         option.appendChild(document.createTextNode(label));
-        option.value = value;
+        option.value = key;
         select.appendChild(option);
     })
 

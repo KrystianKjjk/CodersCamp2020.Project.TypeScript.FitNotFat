@@ -10,7 +10,9 @@
     "format": "prettier --write \"Src/**/*.js\" \"Src/**/*.ts\" \"test/**/*.js\" \"test/**/*.ts\"",
     "start:dev": "parcel -p 8765 watch index.html",
     "build": "parcel build index.html --public-url ./",
-    "start:buttons": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Buttons/Buttons.html"
+    "start:buttons": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Buttons/Buttons.html",
+    "start:radio": "parcel -p 8765 watch ./UnitImplementations/UIComponents/RadioGroup/RadioGroup.html",
+    "start:select": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Select/Select.html"
   },
   "keywords": [
     "fitnotfat",

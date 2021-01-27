@@ -1,0 +1,16 @@
+select {
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 4px rgba(74, 72, 78, 0.25);
+    border-radius: 7px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.125em;
+    color: rgba(0, 0, 0, 0.8);
+    min-height: 47px;
+    min-width: 354px;
+}
