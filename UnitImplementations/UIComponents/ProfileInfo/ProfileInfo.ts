@@ -1,8 +1,10 @@
 import {profileInfo} from '../../../Src/UIComponents/ProfileInfo/ProfileInfo';
 
-
+const header = document.createElement('h1');
+header.innerHTML = 'Hello';
+document.body.appendChild(header);
 document.body.appendChild(profileInfo({
-    username: 'User',
+    username: 'Robert',
     gender: 'Male',
     dateOfBirth: new Date(),
     height: 170,
