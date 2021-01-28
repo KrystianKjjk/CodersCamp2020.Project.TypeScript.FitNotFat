@@ -16,7 +16,7 @@ function profileInfo(profileData: {
     activityLevel: 'Low' | 'Regular' | 'Active' | 'Very Active',
     weeklyGoal: number, // kg
     goalWeight: number, // kg
-}){
+}): HTMLDivElement{
     const component = document.createElement('div');
 
     const usernameDiv = createStyledElement('div', ['username']);
