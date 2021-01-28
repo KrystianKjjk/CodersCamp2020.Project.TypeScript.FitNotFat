@@ -10,7 +10,8 @@
     "format": "prettier --write \"Src/**/*.js\" \"Src/**/*.ts\" \"test/**/*.js\" \"test/**/*.ts\"",
     "start:dev": "parcel -p 8765 watch index.html",
     "build": "parcel build index.html --public-url ./",
-    "start:buttons": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Buttons/Buttons.html"
+    "start:buttons": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Buttons/Buttons.html",
+    "start:gauges": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Gauges/Gauges.html"
   },
   "keywords": [
     "fitnotfat",
@@ -20,6 +21,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "justgage": "^1.4.0",
     "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
