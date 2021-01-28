@@ -9,7 +9,7 @@ export interface User {
     height: number,
     goalWeight: number,
     activityLevel: string,
-    diaryFood?: DiaryFood [],
+    diaryFood?: DiaryFood[],
     diaryExercises?: DiaryExercises[],
     goals?: Goal[],
     weights?: Weight[]

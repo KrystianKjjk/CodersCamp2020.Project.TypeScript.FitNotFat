@@ -4,20 +4,20 @@ type MealMap = {
     [key: string]: FoodDetails[];
 }
 
-export interface DiaryFoodModel {
+export interface DiaryFood {
     date: Date,
     recommendedKcal: number,
     providedKcal: number,
     meals?: MealMap
 }
 
-export class DiaryFood implements DiaryFoodModel {
+export class MyDiaryFood implements DiaryFood {
     date: Date;
     recommendedKcal: number;
     providedKcal: number;
     meals: MealMap;
 
-    constructor(data: DiaryFoodModel) {
+    constructor(data: DiaryFood) {
         Object.assign(this, data);
         this.meals = data.meals || {};
     }
