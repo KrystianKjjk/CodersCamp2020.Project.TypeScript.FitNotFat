@@ -1,4 +1,3 @@
-// import { doc } from "prettier";
 import {generateRedButton} from '../Buttons/Buttons';
 
 export default function generateForm() {
@@ -9,6 +8,7 @@ export default function generateForm() {
  const node=document.createTextNode('Join us');
  paragraph.appendChild(node);
  form.appendChild(paragraph);
+
  //progress-bar
 const progressBar=document.createElement('div');
 progressBar.className="progress-bar";
@@ -16,6 +16,7 @@ form.appendChild(progressBar);
 const stepDiv=document.createElement('div');
 stepDiv.className="first-step";
 progressBar.appendChild(stepDiv);
+
 //name input
 const nameInput=document.createElement('input');
 nameInput.setAttribute('type','text');
@@ -24,38 +25,42 @@ nameInput.setAttribute('minlength','4');
 nameInput.required=true;
 nameInput.className='name';
 form.appendChild(nameInput);
+
 //gender-selection
 const genderSelectionDiv=document.createElement('div');
 genderSelectionDiv.className='gender-selection';
 form.appendChild(genderSelectionDiv);
+
 //input and label male 
-const maleLabel=document.createElement('label');
-maleLabel.setAttribute('for','male'); //czy z #
-maleLabel.innerHTML='Male'; //może w linijce po36 dopiero?
-genderSelectionDiv.appendChild(maleLabel);
-const maleSpan=document.createElement('span');
-maleLabel.appendChild(maleSpan);
 const maleInput=document.createElement('input');
 maleInput.setAttribute('type','radio');
 maleInput.setAttribute('name','gender');
 maleInput.setAttribute('value','male');
 maleInput.setAttribute('id','male');
 maleInput.required=true;
+
+const maleLabel=document.createElement('label');
+maleLabel.setAttribute('for','male'); 
+genderSelectionDiv.appendChild(maleInput);
+genderSelectionDiv.appendChild(maleLabel);
+maleLabel.innerHTML='Male'; 
 const genderSelectionSpan=document.createElement('span');
 genderSelectionDiv.appendChild(genderSelectionSpan);
-//input and label female
-const femaleLabel=document.createElement('label');
-femaleLabel.setAttribute('for','female'); //czy z #
-femaleLabel.innerHTML='Female'; //może w linijce po36 dopiero?
-genderSelectionDiv.appendChild(femaleLabel);
-const femaleSpan=document.createElement('span');
-maleLabel.appendChild(femaleSpan);
+
+// input and label female
 const femaleInput=document.createElement('input');
 femaleInput.setAttribute('type','radio');
 femaleInput.setAttribute('name','gender');
 femaleInput.setAttribute('value','female');
 femaleInput.setAttribute('id','female');
 femaleInput.required=true;
+
+const femaleLabel=document.createElement('label');
+femaleLabel.setAttribute('for','female'); 
+genderSelectionDiv.appendChild(femaleInput);
+genderSelectionDiv.appendChild(femaleLabel);
+femaleLabel.innerHTML='Female';
+
 //input birth date
 const dateInput=document.createElement('input');
 dateInput.setAttribute('type','text');
@@ -68,11 +73,13 @@ dateInput.addEventListener('blur', (event)=>{
 })
 dateInput.required=true;
 dateInput.className='birth-date';
-form.appendChild(dateInput);//gdzie?
+form.appendChild(dateInput);
+
 //current values div
 const heightAndWeightDiv=document.createElement('div');
 heightAndWeightDiv.className='current-values';
 form.appendChild(heightAndWeightDiv);
+
 //height input (to i current weight są prawie identyczne)
 const heightInput=document.createElement('input');
 heightInput.setAttribute('type','number');
@@ -81,6 +88,7 @@ heightInput.setAttribute('min','0');
 heightInput.required=true;
 heightInput.className='height';
 heightAndWeightDiv.appendChild(heightInput);
+
 //current weight input
 const weightInput=document.createElement('input');
 weightInput.setAttribute('type','number');
@@ -89,6 +97,7 @@ weightInput.setAttribute('min','0');
 weightInput.required=true;
 weightInput.className='current-weight';
 heightAndWeightDiv.appendChild(weightInput);
+
 //goal weight input
 const goalWeightInput=document.createElement('input');
 goalWeightInput.setAttribute('type','number');
@@ -98,10 +107,12 @@ goalWeightInput.required=true;
 goalWeightInput.className='goal-weight';
 form.appendChild(goalWeightInput);
 
+//button 
 const submitButton=generateRedButton('Next step', fn);
 submitButton.style.height='50px';
 submitButton.style.width='35%';
 form.appendChild(submitButton);
+
 function fn(){
   console.log('test');
 }
