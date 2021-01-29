@@ -1,3 +1,5 @@
+import {createElement} from '../utils/utils'
+
 interface RadioOption {
     key: string,
     name: string;
@@ -43,13 +45,6 @@ const createSingleRadio = (singleInput: RadioOption, onClick: (string) => void) 
     labelRadioButton.appendChild(spanVisible);
 
     return singleRadioOption;
-}
-
-const createElement = (type: string, className: string) => {
-    const createdElement = document.createElement(type);
-    createdElement.className = className;
-
-    return createdElement;
 }
 
 export {createRadioGroup, createSingleRadio};
