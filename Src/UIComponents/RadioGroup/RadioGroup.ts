@@ -5,36 +5,46 @@ interface RadioOption {
 } 
 
 const radioGroup = (options: RadioOption[], onClick: (string) => void, groupName: string) => {
-    const prompt = document.createElement('p');
+    const mainContainer = createElement('div', 'radio-main-container');
+    const prompt = createElement('p', 'radio-group-header');
     prompt.appendChild(document.createTextNode(groupName));
-    prompt.className = 'radio-header';
-
-    const radioInput = document.createElement('div');
-    radioInput.appendChild(prompt);
+    mainContainer.appendChild(prompt);
 
     options.forEach(singleInput => {
         const {key, name, label} = singleInput;
-        const singleRadioInput = document.createElement('div');
-        
-        const labelInput = document.createElement('label');
-        labelInput.htmlFor = key;
-        labelInput.className = 'radio-label-text'
-        labelInput.appendChild(document.createTextNode(label));
+        const singleRadioOption = createElement('div', 'radio-single-container');
+        const labelRadioButton = createElement('label', 'radio-button');
+        singleRadioOption.appendChild(labelRadioButton);
 
         const input = document.createElement('input')
         input.type = 'radio';
         input.value = key;
-        input.id = key;
         input.name = name;
-        input.onclick = event => onClick((event.target as HTMLSelectElement).value);
+        input.onclick = event => onClick((event.target as HTMLInputElement).value);
 
-        singleRadioInput.appendChild(input);
-        singleRadioInput.appendChild(labelInput);
-        radioInput.appendChild(singleRadioInput);
+        labelRadioButton.appendChild(input);
+
+        const spanVisible = createElement('span', 'label-visible');
+        const fakeRadioButton = createElement('span', 'fake-radiobutton');
+        const textButton = createElement('span', 'text-radio');
+        textButton.innerText = label;
+
+        spanVisible.appendChild(fakeRadioButton);
+        spanVisible.appendChild(textButton);
+
+        labelRadioButton.appendChild(spanVisible);
+
+        mainContainer.appendChild(singleRadioOption);
     })
 
-    return radioInput;
+    return mainContainer;
 }
 
+const createElement = (type: string, className: string) => {
+    const createdElement = document.createElement(type);
+    createdElement.className = className;
+
+    return createdElement;
+}
 
 export default radioGroup;
