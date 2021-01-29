@@ -2,11 +2,13 @@
     font-size: 18px;
     line-height: 22px;
     letter-spacing: 0.125em;
+    padding-left: 14px;
     color: rgba(0, 0, 0, 0.95);
 }
 
 .radio-button {
     position: relative;
+    cursor: pointer;
 }
 
 .radio-button input {
