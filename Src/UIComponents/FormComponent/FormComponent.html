@@ -14,41 +14,30 @@
     <div class='form'>
         <form>
             <p>Join us</p>
-            <div class='steps-bar next'>
-                <div class='red-step'>
+            <div class='progress-bar'>
+                <div class='first-step'>
                 </div>
-                <div></div>
             </div>
-            <input type="text" class='name' placeholder="Nickname">
-            <div class="next gender-selection">
+            <input type="text" class='name' placeholder="Nickname" required>
+            <div class="gender-selection">
                 <label for="male">
                     <span>
-                        <input type="radio" name="gender" value="male" id='male'>
+                        <input type="radio" name="gender" value="male" id='male' required>
                         Male</span>
                 </label>
                 <span></span>
                 <label for="female">
                     <span>
-                        <input type="radio" name="gender" value="male" id='female'>
+                        <input type="radio" name="gender" value="male" id='female' required>
                         Female</span>
                 </label>
-                <!-- <label for='female'></label>
-                <input type="radio" name="gender" value="female" id='female'> Female -->
-
             </div>
-            <input type="text" class="birth-date" placeholder="Date of birth" onfocus="(this.type='date')" onblur="(this.type='text')">
+            <input type="text" class="birth-date" placeholder="Date of birth" onfocus="(this.type='date')" onblur="(this.type='text')" required>
             <div class="current-values">
-                <input type="text" class="height" placeholder="Height (cm)">
-                <!-- <div class="div-align"></div> -->
-                <input type="text " class="current-weight " placeholder="Current weight (kg) ">
+                <input type="number" class="height" placeholder="Height (cm)" required>
+                <input type="number " class="current-weight " placeholder="Current weight (kg) " required>
             </div>
-
-
-            <input type="text" class="goal-weight" placeholder="Goal weight (kg)">
-
-
-
-
+            <input type="number" class="goal-weight" placeholder="Goal weight (kg)" required>
 
 
             <!-- <button></button> -->
