@@ -1,12 +1,13 @@
 @import './UIComponents/Buttons/Buttons.css';
 @import'./UIComponents/TileComponent/TileComponent.css';
 @import './UIComponents/ModalWindow/ModalWindow.css';
+@import './UIComponents/ReusableTable/ReusableTable.css';
 
 * {
     font-family: 'Montserrat', sans-serif;
-    background: #E5E5E5;
 }
 
 body {
     margin: 0;
+    background: #E5E5E5;
 }
