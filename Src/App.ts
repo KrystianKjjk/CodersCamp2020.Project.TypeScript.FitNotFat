@@ -1,3 +1,3 @@
 import generateForm from './UIComponents/FormComponent/FormComponent';
-console.log("hello");
+// console.log("hello");
 document.body.appendChild(generateForm());

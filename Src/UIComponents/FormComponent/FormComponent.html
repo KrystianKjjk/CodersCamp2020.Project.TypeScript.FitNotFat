@@ -11,40 +11,40 @@
 
 <body>
 
-    <div class='form'>
-        <form>
-            <p>Join us</p>
-            <div class='progress-bar'>
-                <div class='first-step'>
-                </div>
+    <!-- <div class='form'> -->
+    <form>
+        <p>Join us</p>
+        <div class='progress-bar'>
+            <div class='first-step'>
             </div>
-            <input type="text" class='name' placeholder="Nickname" required>
-            <div class="gender-selection">
-                <label for="male">
+        </div>
+        <input type="text" class='name' placeholder="Nickname" minlength="4" required>
+        <div class="gender-selection">
+            <label for="male">
                     <span>
                         <input type="radio" name="gender" value="male" id='male' required>
-                        Male</span>
-                </label>
-                <span></span>
-                <label for="female">
+                Male</span>
+            </label>
+            <span></span>
+            <label for="female">
                     <span>
                         <input type="radio" name="gender" value="male" id='female' required>
                         Female</span>
-                </label>
-            </div>
-            <input type="text" class="birth-date" placeholder="Date of birth" onfocus="(this.type='date')" onblur="(this.type='text')" required>
-            <div class="current-values">
-                <input type="number" class="height" placeholder="Height (cm)" required>
-                <input type="number " class="current-weight " placeholder="Current weight (kg) " required>
-            </div>
-            <input type="number" class="goal-weight" placeholder="Goal weight (kg)" required>
+            </label>
+        </div>
+        <input type="text" class="birth-date" placeholder="Date of birth" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+        <div class="current-values">
+            <input type="number" class="height" placeholder="Height (cm)" min="0" required>
+            <input type="number" class="current-weight " placeholder="Current weight (kg)" min="0" required>
+        </div>
+        <input type="number" class="goal-weight" placeholder="Goal weight (kg)" min="0" ; required>
+
+        <button type="submit"></button>
+        <!-- <button></button> -->
+    </form>
 
 
-            <!-- <button></button> -->
-        </form>
-
-
-    </div>
+    <!-- </div> -->
 
     <!-- <script src="Src/App.ts "></script> -->
 </body>
