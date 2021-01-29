@@ -11,7 +11,7 @@
     "start:dev": "parcel -p 8765 watch index.html",
     "build": "parcel build index.html --public-url ./",
     "start:buttons": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Buttons/Buttons.html",
-    "start:radio": "parcel -p 8765 watch ./UnitImplementations/UIComponents/RadioGroup/RadioGroup.html",
+    "start:joinus2": "parcel -p 8765 watch ./UnitImplementations/UIComponents/JoinUsSecondStep/JoinUsSecondStep.html",
     "start:select": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Select/Select.html"
   },
   "keywords": [
