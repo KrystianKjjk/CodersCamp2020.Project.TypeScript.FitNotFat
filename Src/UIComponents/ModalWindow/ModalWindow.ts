@@ -6,7 +6,7 @@ const modalWindow = (component: HTMLElement, closeWindow: () => void) => {
     modalWindowDiv.appendChild(component);
 
     backgroundDiv.className = 'modal-window-bg';
-    modalWindowDiv.classList.add('modal-window');
+    modalWindowDiv.className = 'modal-window';
 
     backgroundDiv.addEventListener('click', (e) => {
         e.stopPropagation();

@@ -12,7 +12,8 @@
     "build": "parcel build index.html --public-url ./",
     "start:buttons": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Buttons/Buttons.html",
     "start:joinus2": "parcel -p 8765 watch ./UnitImplementations/UIComponents/JoinUsSecondStep/JoinUsSecondStep.html",
-    "start:select": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Select/Select.html"
+    "start:weight-table": "parcel -p 8765 watch ./UnitImplementations/UIComponents/HistoricalWeights/HistoricalWeights.html",
+    "start:dashboard": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Dashboard/Dashboard.html"
   },
   "keywords": [
     "fitnotfat",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@testing-library/dom": "^7.29.4",
     "@types/jest": "^26.0.20",
     "jest": "^26.0.0",
     "parcel": "^1.12.4",
