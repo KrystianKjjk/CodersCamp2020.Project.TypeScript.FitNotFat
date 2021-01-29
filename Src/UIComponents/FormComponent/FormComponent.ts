@@ -3,7 +3,7 @@ import { generateRedButton } from '../Buttons/Buttons';
 
 export default function generateForm() {
   const form = document.createElement('form');
-  
+
   //paragraf
   const paragraph = generateParagraph();
   form.appendChild(paragraph);
@@ -49,14 +49,11 @@ export default function generateForm() {
   form.appendChild(goalWeightInput);
 
   //button
-  const submitButton = generateRedButton('Next step', fn);
+  const submitButton = generateRedButton('Next step', ()=>{});
   submitButton.style.height = '50px';
   submitButton.style.width = '35%';
   form.appendChild(submitButton);
 
-  function fn() {
-    console.log('test');
-  }
   return form;
 
 }
