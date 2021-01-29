@@ -10,7 +10,8 @@
     "format": "prettier --write \"Src/**/*.js\" \"Src/**/*.ts\" \"test/**/*.js\" \"test/**/*.ts\"",
     "start:dev": "parcel -p 8765 watch index.html",
     "build": "parcel build index.html --public-url ./",
-    "start:buttons": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Buttons/Buttons.html"
+    "start:buttons": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Buttons/Buttons.html",
+    "start:dashboard": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Dashboard/Dashboard.html"
   },
   "keywords": [
     "fitnotfat",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@testing-library/dom": "^7.29.4",
     "@types/jest": "^26.0.20",
     "jest": "^26.0.0",
     "parcel": "^1.12.4",
