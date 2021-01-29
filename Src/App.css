@@ -1,12 +1,15 @@
 @import './UIComponents/Buttons/Buttons.css';
 @import'./UIComponents/TileComponent/TileComponent.css';
 @import './UIComponents/ModalWindow/ModalWindow.css';
+@import './UIComponents/ProfileInfo/ProfileInfo.css';
 
 * {
     font-family: 'Montserrat', sans-serif;
-    background: #E5E5E5;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
+    
+    background: #E5E5E5;
 }
