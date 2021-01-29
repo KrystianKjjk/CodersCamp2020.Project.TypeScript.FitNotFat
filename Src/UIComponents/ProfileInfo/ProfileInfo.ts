@@ -1,6 +1,6 @@
-import moment from 'moment';
 import tile from '../TileComponent/TileComponent';
 import {userIcon} from './User';
+const moment = require('moment');
 
 function createStyledElement(tagName: string, classNames: string[], innerHTML?: string): HTMLElement {
     const element = document.createElement(tagName);
