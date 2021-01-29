@@ -1,5 +1,7 @@
 {
     "compilerOptions": {
         "types": ["jest"]
+        "esModuleInterop": true,
+        "lib": ["ES6", "DOM"]
     }
 }
