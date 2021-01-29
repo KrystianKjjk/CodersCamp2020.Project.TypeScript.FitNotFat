@@ -1,0 +1,102 @@
+$color-primary: #DA1B36;
+$color-font-secondary: rgba(#4A484E, 70%);
+
+@mixin debug(){
+  border: magenta 1px solid;
+}
+
+.my-weight-tile {
+  background: inherit;
+  box-sizing: border-box;
+  display: flex;
+  font-weight: 500;
+  width: 23.3rem;
+  height: 11rem;
+  letter-spacing: 0.035rem;
+
+  &__data-section {
+    flex: 1;
+    background: inherit;
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+
+    margin-left: 1.8rem;
+    overflow: hidden;
+
+    &--header {
+      font-size: .8rem;
+      color: $color-font-secondary;
+      background: inherit;
+      margin: 1.5rem 0 0 0;
+
+    }
+
+    &--container {
+      display: flex;
+      background: inherit;
+    }
+
+    &--incorrect {
+      color: $color-primary;
+      font-weight: 400;
+      font-size: .7rem;
+      background: inherit;
+      margin: .9rem 0 -.9rem 0;
+    }
+
+    &--input {
+      margin: .7rem 0 -.5rem 0;
+      width: 50%;
+      font-size: 2.25em;
+      background: inherit;
+      border: 1px solid $color-primary;
+      border-radius: 10%;
+      padding: 0.7rem;
+
+      &:focus {
+        outline: none;
+        border: 2px solid $color-primary;
+      }
+    }
+
+    &--main-text {
+      margin: .9rem 0 0 0;
+      font-size: 2.25em;
+      background: inherit;
+    }
+
+    &--main-text-step-two {
+      align-self: flex-end;
+      margin: 0 0 0 .7rem;
+      font-size: 2.25em;
+      background: inherit;
+    }
+    &--footer {
+      margin: 1.4rem 0 2.2rem 0;
+      font-size: 1rem;
+      color: $color-font-secondary;
+      background: inherit;
+    }
+
+  }
+
+  &__button-section {
+    align-self: center;
+    flex: 1;
+
+    background: inherit;
+
+    &--tile-btn {
+      outline: none;
+      cursor: pointer;
+      height: 2.8rem;
+      width: 6.8rem;
+      font-size: 1rem;
+      display: block;
+      margin: 0.7rem auto;
+    }
+  }
+
+}
+
