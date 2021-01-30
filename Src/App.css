@@ -1,5 +1,14 @@
 @import './UIComponents/Buttons/Buttons.css';
 @import'./UIComponents/FormComponent/FormComponent.css';
+@import'./UIComponents/TileComponent/TileComponent.css';
+@import './UIComponents/ModalWindow/ModalWindow.css';
+@import './UIComponents/ReusableTable/ReusableTable.css';
+
 * {
     font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #E5E5E5;
 }
