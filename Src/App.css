@@ -3,6 +3,7 @@
 @import './UIComponents/ModalWindow/ModalWindow.css';
 @import './UIComponents/ReusableTable/ReusableTable.css';
 @import './UIComponents/AddDiaryItem/AddDiaryItem.css';
+@import './UIComponents/ProfileInfo/ProfileInfo.css';
 
 * {
     font-family: 'Montserrat', sans-serif;
@@ -11,6 +12,5 @@
 }
 
 body {
-    
     background: #E5E5E5;
 }
