@@ -22,9 +22,13 @@ function generateGoalTile(name: string, elementID:string, currentValue:number, m
                 }               
         })
 
+        //replacing the value with percentage
         const percentage = Math.floor((currentValue/maxValue)*100);
+        let currentGaugeValue = document.querySelector('.goalgauge > svg > text:nth-child(5) > tspan');
 
-        document.querySelector('.goalgauge > svg > text:nth-child(5) > tspan').innerHTML = `${percentage}%`;
+        if(currentGaugeValue){
+                currentGaugeValue.innerHTML = `${percentage}%`;
+        }        
 }
 
 export default generateGoalTile;
