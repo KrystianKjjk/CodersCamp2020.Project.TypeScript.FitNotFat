@@ -1,3 +1,4 @@
+import {ActivityLevel} from '../../../Models/ActivityLevel.model';
 import tile from '../TileComponent/TileComponent';
 import {userIcon} from './User';
 const moment = require('moment');
@@ -15,7 +16,7 @@ function profileInfo(profileData: {
     dateOfBirth: Date,
     height: number, // cm
     weight: number, // kg
-    activityLevel: 'Low' | 'Regular' | 'Active' | 'Very Active',
+    activityLevel: ActivityLevel,
     weeklyGoal: number, // kg
     goalWeight: number, // kg
 }): HTMLDivElement{
