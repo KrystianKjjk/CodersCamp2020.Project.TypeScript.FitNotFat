@@ -30,7 +30,7 @@ function addDiaryItem(  table: HTMLTableElement,
     const bunttonsDiv = document.createElement('div');
     bunttonsDiv.append(addBtn, cancelBtn);
 
-    component.append(header, text, textInput, findBtn, bunttonsDiv, table);
+    component.append(header, text, textInput, findBtn, table, bunttonsDiv);
     return tile(component);
 }
 
