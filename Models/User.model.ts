@@ -5,6 +5,7 @@ import { DiaryExercises } from "./DiaryExercises.model";
 import { ActivityLevel } from './ActivityLevel.model';
 
 export interface User {
+    name: string,
     gender: 'Male' | 'Female',
     dateOfBirth: Date,
     height: number,
