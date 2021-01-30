@@ -48,7 +48,7 @@
     border-radius: 50%;
 }
 
-.radio-button input:checked + span .fake-radiobutton:after { 
+.radio-button input:checked + div > .fake-radiobutton:after { 
     display: block; 
 }
 

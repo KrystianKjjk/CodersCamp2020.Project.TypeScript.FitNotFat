@@ -10,7 +10,7 @@ const ArrowDownIcon = `
         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
     </svg>`
 
-const createSelectBox = (options: SelectOption[], onSelect: (string) => void, placeholder: string = "") => {
+const createSelectBox = (options: SelectOption[], onSelect: (selected: string) => void, placeholder: string = "") => {
     const container = createElement('div', 'container');
     const select = createElement('div', 'select-box');
     const spanMainText = createElement('span');
@@ -23,7 +23,7 @@ const createSelectBox = (options: SelectOption[], onSelect: (string) => void, pl
 
     const optionsContainer = createElement('div', 'options');
 
-    const setCorrectOptionStyles = (chosenKey) => {
+    const setCorrectOptionStyles = (chosenKey: string) => {
         Array.from(optionsContainer.children).forEach(optionComponent => {
             if ((optionComponent as HTMLDivElement).dataset.key === chosenKey) {
                 optionComponent.classList.add("selected");
@@ -61,7 +61,6 @@ const createSelectBox = (options: SelectOption[], onSelect: (string) => void, pl
         optionsContainer.style.display = "block";
         e.stopPropagation();
     })
-
 
     return container;
 }

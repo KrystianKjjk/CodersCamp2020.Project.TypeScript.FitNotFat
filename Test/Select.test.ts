@@ -31,5 +31,17 @@ describe('Select test', () => {
         expect(optionFirst.classList.contains('selected')).toBeTruthy();
     });
 
+    test('clicking a select shows options, clicking outside hides them', () => {
+        const myFunc = jest.fn();
+        const selectOptions = createSelectBox(options, myFunc, 'Why?');
+        document.body.appendChild(selectOptions);
+        const selectBox: HTMLDivElement = selectOptions.querySelector('.select-box');
+        selectBox.click();
+        const optionsSelected: HTMLDivElement = selectOptions.querySelector('.options');
+        expect(optionsSelected.style.display).toBe('block');
+        const btn = document.createElement("button");
+        document.body.click();
+        expect(optionsSelected.style.display).toBe('none');
+    });
 })
 

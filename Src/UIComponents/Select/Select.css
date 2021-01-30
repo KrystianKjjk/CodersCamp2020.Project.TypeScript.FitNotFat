@@ -7,7 +7,6 @@
     padding-top: 20px;
     padding-bottom: 20px;
     width: 500px;
-    background: white;
     position: relative;
 }
   
@@ -23,6 +22,7 @@
     line-height: 20px;
     letter-spacing: 0.125em;
     color: rgba(74, 72, 78, 0.6);
+    background: white;
     box-shadow: 2px 4px 4px rgba(74, 72, 78, 0.25);
 }
   
@@ -39,7 +39,6 @@
     display: none;
     border: 1px solid rgb(163, 163, 163);
     border-radius: 10px;
-    display: none;
     position: absolute;
     left: 0px;
     right: 0px;

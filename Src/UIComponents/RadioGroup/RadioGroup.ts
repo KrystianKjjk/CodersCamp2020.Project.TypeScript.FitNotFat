@@ -6,7 +6,7 @@ interface RadioOption {
     label: string,
 } 
 
-const createRadioGroup = (options: RadioOption[], onClick: (string) => void, groupName: string) => {
+const createRadioGroup = (options: RadioOption[], onClick: (selected: string) => void, groupName: string) => {
     const mainContainer = createElement('div', 'radio-main-container');
     const prompt = createElement('p', 'radio-group-header');
     prompt.appendChild(document.createTextNode(groupName));
@@ -20,7 +20,7 @@ const createRadioGroup = (options: RadioOption[], onClick: (string) => void, gro
     return mainContainer;
 }
 
-const createSingleRadio = (singleInput: RadioOption, onClick: (string) => void) => {
+const createSingleRadio = (singleInput: RadioOption, onClick: (selected: string) => void) => {
     const {key, name, label} = singleInput;
     const singleRadioOption = createElement('div', 'radio-single-container');
     const labelRadioButton = createElement('label', 'radio-button');
@@ -39,8 +39,7 @@ const createSingleRadio = (singleInput: RadioOption, onClick: (string) => void) 
     const textButton = createElement('span', 'text-radio');
     textButton.innerText = label;
 
-    spanVisible.appendChild(fakeRadioButton);
-    spanVisible.appendChild(textButton);
+    spanVisible.append(fakeRadioButton, textButton);
 
     labelRadioButton.appendChild(spanVisible);
 
