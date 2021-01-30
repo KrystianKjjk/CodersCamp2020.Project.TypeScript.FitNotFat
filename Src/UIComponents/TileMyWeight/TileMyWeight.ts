@@ -1,6 +1,6 @@
 import { generateWhiteButton } from '../Buttons/Buttons';
+const moment = require('moment');
 
-const MONTH_DIFFERENCE: number = 1;
 const EXAMPLE_PLACEHOLDER_WEIGHT: string = '61.5';
 const MIN_WEIGHT: number = 1;
 const MAX_WEIGHT: number = 150;
@@ -13,9 +13,7 @@ export function createTileMyWeight(currentWeight: number, date: Date, callback: 
   const buttonSection = _createElement('section','my-weight-tile__button-section');
 
   dataSection.appendChild(dataSectionHeader);
-
-  myWeightTileContainer.appendChild(dataSection);
-  myWeightTileContainer.appendChild(buttonSection);
+  myWeightTileContainer.append(dataSection, buttonSection);
 
   _generateStepOne(dataSection, buttonSection, currentWeight, date, callback);
 
@@ -25,15 +23,12 @@ export function createTileMyWeight(currentWeight: number, date: Date, callback: 
 function _generateStepOne(dataSection: HTMLElement, buttonSection: HTMLElement, currentWeight: number, date: Date, callback: (newWeight: number, newDate: Date) => void) {
 
   const dataSectionMain = _createElement('p','my-weight-tile__data-section--main-text',`${currentWeight} kg`);
-  const dataSectionFooter = _createElement('p', 'my-weight-tile__data-section--footer',
-    `${date.getDate()}/${date.getMonth() + MONTH_DIFFERENCE}/${date.getFullYear()}`);
-
-  dataSection.appendChild(dataSectionMain);
-  dataSection.appendChild(dataSectionFooter);
+  const dataSectionFooter = _createElement('p', 'my-weight-tile__data-section--footer', moment(date).format('DD/MM/YYYY'));
 
   const editButton = generateWhiteButton('EDIT', handleEditButtonClick);
   editButton.classList.add('my-weight-tile__button-section--tile-btn');
 
+  dataSection.append(dataSectionMain, dataSectionFooter);
   buttonSection.appendChild(editButton);
 
   function handleEditButtonClick() {
@@ -52,14 +47,11 @@ function _generateStepTwo(dataSection: HTMLElement, buttonSection: HTMLElement, 
   const dataSectionMainText = _createElement('p','my-weight-tile__data-section--main-text-step-two', ' kg');
   const dataSectionMainIncorrect = _createElement('p','my-weight-tile__data-section--incorrect', 'Invalid value!');
 
-  dataSectionMainContainer.appendChild(dataSectionMainInput);
-  dataSectionMainContainer.appendChild(dataSectionMainText);
+  dataSectionMainContainer.append(dataSectionMainInput, dataSectionMainText);
 
-  const dataSectionFooter = _createElement('p', 'my-weight-tile__data-section--footer',
-    `${newDate.getDate()}/${newDate.getMonth() + MONTH_DIFFERENCE}/${newDate.getFullYear()}` );
+  const dataSectionFooter = _createElement('p', 'my-weight-tile__data-section--footer', moment(newDate).format('DD/MM/YYYY') );
 
-  dataSection.appendChild(dataSectionMainContainer);
-  dataSection.appendChild(dataSectionFooter);
+  dataSection.append(dataSectionMainContainer, dataSectionFooter);
 
   const saveButton = generateWhiteButton('SAVE', handleSaveButtonClick);
   saveButton.classList.add('my-weight-tile__button-section--tile-btn');
@@ -69,20 +61,17 @@ function _generateStepTwo(dataSection: HTMLElement, buttonSection: HTMLElement, 
 
   const elementsRemove = [dataSectionMainContainer, dataSectionMainIncorrect, dataSectionFooter, saveButton, cancelButton];
 
-  buttonSection.appendChild(saveButton)
-  buttonSection.appendChild(cancelButton)
-
+  buttonSection.append(saveButton, cancelButton)
 
   function handleSaveButtonClick() {
     const newWeight: number = <number><any>dataSectionMainInput.value;
 
-    if(newWeight <= MIN_WEIGHT || newWeight > MAX_WEIGHT) {
+    if(newWeight < MIN_WEIGHT || newWeight > MAX_WEIGHT) {
       if(!document.querySelector('.my-weight-tile__data-section--incorrect')) {
         dataSectionMainContainer.parentNode.insertBefore(dataSectionMainIncorrect,dataSectionMainContainer.nextElementSibling);
       }
       return;
     }
-
     callback(newWeight, newDate);
     _removeElements(elementsRemove);
     _generateStepOne(dataSection, buttonSection, newWeight, newDate, callback)
