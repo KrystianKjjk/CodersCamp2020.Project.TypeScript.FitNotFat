@@ -1,11 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap');
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif;
 }
-
 p {
     font-weight: 400;
     font-size: 50px;
@@ -45,17 +42,11 @@ form {
     align-items: center;
     width: 30%;
     height: 70vh;
-    /* margin-left: 50px; */
 }
 
 .gender-selection {
     display: flex;
 }
-
-
-/* span input[type='radio'] {
-    margin-right: 5px;
-} */
 
 .gender-selection span {
     width: 2.5rem;
@@ -70,7 +61,6 @@ form {
     border: 1px solid #4A484E;
     box-shadow: 2px 4px 4px rgba(74, 72, 78, 0.25);
     border-radius: 7px;
-    /* height: 5%; */
     padding: 15px;
 }
 
