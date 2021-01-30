@@ -1,3 +1,6 @@
+import tile from '../TileComponent/TileComponent';
+import {generateWhiteButton} from '../Buttons/Buttons';
+
 function createStyledElement(tagName: string, classNames: string[], innerHTML?: string): HTMLElement {
     const element = document.createElement(tagName);
     element.classList.add(...classNames);
@@ -19,24 +22,16 @@ function addDiaryItem(  table: HTMLTableElement,
 
     const textInput = createStyledElement('input', ['item-input']) as HTMLInputElement;
     textInput.type = 'text';
-    textInput.placeholder = placeholder
+    textInput.placeholder = placeholder;
 
-    const findBtn = createStyledElement('button', ['find-btn'], "FIND");
-    const addBtn = createStyledElement('button', ['add-btn'], "ADD");
-    const cancelBtn = createStyledElement('button', ['cancel-btn'], "CANCEL");
-    
-    findBtn.addEventListener('click', (e) => {
-        findCallback(textInput.value);
-    });
-    addBtn.addEventListener('click', (e) => {
-        addCallback(table);
-    });
-    cancelBtn.addEventListener('click', (e) => {
-        cancelCallback();
-    });
+    const findBtn = generateWhiteButton('FIND', () => findCallback(textInput.value));
+    const addBtn = generateWhiteButton('ADD', addCallback.bind(null, table));
+    const cancelBtn = generateWhiteButton('CANCEL', cancelCallback);
+    const bunttonsDiv = document.createElement('div');
+    bunttonsDiv.append(addBtn, cancelBtn);
 
-    component.append(header, text, textInput, findBtn, addBtn, cancelBtn, table);
-    return component;
+    component.append(header, text, textInput, findBtn, bunttonsDiv, table);
+    return tile(component);
 }
 
 export default addDiaryItem;
