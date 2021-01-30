@@ -14,7 +14,8 @@
     "start:buttons": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Buttons/Buttons.html",
     "start:profileInfo": "parcel -p 8765 watch ./UnitImplementations/UIComponents/ProfileInfo/ProfileInfo.html",
     "start:weight-table": "parcel -p 8765 watch ./UnitImplementations/UIComponents/HistoricalWeights/HistoricalWeights.html",
-    "start:dashboard": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Dashboard/Dashboard.html"
+    "start:dashboard": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Dashboard/Dashboard.html",
+    "start:initialview": "parcel -p 8765 watch ./UnitImplementations/UIComponents/InitialView/InitialView.html"
   },
   "keywords": [
     "fitnotfat",

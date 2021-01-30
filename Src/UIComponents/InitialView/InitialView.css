@@ -1,0 +1,41 @@
+.initial-view{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    padding-right: 50%;
+    box-sizing: border-box;
+}
+
+.initial-view-injected-component{
+    margin: 0 auto;
+    position: relative;
+    left:15%;
+}
+
+.app-name{
+    position: absolute;
+    top: 3%;
+    left: 6%;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.app-name >span:first-of-type{
+    color:  #DA1B36;
+}
+
+.initial-view-image, .initial-view-shape{
+    position: absolute;
+}
+
+.initial-view-image{
+    right:0;    
+}
+
+.initial-view-shape{
+    bottom: 0;
+    left:0;
+}
