@@ -21,7 +21,7 @@ function generateInitialView(injectedDiv:HTMLDivElement):HTMLDivElement {
 
     const shape = document.createElement('img');
     shape.className = 'initial-view-shape';
-    shape.setAttribute('src', '/Static/Ellipse 13.png')
+    shape.src = '../../../Static/Ellipse 13.png';
 
     initialView.append(injectedComponent, appName, image, shape);
 

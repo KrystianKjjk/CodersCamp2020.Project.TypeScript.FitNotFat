@@ -6,13 +6,17 @@
     width: 100vw;
     height: 100vh;
     padding-right: 50%;
-    box-sizing: border-box;
+    box-sizing: border-box; 
+    opacity: 100%;
+    animation: 0.7s ease-out 0s 1 becomeVisible;  
 }
+
 
 .initial-view-injected-component{
     margin: 0 auto;
     position: relative;
     left:15%;
+    z-index:1;
 }
 
 .app-name{
@@ -33,9 +37,20 @@
 
 .initial-view-image{
     right:0;    
+    height: 100vh;
 }
 
 .initial-view-shape{
     bottom: 0;
     left:0;
 }
+
+
+@keyframes becomeVisible {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+  }
