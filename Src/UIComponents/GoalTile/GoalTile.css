@@ -4,7 +4,7 @@
 }
 
 .goaltile{
-    padding: 5%;
+    padding: 5% 2%;
     box-sizing: border-box;
 }
 
@@ -20,13 +20,11 @@
 
 .goalgauge > svg > text >tspan{
     display: block;
-    color: #4A484E;
+    color: rgb(74,72,78,0.7);
 }
 
 .goalheader{
     font-weight: 500;
     font-size: 1.5rem;
-    color: #4A484E;
-    line-height: 1;
-    margin-left: 10%;
+    color: rgb(74,72,78,0.7);
 }

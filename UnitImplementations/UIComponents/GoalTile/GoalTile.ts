@@ -10,7 +10,7 @@ tile.style.width = "25%";
 //tile.style.height = "400px";
 
 document.body.appendChild(tile);
-generateGoalTile("test", "test", 201, 0, 250, "kg");
+generateGoalTile("Weekly Goal", "test", 112, 0, 250, "kg");
 
 
 

@@ -11,7 +11,8 @@ function createGauge(elementID:string, value:number, min:number, max:number){
             max: max,    //max vlue of the gauge
             gaugeWidthScale: 0.4,
             levelColors: ['#DA1B36'],
-            relativeGaugeSize: true
+            relativeGaugeSize: true,
+            displayRemaining: true
         }); 
 }
 
