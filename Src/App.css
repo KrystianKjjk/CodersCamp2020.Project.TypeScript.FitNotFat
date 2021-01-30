@@ -1,6 +1,7 @@
 @import './UIComponents/Buttons/Buttons.css';
 @import'./UIComponents/TileComponent/TileComponent.css';
 @import './UIComponents/ModalWindow/ModalWindow.css';
+@import './UIComponents/GoalTile/GoalTile.css';
 
 * {
     font-family: 'Montserrat', sans-serif;

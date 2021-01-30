@@ -11,7 +11,7 @@
     "start:dev": "parcel -p 8765 watch index.html",
     "build": "parcel build index.html --public-url ./",
     "start:buttons": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Buttons/Buttons.html",
-    "start:gauges": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Gauges/Gauges.html"
+    "start:gauges": "parcel -p 8765 watch ./UnitImplementations/UIComponents/GoalTile/GoalTile.html"
   },
   "keywords": [
     "fitnotfat",

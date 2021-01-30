@@ -1,0 +1,22 @@
+.goaltile, .goalgauge{
+    height:100%;
+    width:100%;
+}
+
+.goaltile, .goaltile *{
+    background-color: white;
+}
+
+.goalgauge > svg > text >tspan{
+    font-size: 1rem;
+    margin: 10px;
+    display: block;
+    color: #4A484E;
+}
+
+.goalheader{
+    font-weight: 500;
+    color: #4A484E;
+    margin-top: 2rem;
+    margin-left: 5rem;
+}
