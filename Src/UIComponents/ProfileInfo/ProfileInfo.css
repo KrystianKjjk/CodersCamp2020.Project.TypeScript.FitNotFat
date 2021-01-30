@@ -1,0 +1,72 @@
+.user-profile {
+    background: white;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 500;
+    letter-spacing: 0.035em;
+    display: grid;
+    grid-template-areas:    'username user-info'
+                            'username health-info'
+                            'username goals-info';
+}
+.user-info, .health-info, .goals-info {
+    width: 650px;
+    height: 100px;
+    box-sizing: border-box;
+    padding-left: 3rem;
+    padding-top: 1rem;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:    'header header header'
+                            'info1 info2 info3';
+}
+.user-profile span {
+    margin-right: 1em;
+    color: #4A484E;
+}
+
+.username {
+    grid-area: username;
+    width: 300px;
+    height: 300px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.username > div:first-child {
+    margin-bottom: 30px;
+}
+
+
+.user-info {
+    grid-area: user-info;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.health-info {
+    grid-area: health-info;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.goals-info {
+    grid-area: goals-info;
+}
+
+.user-profile h3 {
+    grid-area: 'header';
+    font-size: inherit;
+    font-weight: inherit;
+    text-transform: uppercase;
+    color: rgba(74, 72, 78, 0.7);
+}
+.info:first-of-type {
+    grid-area: info1;
+}
+.info:nth-of-type(2) {
+    grid-area: info2;
+}
+.info:nth-of-type(3) {
+    grid-area: info3;
+}
