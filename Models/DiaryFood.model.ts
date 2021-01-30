@@ -23,7 +23,7 @@ export class MyDiaryFood implements DiaryFood {
     }
 
     addMeal(key: string, item: FoodDetails) {
-        this.meals[key] = [ ...(this.meals[key] ?? []), item];
+        this.meals[key] = [ ...(this.meals[key] ? this.meals[key] : []), item];
         return this;
     }
 }
