@@ -1,4 +1,5 @@
 import {profileInfo} from '../../../Src/UIComponents/ProfileInfo/ProfileInfo';
+import { ActivityLevel } from '../../../Models/ActivityLevel.model';
 
 const container = document.createElement('div');
 container.style.height = '500px';
@@ -15,7 +16,7 @@ container.appendChild(profileInfo({
     dateOfBirth: new Date(),
     height: 170,
     weight: 60,
-    activityLevel: 'Active',
+    activityLevel: ActivityLevel.Active,
     weeklyGoal: 1,
     goalWeight: 70,
 }));

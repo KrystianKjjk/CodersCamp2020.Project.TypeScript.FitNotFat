@@ -1,11 +1,12 @@
 import {profileInfo} from '../Src/UIComponents/ProfileInfo/ProfileInfo';
+import { ActivityLevel } from '../Models/ActivityLevel.model';
 
 const username = 'User123';
 const gender: 'Male' | 'Female' = 'Male';
 const dateOfBirth = new Date('2011-04-11T10:20:30Z');
 const height = 170;
 const weight = 60;
-const activityLevel: 'Active' | 'Low' | 'Regular' | 'Very Active' = 'Active';
+const activityLevel: ActivityLevel = ActivityLevel.Active;
 const weeklyGoal = 1;
 const goalWeight = 70;
 
