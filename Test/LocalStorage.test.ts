@@ -1,12 +1,14 @@
 import {saveInLocalStorage, readFromLocalStorage} from '../Src/Logic/LocalStorage/LocalStorage';
 import {User} from '../Models/User.model';
+import { ActivityLevel } from '../Models/ActivityLevel.model';
 
 let dummyobject: User = {
-    gender: 'male',
+    name: "kotek",
+    gender: 'Male',
     dateOfBirth: new Date,
     height: 180,
     goalWeight: 90,
-    activityLevel: 'high'
+    activityLevel: ActivityLevel.Low
 };
 
 //mocked LocalStorage
