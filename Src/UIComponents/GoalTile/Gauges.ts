@@ -8,7 +8,10 @@ function createGauge(elementID:string, value:number, min:number, max:number){
             id: elementID, // the id of the html element
             value: value,   //value of the element
             min: min,   //min value of the gauge
-            max: max    //max vlue of the gauge
+            max: max,    //max vlue of the gauge
+            gaugeWidthScale: 0.4,
+            levelColors: ['#DA1B36'],
+            relativeGaugeSize: true
         }); 
 }
 
