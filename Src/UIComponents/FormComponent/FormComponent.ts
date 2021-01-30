@@ -5,45 +5,38 @@ export default function generateForm():HTMLFormElement{
   const form = document.createElement('form');
 
   const paragraph = generateParagraph();
-  form.appendChild(paragraph);
-
   const progressBar=generateProgressBar();
-  form.appendChild(progressBar);
 
   const nameInput = generateTextInput('Nickname', 'name');
   nameInput.setAttribute('minlength', '4');
-  form.appendChild(nameInput);
 
   const genderSelectionDiv = generateGenderSelectionDiv();
-  form.appendChild(genderSelectionDiv);
 
   const dateInput = generateDateInput();
-  form.appendChild(dateInput);
 
   const heightAndWeightDiv = document.createElement('div');
   heightAndWeightDiv.className = 'current-values';
-  form.appendChild(heightAndWeightDiv);
 
   const heightInput = generateNumberInput('Height (cm)', 'height');
-  heightAndWeightDiv.appendChild(heightInput);
+  
 
   const weightInput = generateNumberInput(
     'Current weight (kg)',
     'current-weight',
   );
-  heightAndWeightDiv.appendChild(weightInput);
+
+  heightAndWeightDiv.append(heightInput,weightInput);
 
   const goalWeightInput = generateNumberInput(
     'Goal weight (kg)',
     'goal-weight',
   );
-  form.appendChild(goalWeightInput);
 
   const submitButton = generateRedButton('Next step', ()=>{});
   submitButton.style.height = '50px';
   submitButton.style.width = '35%';
-  form.appendChild(submitButton);
 
+  form.append(paragraph,progressBar,nameInput, genderSelectionDiv, dateInput, heightAndWeightDiv,goalWeightInput, submitButton);
   return form;
 }
 
@@ -79,8 +72,7 @@ function generateGenderSelectionDiv():HTMLDivElement {
 
   const maleInput = generateRadioInput('male');
   const maleLabel = generateLabel('male');
-  genderSelectionDiv.appendChild(maleInput);
-  genderSelectionDiv.appendChild(maleLabel);
+  genderSelectionDiv.append(maleInput, maleLabel);
   maleLabel.innerHTML = 'Male';
 
   const genderSelectionSpan = document.createElement('span');
@@ -88,8 +80,7 @@ function generateGenderSelectionDiv():HTMLDivElement {
 
   const femaleInput = generateRadioInput('female');
   const femaleLabel = generateLabel('female');
-  genderSelectionDiv.appendChild(femaleInput);
-  genderSelectionDiv.appendChild(femaleLabel);
+  genderSelectionDiv.append(femaleInput,femaleLabel);
   femaleLabel.innerHTML = 'Female';
   return genderSelectionDiv;
 }
@@ -133,3 +124,5 @@ function generateNumberInput(
   numberInput.className = className;
   return numberInput;
 }
+
+export {generateTextInput};
