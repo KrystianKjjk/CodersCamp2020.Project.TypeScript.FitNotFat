@@ -1,5 +1,7 @@
+import {User} from '../../../Models/User.model'
+
 //function to save the data in the localstorage, inputs is data itself and key name under which it should be kept
-function saveInLocalStorage(name:string, object:object){
+function saveInLocalStorage(name:string, object:User){
     localStorage.setItem(name, JSON.stringify(object));
 }
 
