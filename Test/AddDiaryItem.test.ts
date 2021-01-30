@@ -9,9 +9,17 @@ describe('AddDiaryItem component ', () => {
     const findCallback = jest.fn();
     const addCallback = jest.fn();
     const cancelCallback = jest.fn();
+    const headerStr = 'Exercises';
+    const textStr = 'Your work out';
     const placeholder = 'ex. ran 3 miles or 30 min yoga';
     beforeEach(() => {
-        component = addDiaryItem(table, findCallback, addCallback, cancelCallback, placeholder);
+        component = addDiaryItem(table, findCallback, addCallback, cancelCallback, headerStr, textStr, placeholder);
+    });
+    test('contains passed header', () => {
+        expect(component.querySelector('h3').textContent).toBe(headerStr);
+    });
+    test('contains passed text', () => {
+        expect(component.textContent.includes(textStr)).toBe(true);
     });
     test('contains find text input', () => {
         expect(component.querySelectorAll('input[type=text]')).toHaveLength(1);

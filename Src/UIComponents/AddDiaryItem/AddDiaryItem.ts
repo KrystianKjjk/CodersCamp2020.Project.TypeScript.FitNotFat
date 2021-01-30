@@ -9,9 +9,14 @@ function addDiaryItem(  table: HTMLTableElement,
                         findCallback: (text: string) => void,
                         addCallback: (table: HTMLTableElement) => void,
                         cancelCallback: () => void,
+                        headerStr: string,
+                        textStr: string,
                         placeholder?: string): HTMLElement {
     const component = createStyledElement('div', ['add-diary-item'])
     
+    const header = createStyledElement('h3', [], headerStr);
+    const text = createStyledElement('h4', [], textStr);
+
     const textInput = createStyledElement('input', ['item-input']) as HTMLInputElement;
     textInput.type = 'text';
     textInput.placeholder = placeholder
@@ -30,7 +35,7 @@ function addDiaryItem(  table: HTMLTableElement,
         cancelCallback();
     });
 
-    component.append(textInput, findBtn, addBtn, cancelBtn, table);
+    component.append(header, text, textInput, findBtn, addBtn, cancelBtn, table);
     return component;
 }
 
