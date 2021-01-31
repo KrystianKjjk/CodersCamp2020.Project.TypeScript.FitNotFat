@@ -1,5 +1,7 @@
 console.log('hello');
 import { createHistoricalWeeklyGoalsTable } from './UIComponents/HistoricalWeeklyGoalsTable/HistoricalWeeklyGoalsTable';
+import{generateWeeklyGoalComponent}from './UIComponents/WeeklyGoalComponent/WeeklyGoalComponent';
+document.body.appendChild(generateWeeklyGoalComponent('1'));
 document.body.appendChild(
   createHistoricalWeeklyGoalsTable([
     {

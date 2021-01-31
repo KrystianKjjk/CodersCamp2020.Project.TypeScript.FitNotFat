@@ -3,6 +3,8 @@
 @import './UIComponents/ModalWindow/ModalWindow.css';
 @import './UIComponents/ReusableTable/ReusableTable.css';
 @import './UIComponents/HistoricalWeeklyGoalsTable/HistoricalWeeklyGoalsTable.css';
+@import './UIComponents/Select/Select.css';
+@import './UIComponents/WeeklyGoalComponent/WeeklyGoalComponent.css';
 
 * {
     font-family: 'Montserrat', sans-serif;
