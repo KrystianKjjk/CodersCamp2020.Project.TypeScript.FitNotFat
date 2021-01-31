@@ -14,7 +14,7 @@ exports[`tests for Form Component Should render correctly 1`] = `
   </div>
   <input
     class="name"
-    minlength="4"
+    minlength="3"
     placeholder="Nickname"
     required=""
     type="text"
