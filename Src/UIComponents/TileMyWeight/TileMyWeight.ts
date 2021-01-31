@@ -1,12 +1,11 @@
 import { generateWhiteButton } from '../Buttons/Buttons';
-const moment = require('moment');
+import moment from 'moment'
 
 const EXAMPLE_PLACEHOLDER_WEIGHT: string = '61.5';
 const MIN_WEIGHT: number = 1;
 const MAX_WEIGHT: number = 150;
 
 export function createTileMyWeight(currentWeight: number, date: Date, callback: (newWeight: number, newDate: Date) => void): HTMLElement {
-
   const myWeightTileContainer = _createElement('div','my-weight-tile');
   const dataSection = _createElement('section','my-weight-tile__data-section');
   const dataSectionHeader = _createElement('p','my-weight-tile__data-section--header', 'MY WEIGHT');
