@@ -18,7 +18,6 @@ describe('Initial View generator tests', () => {
 
     test('Initial View container has the images', () => {
         expect(document.querySelector('initial-view-image')).toBeTruthy;
-        expect(document.querySelector('initial-view-shape')).toBeTruthy;
     })
 
 })
