@@ -33,6 +33,7 @@
     "@testing-library/dom": "^7.29.4",
     "@types/jest": "^26.0.20",
     "jest": "^26.0.0",
+    "jest-transform-stub": "^2.0.0",
     "parcel": "^1.12.4",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
@@ -51,6 +52,9 @@
     ],
     "transform": {
       "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(png)$": "jest-transform-stub"
     }
   }
 }

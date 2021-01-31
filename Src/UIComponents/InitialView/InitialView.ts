@@ -1,3 +1,9 @@
+//sorry for this dirty fix for 'require' vs typescript issue in the line below - this is only to avoid compilation problems
+declare let require: any
+//below is the fix for getting Parcel into using the images by importing them in the file
+const imageUrl:string = require('../../../Static/initialviewimage.png');
+const shapeUrl:string = require('../../../Static/Ellipse 13.png');
+
 function generateInitialView(injectedDiv:HTMLDivElement):HTMLDivElement {
     //TO BE REPLACED WITH A FUNCTION FOR ELEMENT CREATION
     const initialView = document.createElement('div');
@@ -17,11 +23,12 @@ function generateInitialView(injectedDiv:HTMLDivElement):HTMLDivElement {
 
     const image = document.createElement('img');
     image.className = 'initial-view-image';
-    image.src = '../../../Static/initialviewimage.png';
+    image.setAttribute('src', imageUrl);
+    console.log(typeof imageUrl);
 
     const shape = document.createElement('img');
     shape.className = 'initial-view-shape';
-    shape.src = '../../../Static/Ellipse 13.png';
+    shape.src = shapeUrl;
 
     initialView.append(injectedComponent, appName, image, shape);
 
