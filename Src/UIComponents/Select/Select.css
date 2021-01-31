@@ -1,0 +1,67 @@
+.container * {
+    box-sizing: border-box;
+    
+}
+
+.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 500px;
+    position: relative;
+}
+  
+.select-box {
+    height: 40px;
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    position: relative;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.125em;
+    color: rgba(74, 72, 78, 0.6);
+    background: white;
+    box-shadow: 2px 4px 4px rgba(74, 72, 78, 0.25);
+}
+  
+.select-box svg {
+    position: absolute;
+    right: 16px;
+    top: 10px;
+}
+  
+.options {
+    width: 100%;
+    max-height: 120px;
+    overflow-y: auto;
+    display: none;
+    border: 1px solid rgb(163, 163, 163);
+    border-radius: 10px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    z-index: 2;
+}
+  
+.option {
+    width: 100%;
+    height: 40px;
+    padding: 12px 16px;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.125em;
+    padding-left: 14px;
+    color: rgba(0, 0, 0, 0.95);
+    background-color: white;
+}
+  
+.selected {
+    background-color: darkred;
+    color: white;
+}
+  
+.option:hover {
+    background-color: lightgrey;
+}
