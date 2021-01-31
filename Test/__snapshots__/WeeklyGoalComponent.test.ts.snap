@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for Weekly goal component should render weekly goal component 1`] = `
+<div
+  class="tile"
+>
+  <div
+    class="weekly-goal-component"
+  >
+    <p
+      class="tile-title"
+    >
+      Weekly goal
+    </p>
+    <p
+      class="paragraph-week"
+    >
+      Week 1
+    </p>
+    <div
+      class="container select-weekly-goal"
+    >
+      <div
+        class="select-box"
+      >
+        <span>
+          Select your weekly goal
+        </span>
+        <span>
+          
+    
+          <svg
+            fill="currentColor"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            
+        
+            <path
+              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+              fill-rule="evenodd"
+            />
+            
+    
+          </svg>
+        </span>
+      </div>
+      <div
+        class="options"
+      >
+        <div
+          class="option"
+          data-key="GAIN"
+        >
+          Gain weight
+        </div>
+        <div
+          class="option"
+          data-key="LOSE"
+        >
+          Lose weight
+        </div>
+        <div
+          class="option"
+          data-key="KEEP"
+        >
+          Keep weight
+        </div>
+      </div>
+    </div>
+    <button
+      class="button button-save"
+      style="background-color: white; color: rgb(218, 27, 54);"
+    />
+  </div>
+</div>
+`;
