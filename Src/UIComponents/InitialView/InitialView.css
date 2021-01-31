@@ -31,7 +31,7 @@
     color:  #DA1B36;
 }
 
-.initial-view-image, .initial-view-shape{
+.initial-view-image{
     position: absolute;
 }
 
@@ -39,12 +39,6 @@
     right:0;    
     height: 100vh;
 }
-
-.initial-view-shape{
-    bottom: 0;
-    left:0;
-}
-
 
 @keyframes becomeVisible {
     0% {
