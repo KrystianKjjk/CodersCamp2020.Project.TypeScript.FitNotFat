@@ -1,0 +1,19 @@
+.main-title {
+    font-size: 50px;
+    line-height: 61px;
+    letter-spacing: 0.055em;
+    color: #4A484E;
+    text-align: center;
+}
+
+.main-container {
+    max-width: 500px;
+    align-items: center;
+    padding: 20px;
+}
+
+.container-button {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-around;
+} 
