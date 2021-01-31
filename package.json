@@ -11,12 +11,12 @@
     "start:dev": "parcel -p 8765 watch index.html",
     "build": "parcel build index.html --public-url ./",
     "start:buttons": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Buttons/Buttons.html",
-    "start:tileMyWeight": "parcel -p 8765 watch ./UnitImplementations/UIComponents/TileMyWeight/TileMyWeight.html"
+    "start:tileMyWeight": "parcel -p 8765 watch ./UnitImplementations/UIComponents/TileMyWeight/TileMyWeight.html",
     "start:joinus2": "parcel -p 8765 watch ./UnitImplementations/UIComponents/JoinUsSecondStep/JoinUsSecondStep.html",
     "start:profileInfo": "parcel -p 8765 watch ./UnitImplementations/UIComponents/ProfileInfo/ProfileInfo.html",
     "start:weight-table": "parcel -p 8765 watch ./UnitImplementations/UIComponents/HistoricalWeights/HistoricalWeights.html",
-    "start:dashboard": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Dashboard/Dashboard.html"
-    "start:localstorage": "parcel -p 8765 watch ./UnitImplementations/Logic/LocalStorage/LocalStorage.html",
+    "start:dashboard": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Dashboard/Dashboard.html",
+    "start:localstorage": "parcel -p 8765 watch ./UnitImplementations/Logic/LocalStorage/LocalStorage.html"
   },
   "keywords": [
     "fitnotfat",
