@@ -17,7 +17,6 @@ function createHistoricalWeeklyGoalsTable(tableData: HistoricalWeeklyGoalsRow[])
     title.className = 'tile-title';
     const titleContent = document.createTextNode('Historical weekly goals');
     title.appendChild(titleContent);
-    container.appendChild(title);
     const tile=generateTileComponent(container);
 
     const table=createTable(['DATE','WEEKLY GOAL','START WEIGHT','END WEIGHT','ACHIEVED IN']);
@@ -28,7 +27,7 @@ function createHistoricalWeeklyGoalsTable(tableData: HistoricalWeeklyGoalsRow[])
     const rowValues=Object.values(row);
     addRowToHistoricalWeeklyGoalsTable(rowValues);
     }
-    container.appendChild(table);
+    container.append(title,table);
     return tile;
 }
 
