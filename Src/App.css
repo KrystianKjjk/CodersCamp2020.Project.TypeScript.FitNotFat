@@ -1,6 +1,9 @@
 @import './UIComponents/Buttons/Buttons.css';
 @import'./UIComponents/TileComponent/TileComponent.css';
 @import './UIComponents/ModalWindow/ModalWindow.css';
+@import './UIComponents/RadioGroup/RadioGroup.css';
+@import './UIComponents/Select/Select.css';
+@import './UIComponents/ReusableTable/ReusableTable.css';
 @import './UIComponents/ProfileInfo/ProfileInfo.css';
 
 * {
