@@ -8,7 +8,7 @@ export default function generateForm():HTMLFormElement{
   const progressBar=generateProgressBar();
 
   const nameInput = generateTextInput('Nickname', 'name');
-  nameInput.setAttribute('minlength', '4');
+  nameInput.setAttribute('minlength', '3');
 
   const genderSelectionDiv = generateGenderSelectionDiv();
 
