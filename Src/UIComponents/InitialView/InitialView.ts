@@ -1,5 +1,5 @@
 //sorry for this dirty fix for 'require' vs typescript issue in the line below - this is only to avoid compilation problems
-declare let require: any
+declare let require: any;
 //below is the fix for getting Parcel into using the images by importing them in the file
 const imageUrl:string = require('../../../Static/initialviewimage.png');
 const shapeUrl:string = require('../../../Static/Ellipse 13.png');
