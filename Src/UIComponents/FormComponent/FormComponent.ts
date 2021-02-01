@@ -1,5 +1,5 @@
 import { generateRedButton } from '../Buttons/Buttons';
-import { createElement } from '../utils/utils';
+import { createElement, generateTextInput } from '../utils/utils';
 
 export default function generateForm():HTMLFormElement{
   const form = document.createElement('form');
@@ -46,14 +46,6 @@ export default function generateForm():HTMLFormElement{
   const stepDiv = createElement('div', 'first-step');
   progressBar.appendChild(stepDiv);
   return progressBar;
-}
-
-function generateTextInput(placeholderValue: string, className: string):HTMLInputElement {
-  const textInput = createElement('input', className) as HTMLInputElement;
-  textInput.setAttribute('type', 'text');
-  textInput.setAttribute('placeholder', placeholderValue);
-  textInput.required = true;
-  return textInput;
 }
 
 function generateGenderSelectionDiv():HTMLDivElement {
