@@ -1,0 +1,30 @@
+.goaltile, .goalgauge{
+    height:100%;
+    width:100%;
+}
+
+.goaltile{
+    padding: 5% 2%;
+    box-sizing: border-box;
+}
+
+.goalgauge{
+    padding: 15%;
+    padding-bottom: 0;
+    box-sizing: border-box;
+}
+
+.goaltile, .goaltile *{
+    background-color: white;
+}
+
+.goalgauge > svg > text >tspan{
+    display: block;
+    color: rgb(74,72,78,0.7);
+}
+
+.goalheader{
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: rgb(74,72,78,0.7);
+}
