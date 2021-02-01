@@ -17,7 +17,7 @@ function generateInitialView(injectedDiv:HTMLDivElement):HTMLDivElement {
     const notFat =  createElement('span', [], 'notFat');
     appName.append(fit,notFat);
 
-    const image = createElement('img', [], 'initial-view-image');
+    const image = createElement('img', 'initial-view-image');
     image.setAttribute('src', imageUrl);
 
     initialView.append(injectedComponent, appName, image);
