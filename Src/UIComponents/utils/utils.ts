@@ -15,4 +15,11 @@ export function generateTextInput(placeholderValue: string, className: string):H
     textInput.setAttribute('placeholder', placeholderValue);
     textInput.required = true;
     return textInput;
-  }
+}
+
+export function createElementInput(name: string, className: string, type: string, placeholder: string): HTMLInputElement {
+    const element = createElement(name, className) as HTMLInputElement;
+    if(type) element.type = type;
+    if(placeholder) element.placeholder = placeholder;
+    return element;
+}
