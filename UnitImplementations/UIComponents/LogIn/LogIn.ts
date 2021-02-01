@@ -14,9 +14,6 @@ container.appendChild(input);
 
 const button = generateRedButton('Log In', ()=>{});
 
-button.style.width = "200px";
-button.style.height = "50px";
-
 const containerButton = createElement('div', 'container-button'); 
 containerButton.appendChild(button);
 container.appendChild(containerButton);

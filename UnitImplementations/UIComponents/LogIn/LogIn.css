@@ -13,6 +13,11 @@
     padding: 20px;
 }
 
+.main-container > button {
+    width: 200px; 
+    height: 50px
+}
+
 .container-button {
     padding-top: 20px;
     display: flex;
