@@ -1,6 +1,6 @@
 import tile from '../TileComponent/TileComponent';
 import {generateWhiteButton} from '../Buttons/Buttons';
-import { createElement, generateTextInput } from '../utils/utils';
+import { createElement, createTextInput } from '../utils/utils';
 
 function addDiaryItem(  table: HTMLTableElement, 
                         findCallback: (text: string) => void,
@@ -14,7 +14,7 @@ function addDiaryItem(  table: HTMLTableElement,
     const header = createElement('h3', [], headerStr);
     const text = createElement('h4', [], textStr);
 
-    const textInput = generateTextInput(placeholder, 'item-input');
+    const textInput = createTextInput(placeholder, 'item-input');
 
     const findBtn = generateWhiteButton('FIND', () => findCallback(textInput.value));
     const addBtn = generateWhiteButton('ADD', addCallback.bind(null, table));

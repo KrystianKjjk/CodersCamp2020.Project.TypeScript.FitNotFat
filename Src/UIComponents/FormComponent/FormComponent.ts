@@ -1,5 +1,5 @@
 import { generateRedButton } from '../Buttons/Buttons';
-import { createElement, generateTextInput } from '../utils/utils';
+import { createElement, createTextInput, createNumberInput, createRadioInput } from '../utils/utils';
 
 export default function generateForm():HTMLFormElement{
   const form = document.createElement('form');
@@ -7,7 +7,7 @@ export default function generateForm():HTMLFormElement{
   const paragraph = generateParagraph();
   const progressBar = generateProgressBar();
 
-  const nameInput = generateTextInput('Nickname', 'name');
+  const nameInput = createTextInput('Nickname', 'name');
   nameInput.setAttribute('minlength', '3');
 
   const genderSelectionDiv = generateGenderSelectionDiv();
@@ -15,14 +15,14 @@ export default function generateForm():HTMLFormElement{
   const dateInput = generateDateInput();
 
   const heightAndWeightDiv = createElement('div', 'current-values');
-  const heightInput = generateNumberInput('Height (cm)', 'height');
-  const weightInput = generateNumberInput(
+  const heightInput = createNumberInput('Height (cm)', 'height');
+  const weightInput = createNumberInput(
     'Current weight (kg)',
     'current-weight',
   );
   heightAndWeightDiv.append(heightInput,weightInput);
 
-  const goalWeightInput = generateNumberInput(
+  const goalWeightInput = createNumberInput(
     'Goal weight (kg)',
     'goal-weight',
   );
@@ -34,14 +34,13 @@ export default function generateForm():HTMLFormElement{
   form.append(paragraph,progressBar,nameInput, genderSelectionDiv, dateInput, heightAndWeightDiv,goalWeightInput, submitButton);
   return form;
 }
-
  
- function generateParagraph():HTMLParagraphElement{
+function generateParagraph():HTMLParagraphElement{
   const paragraph = createElement('p', [], 'Join us') as HTMLParagraphElement;
   return paragraph;
-  }
+}
 
- function generateProgressBar():HTMLDivElement {
+function generateProgressBar():HTMLDivElement {
   const progressBar = createElement('div', 'progress-bar') as HTMLDivElement;
   const stepDiv = createElement('div', 'first-step');
   progressBar.appendChild(stepDiv);
@@ -51,7 +50,7 @@ export default function generateForm():HTMLFormElement{
 function generateGenderSelectionDiv():HTMLDivElement {
   const genderSelectionDiv = createElement('div', 'gender-selection') as HTMLDivElement;
 
-  const maleInput = generateRadioInput('male');
+  const maleInput = createRadioInput('gender', 'male');
   const maleLabel = generateLabel('male');
   genderSelectionDiv.append(maleInput, maleLabel);
   maleLabel.innerHTML = 'Male';
@@ -59,21 +58,11 @@ function generateGenderSelectionDiv():HTMLDivElement {
   const genderSelectionSpan = document.createElement('span');
   genderSelectionDiv.appendChild(genderSelectionSpan);
 
-  const femaleInput = generateRadioInput('female');
+  const femaleInput = createRadioInput('gender', 'female');
   const femaleLabel = generateLabel('female');
   genderSelectionDiv.append(femaleInput,femaleLabel);
   femaleLabel.innerHTML = 'Female';
   return genderSelectionDiv;
-}
-
-function generateRadioInput(inputValue: string): HTMLInputElement {
-  const radioInput = document.createElement('input');
-  radioInput.setAttribute('type', 'radio');
-  radioInput.setAttribute('name', 'gender');
-  radioInput.setAttribute('value', inputValue);
-  radioInput.setAttribute('id', inputValue);
-  radioInput.required = true;
-  return radioInput;
 }
 
 function generateLabel(id: string):HTMLLabelElement {
@@ -83,7 +72,7 @@ function generateLabel(id: string):HTMLLabelElement {
 }
 
 function generateDateInput():HTMLInputElement{
-  const dateInput = generateTextInput('Date of birth', 'birth-date');
+  const dateInput = createTextInput('Date of birth', 'birth-date');
   dateInput.addEventListener('focus', () => {
     dateInput.setAttribute('type', 'date');
   });
@@ -92,17 +81,3 @@ function generateDateInput():HTMLInputElement{
   });
   return dateInput;
 }
-
-function generateNumberInput(
-  placeholderValue: string,
-  className: string,
-): HTMLInputElement {
-  const numberInput = createElement('input', className) as HTMLInputElement;
-  numberInput.setAttribute('type', 'number');
-  numberInput.setAttribute('placeholder', placeholderValue);
-  numberInput.setAttribute('min', '0');
-  numberInput.required = true;
-  return numberInput;
-}
-
-export {generateTextInput};

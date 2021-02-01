@@ -1,5 +1,5 @@
 import { generateWhiteButton } from '../Buttons/Buttons';
-import { createElement, createElementInput } from '../utils/utils';
+import { createElement, createInput } from '../utils/utils';
 const moment = require('moment');
 
 const EXAMPLE_PLACEHOLDER_WEIGHT: string = '61.5';
@@ -43,7 +43,7 @@ function _generateStepTwo(dataSection: HTMLElement, buttonSection: HTMLElement, 
   const newDate = new Date();
 
   const dataSectionMainContainer = createElement('div','my-weight-tile__data-section--container');
-  const dataSectionMainInput = createElementInput('input','my-weight-tile__data-section--input', 'number', EXAMPLE_PLACEHOLDER_WEIGHT);
+  const dataSectionMainInput = createInput('my-weight-tile__data-section--input', 'number', EXAMPLE_PLACEHOLDER_WEIGHT);
   const dataSectionMainText = createElement('p','my-weight-tile__data-section--main-text-step-two', ' kg');
   const dataSectionMainIncorrect = createElement('p','my-weight-tile__data-section--incorrect', 'Invalid value!');
 
