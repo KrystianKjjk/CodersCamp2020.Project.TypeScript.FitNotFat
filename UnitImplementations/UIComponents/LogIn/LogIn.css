@@ -4,10 +4,11 @@
     letter-spacing: 0.055em;
     color: #4A484E;
     text-align: center;
+    padding-bottom: 20px;
 }
 
 .main-container {
-    max-width: 500px;
+    max-width: 400px;
     align-items: center;
     padding: 20px;
 }

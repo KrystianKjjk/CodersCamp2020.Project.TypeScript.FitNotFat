@@ -1,10 +1,9 @@
 import {generateWhiteButton, generateRedButton} from '../../../Src/UIComponents/Buttons/Buttons';
 import {generateTextInput} from '../../../Src/UIComponents/FormComponent/FormComponent'
+import {createElement} from '../../../Src/UIComponents/utils/utils'
 
-const container = document.createElement('div');
-container.className = 'main-container';
-const title = document.createElement('p');
-title.className = 'main-title';
+const container = createElement('div', 'main-container');
+const title = createElement('p', 'main-title'); 
 title.appendChild(document.createTextNode('Log In'));
 
 container.appendChild(title);
@@ -18,7 +17,6 @@ const button = generateRedButton('Log In', ()=>{});
 button.style.width = "200px";
 button.style.height = "50px";
 
-const containerButton = document.createElement('div');
-containerButton.className = 'container-button';
+const containerButton = createElement('div', 'container-button'); 
 containerButton.appendChild(button);
 container.appendChild(containerButton);
