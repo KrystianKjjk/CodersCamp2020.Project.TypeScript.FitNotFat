@@ -18,7 +18,9 @@
     "start:weight-table": "parcel -p 8765 watch ./UnitImplementations/UIComponents/HistoricalWeights/HistoricalWeights.html",
     "start:dashboard": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Dashboard/Dashboard.html",
     "start:login": "parcel -p 8765 watch ./UnitImplementations/UIComponents/LogIn/LogIn.html",
+    "start:initialview": "parcel -p 8765 watch ./UnitImplementations/UIComponents/InitialView/InitialView.html",
     "start:diaryAdd": "parcel -p 8765 watch ./UnitImplementations/UIComponents/AddDiaryItem/AddDiaryItem.html"
+
   },
   "keywords": [
     "fitnotfat",
@@ -37,6 +39,7 @@
     "@testing-library/dom": "^7.29.4",
     "@types/jest": "^26.0.20",
     "jest": "^26.0.0",
+    "jest-transform-stub": "^2.0.0",
     "parcel": "^1.12.4",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
@@ -55,6 +58,9 @@
     ],
     "transform": {
       "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(png)$": "jest-transform-stub"
     }
   }
 }

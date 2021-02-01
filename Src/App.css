@@ -8,6 +8,7 @@
 @import './UIComponents/RadioGroup/RadioGroup.css';
 @import './UIComponents/Select/Select.css';
 @import './UIComponents/ProfileInfo/ProfileInfo.css';
+@import './UIComponents/InitialView/InitialView.css';
 
 
 * {
