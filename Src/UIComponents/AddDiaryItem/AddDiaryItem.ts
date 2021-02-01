@@ -1,12 +1,6 @@
 import tile from '../TileComponent/TileComponent';
 import {generateWhiteButton} from '../Buttons/Buttons';
-
-function createStyledElement(tagName: string, classNames: string[], innerHTML?: string): HTMLElement {
-    const element = document.createElement(tagName);
-    element.classList.add(...classNames);
-    if(innerHTML) element.innerHTML = innerHTML;
-    return element;
-}
+import { createElement } from '../utils/utils';
 
 function addDiaryItem(  table: HTMLTableElement, 
                         findCallback: (text: string) => void,
@@ -15,12 +9,12 @@ function addDiaryItem(  table: HTMLTableElement,
                         headerStr: string,
                         textStr: string,
                         placeholder?: string): HTMLElement {
-    const component = createStyledElement('div', ['add-diary-item'])
+    const component = createElement('div', 'add-diary-item')
     
-    const header = createStyledElement('h3', [], headerStr);
-    const text = createStyledElement('h4', [], textStr);
+    const header = createElement('h3', [], headerStr);
+    const text = createElement('h4', [], textStr);
 
-    const textInput = createStyledElement('input', ['item-input']) as HTMLInputElement;
+    const textInput = createElement('input', 'item-input') as HTMLInputElement;
     textInput.type = 'text';
     textInput.placeholder = placeholder;
 
