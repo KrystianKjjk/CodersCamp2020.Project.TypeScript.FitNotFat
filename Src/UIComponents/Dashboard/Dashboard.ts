@@ -1,12 +1,5 @@
 import {overviewSVG, myDiarySVG, myGoalsSVG, myWeightsSVG, userSVG, arrowSVG} from './Icons';
-
-function createStyledElement(tagName: string, classNames: string[], innerHTML?: string, dataComponent?: string): HTMLElement {
-    const element = document.createElement(tagName);
-    element.classList.add(...classNames);
-    if(innerHTML) element.innerHTML = innerHTML;
-    if(dataComponent) element.setAttribute('data-component', dataComponent);
-    return element;
-}
+import {createElement} from '../utils/utils';
 
 function dashboard(components: {'overview': HTMLElement, 
                                 'diary-food': HTMLElement, 
@@ -14,21 +7,21 @@ function dashboard(components: {'overview': HTMLElement,
                                 'goals': HTMLElement, 
                                 'weights': HTMLElement, 
                                 'profile': HTMLElement}): HTMLDivElement {
-    const myDashboard = createStyledElement('div', ['dashboard']) as HTMLDivElement;
-    myDashboard.appendChild(createStyledElement('div', ['ellipse1']));
-    myDashboard.appendChild(createStyledElement('div', ['ellipse2']));
+    const myDashboard = createElement('div', ['dashboard']) as HTMLDivElement;
+    myDashboard.appendChild(createElement('div', ['ellipse1']));
+    myDashboard.appendChild(createElement('div', ['ellipse2']));
     
-    const mainMenu = createStyledElement('div', ['main-menu'])
-    mainMenu.appendChild(createStyledElement('div', ['vertical-line']))
-    const logo = createStyledElement('div', ['logo'], '<span>Fit</span>NotFat');
-    const overview = createStyledElement('div', ['menu-option', 'active'], `${overviewSVG} Overview`, 'overview');
-    const myDiary = createStyledElement('div', ['menu-option'], `${myDiarySVG} My diary`, 'diary-food');
-    const myDiarySubmenu = createStyledElement('ul', ['my-diary-submenu']);
-    const myDiaryFood = createStyledElement('li', ['submenu-option'], `Food`, 'diary-food');
-    const myDiaryExercises = createStyledElement('li', ['submenu-option'], `Exercises`, 'diary-exercises');
-    const myGoals = createStyledElement('div', ['menu-option'], `${myGoalsSVG} My goals`, 'goals');
-    const myWeights = createStyledElement('div', ['menu-option'], `${myWeightsSVG} My weights`, 'weights');
-    const profileBtn = createStyledElement('button', ['profile-btn'], `${userSVG} Username ${arrowSVG}`, 'profile');
+    const mainMenu = createElement('div', ['main-menu'])
+    mainMenu.appendChild(createElement('div', ['vertical-line']))
+    const logo = createElement('div', ['logo'], '<span>Fit</span>NotFat');
+    const overview = createElement('div', ['menu-option', 'active'], `${overviewSVG} Overview`, 'overview');
+    const myDiary = createElement('div', ['menu-option'], `${myDiarySVG} My diary`, 'diary-food');
+    const myDiarySubmenu = createElement('ul', ['my-diary-submenu']);
+    const myDiaryFood = createElement('li', ['submenu-option'], `Food`, 'diary-food');
+    const myDiaryExercises = createElement('li', ['submenu-option'], `Exercises`, 'diary-exercises');
+    const myGoals = createElement('div', ['menu-option'], `${myGoalsSVG} My goals`, 'goals');
+    const myWeights = createElement('div', ['menu-option'], `${myWeightsSVG} My weights`, 'weights');
+    const profileBtn = createElement('button', ['profile-btn'], `${userSVG} Username ${arrowSVG}`, 'profile');
     [overview, myGoals, myDiary, myDiaryFood, myDiaryExercises, myWeights, profileBtn].forEach((element) => {
         element.addEventListener('click', (e) => {
             e.stopPropagation();
