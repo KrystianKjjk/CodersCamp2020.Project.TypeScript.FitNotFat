@@ -10,13 +10,16 @@
     "format": "prettier --write \"Src/**/*.js\" \"Src/**/*.ts\" \"test/**/*.js\" \"test/**/*.ts\"",
     "start:dev": "parcel -p 8765 watch index.html",
     "build": "parcel build index.html --public-url ./",
+    "start:goaltile": "parcel -p 8765 watch ./UnitImplementations/UIComponents/GoalTile/GoalTile.html",
+    "start:localstorage": "parcel -p 8765 watch ./UnitImplementations/Logic/LocalStorage/LocalStorage.html",
     "start:buttons": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Buttons/Buttons.html",
-    "start:tileMyWeight": "parcel -p 8765 watch ./UnitImplementations/UIComponents/TileMyWeight/TileMyWeight.html",
     "start:joinus2": "parcel -p 8765 watch ./UnitImplementations/UIComponents/JoinUsSecondStep/JoinUsSecondStep.html",
     "start:profileInfo": "parcel -p 8765 watch ./UnitImplementations/UIComponents/ProfileInfo/ProfileInfo.html",
     "start:weight-table": "parcel -p 8765 watch ./UnitImplementations/UIComponents/HistoricalWeights/HistoricalWeights.html",
     "start:dashboard": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Dashboard/Dashboard.html",
-    "start:localstorage": "parcel -p 8765 watch ./UnitImplementations/Logic/LocalStorage/LocalStorage.html"
+    "start:initialview": "parcel -p 8765 watch ./UnitImplementations/UIComponents/InitialView/InitialView.html",
+    "start:diaryAdd": "parcel -p 8765 watch ./UnitImplementations/UIComponents/AddDiaryItem/AddDiaryItem.html",
+    "start:tileMyWeight": "parcel -p 8765 watch ./UnitImplementations/UIComponents/TileMyWeight/TileMyWeight.html"
   },
   "keywords": [
     "fitnotfat",
@@ -26,6 +29,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "justgage": "^1.4.0",
     "moment": "^2.29.1",
     "regenerator-runtime": "^0.13.7",
     "typings": "^2.1.1"
@@ -36,6 +40,7 @@
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.22",
     "jest": "^26.0.0",
+    "jest-transform-stub": "^2.0.0",
     "parcel": "^1.12.4",
     "prettier": "^2.2.1",
     "sass": "^1.32.5",
@@ -56,6 +61,9 @@
     ],
     "transform": {
       "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(png)$": "jest-transform-stub"
     }
   }
 }

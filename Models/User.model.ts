@@ -14,5 +14,6 @@ export interface User {
     diaryFood?: DiaryFood[],
     diaryExercises?: DiaryExercises[],
     goals?: Goal[],
-    weights?: Weight[]
+    weights?: Weight[],
+    keyAPI?: string
 }

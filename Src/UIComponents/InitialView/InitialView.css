@@ -1,0 +1,50 @@
+.initial-view{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    padding-right: 50%;
+    box-sizing: border-box; 
+    opacity: 100%;
+    animation: 0.7s ease-out 0s 1 becomeVisible;  
+}
+
+
+.initial-view-injected-component{
+    margin: 0 auto;
+    position: relative;
+    left:15%;
+    z-index:1;
+}
+
+.app-name{
+    position: absolute;
+    top: 3%;
+    left: 6%;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.app-name >span:first-of-type{
+    color:  #DA1B36;
+}
+
+.initial-view-image{
+    position: absolute;
+}
+
+.initial-view-image{
+    right:0;    
+    height: 100vh;
+}
+
+@keyframes becomeVisible {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+  }
