@@ -34,8 +34,8 @@ export function createNumberInput(
     return numberInput;
 }
 
-export function createRadioInput(name: string, inputValue: string): HTMLInputElement {
-    const radioInput = document.createElement('input');
+export function createRadioInput(className: string, name: string, inputValue: string): HTMLInputElement {
+    const radioInput = createElement('input', className) as HTMLInputElement;
     radioInput.setAttribute('type', 'radio');
     radioInput.setAttribute('name', name);
     radioInput.setAttribute('value', inputValue);

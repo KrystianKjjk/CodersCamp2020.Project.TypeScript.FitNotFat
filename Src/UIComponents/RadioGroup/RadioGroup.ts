@@ -26,7 +26,7 @@ const createSingleRadio = (singleInput: RadioOption, onClick: (selected: string)
     const labelRadioButton = createElement('label', 'radio-button');
     singleRadioOption.appendChild(labelRadioButton);
 
-    const input = createRadioInput(name, key);
+    const input = createRadioInput('radio-button', name, key);
     input.onclick = event => onClick((event.target as HTMLInputElement).value);
 
     labelRadioButton.appendChild(input);

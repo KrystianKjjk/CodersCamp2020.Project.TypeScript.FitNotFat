@@ -50,7 +50,7 @@ function generateProgressBar():HTMLDivElement {
 function generateGenderSelectionDiv():HTMLDivElement {
   const genderSelectionDiv = createElement('div', 'gender-selection') as HTMLDivElement;
 
-  const maleInput = createRadioInput('gender', 'male');
+  const maleInput = createRadioInput('', 'gender', 'male');
   const maleLabel = generateLabel('male');
   genderSelectionDiv.append(maleInput, maleLabel);
   maleLabel.innerHTML = 'Male';
@@ -58,7 +58,7 @@ function generateGenderSelectionDiv():HTMLDivElement {
   const genderSelectionSpan = document.createElement('span');
   genderSelectionDiv.appendChild(genderSelectionSpan);
 
-  const femaleInput = createRadioInput('gender', 'female');
+  const femaleInput = createRadioInput('radio-button', 'gender', 'female');
   const femaleLabel = generateLabel('female');
   genderSelectionDiv.append(femaleInput,femaleLabel);
   femaleLabel.innerHTML = 'Female';
