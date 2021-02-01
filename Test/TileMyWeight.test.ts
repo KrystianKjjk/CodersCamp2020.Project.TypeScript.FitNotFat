@@ -1,6 +1,6 @@
 import { createTileMyWeight } from '../Src/UIComponents/TileMyWeight/TileMyWeight';
 import { generateWhiteButton } from '../Src/UIComponents/Buttons/Buttons';
-import moment from 'moment';
+const moment = require('moment');
 
 describe('createTileMyWeight tests', () => {
   let createTileMyWeightTest;

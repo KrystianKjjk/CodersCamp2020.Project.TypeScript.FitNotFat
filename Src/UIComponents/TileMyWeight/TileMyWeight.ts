@@ -1,5 +1,5 @@
 import { generateWhiteButton } from '../Buttons/Buttons';
-import moment from 'moment'
+const moment = require('moment');
 
 const EXAMPLE_PLACEHOLDER_WEIGHT: string = '61.5';
 const MIN_WEIGHT: number = 1;
