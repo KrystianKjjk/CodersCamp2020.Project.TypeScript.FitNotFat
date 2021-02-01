@@ -8,3 +8,11 @@ export function createElement(tagName: string, classNames?: string[] | string, i
     if(dataComponent) element.setAttribute('data-component', dataComponent);
     return element;
 }
+
+export function generateTextInput(placeholderValue: string, className: string):HTMLInputElement {
+    const textInput = createElement('input', className) as HTMLInputElement;
+    textInput.setAttribute('type', 'text');
+    textInput.setAttribute('placeholder', placeholderValue);
+    textInput.required = true;
+    return textInput;
+  }
