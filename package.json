@@ -16,7 +16,8 @@
     "start:joinus2": "parcel -p 8765 watch ./UnitImplementations/UIComponents/JoinUsSecondStep/JoinUsSecondStep.html",
     "start:profileInfo": "parcel -p 8765 watch ./UnitImplementations/UIComponents/ProfileInfo/ProfileInfo.html",
     "start:weight-table": "parcel -p 8765 watch ./UnitImplementations/UIComponents/HistoricalWeights/HistoricalWeights.html",
-    "start:dashboard": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Dashboard/Dashboard.html"
+    "start:dashboard": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Dashboard/Dashboard.html",
+    "start:diaryAdd": "parcel -p 8765 watch ./UnitImplementations/UIComponents/AddDiaryItem/AddDiaryItem.html"
   },
   "keywords": [
     "fitnotfat",
