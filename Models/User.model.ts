@@ -15,5 +15,5 @@ export interface User {
     diaryExercises?: DiaryExercises[],
     goals?: Goal[],
     weights?: Weight[],
-    keyAPI: string
+    keyAPI?: string
 }
