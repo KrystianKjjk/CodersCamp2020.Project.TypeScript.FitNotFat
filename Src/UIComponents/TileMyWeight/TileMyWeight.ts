@@ -1,4 +1,5 @@
 import { generateWhiteButton } from '../Buttons/Buttons';
+import { createElement } from '../utils/utils';
 const moment = require('moment');
 
 const EXAMPLE_PLACEHOLDER_WEIGHT: string = '61.5';
@@ -6,10 +7,10 @@ const MIN_WEIGHT: number = 1;
 const MAX_WEIGHT: number = 150;
 
 export function createTileMyWeight(currentWeight: number, date: Date, callback: (newWeight: number, newDate: Date) => void): HTMLElement {
-  const myWeightTileContainer = _createElement('div','my-weight-tile');
-  const dataSection = _createElement('section','my-weight-tile__data-section');
-  const dataSectionHeader = _createElement('p','my-weight-tile__data-section--header', 'MY WEIGHT');
-  const buttonSection = _createElement('section','my-weight-tile__button-section');
+  const myWeightTileContainer = createElement('div','my-weight-tile');
+  const dataSection = createElement('section','my-weight-tile__data-section');
+  const dataSectionHeader = createElement('p','my-weight-tile__data-section--header', 'MY WEIGHT');
+  const buttonSection = createElement('section','my-weight-tile__button-section');
 
   dataSection.appendChild(dataSectionHeader);
   myWeightTileContainer.append(dataSection, buttonSection);
@@ -21,8 +22,8 @@ export function createTileMyWeight(currentWeight: number, date: Date, callback: 
 
 function _generateStepOne(dataSection: HTMLElement, buttonSection: HTMLElement, currentWeight: number, date: Date, callback: (newWeight: number, newDate: Date) => void) {
 
-  const dataSectionMain = _createElement('p','my-weight-tile__data-section--main-text',`${currentWeight} kg`);
-  const dataSectionFooter = _createElement('p', 'my-weight-tile__data-section--footer', moment(date).format('DD/MM/YYYY'));
+  const dataSectionMain = createElement('p','my-weight-tile__data-section--main-text',`${currentWeight} kg`);
+  const dataSectionFooter = createElement('p', 'my-weight-tile__data-section--footer', moment(date).format('DD/MM/YYYY'));
 
   const editButton = generateWhiteButton('EDIT', handleEditButtonClick);
   editButton.classList.add('my-weight-tile__button-section--tile-btn');
@@ -41,14 +42,14 @@ function _generateStepTwo(dataSection: HTMLElement, buttonSection: HTMLElement, 
 
   const newDate = new Date();
 
-  const dataSectionMainContainer = _createElement('div','my-weight-tile__data-section--container');
+  const dataSectionMainContainer = createElement('div','my-weight-tile__data-section--container');
   const dataSectionMainInput = _createElementInput('input','my-weight-tile__data-section--input', 'number', EXAMPLE_PLACEHOLDER_WEIGHT);
-  const dataSectionMainText = _createElement('p','my-weight-tile__data-section--main-text-step-two', ' kg');
-  const dataSectionMainIncorrect = _createElement('p','my-weight-tile__data-section--incorrect', 'Invalid value!');
+  const dataSectionMainText = createElement('p','my-weight-tile__data-section--main-text-step-two', ' kg');
+  const dataSectionMainIncorrect = createElement('p','my-weight-tile__data-section--incorrect', 'Invalid value!');
 
   dataSectionMainContainer.append(dataSectionMainInput, dataSectionMainText);
 
-  const dataSectionFooter = _createElement('p', 'my-weight-tile__data-section--footer', moment(newDate).format('DD/MM/YYYY') );
+  const dataSectionFooter = createElement('p', 'my-weight-tile__data-section--footer', moment(newDate).format('DD/MM/YYYY') );
 
   dataSection.append(dataSectionMainContainer, dataSectionFooter);
 
@@ -82,15 +83,8 @@ function _generateStepTwo(dataSection: HTMLElement, buttonSection: HTMLElement, 
   }
 }
 
-function _createElement(name: string, className: string, innerText?: string): HTMLElement {
-  const element = document.createElement(name) as HTMLElement;
-  element.classList.add(className);
-  if(innerText) element.innerText = innerText;
-  return element;
-}
-
 function _createElementInput(name: string, className: string, type: string, placeholder: string): HTMLInputElement {
-  const element = _createElement(name, className) as HTMLInputElement;
+  const element = createElement(name, className) as HTMLInputElement;
   if(type) element.type = type;
   if(placeholder) element.placeholder = placeholder;
   return element;
