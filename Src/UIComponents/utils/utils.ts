@@ -1,6 +1,10 @@
-export const createElement = (type: string, className: string = '') => {
-    const createdElement = document.createElement(type);
-    className && (createdElement.className = className);
-
-    return createdElement;
+export function createElement(tagName: string, classNames?: string[] | string, innerHTML?: string, dataComponent?: string): HTMLElement {
+    const element = document.createElement(tagName);
+    if(classNames){
+        if(classNames instanceof(Array)) element.classList.add(...classNames);
+        else element.classList.add(classNames);
+    }
+    if(innerHTML) element.innerHTML = innerHTML;
+    if(dataComponent) element.setAttribute('data-component', dataComponent);
+    return element;
 }
