@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for Form Component Should render correctly 1`] = `
+<form>
+  <p>
+    Join us
+  </p>
+  <div
+    class="progress-bar"
+  >
+    <div
+      class="first-step"
+    />
+  </div>
+  <input
+    class="name"
+    minlength="3"
+    placeholder="Nickname"
+    required=""
+    type="text"
+  />
+  <div
+    class="gender-selection"
+  >
+    <input
+      id="male"
+      name="gender"
+      required=""
+      type="radio"
+      value="male"
+    />
+    <label
+      for="male"
+    >
+      Male
+    </label>
+    <span />
+    <input
+      id="female"
+      name="gender"
+      required=""
+      type="radio"
+      value="female"
+    />
+    <label
+      for="female"
+    >
+      Female
+    </label>
+  </div>
+  <input
+    class="birth-date"
+    placeholder="Date of birth"
+    required=""
+    type="text"
+  />
+  <div
+    class="current-values"
+  >
+    <input
+      class="height"
+      min="0"
+      placeholder="Height (cm)"
+      required=""
+      type="number"
+    />
+    <input
+      class="current-weight"
+      min="0"
+      placeholder="Current weight (kg)"
+      required=""
+      type="number"
+    />
+  </div>
+  <input
+    class="goal-weight"
+    min="0"
+    placeholder="Goal weight (kg)"
+    required=""
+    type="number"
+  />
+  <button
+    class="button"
+    style="background-color: rgb(218, 27, 54); color: white; height: 50px; width: 35%;"
+  />
+</form>
+`;
