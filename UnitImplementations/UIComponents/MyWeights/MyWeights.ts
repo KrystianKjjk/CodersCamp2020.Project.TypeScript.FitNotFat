@@ -18,15 +18,15 @@ let dummyobject: User = {
         {date: new Date(2021, 1, 7), weight: 95},
         {date: new Date(2021, 1, 8), weight: 100},
         {date: new Date(2021, 3, 9), weight: 110},
-        {date: new Date(2021, 7, 12), weight: 150}
+        {date: new Date(2021, 7, 12), weight: 150},
+        {date: new Date(2021, 1, 3), weight: 75},
+        {date: new Date(2021, 1, 4), weight: 80},
+        {date: new Date(2021, 1, 5), weight: 85},
+        {date: new Date(2021, 1, 6), weight: 90},
+        {date: new Date(2021, 1, 7), weight: 95},
+        {date: new Date(2021, 1, 8), weight: 100},
+        {date: new Date(2021, 3, 9), weight: 110}
     ]
 };
-
-// addRowToHistoricalWeights(['01/01/2021', '70kg']);
-// addRowToHistoricalWeights(['03/01/2021', '71kg']);
-// addRowToHistoricalWeights(['05/01/2021', '75kg']);
-// addRowToHistoricalWeights(['06/01/2021', '79kg']);
-// addRowToHistoricalWeights(['08/01/2021', '80kg']);
-// addRowToHistoricalWeights(['11/01/2021', '100kg']);
 
 document.body.appendChild(myWeightsComponent(dummyobject));

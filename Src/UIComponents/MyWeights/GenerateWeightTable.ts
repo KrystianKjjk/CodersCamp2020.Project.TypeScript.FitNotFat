@@ -5,11 +5,10 @@ import { createElement } from '../utils/utils';
 import * as moment from 'moment';
 
 export default function generateWeightTable(weightTable:Weight[]):HTMLDivElement {
-
     //check if the table is not empty
-    if(weightTable === []){
+    if(!weightTable || weightTable.length === 0){
         const emptyWeightsArrayMessage = createElement('div', 'empty-weights-error');        
-        const titleContent = document.createTextNode('No weights to be displayed');
+        const titleContent = document.createTextNode('No weights to be displayed :(');
         emptyWeightsArrayMessage.append(titleContent);
         const tile = generateTileComponent(emptyWeightsArrayMessage);
 
