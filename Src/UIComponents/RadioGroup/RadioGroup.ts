@@ -1,4 +1,4 @@
-import {createElement} from '../utils/utils'
+import {createElement, createRadioInput} from '../utils/utils'
 
 interface RadioOption {
     key: string,
@@ -26,10 +26,7 @@ const createSingleRadio = (singleInput: RadioOption, onClick: (selected: string)
     const labelRadioButton = createElement('label', 'radio-button');
     singleRadioOption.appendChild(labelRadioButton);
 
-    const input = document.createElement('input')
-    input.type = 'radio';
-    input.value = key;
-    input.name = name;
+    const input = createRadioInput('radio-button', name, key);
     input.onclick = event => onClick((event.target as HTMLInputElement).value);
 
     labelRadioButton.appendChild(input);
