@@ -1,0 +1,81 @@
+.my-weight-tile {
+  background: inherit;
+  box-sizing: border-box;
+  display: flex;
+  font-weight: 500;
+  width: 23.3rem;
+  height: 11rem;
+  letter-spacing: 0.035rem;
+}
+.my-weight-tile__data-section {
+  flex: 1;
+  background: inherit;
+  display: flex;
+  flex-direction: column;
+  align-content: start;
+  margin-left: 1.8rem;
+  overflow: hidden;
+}
+.my-weight-tile__data-section--header {
+  font-size: 0.8rem;
+  color: rgba(74, 72, 78, 0.7);
+  background: inherit;
+  margin: 1.5rem 0 0 0;
+}
+.my-weight-tile__data-section--container {
+  display: flex;
+  background: inherit;
+}
+.my-weight-tile__data-section--incorrect {
+  color: #DA1B36;
+  font-weight: 400;
+  font-size: 0.7rem;
+  background: inherit;
+  margin: 0.9rem 0 -0.9rem 0;
+}
+.my-weight-tile__data-section--input {
+  margin: 0.7rem 0 -0.5rem 0;
+  width: 50%;
+  font-size: 2.25em;
+  background: inherit;
+  border: 1px solid #DA1B36;
+  border-radius: 10%;
+  padding: 0.7rem;
+}
+.my-weight-tile__data-section--input:focus {
+  outline: none;
+  border: 2px solid #DA1B36;
+}
+.my-weight-tile__data-section--main-text {
+  margin: 0.9rem 0 0 0;
+  font-size: 2.25em;
+  background: inherit;
+}
+.my-weight-tile__data-section--main-text-step-two {
+  align-self: flex-end;
+  margin: 0 0 0 0.7rem;
+  font-size: 2.25em;
+  background: inherit;
+}
+.my-weight-tile__data-section--footer {
+  margin: 1.4rem 0 2.2rem 0;
+  font-size: 1rem;
+  color: rgba(74, 72, 78, 0.7);
+  background: inherit;
+}
+.my-weight-tile__button-section {
+  align-self: center;
+  flex: 1;
+  background: inherit;
+}
+.my-weight-tile__button-section--tile-btn {
+  outline: none;
+  cursor: pointer;
+  height: 2.8rem;
+  width: 6.8rem;
+  font-size: 1rem;
+  display: block;
+  margin: 0.7rem auto;
+}
+
+/*# sourceMappingURL=TileMyWeight.css.map */

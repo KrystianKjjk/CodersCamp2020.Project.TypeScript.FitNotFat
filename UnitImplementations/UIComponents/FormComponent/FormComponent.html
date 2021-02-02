@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitNotFat</title>
+    <link rel="stylesheet" href="../FormComponent/FormComponent.css" />
+
+</head>
+
+<body>
+
+    <form>
+        <p>Join us</p>
+        <div class='progress-bar'>
+            <div class='first-step'>
+            </div>
+        </div>
+        <input type="text" class='name' placeholder="Nickname" minlength="4" required>
+        <div class="gender-selection">
+            <label for="male">
+                        <input type="radio" name="gender" value="male" id='male' required>
+                Male
+           
+            </label>
+            <span></span>
+            <label for="female">
+                   
+                        <input type="radio" name="gender" value="male" id='female' required>
+                        Female
+                   
+            </label>
+        </div>
+        <input type="text" class="birth-date" placeholder="Date of birth" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+        <div class="current-values">
+            <input type="number" class="height" placeholder="Height (cm)" min="0" required>
+            <input type="number" class="current-weight " placeholder="Current weight (kg)" min="0" required>
+        </div>
+        <input type="number" class="goal-weight" placeholder="Goal weight (kg)" min="0" ; required>
+
+        <button type="submit"></button>
+        
+    </form>
+</body>
+
+</html>
