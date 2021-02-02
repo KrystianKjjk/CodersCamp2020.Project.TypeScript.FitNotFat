@@ -37,6 +37,7 @@ function generateWeeklyGoalComponent(weekNumber: string, onSaveButtonClick:(weig
     'Select your weekly goal',
   );
   select.classList.add('select-weekly-goal');
+  select.style.width='300px';
   component.appendChild(select);
  
   const saveButton = generateWhiteButton('SAVE', () => onSaveButtonClick(selectedValue));
