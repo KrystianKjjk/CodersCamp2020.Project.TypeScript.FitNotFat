@@ -1,7 +1,7 @@
 import {createElement} from '../utils/utils';
 
 const createTable = (headers: string[]) => {
-    const table = createElement('table', 'table-style');
+    const table = createElement('table', 'table-style') as HTMLTableElement;
     const headerRow = document.createElement('tr');
     table.appendChild(headerRow);
 
