@@ -21,5 +21,11 @@
 .container-button {
     padding-top: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
-} 
+    align-items: center;
+}
+.container-button > p {
+    margin-top: 1em;
+    color: red;
+}
