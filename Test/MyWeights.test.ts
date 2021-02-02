@@ -1,7 +1,6 @@
 import myWeightsComponent from '../Src/UIComponents/MyWeights/MyWeights'
 import { User } from '../Models/User.model';
 import { ActivityLevel } from '../Models/ActivityLevel.model';
-import renderer from 'react-test-renderer';
 
 let dummyobject: User = {
     name: "kotek",
