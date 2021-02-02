@@ -27,10 +27,13 @@ document.body.appendChild(container);
 const input = generateTextInput('Nickname', 'name');
 container.appendChild(input);
 
-const failMsg = createElement('p');
-failMsg.innerHTML = "Username does not exist";
+function createFailMsg(username: string): HTMLElement {
+    const failMsg = createElement('p');
+    failMsg.innerHTML = `User ${username} does not exist`;
+    return failMsg;
+}
 let button: HTMLButtonElement;
-button = generateRedButton('Log In', () => loginButton.call(button, input.value, generateWhiteButton('Hello '+input.value, () => {}), failMsg));
+button = generateRedButton('Log In', () => loginButton.call(button, input.value, generateWhiteButton('Hello '+input.value, () => {}), createFailMsg(input.value)));
 
 const containerButton = createElement('div', 'container-button'); 
 containerButton.appendChild(button);

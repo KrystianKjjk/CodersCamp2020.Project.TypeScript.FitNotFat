@@ -19,7 +19,7 @@ const userDashboard = document.createElement('div');
 const failComp = document.createElement('p');
 const loginBtn = document.createElement('button');
 const loginView = document.createElement('div');
-loginView.appendChild(loginBtn);
+loginView.append(loginBtn, document.createElement('p'));
 
 describe('Login Button callback test', () => {
   beforeEach(() => {
