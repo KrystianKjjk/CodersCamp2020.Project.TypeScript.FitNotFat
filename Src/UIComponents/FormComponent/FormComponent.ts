@@ -1,7 +1,16 @@
 import { generateRedButton } from '../Buttons/Buttons';
+interface FirstStepFormValues{
+   name: string;
+   gender: 'Male' | 'Female';
+   dateOfBirth: Date;
+   height: number;
+   currentWeight: number;
+   goalWeight: number;
+}
 
 
-export default function generateForm():HTMLFormElement{
+export default function generateForm(onNextStepClick:(firstSTepFormValues:FirstStepFormValues)=>void):HTMLFormElement{
+
   const form = document.createElement('form');
 
   const paragraph = generateParagraph();
