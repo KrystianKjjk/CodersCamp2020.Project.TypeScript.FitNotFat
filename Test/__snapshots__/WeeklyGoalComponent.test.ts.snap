@@ -19,6 +19,7 @@ exports[`Tests for Weekly goal component should render weekly goal component 1`]
     </p>
     <div
       class="container select-weekly-goal"
+      style="width: 300px;"
     >
       <div
         class="select-box"
