@@ -1,0 +1,64 @@
+.my-weights-container p{
+    font-size: 1.3rem;
+    padding: 0 0 40px 10px;
+}
+
+.my-weights-container .tile{
+    margin: 50px;
+    padding: 20px;
+    margin-left: 200px;
+    min-width: 500px;
+    height: 300px;
+}
+
+.myweights-header{
+    padding: 20px;
+    font-size: 2.5rem;
+}
+
+.my-weights-container .tile-container {
+    height:100%;
+}
+
+.my-weights-container .tile-title{
+    height:10%;
+}
+
+
+.my-weights-container .tile .weights-table{   
+    display: block; 
+    height: 90%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.my-weights-container .tile .weights-table tr:first-of-type > th{
+    position: sticky;
+    top: 0;
+    background: white;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+
+
