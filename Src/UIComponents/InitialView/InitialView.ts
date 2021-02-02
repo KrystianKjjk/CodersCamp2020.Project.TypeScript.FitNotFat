@@ -6,7 +6,6 @@ declare let require: any;
 const imageUrl:string = require('../../../Static/davies-designs-studio-utGuen80JAg-unsplash 1.png');
 
 function generateInitialView(injectedDiv:HTMLDivElement):HTMLDivElement {
-    //TO BE REPLACED WITH A FUNCTION FOR ELEMENT CREATION
     const initialView = createElement('div', 'initial-view') as HTMLDivElement;
 
     const injectedComponent = createElement('div', 'initial-view-injected-component');
