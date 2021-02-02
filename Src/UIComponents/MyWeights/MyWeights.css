@@ -6,7 +6,7 @@
 .my-weights-container .tile{
     margin: 50px;
     padding: 20px;
-    margin-left: 200px;
+    margin-left: 0;
     min-width: 500px;
     height: 40vh;
 }
