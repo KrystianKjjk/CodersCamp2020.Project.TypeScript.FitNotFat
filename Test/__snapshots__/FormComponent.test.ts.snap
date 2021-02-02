@@ -36,6 +36,7 @@ exports[`tests for Form Component Should render correctly 1`] = `
     </label>
     <span />
     <input
+      class="radio-button"
       id="female"
       name="gender"
       required=""
