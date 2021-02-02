@@ -1,7 +1,6 @@
 import {readFromLocalStorage} from '../LocalStorage/LocalStorage';
 import {User} from '../../../Models/User.model';
-import {createElement} from '../../UIComponents/utils/utils';
-function loginButton(username: string, userDashboard: HTMLElement, failComp?: HTMLElement): void {
+function loginButton(username: string, userDashboard: HTMLElement, failComp: HTMLElement): void {
     const user = readFromLocalStorage(username) as User;
     const loginBtn = this as HTMLButtonElement;
     if(user) {
