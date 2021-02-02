@@ -2,6 +2,7 @@ import loginButton from '../Src/Logic/LoginButton/LoginButton';
 import {saveInLocalStorage} from '../Src/Logic/LocalStorage/LocalStorage';
 import {User} from '../Models/User.model';
 import {ActivityLevel} from '../Models/ActivityLevel.model';
+
 //mocked LocalStorage
 class LocalStorageMock {
     store: object;
@@ -28,6 +29,7 @@ class LocalStorageMock {
       delete this.store[key];
     }
 };
+
 const user: User = {
     name: 'User',
     gender: 'Male',
@@ -39,10 +41,14 @@ const user: User = {
 };
 saveInLocalStorage('User', user);
 global.localStorage = new LocalStorageMock;
-
+const userDashboardMock = jest.fn();
+const loginBtn = document.createElement('button');
+loginBtn.addEventListener('click', () => loginBtn());
+const loginView = document.createElement('div');
+loginView.appendChild(loginBtn);
 describe('Login Button callback test', () => {
-    test('do not throw error', () => {
-        loginButton('username');
-        expect(loginButton.bind(null, 'User')).not.toThrow();
+    test('if user', () => {
+        expect(loginButton.bind(loginBtn, 'UserNoFound', userDashboardMock)).not.toThrow();
+        expect(loginButton.bind(loginBtn, 'User', userDashboardMock)).not.toThrow();
     })
 });
