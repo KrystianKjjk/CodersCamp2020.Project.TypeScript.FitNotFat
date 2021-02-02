@@ -17,6 +17,8 @@ const user: User = {
 };
 saveInLocalStorage(username, user);
 
+
+
 const container = createElement('div', 'main-container');
 const title = createElement('p', 'main-title'); 
 title.appendChild(document.createTextNode('Log In'));
