@@ -1,8 +1,8 @@
-import { WeeklyGoals } from "./WeeklyGoals.model";
+import { WeeklyGoal } from "./WeeklyGoal.model";
 
 export interface Goal {
     date: Date,
-    weeklyGoal: WeeklyGoals,
+    weeklyGoal: WeeklyGoal,
     startWeight: number,
     endWeight: number,
     achieved: 'Yes' | 'No';
