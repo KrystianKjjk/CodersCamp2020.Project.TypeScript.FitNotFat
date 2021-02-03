@@ -59,7 +59,7 @@ function createDashboard(user: User): HTMLElement {
     weeklyGoal: user.goals[user.goals.length - 1].weeklyGoal,
     goalWeight: user.goalWeight,
   });
-  return dashboard({
+  return dashboard(user.name, {
     'overview': overview, 
     'diary-food': myDiaryFood, 
     'diary-exercises': myDiaryExercises, 

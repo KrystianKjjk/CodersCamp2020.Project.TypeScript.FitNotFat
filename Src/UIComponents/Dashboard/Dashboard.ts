@@ -1,7 +1,7 @@
 import {overviewSVG, myDiarySVG, myGoalsSVG, myWeightsSVG, userSVG, arrowSVG} from './Icons';
 import {createElement} from '../utils/utils';
 
-function dashboard(components: {'overview': HTMLElement, 
+function dashboard(username: string, components: {'overview': HTMLElement, 
                                 'diary-food': HTMLElement, 
                                 'diary-exercises': HTMLElement, 
                                 'goals': HTMLElement, 
@@ -21,7 +21,7 @@ function dashboard(components: {'overview': HTMLElement,
     const myDiaryExercises = createElement('li', ['submenu-option'], `Exercises`, 'diary-exercises');
     const myGoals = createElement('div', ['menu-option'], `${myGoalsSVG} My goals`, 'goals');
     const myWeights = createElement('div', ['menu-option'], `${myWeightsSVG} My weights`, 'weights');
-    const profileBtn = createElement('button', ['profile-btn'], `${userSVG} Username ${arrowSVG}`, 'profile');
+    const profileBtn = createElement('button', ['profile-btn'], `${userSVG} ${username} ${arrowSVG}`, 'profile');
     [overview, myGoals, myDiary, myDiaryFood, myDiaryExercises, myWeights, profileBtn].forEach((element) => {
         element.addEventListener('click', (e) => {
             e.stopPropagation();
