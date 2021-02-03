@@ -1,6 +1,7 @@
+import {createElement} from '../utils/utils';
+
 const createTable = (headers: string[]) => {
-    const table = document.createElement('table');
-    table.className = 'table-style';
+    const table = createElement('table', 'table-style') as HTMLTableElement;
     const headerRow = document.createElement('tr');
     table.appendChild(headerRow);
 
@@ -21,8 +22,7 @@ const addRow = (table: HTMLTableElement) => (data: string[]) => {
 }
 
 const createCell = (parent: HTMLTableRowElement, content: string, type: 'td' | 'th' = 'td') => {
-    const cell = document.createElement(type);
-    cell.innerHTML = content;
+    const cell = createElement(type, [], content);
     parent.appendChild(cell);
 }
 
