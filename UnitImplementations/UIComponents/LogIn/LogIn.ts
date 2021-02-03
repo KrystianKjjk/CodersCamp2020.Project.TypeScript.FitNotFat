@@ -16,6 +16,14 @@ const user: User = {
   height: 177,
   activityLevel: ActivityLevel.Low,
   goalWeight: 70,  
+  goals: [{
+    date: new Date(),
+    weeklyGoal: 1,
+    startWeight: 60,
+    endWeight: 71,
+    achievedIn: 4
+  }],
+  weights: [{date: new Date(), weight: 60}]
 };
 saveInLocalStorage(username, user);
 
@@ -45,9 +53,9 @@ function createDashboard(user: User): HTMLElement {
     gender: user.gender,
     dateOfBirth: user.dateOfBirth,
     height: user.height,
-    weight: 60,
+    weight: user.weights[user.weights.length - 1].weight,
     activityLevel: user.activityLevel,
-    weeklyGoal: 1,
+    weeklyGoal: user.goals[user.goals.length - 1].weeklyGoal,
     goalWeight: user.goalWeight,
   });
   return dashboard({
