@@ -37,10 +37,10 @@ function dashboard(username: string, components: {'overview': HTMLElement,
             Object.values(components).forEach((element => {
                 element.style.display = 'none';
             }));
-            components[element.getAttribute('data-component')].style.display = "initial";
+            components[element.getAttribute('data-component')].style.display = "block";
         })
     });
-    components['overview'].style.display = "initial";
+    components['overview'].style.display = "block";
     myDiarySubmenu.append(myDiaryFood, myDiaryExercises);
     myDiary.appendChild(myDiarySubmenu);
     mainMenu.append(logo, overview, myDiary, myGoals, myWeights, profileBtn);

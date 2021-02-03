@@ -142,3 +142,10 @@
 .dashboard .profile-btn.active:hover {
     cursor: default;
 }
+
+.dashboard div:last-child {
+    position: relative;
+}
+.dashboard div:last-child > * {
+    z-index: 1;
+}
