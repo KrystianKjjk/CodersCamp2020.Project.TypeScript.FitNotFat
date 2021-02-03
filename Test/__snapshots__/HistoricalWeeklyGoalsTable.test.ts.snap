@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for createHistoricalWeeklyGoalsTable Should render only headers 1`] = `
+<div
+  class="tile"
+>
+  <div
+    class="tile-container"
+  >
+    <p
+      class="tile-title"
+    >
+      Historical weekly goals
+    </p>
+    <table
+      class="table-style"
+    >
+      <tr>
+        <th>
+          DATE
+        </th>
+        <th>
+          WEEKLY GOAL
+        </th>
+        <th>
+          START WEIGHT
+        </th>
+        <th>
+          END WEIGHT
+        </th>
+        <th>
+          ACHIEVED IN
+        </th>
+      </tr>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`Tests for createHistoricalWeeklyGoalsTable Should render table with rows 1`] = `
+<div
+  class="tile"
+>
+  <div
+    class="tile-container"
+  >
+    <p
+      class="tile-title"
+    >
+      Historical weekly goals
+    </p>
+    <table
+      class="table-style"
+    >
+      <tr>
+        <th>
+          DATE
+        </th>
+        <th>
+          WEEKLY GOAL
+        </th>
+        <th>
+          START WEIGHT
+        </th>
+        <th>
+          END WEIGHT
+        </th>
+        <th>
+          ACHIEVED IN
+        </th>
+      </tr>
+      <tr>
+        <td>
+          12.06.2021
+        </td>
+        <td>
+          +5kg
+        </td>
+        <td>
+          70kg
+        </td>
+        <td>
+          80kg
+        </td>
+        <td>
+          150%
+        </td>
+      </tr>
+      <tr>
+        <td>
+          10.01.2021
+        </td>
+        <td>
+          -3kg
+        </td>
+        <td>
+          60kg
+        </td>
+        <td>
+          50kg
+        </td>
+        <td>
+          10%
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+`;
