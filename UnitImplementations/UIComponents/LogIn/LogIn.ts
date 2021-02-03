@@ -1,9 +1,10 @@
 import {generateWhiteButton, generateRedButton} from '../../../Src/UIComponents/Buttons/Buttons';
-import {generateTextInput} from '../../../Src/UIComponents/FormComponent/FormComponent';
+import {createTextInput} from '../../../Src/UIComponents/utils/utils';
 import {createElement} from '../../../Src/UIComponents/utils/utils'
 import loginButton from '../../../Src/Logic/LoginButton/LoginButton';
 import {saveInLocalStorage} from '../../../Src/Logic/LocalStorage/LocalStorage';
 import {ActivityLevel} from '../../../Models/ActivityLevel.model';
+import {WeeklyGoal} from '../../../Models/WeeklyGoal.model';
 import {User} from '../../../Models/User.model';
 import dashboard from '../../../Src/UIComponents/Dashboard/Dashboard';
 import {profileInfo} from '../../../Src/UIComponents/ProfileInfo/ProfileInfo';
@@ -18,10 +19,10 @@ const user: User = {
   goalWeight: 70,  
   goals: [{
     date: new Date(),
-    weeklyGoal: 1,
+    weeklyGoal: WeeklyGoal.Gain,
     startWeight: 60,
     endWeight: 71,
-    achievedIn: 4
+    achieved: 'No'
   }],
   weights: [{date: new Date(), weight: 60}]
 };
@@ -34,7 +35,7 @@ title.appendChild(document.createTextNode('Log In'));
 container.appendChild(title);
 document.body.appendChild(container);
 
-const input = generateTextInput('Nickname', 'name');
+const input = createTextInput('Nickname', 'name');
 container.appendChild(input);
 
 function createDashboard(user: User): HTMLElement {
