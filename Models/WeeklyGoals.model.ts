@@ -1,5 +1,5 @@
 export enum WeeklyGoals {
     Gain = 'Gain',
-    Loose = 'Loose',
+    Loose = 'Lose',
     Keep = 'Keep'
 }
