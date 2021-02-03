@@ -17,6 +17,8 @@
     "start:profileInfo": "parcel -p 8765 watch ./UnitImplementations/UIComponents/ProfileInfo/ProfileInfo.html",
     "start:weight-table": "parcel -p 8765 watch ./UnitImplementations/UIComponents/HistoricalWeights/HistoricalWeights.html",
     "start:dashboard": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Dashboard/Dashboard.html",
+    "start:goals-table": "parcel -p 8765 watch ./UnitImplementations/UIComponents/HistoricalWeeklyGoalsTable/HistoricalWeeklyGoalsTable.html",
+    "start:weekly-goal": "parcel -p 8765 watch ./UnitImplementations/UIComponents/WeeklyGoalComponent/WeeklyGoalComponent.html",
     "start:login": "parcel -p 8765 watch ./UnitImplementations/UIComponents/LogIn/LogIn.html",
     "start:initialview": "parcel -p 8765 watch ./UnitImplementations/UIComponents/InitialView/InitialView.html",
     "start:diaryAdd": "parcel -p 8765 watch ./UnitImplementations/UIComponents/AddDiaryItem/AddDiaryItem.html",

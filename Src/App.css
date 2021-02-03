@@ -3,6 +3,8 @@
 @import'./UIComponents/TileComponent/TileComponent.css';
 @import './UIComponents/ModalWindow/ModalWindow.css';
 @import './UIComponents/ReusableTable/ReusableTable.css';
+@import './UIComponents/HistoricalWeeklyGoalsTable/HistoricalWeeklyGoalsTable.css';
+@import './UIComponents/WeeklyGoalComponent/WeeklyGoalComponent.css';
 @import './UIComponents/AddDiaryItem/AddDiaryItem.css';
 @import './UIComponents/GoalTile/GoalTile.css';
 @import './UIComponents/RadioGroup/RadioGroup.css';
