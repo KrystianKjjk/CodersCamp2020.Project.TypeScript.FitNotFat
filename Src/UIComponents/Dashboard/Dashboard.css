@@ -1,13 +1,4 @@
-* {
-    padding: 0;
-    margin: 0;
-}
-
-body {
-    font-family: Montserrat;
-}
-
-.ellipse1 {
+.dashboard > .ellipse1 {
     position: absolute;
     width: 500px;
     height: 750px;
@@ -21,7 +12,7 @@ body {
     transform: rotate(60deg);
 }
 
-.ellipse2 {
+.dashboard > .ellipse2 {
     position: absolute;
     width: 500px;
     height: 750px;
@@ -47,7 +38,7 @@ body {
     background: #E6E6E6;
 }
 
-.main-menu {
+.dashboard > .main-menu {
     position: relative;
     z-index: 10;
     
@@ -58,11 +49,11 @@ body {
     border-right: solid rgba(255, 255, 255, 0.1) 2px;
 }
 
-.menu {
+.dashboard .menu {
     list-style-type: none;
 }
 
-.vertical-line {
+.dashboard .vertical-line {
     border-right: solid rgba(0, 0, 0, 0.1) 1px;
     height: 100%;
     position: absolute;
@@ -80,14 +71,14 @@ body {
     color: #DA1B36;
 }
 
-.menu-option {
+.dashboard .menu-option {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     font-size: 22px;
     margin: 1.5rem 0;
 }
-.menu-option:hover {
+.dashboard .menu-option:hover {
     cursor: pointer;
 }
 
@@ -124,11 +115,13 @@ body {
     margin-bottom: 0;
 }
 
-svg {
+.dashboard svg {
     margin: auto 1em;
 }
 
-.profile-btn {
+.dashboard .profile-btn {
+    width: 80%;
+    height: 70px;
     position: absolute;
     bottom: 10%;
 
@@ -141,10 +134,11 @@ svg {
     padding: 1em 0;
     border: none;
     border-radius: 30px;
+    outline: none;
 }
-.profile-btn:hover {
+.dashboard .profile-btn:hover {
     cursor: pointer;
 }
-.profile-btn.active:hover {
+.dashboard .profile-btn.active:hover {
     cursor: default;
 }
