@@ -15,11 +15,12 @@ const user: User = {
 };
 saveInLocalStorage(username, user);
 
-const userDashboard = document.createElement('div');
+const userDashboard = jest.fn((user: User) => document.createElement('div'));
 const failComp = document.createElement('p');
 const loginBtn = document.createElement('button');
 const loginView = document.createElement('div');
 loginView.append(loginBtn, document.createElement('p'));
+window.alert = (str: string) => {console.log(str)};
 
 describe('Login Button callback test', () => {
   beforeEach(() => {
@@ -28,8 +29,10 @@ describe('Login Button callback test', () => {
   });
   test('if user exists', () => {
     loginButton.call(loginBtn, username, userDashboard, failComp);
-    expect(document.body.children[0]).toBe(userDashboard);
+    expect(document.body.children[0]).toBeInstanceOf(HTMLDivElement);
     expect(document.body.children).toHaveLength(1);
+    expect(userDashboard).toHaveBeenCalledTimes(1);
+    expect(userDashboard).toHaveBeenCalledWith(user);
   });
   test('if user does not exist', () => {
     loginButton.call(loginBtn, fakeUsername, userDashboard, failComp);

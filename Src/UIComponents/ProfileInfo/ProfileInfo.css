@@ -1,5 +1,7 @@
 .user-profile {
     background: white;
+    box-sizing: border-box;
+    width: 950px;
     font-size: 14px;
     line-height: 17px;
     font-weight: 500;

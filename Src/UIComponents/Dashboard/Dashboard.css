@@ -9,7 +9,6 @@ body {
 
 .ellipse1 {
     position: absolute;
-    z-index: 1;
     width: 500px;
     height: 750px;
 
