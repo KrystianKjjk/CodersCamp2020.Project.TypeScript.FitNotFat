@@ -3,3 +3,6 @@ node_modules
 Coverage
 Dist
 SrcCompiled
+launch.json
+Src/UIComponents/TileMyWeight/TileMyWeight.scss
+Src/UIComponents/TileMyWeight/TileMyWeight.css.map

@@ -1,12 +1,11 @@
+import { createElement } from '../utils/utils';
+
 const modalWindow = (component: HTMLElement, closeWindow: () => void) => {
-    const backgroundDiv = document.createElement('div');
-    const modalWindowDiv = document.createElement('div');
+    const backgroundDiv = createElement('div', 'modal-window-bg');
+    const modalWindowDiv = createElement('div', 'modal-window');
 
     backgroundDiv.appendChild(modalWindowDiv);
     modalWindowDiv.appendChild(component);
-
-    backgroundDiv.className = 'modal-window-bg';
-    modalWindowDiv.className = 'modal-window';
 
     backgroundDiv.addEventListener('click', (e) => {
         e.stopPropagation();
