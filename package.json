@@ -23,6 +23,7 @@
     "start:initialview": "parcel -p 8765 watch ./UnitImplementations/UIComponents/InitialView/InitialView.html",
     "start:diaryAdd": "parcel -p 8765 watch ./UnitImplementations/UIComponents/AddDiaryItem/AddDiaryItem.html",
     "start:tileMyWeight": "parcel -p 8765 watch ./UnitImplementations/UIComponents/TileMyWeight/TileMyWeight.html",
+    "start:MyDiaryFood": "parcel -p 8765 watch ./UnitImplementations/UIComponents/MyDiaryFood/MyDiaryFood.html",
     "start:myWeights": "parcel -p 8765 watch ./UnitImplementations/UIComponents/MyWeights/MyWeights.html"
   },
   "keywords": [
