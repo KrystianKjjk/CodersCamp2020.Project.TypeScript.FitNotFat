@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for Log In Form Component render correctly 1`] = `
+<div
+  class="main-container"
+>
+  <p
+    class="main-title"
+  >
+    Log In
+  </p>
+  <input
+    class="name"
+    placeholder="Nickname"
+    required=""
+    type="text"
+  />
+  <div
+    class="container-button"
+  >
+    <button
+      class="button"
+      style="background-color: rgb(218, 27, 54); color: white;"
+    />
+  </div>
+</div>
+`;
