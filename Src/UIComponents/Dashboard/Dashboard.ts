@@ -22,24 +22,22 @@ function dashboard(username: string, components: {'overview': HTMLElement,
     const myGoals = createElement('div', ['menu-option'], `${myGoalsSVG} My goals`, 'goals');
     const myWeights = createElement('div', ['menu-option'], `${myWeightsSVG} My weights`, 'weights');
     const profileBtn = createElement('button', ['profile-btn'], `${userSVG} ${username} ${arrowSVG}`, 'profile');
-    [overview, myGoals, myDiary, myDiaryFood, myDiaryExercises, myWeights, profileBtn].forEach((element) => {
+    const options = [overview, myDiary, myDiaryFood, myDiaryExercises, myGoals, myWeights, profileBtn];
+    options.forEach((element) => {
         element.addEventListener('click', (e) => {
             e.stopPropagation();
             element.parentElement.querySelectorAll(".active").forEach((elem) => elem.classList.remove('active'));
             element.classList.add('active');
             const suboption = element.querySelector('li');
             if(suboption) suboption.classList.add('active');
-        });
-    });
-    [overview, myDiary, myDiaryFood, myDiaryExercises, myGoals, myWeights, profileBtn].forEach((element) => {
-        components[element.getAttribute('data-component')].style.display = "none";
-        element.addEventListener('click', (e) => {
             Object.values(components).forEach((element => {
                 element.style.display = 'none';
             }));
             components[element.getAttribute('data-component')].style.display = "block";
-        })
+        });
+        components[element.getAttribute('data-component')].style.display = "none";
     });
+    
     components['overview'].style.display = "block";
     myDiarySubmenu.append(myDiaryFood, myDiaryExercises);
     myDiary.appendChild(myDiarySubmenu);
