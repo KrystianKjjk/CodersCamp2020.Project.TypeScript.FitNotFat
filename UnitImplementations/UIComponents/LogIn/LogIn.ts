@@ -1,5 +1,4 @@
-import {generateWhiteButton, generateRedButton} from '../../../Src/UIComponents/Buttons/Buttons';
-import {createTextInput} from '../../../Src/UIComponents/utils/utils';
+import loginForm from '../../../Src/UIComponents/LogIn/LogIn';
 import {createElement} from '../../../Src/UIComponents/utils/utils'
 import loginButton from '../../../Src/Logic/LoginButton/LoginButton';
 import {saveInLocalStorage} from '../../../Src/Logic/LocalStorage/LocalStorage';
@@ -27,16 +26,6 @@ const user: User = {
   weights: [{date: new Date(), weight: 60}]
 };
 saveInLocalStorage(username, user);
-
-const container = createElement('div', 'main-container');
-const title = createElement('p', 'main-title'); 
-title.appendChild(document.createTextNode('Log In'));
-
-container.appendChild(title);
-document.body.appendChild(container);
-
-const input = createTextInput('Nickname', 'name');
-container.appendChild(input);
 
 function createDashboard(user: User): HTMLElement {
   let overview = document.createElement('div');
@@ -74,9 +63,7 @@ function createFailMsg(username: string): HTMLElement {
   failMsg.innerHTML = `User ${username} does not exist`;
   return failMsg;
 }
-let button: HTMLButtonElement;
-button = generateRedButton('Log In', () => loginButton.call(button, input.value, createDashboard, createFailMsg(input.value)));
 
-const containerButton = createElement('div', 'container-button'); 
-containerButton.appendChild(button);
-container.appendChild(containerButton);
+const logForm = loginForm((button, username) => loginButton.call(button, username, createDashboard, createFailMsg(username)));
+document.body.appendChild(logForm);
+
