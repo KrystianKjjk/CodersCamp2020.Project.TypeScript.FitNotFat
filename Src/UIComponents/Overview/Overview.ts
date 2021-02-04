@@ -30,11 +30,18 @@ import generateTileComponent from '../TileComponent/TileComponent';
     //create the weight input tile, save the input to localstorage
 
 
-
+console.log(User.weights[0].weight);
     overviewContainer.append(weightTile, todayCaloriesTile);
     document.body.appendChild(overviewContainer);
-    generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0].weight, User.weights[User.weights.length-1].weight, User.goalWeight, "kg");
-    generateGoalTile("Today", "overviewTodayCaloriesTile", User.diaryFood[0].providedKcal, 0, maxCalories ,"kcal");
+
+    if(User.goalWeight < User.weights[0].weight){
+        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0].weight, User.goalWeight, User.weights[User.weights.length-1].weight, "kg", true);
+    } else{
+        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0].weight, User.weights[User.weights.length-1].weight, User.goalWeight, "kg", false);
+    }
+
+    generateGoalTile("Today", "overviewTodayCaloriesTile", User.diaryFood[0].providedKcal, 0, maxCalories ,"kcal", false);
+    
     return overviewContainer;
 }
 

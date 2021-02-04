@@ -2,7 +2,7 @@ import createGauge from './Gauges';
 import { createElement } from '../utils/utils';
 
 //elementID - element ID to append the tile to
-function generateGoalTile(name: string, elementID:string, currentValue:number, minValue:number, maxValue:number, unit:string){
+function generateGoalTile(name: string, elementID:string, currentValue:number, minValue:number, maxValue:number, unit:string, isReversed:boolean){
         const goalTile = createElement('div', "goaltile");
         const header = createElement('span', "goalheader", name.toUpperCase());
         const gauge = createElement('div', "goalgauge");
@@ -11,7 +11,7 @@ function generateGoalTile(name: string, elementID:string, currentValue:number, m
         goalTile.append(header, gauge);
         const parentElement = document.querySelector(`#${elementID}`);
         parentElement.appendChild(goalTile);
-        createGauge(`${name}gauge`, currentValue, minValue, maxValue);
+        createGauge(`${name}gauge`, currentValue, minValue, maxValue, isReversed);
 
         
         //adding an unit to the texts
