@@ -2,13 +2,13 @@
 
 exports[`tests for Log In Form Component render correctly 1`] = `
 <div
-  class="main-container"
+  class="login-container"
 >
-  <p
+  <h2
     class="main-title"
   >
     Log In
-  </p>
+  </h2>
   <input
     class="name"
     placeholder="Nickname"
