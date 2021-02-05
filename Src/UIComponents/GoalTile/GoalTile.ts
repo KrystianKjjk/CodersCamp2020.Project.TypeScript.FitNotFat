@@ -1,5 +1,6 @@
 import createGauge from './Gauges';
 import { createElement } from '../utils/utils';
+import { min } from 'moment';
 
 //elementID - element ID to append the tile to
 function generateGoalTile(name: string, elementID:string, currentValue:number, minValue:number, maxValue:number, unit:string, isReversed:boolean){
@@ -23,7 +24,13 @@ function generateGoalTile(name: string, elementID:string, currentValue:number, m
         })
 
         //replacing the value with percentage
-        const percentage = Math.floor((currentValue/maxValue)*100);
+        //percentage for calories
+        let percentage = Math.floor((currentValue/maxValue)*100);
+
+        //percentage for weight
+        if(unit === "kg") percentage = Math.floor(((maxValue-currentValue)/(maxValue-minValue))*100) || 100;
+   
+
         let currentGaugeValue = document.querySelector(`#${elementID} .goalgauge > svg > text:nth-child(5) > tspan`);
 
         if(currentGaugeValue){

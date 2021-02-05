@@ -7,7 +7,14 @@ import generateTileComponent from '../TileComponent/TileComponent';
 
  function overviewComponent(User: User):HTMLDivElement{
     const overviewContainer = createElement('div', 'overview-container') as HTMLDivElement;
-      
+
+    //create a header div
+    const overviewHeader = createElement('div', 'overview-header');
+    const overviewHeaderH1 = createElement('h1', '', 'Overview');
+    const overviewHeaderH2 = createElement('h2', '');
+    overviewHeaderH2.innerHTML = `Hi <span>${User.name}</span>, welcome back!`;
+    overviewHeader.append(overviewHeaderH1, overviewHeaderH2);
+
     //create the 'goal weight' tile 
     const goalWeight = createElement('div', 'weight-goal');
     goalWeight.id = 'overviewGoalWeightTile';
@@ -28,7 +35,7 @@ import generateTileComponent from '../TileComponent/TileComponent';
 
     const myWeightInputTile = createTileMyWeight(User.weights[0].weight, new Date(), User, saveWeightInLocalStorage);
 
-    overviewContainer.append(weightTile, todayCaloriesTile, myWeightInputTile);
+    overviewContainer.append(overviewHeader, weightTile, todayCaloriesTile, myWeightInputTile);
     document.body.appendChild(overviewContainer);
 
     generateGaugesContent(User);
@@ -72,11 +79,15 @@ function generateGaugesContent(User: User){
     if(weightTile)   weightTile.innerHTML='';
     if(todayCaloriesTile)   todayCaloriesTile.innerHTML='';
 
+    
+    const userMaxWeight = Math.max(...(User.weights.map(a => a.weight)));
+
+
     //generate tile content
     if(User.goalWeight < User.weights[0].weight){
-        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0].weight, User.goalWeight, User.weights[User.weights.length-1].weight, "kg", true);
+        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0].weight, User.goalWeight, userMaxWeight, "kg", true);
     } else{
-        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0].weight, User.weights[User.weights.length-1].weight, User.goalWeight, "kg", false);
+        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0].weight, userMaxWeight, User.goalWeight, "kg", false);
     }
 
     generateGoalTile("Today", "overviewTodayCaloriesTile", User.diaryFood[0].providedKcal, 0, maxCalories ,"kcal", false);

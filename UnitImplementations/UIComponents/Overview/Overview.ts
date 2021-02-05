@@ -34,4 +34,4 @@ let dummyobject: User = {
 };
 
 const kot = readFromLocalStorage(dummyobject.name);
-document.body.appendChild(overviewComponent(kot));
+document.body.appendChild(overviewComponent(dummyobject));
