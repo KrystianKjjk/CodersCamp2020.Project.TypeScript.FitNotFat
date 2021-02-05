@@ -1,0 +1,39 @@
+.main-title {
+    margin-bottom: 1em;
+    font-size: 50px;
+    line-height: 61px;
+    font-weight: 400;
+    letter-spacing: 0.055em;
+    color: #4A484E;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.login-container {
+    max-width: 400px;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-container button {
+    width: auto;
+    height: auto;
+    margin: 1em auto;
+    padding: 0.5em 1.5em;
+}
+
+.container-button {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.container-button > p {
+    margin-top: 1em;
+    color: red;
+    font-size: 22px;
+    line-height: 27;
+    letter-spacing: 0.06em;
+    justify-content: space-around;
+} 
