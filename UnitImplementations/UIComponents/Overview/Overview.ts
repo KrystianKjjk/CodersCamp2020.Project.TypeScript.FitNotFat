@@ -1,7 +1,7 @@
 import overviewComponent from '../../../Src/UIComponents/Overview/Overview';
 import { User } from '../../../Models/User.model';
 import { ActivityLevel } from '../../../Models/ActivityLevel.model';
-import { kStringMaxLength } from 'buffer';
+import { saveInLocalStorage, readFromLocalStorage } from '../../../Src/Logic/LocalStorage/LocalStorage';
 
 let dummyobject: User = {
     name: "kotek",
@@ -33,4 +33,5 @@ let dummyobject: User = {
     }]
 };
 
-document.body.appendChild(overviewComponent(dummyobject));
+const kot = readFromLocalStorage(dummyobject.name);
+document.body.appendChild(overviewComponent(kot));

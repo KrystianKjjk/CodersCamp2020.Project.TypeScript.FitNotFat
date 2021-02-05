@@ -8,7 +8,8 @@ function saveInLocalStorage(name:string, object:User){
 //function to retrieve the data per specified key
 function readFromLocalStorage(name:string):User {
     try{
-        let retrievedObject = JSON.parse(localStorage.getItem(name));
+        let retrievedObject = JSON.parse(localStorage.getItem(name));        
+        retrievedObject.dateOfBirth = new Date(retrievedObject.dateOfBirth);
         return retrievedObject;
     }
     catch(error){
