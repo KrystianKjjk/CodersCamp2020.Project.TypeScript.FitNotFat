@@ -2,14 +2,8 @@ import {ActivityLevel} from '../../../Models/ActivityLevel.model';
 import {WeeklyGoal} from '../../../Models/WeeklyGoal.model';
 import tile from '../TileComponent/TileComponent';
 import {userIcon} from './User';
+import {createElement} from '../utils/utils';
 const moment = require('moment');
-
-function createStyledElement(tagName: string, classNames: string[], innerHTML?: string): HTMLElement {
-    const element = document.createElement(tagName);
-    if(classNames.length) element.classList.add(...classNames);
-    if(innerHTML) element.innerHTML = innerHTML;
-    return element;
-}
 
 function profileInfo(profileData: {
     username: string,
@@ -21,28 +15,28 @@ function profileInfo(profileData: {
     weeklyGoal: WeeklyGoal,
     goalWeight: number, // kg
 }): HTMLDivElement{
-    const component = createStyledElement('div', ['user-profile']);
+    const component = createElement('div', ['user-profile']);
 
-    const usernameDiv = createStyledElement('div', ['username']);
-    usernameDiv.appendChild(createStyledElement('div', [], userIcon));
-    usernameDiv.appendChild(createStyledElement('div', [], profileData.username));
+    const usernameDiv = createElement('div', ['username']);
+    usernameDiv.appendChild(createElement('div', [], userIcon));
+    usernameDiv.appendChild(createElement('div', [], profileData.username));
 
-    const profile = createStyledElement('div', ['user-info']);
-    profile.appendChild(createStyledElement('h3', [], 'User profile'));
-    profile.appendChild(createStyledElement('div', ['info'], `<span>Gender:</span>${profileData.gender}`));
+    const profile = createElement('div', ['user-info']);
+    profile.appendChild(createElement('h3', [], 'User profile'));
+    profile.appendChild(createElement('div', ['info'], `<span>Gender:</span>${profileData.gender}`));
     const dateOfBirth = moment(profileData['dateOfBirth']).format('DD/MM/YYYY');
-    profile.appendChild(createStyledElement('div', ['info'], `<span>Date of birth:</span>${dateOfBirth}`));
+    profile.appendChild(createElement('div', ['info'], `<span>Date of birth:</span>${dateOfBirth}`));
     
-    const health = createStyledElement('div', ['health-info']);
-    health.appendChild(createStyledElement('h3', [], 'Health information')); 
-    health.appendChild(createStyledElement('div', ['info'], `<span>Height:</span>${profileData.height}cm`));
-    health.appendChild(createStyledElement('div', ['info'], `<span>Weight:</span>${profileData.weight}kg`));
-    health.appendChild(createStyledElement('div', ['info'], `<span>Activity level:</span>${profileData.activityLevel}`));
+    const health = createElement('div', ['health-info']);
+    health.appendChild(createElement('h3', [], 'Health information')); 
+    health.appendChild(createElement('div', ['info'], `<span>Height:</span>${profileData.height}cm`));
+    health.appendChild(createElement('div', ['info'], `<span>Weight:</span>${profileData.weight}kg`));
+    health.appendChild(createElement('div', ['info'], `<span>Activity level:</span>${profileData.activityLevel}`));
 
-    const goals = createStyledElement('div', ['goals-info']);
-    goals.appendChild(createStyledElement('h3', [], 'Goals'));
-    goals.appendChild(createStyledElement('div', ['info'], `<span>Weekly goal:</span>${profileData.weeklyGoal}`));
-    goals.appendChild(createStyledElement('div', ['info'], `<span>Goal weight:</span>${profileData.goalWeight}kg`));
+    const goals = createElement('div', ['goals-info']);
+    goals.appendChild(createElement('h3', [], 'Goals'));
+    goals.appendChild(createElement('div', ['info'], `<span>Weekly goal:</span>${profileData.weeklyGoal}`));
+    goals.appendChild(createElement('div', ['info'], `<span>Goal weight:</span>${profileData.goalWeight}kg`));
     
     component.append(usernameDiv, profile, health, goals);
     
