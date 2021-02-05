@@ -5,7 +5,7 @@ import { User } from '../../../Models/User.model';
 import {saveInLocalStorage, readFromLocalStorage} from '../../Logic/LocalStorage/LocalStorage';
 import generateTileComponent from '../TileComponent/TileComponent';
 
- function overviewComponent(User: User):HTMLDivElement{
+ function overviewComponent(User: User, targetDivClass:string):void{
     const overviewContainer = createElement('div', 'overview-container') as HTMLDivElement;
 
     //create a header div
@@ -36,11 +36,8 @@ import generateTileComponent from '../TileComponent/TileComponent';
     const myWeightInputTile = createTileMyWeight(User.weights[0].weight, new Date(), User, saveWeightInLocalStorage);
 
     overviewContainer.append(overviewHeader, weightTile, todayCaloriesTile, myWeightInputTile);
-    document.body.appendChild(overviewContainer);
-
+    document.querySelector(`.${targetDivClass}`).appendChild(overviewContainer);
     generateGaugesContent(User);
-
-    return overviewContainer;
 }
 
 export default overviewComponent;

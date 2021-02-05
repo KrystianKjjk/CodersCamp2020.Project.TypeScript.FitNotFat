@@ -33,5 +33,8 @@ let dummyobject: User = {
     }]
 };
 
-const kot = readFromLocalStorage(dummyobject.name);
-document.body.appendChild(overviewComponent(dummyobject));
+const container = document.createElement('div');
+container.className = 'target';
+document.body.appendChild(container);
+
+overviewComponent(dummyobject, 'target');
