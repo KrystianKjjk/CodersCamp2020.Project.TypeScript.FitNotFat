@@ -2,6 +2,9 @@ import { generateWhiteButton } from '../Buttons/Buttons';
 import {createElement, createTextInput} from '../utils/utils';
 import { DetailsAPI } from "../../../Models/DetailsAPI.model";
 
+const PLACEHOLDER_KEY = 'ex. thisismyapikey';
+const PLACEHOLDER_ID = 'ex. thisismyID';
+
 type GetAPIDetails = (username: string) => Promise<DetailsAPI>;
 type SetAPIDetails = (username: string, detailsAPI: DetailsAPI) => Promise<string>;
 
@@ -11,10 +14,10 @@ export function createTileAPIKey(username: string, getAPIDetails: GetAPIDetails,
     const header = createElement('header', 'api-key-tile__header', 'API KEY');
     const sectionKey = createElement('section', 'api-key-tile__section');
     const sectionKeyText = createElement('p','api-key-tile__section--text', 'ENTER API KEY');
-    const sectionKeyInput = createTextInput('ex. thisismyapikey', 'api-key-tile__section--input');
+    const sectionKeyInput = createTextInput(PLACEHOLDER_KEY, 'api-key-tile__section--input');
     const sectionID = createElement('section', 'api-key-tile__section');
     const sectionIDText = createElement('p','api-key-tile__section--text', 'ENTER ID');
-    const sectionIDInput = createTextInput('ex. thisismyID', 'api-key-tile__section--input')
+    const sectionIDInput = createTextInput(PLACEHOLDER_ID, 'api-key-tile__section--input')
     const saveButton = generateWhiteButton('SAVE', handleSaveButtonClick);
     saveButton.classList.add('my-weight-tile__button-section--tile-btn');
 
@@ -44,7 +47,7 @@ export function createTileAPIKey(username: string, getAPIDetails: GetAPIDetails,
                 .catch(alert);
         }
         else {
-            alert('KEY and ID must be filled!')
+            alert('KEY and ID must be filled out!')
         }
     }
     return containerAPIKey;

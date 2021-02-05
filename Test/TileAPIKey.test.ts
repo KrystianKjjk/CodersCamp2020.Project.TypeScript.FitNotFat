@@ -1,0 +1,41 @@
+import { createTileAPIKey } from "../Src/UIComponents/TileAPIKey/TileAPIKey";
+import {DetailsAPI} from "../Models/DetailsAPI.model";
+import generateForm from "../Src/UIComponents/FormComponent/FormComponent";
+
+
+describe('TileAPIKey component tests', ()=> {
+
+    const PLACEHOLDER_KEY = 'ex. thisismyapikey';
+    const PLACEHOLDER_ID = 'ex. thisismyID';
+    const username = 'User'
+    const getAPI = jest.fn(username => Promise.resolve({key: '', id: ''}));
+    const setAPI = jest.fn(username => Promise.reject(''));
+
+    test('if returns HTMLElement', () => {
+        expect(createTileAPIKey(username, getAPI, setAPI)).toBeInstanceOf(HTMLElement);
+    })
+    test('if renders properly',()=>{
+        const apiKey = createTileAPIKey(username, getAPI, setAPI);
+        expect(apiKey).toMatchSnapshot();
+    })
+    test('if contains default placeholder', () => {
+        let element = createTileAPIKey(username, getAPI, setAPI);
+        expect((element.querySelectorAll('.api-key-tile__section--input')[0] as HTMLInputElement).placeholder).toBe(PLACEHOLDER_KEY);
+        expect((element.querySelectorAll('.api-key-tile__section--input')[1] as HTMLInputElement).placeholder).toBe(PLACEHOLDER_ID);
+    })
+    test('if contains new values in inputs', async () => {
+        const KEY_VALUE = 'newapiKEY';
+        const ID_VALUE = 'newapiID';
+
+        const getAPI = jest.fn(username => Promise.resolve({key: KEY_VALUE, id: ID_VALUE}));
+        let element = await createTileAPIKey(username, getAPI, setAPI);
+        expect((element.querySelectorAll('.api-key-tile__section--input')[0] as HTMLInputElement).value).toBe(KEY_VALUE);
+        expect((element.querySelectorAll('.api-key-tile__section--input')[1] as HTMLInputElement).value).toBe(ID_VALUE);
+    })
+    test('if clicking button when inputs are empty triggers alert', async () => {
+        window.alert = jest.fn();
+        const apiKey = createTileAPIKey(username, getAPI, setAPI);
+        (apiKey.querySelector('.my-weight-tile__button-section--tile-btn') as HTMLButtonElement).click();
+        expect(window.alert).toHaveBeenCalledWith('KEY and ID must be filled out!');
+    })
+});
