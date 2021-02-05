@@ -1,5 +1,4 @@
 import { createTileMyWeight } from '../Src/UIComponents/TileMyWeight/TileMyWeight';
-import { generateWhiteButton } from '../Src/UIComponents/Buttons/Buttons';
 const moment = require('moment');
 
 describe('createTileMyWeight tests', () => {
@@ -19,11 +18,11 @@ describe('createTileMyWeight tests', () => {
     expect(createTileMyWeightTest.className).toEqual('my-weight-tile');
   })
   test('if weight is displayed in correct form', () => {
-    expect(createTileMyWeightTest.querySelector('.my-weight-tile__data-section--main-text').innerText).toEqual(`${currentWeight} kg`);
+    expect(createTileMyWeightTest.querySelector('.my-weight-tile__data-section--main-text').innerHTML).toEqual(`${currentWeight} kg`);
   })
   test('if date is displayed in correct form', () => {
     const dateDisplayed = `22/01/2020`;
-    expect(createTileMyWeightTest.querySelector('.my-weight-tile__data-section--footer').innerText).toEqual(dateDisplayed);
+    expect(createTileMyWeightTest.querySelector('.my-weight-tile__data-section--footer').innerHTML).toEqual(dateDisplayed);
   })
   test('if generate step two', () => {
     createTileMyWeightTest.querySelector('.my-weight-tile__button-section--tile-btn').click();
@@ -47,7 +46,7 @@ describe('createTileMyWeight tests', () => {
     createTileMyWeightTest.querySelector('.my-weight-tile__data-section--input').value = weightWrongValue;
     createTileMyWeightTest.querySelectorAll('.my-weight-tile__button-section--tile-btn')[0].click();
     createTileMyWeightTest.querySelectorAll('.my-weight-tile__button-section--tile-btn')[1].click();
-    expect(createTileMyWeightTest.querySelector('.my-weight-tile__data-section--main-text').innerText).toEqual(`${currentWeight} kg`);
+    expect(createTileMyWeightTest.querySelector('.my-weight-tile__data-section--main-text').innerHTML).toEqual(`${currentWeight} kg`);
   })
   test('check steps: 1. incorrect value of weight 2. save button 3. cancel button 4. is the DATE not changed', () => {
     const dateDisplayed = `22/01/2020`;
@@ -56,14 +55,14 @@ describe('createTileMyWeight tests', () => {
     createTileMyWeightTest.querySelector('.my-weight-tile__data-section--input').value = weightWrongValue;
     createTileMyWeightTest.querySelectorAll('.my-weight-tile__button-section--tile-btn')[0].click();
     createTileMyWeightTest.querySelectorAll('.my-weight-tile__button-section--tile-btn')[1].click();
-    expect(createTileMyWeightTest.querySelector('.my-weight-tile__data-section--footer').innerText).toEqual(dateDisplayed);
+    expect(createTileMyWeightTest.querySelector('.my-weight-tile__data-section--footer').innerHTML).toEqual(dateDisplayed);
   })
   test('check steps: 1. correct weight 2. save button 3. is the WEIGHT CHANGED', () => {
     const newWeight = 35.9;
     createTileMyWeightTest.querySelector('.my-weight-tile__button-section--tile-btn').click();
     createTileMyWeightTest.querySelector('.my-weight-tile__data-section--input').value = newWeight;
     createTileMyWeightTest.querySelectorAll('.my-weight-tile__button-section--tile-btn')[0].click();
-    expect(createTileMyWeightTest.querySelector('.my-weight-tile__data-section--main-text').innerText).toEqual(`${newWeight} kg`);
+    expect(createTileMyWeightTest.querySelector('.my-weight-tile__data-section--main-text').innerHTML).toEqual(`${newWeight} kg`);
   })
   test('check steps: 1. correct weight 2. save button 3. is the DATE CHANGED', () => {
     const newWeight = 35.9;
@@ -71,6 +70,6 @@ describe('createTileMyWeight tests', () => {
     createTileMyWeightTest.querySelector('.my-weight-tile__button-section--tile-btn').click();
     createTileMyWeightTest.querySelector('.my-weight-tile__data-section--input').value = newWeight;
     createTileMyWeightTest.querySelectorAll('.my-weight-tile__button-section--tile-btn')[0].click();
-    expect(createTileMyWeightTest.querySelector('.my-weight-tile__data-section--footer').innerText).toEqual(newDate);
+    expect(createTileMyWeightTest.querySelector('.my-weight-tile__data-section--footer').innerHTML).toEqual(newDate);
   })
 })

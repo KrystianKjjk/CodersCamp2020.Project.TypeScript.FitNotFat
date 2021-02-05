@@ -1,12 +1,12 @@
 import createGauge from './Gauges';
-import {generateElementWithClassNameAndId} from '../UtilityFunctions'
+import { createElement } from '../utils/utils';
 
 //elementID - element ID to append the tile to
 function generateGoalTile(name: string, elementID:string, currentValue:number, minValue:number, maxValue:number, unit:string){
-        const goalTile = generateElementWithClassNameAndId('div', "goaltile", "");
-        const header = generateElementWithClassNameAndId('span', "goalheader", "");
-        header.innerText = name.toUpperCase();
-        const gauge = generateElementWithClassNameAndId('div', "goalgauge", `${name}gauge`);
+        const goalTile = createElement('div', "goaltile");
+        const header = createElement('span', "goalheader", name.toUpperCase());
+        const gauge = createElement('div', "goalgauge");
+        gauge.id = `${name}gauge`;
 
         goalTile.append(header,gauge);
         const parentElement = document.querySelector(`#${elementID}`);

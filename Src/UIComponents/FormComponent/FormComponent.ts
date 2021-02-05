@@ -1,4 +1,5 @@
 import { generateRedButton } from '../Buttons/Buttons';
+import { createElement, createTextInput, createNumberInput, createRadioInput } from '../utils/utils';
 
 export interface FirstStepFormValues {
   name: string;
@@ -9,6 +10,7 @@ export interface FirstStepFormValues {
   goalWeight: number;
 }
 
+
 export default function generateForm(
   onNextStepClick: (firstStepFormValues: FirstStepFormValues) => void,
 ): HTMLFormElement {
@@ -17,26 +19,22 @@ export default function generateForm(
   const paragraph = generateParagraph();
   const progressBar = generateProgressBar();
 
-  const nameInput = generateTextInput('Nickname', 'name');
+  const nameInput = createTextInput('Nickname', 'name');
   nameInput.setAttribute('minlength', '3');
 
   const genderSelectionDiv = generateGenderSelectionDiv();
 
   const dateInput = generateDateInput();
 
-  const heightAndWeightDiv = document.createElement('div');
-  heightAndWeightDiv.className = 'current-values';
-
-  const heightInput = generateNumberInput('Height (cm)', 'height');
-
-  const weightInput = generateNumberInput(
+  const heightAndWeightDiv = createElement('div', 'current-values');
+  const heightInput = createNumberInput('Height (cm)', 'height');
+  const weightInput = createNumberInput(
     'Current weight (kg)',
     'current-weight',
   );
+  heightAndWeightDiv.append(heightInput,weightInput);
 
-  heightAndWeightDiv.append(heightInput, weightInput);
-
-  const goalWeightInput = generateNumberInput(
+  const goalWeightInput = createNumberInput(
     'Goal weight (kg)',
     'goal-weight',
   );
@@ -71,40 +69,23 @@ export default function generateForm(
   );
   return form;
 }
-
-function generateParagraph(): HTMLParagraphElement {
-  const paragraph = document.createElement('p');
-  const node = document.createTextNode('Join us');
-  paragraph.appendChild(node);
+ 
+function generateParagraph():HTMLParagraphElement{
+  const paragraph = createElement('p', [], 'Join us') as HTMLParagraphElement;
   return paragraph;
 }
 
-function generateProgressBar(): HTMLDivElement {
-  const progressBar = document.createElement('div');
-  progressBar.className = 'progress-bar';
-  const stepDiv = document.createElement('div');
-  stepDiv.className = 'first-step';
+function generateProgressBar():HTMLDivElement {
+  const progressBar = createElement('div', 'progress-bar') as HTMLDivElement;
+  const stepDiv = createElement('div', 'first-step');
   progressBar.appendChild(stepDiv);
   return progressBar;
 }
 
-function generateTextInput(
-  placeholderValue: string,
-  className: string,
-): HTMLInputElement {
-  const textInput = document.createElement('input');
-  textInput.setAttribute('type', 'text');
-  textInput.setAttribute('placeholder', placeholderValue);
-  textInput.required = true;
-  textInput.className = className;
-  return textInput;
-}
+function generateGenderSelectionDiv():HTMLDivElement {
+  const genderSelectionDiv = createElement('div', 'gender-selection') as HTMLDivElement;
 
-function generateGenderSelectionDiv(): HTMLDivElement {
-  const genderSelectionDiv = document.createElement('div');
-  genderSelectionDiv.className = 'gender-selection';
-
-  const maleInput = generateRadioInput('Male');
+  const maleInput = createRadioInput('', 'gender', 'Male');
   const maleLabel = generateLabel('Male');
   genderSelectionDiv.append(maleInput, maleLabel);
   maleLabel.innerHTML = 'Male';
@@ -112,31 +93,21 @@ function generateGenderSelectionDiv(): HTMLDivElement {
   const genderSelectionSpan = document.createElement('span');
   genderSelectionDiv.appendChild(genderSelectionSpan);
 
-  const femaleInput = generateRadioInput('Female');
+  const femaleInput = createRadioInput('radio-button', 'gender', 'Female');
   const femaleLabel = generateLabel('Female');
-  genderSelectionDiv.append(femaleInput, femaleLabel);
+  genderSelectionDiv.append(femaleInput,femaleLabel);
   femaleLabel.innerHTML = 'Female';
   return genderSelectionDiv;
 }
 
-function generateRadioInput(inputValue: string): HTMLInputElement {
-  const radioInput = document.createElement('input');
-  radioInput.setAttribute('type', 'radio');
-  radioInput.setAttribute('name', 'gender');
-  radioInput.setAttribute('value', inputValue);
-  radioInput.setAttribute('id', inputValue);
-  radioInput.required = true;
-  return radioInput;
-}
-
-function generateLabel(id: string): HTMLLabelElement {
+function generateLabel(id: string):HTMLLabelElement {
   const label = document.createElement('label');
   label.setAttribute('for', id);
   return label;
 }
 
-function generateDateInput(): HTMLInputElement {
-  const dateInput = generateTextInput('Date of birth', 'birth-date');
+function generateDateInput():HTMLInputElement{
+  const dateInput = createTextInput('Date of birth', 'birth-date');
   dateInput.addEventListener('focus', () => {
     dateInput.setAttribute('type', 'date');
   });
@@ -145,18 +116,3 @@ function generateDateInput(): HTMLInputElement {
   });
   return dateInput;
 }
-
-function generateNumberInput(
-  placeholderValue: string,
-  className: string,
-): HTMLInputElement {
-  const numberInput = document.createElement('input');
-  numberInput.setAttribute('type', 'number');
-  numberInput.setAttribute('placeholder', placeholderValue);
-  numberInput.setAttribute('min', '0');
-  numberInput.required = true;
-  numberInput.className = className;
-  return numberInput;
-}
-
-export { generateTextInput };
