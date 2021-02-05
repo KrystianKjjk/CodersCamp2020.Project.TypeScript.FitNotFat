@@ -1,4 +1,5 @@
 .main-title {
+    margin-bottom: 1em;
     font-size: 50px;
     line-height: 61px;
     font-weight: 400;
@@ -15,8 +16,10 @@
 }
 
 .login-container button {
-    width: 200px; 
-    height: 50px;
+    width: auto;
+    height: auto;
+    margin: 1em auto;
+    padding: 0.5em 1.5em;
 }
 
 .container-button {
@@ -29,6 +32,8 @@
 .container-button > p {
     margin-top: 1em;
     color: red;
-    font-size: 20px;
+    font-size: 22px;
+    line-height: 27;
+    letter-spacing: 0.06em;
     justify-content: space-around;
 } 
