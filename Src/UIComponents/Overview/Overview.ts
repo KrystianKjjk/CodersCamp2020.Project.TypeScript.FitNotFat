@@ -26,7 +26,6 @@ import generateTileComponent from '../TileComponent/TileComponent';
     todayCalories.id = 'overviewTodayCaloriesTile';
     const todayCaloriesTile = generateTileComponent(todayCalories);
 
-
     //create the 'remaining calories' tile and pass the arguments
 
     //TO BE ADDED
@@ -59,8 +58,6 @@ function saveWeightInLocalStorage(weight: number, date: Date, user:User){
         weight: weight
     });
 
-    console.log(user);
-
     generateGaugesContent(user);
     saveInLocalStorage(user.name, user);
 }
@@ -76,17 +73,15 @@ function generateGaugesContent(User: User){
     if(weightTile)   weightTile.innerHTML='';
     if(todayCaloriesTile)   todayCaloriesTile.innerHTML='';
 
-    
     const userMaxWeight = Math.max(...(User.weights.map(a => a.weight)));
-
 
     //generate tile content
     if(User.goalWeight < User.weights[0].weight){
-        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0].weight, User.goalWeight, userMaxWeight, "kg", true);
+        generateGoalTile("WeightGoal", "overviewGoalWeightTile", User.weights[0].weight, User.goalWeight, userMaxWeight, "kg", true);
     } else{
-        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0].weight, userMaxWeight, User.goalWeight, "kg", false);
+        generateGoalTile("WeightGoal", "overviewGoalWeightTile", User.weights[0].weight, userMaxWeight, User.goalWeight, "kg", false);
     }
 
-    generateGoalTile("Today", "overviewTodayCaloriesTile", User.diaryFood[0].providedKcal, 0, maxCalories ,"kcal", false);
+    generateGoalTile("TodayCalories", "overviewTodayCaloriesTile", User.diaryFood[0].providedKcal, 0, maxCalories ,"kcal", false);
   
 }
