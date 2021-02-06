@@ -1,17 +1,18 @@
 import dashboard from '../../../Src/UIComponents/Dashboard/Dashboard'
-let overview = document.createElement('div');
+const username = 'User';
+const overview = document.createElement('div');
 overview.innerHTML = "Overview";
-let myDiaryFood = document.createElement('div');
+const myDiaryFood = document.createElement('div');
 myDiaryFood.innerHTML = "Food";
-let myDiaryExercises = document.createElement('div');
+const myDiaryExercises = document.createElement('div');
 myDiaryExercises.innerHTML = "Exercises";
-let myGoals = document.createElement('div');
+const myGoals = document.createElement('div');
 myGoals.innerHTML = "Goals";
-let myWeights = document.createElement('div');
+const myWeights = document.createElement('div');
 myWeights.innerHTML = "Weights";
-let myProfile = document.createElement('div');
+const myProfile = document.createElement('div');
 myProfile.innerHTML = "Profile";
-document.body.appendChild(dashboard({
+document.body.appendChild(dashboard(username, {
     'overview': overview, 
     'diary-food': myDiaryFood, 
     'diary-exercises': myDiaryExercises, 

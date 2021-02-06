@@ -9,6 +9,7 @@ function saveInLocalStorage(name:string, object:User){
 function readFromLocalStorage(name:string):User | null {
     try{
         let retrievedObject = JSON.parse(localStorage.getItem(name));
+        retrievedObject.dateOfBirth = new Date(retrievedObject.dateOfBirth);
         return retrievedObject;
     }
     catch(error){

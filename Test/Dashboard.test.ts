@@ -1,6 +1,7 @@
 import dashboard from '../Src/UIComponents/Dashboard/Dashboard';
 import { getByText } from '@testing-library/dom';
 
+const username = 'User5';
 const overview = document.createElement('div');
 overview.innerHTML = "Overview";
 const myDiaryFood = document.createElement('div');
@@ -14,7 +15,7 @@ myWeights.innerHTML = "Weights";
 const myProfile = document.createElement('div');
 myProfile.innerHTML = "Profile";
 
-const testDashboard = dashboard({
+const testDashboard = dashboard(username, {
     'overview': overview, 
     'diary-food': myDiaryFood, 
     'diary-exercises': myDiaryExercises, 
