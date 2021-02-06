@@ -16,14 +16,16 @@ export default function generateRegistrationForm(
   // let activityLevel: ActivityLevel;
 const registrationDiv=createElement('div','div-registration');
 
+let firstStepValues;
+function onNextStepClick(firstStepFormValues: FirstStepFormValues): void {
+  firstStepValues = firstStepFormValues;
+  console.log(firstStepValues);
+}
   const firstStepForm = generateFirstStepForm(onNextStepClick);
-  let firstStepValues;
+  
   registrationDiv.appendChild(firstStepForm);
 
-  function onNextStepClick(firstStepFormValues: FirstStepFormValues): void {
-    firstStepValues = firstStepFormValues;
-    console.log(firstStepValues);
-  }
+ 
 
 
   return registrationDiv;

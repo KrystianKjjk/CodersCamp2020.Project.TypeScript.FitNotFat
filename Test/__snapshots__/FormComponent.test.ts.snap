@@ -23,28 +23,28 @@ exports[`tests for Form Component Should render correctly 1`] = `
     class="gender-selection"
   >
     <input
-      id="male"
+      id="Male"
       name="gender"
       required=""
       type="radio"
-      value="male"
+      value="Male"
     />
     <label
-      for="male"
+      for="Male"
     >
       Male
     </label>
     <span />
     <input
       class="radio-button"
-      id="female"
+      id="Female"
       name="gender"
       required=""
       type="radio"
-      value="female"
+      value="Female"
     />
     <label
-      for="female"
+      for="Female"
     >
       Female
     </label>
