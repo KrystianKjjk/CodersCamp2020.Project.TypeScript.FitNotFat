@@ -2,6 +2,10 @@ import generateRegistrationForm from '../Src/Logic/Registration/Registration';
 import * as LocalStorage from '../Src/Logic/LocalStorage/LocalStorage';
 
 describe('registration tests', () => {
+  beforeEach(() => {
+    window.alert = jest.fn();
+  });
+
   test('should render first step form component', () => {
     const registrationForm = generateRegistrationForm(() => {});
     const firstStep = registrationForm.querySelector('.first-step-form');
