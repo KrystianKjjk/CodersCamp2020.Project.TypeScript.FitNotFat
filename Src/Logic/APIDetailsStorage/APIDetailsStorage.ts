@@ -1,5 +1,5 @@
 import { DetailsAPI } from "../../../Models/DetailsAPI.model";
-import {saveInLocalStorage, readFromLocalStorage} from "../../../Src/Logic/LocalStorage/LocalStorage"
+import { saveInLocalStorage, readFromLocalStorage } from "../../../Src/Logic/LocalStorage/LocalStorage"
 
 const NO_USER_ERROR = `User doesn't exist!`;
 const NO_API_DETAILS_ERROR = `User doesn't contain API details.`;
