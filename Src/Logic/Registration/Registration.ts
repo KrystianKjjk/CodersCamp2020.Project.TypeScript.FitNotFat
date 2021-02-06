@@ -47,8 +47,8 @@ export default function generateRegistrationForm(
       weights: [weight],
     };
 
-    const result = readFromLocalStorage(user.name);
-    if (result !== null) {
+    const userFromLocalStorage = readFromLocalStorage(user.name);
+    if (userFromLocalStorage !== null) {
       alert('This nickname is taken. Please select another.');
     } else {
       saveInLocalStorage(user.name, user);
