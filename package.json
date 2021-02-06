@@ -26,7 +26,6 @@
     "start:myWeights": "parcel -p 8765 watch ./UnitImplementations/UIComponents/MyWeights/MyWeights.html",
     "start:apiKey": "parcel -p 8765 watch ./UnitImplementations/UIComponents/TileAPIKey/TileAPIKey.html",
     "start:apiKeyLogic": "parcel -p 8765 watch ./UnitImplementations/Logic/APIDetailsStorage/APIDetailsStorage.html"
-
   },
   "keywords": [
     "fitnotfat",
