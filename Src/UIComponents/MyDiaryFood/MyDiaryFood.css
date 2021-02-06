@@ -18,6 +18,12 @@
     text-align: center;
 }
 
+.failed-authorized {
+    font-size: 15px;
+    padding-top:15px;
+    padding-bottom: 14px;
+}
+
 .my-diary-food .button-container{
     display: flex;
     justify-content: center;

@@ -1,4 +1,4 @@
-export interface FoodItemData {
+export interface FoodItemFromAPI {
     food_name: string;
     serving_qty: number;
     serving_unit: string;
@@ -6,12 +6,12 @@ export interface FoodItemData {
 }
 
 export interface FoodDataFromResponse {
-    foods: FoodItemData[];
+    foods: FoodItemFromAPI[];
 }
 
-async function fetchFoodData(food: string): Promise<FoodDataFromResponse> {
-    const url = "https://trackapi.nutritionix.com/v2/natural/nutrients";
-    const requestJSON = {"query": food}
+async function fetchFoodData(food: string, appId: string, appKey: string): Promise<FoodDataFromResponse> {
+    const url = 'https://trackapi.nutritionix.com/v2/natural/nutrients';
+    const requestJSON = {'query': food}
     
     const response = await fetch(url, {
         method: 'POST',
@@ -19,23 +19,12 @@ async function fetchFoodData(food: string): Promise<FoodDataFromResponse> {
         headers: {
             'accept': 'application/json',
             'Content-Type': 'application/json',
-            'x-app-id': 'X',
-            'x-app-key': 'C'
+            'x-app-id': appId,
+            'x-app-key': appKey,
           },
     });
     
     return response.json();
 }
 
-async function foodData(food: string, callback: (data: string[]) => void) {
-    const apiFood = await fetchFoodData(food);
-    console.log(apiFood);
-    return apiFood.foods.forEach(foodItem => callback([
-        foodItem.food_name, 
-        ''+foodItem.serving_qty, 
-        foodItem.serving_unit, 
-        foodItem.nf_calories+' kcal'
-    ]));
-}
-
-export { fetchFoodData, foodData };
+export { fetchFoodData };

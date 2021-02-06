@@ -1,20 +1,20 @@
-import addDiaryItem from '../../UIComponents/AddDiaryItem/AddDiaryItem';
 import { readFromLocalStorage, saveInLocalStorage } from '../../Logic/LocalStorage/LocalStorage';
 import { createTable, addRow } from '../../UIComponents/ReusableTable/ReusableTable';
-import { fetchFoodDataAndApply, FoodDataFromResponse, fetchFoodData, FoodItemData } from '../../APIConnection/Food';
+import { fetchFoodData, FoodItemFromAPI } from '../../APIConnection/Food';
 import { FoodDetails } from '../../../Models/FoodDetails.model';
 import { generateWhiteButton } from '../Buttons/Buttons';
 import { User } from '../../../Models/User.model';
 import { createElement, createTextInput } from '../utils/utils';
+import { sameDay, isUserAuthorizedToUseApi, getApiCredentialsForUser, prepareAPIData, prepareDataForTable } from './utils';
 import tile from '../TileComponent/TileComponent';
 
 const identifierClasses = {
     mainContainer: '.my-diary-food',
     btnContainers: {
-        onlyAdd: 'button-container-only-add',
-        findCancel: 'button-container-find-cancel',
-        find: 'button-container-find',
-        addCancel: 'button-container-add-cancel',
+        btnAdd: 'button-container-add',
+        btnFindCancel: 'button-container-find-cancel',
+        btnFind: 'button-container-find',
+        btnAddCancel: 'button-container-add-cancel',
     },
     tables: {
         main: 'main-table',
@@ -31,6 +31,7 @@ export default function createMealDiary(userName: string, mealName: string, show
     // from local storage
     const userData = readFromLocalStorage(userName);
 
+    // temporary saving meals
     let meals: FoodDetails[] = [];
     const addMeals = (newMeal: FoodDetails) => meals = [...meals, newMeal];
     const resetMeals = () => meals = [];
@@ -38,46 +39,57 @@ export default function createMealDiary(userName: string, mealName: string, show
     // building layout
     const container = createElement('div', 'my-diary-food');
     const header = createElement('h3', '', mealName);
-    const table = createTable(['Food', 'Qty', 'Unit', 'Calories']);
-    table.classList.add(identifierClasses.tables.main);
-    const addNewRow = addRow(table);
-    const addNewRowFoodDetails = (meal: FoodDetails) => addNewRow(prepareDataForTable(meal));
-    const tableAPI = createTable(['Food', 'Qty', 'Unit', 'Calories']);
-    tableAPI.classList.add(identifierClasses.tables.api);
-    const addNewRowAPI = addRow(tableAPI);
-    const addNewRowAPIDetails = (meal: FoodDetails) => addNewRowAPI(prepareDataForTable(meal));
-
+    
+    // creating first table (populated by local storage data)
+    const mainTable = createTable(['Food', 'Qty', 'Unit', 'Calories']);
+    mainTable.classList.add(identifierClasses.tables.main);
+    const addNewRow = addRow(mainTable);
     populateMainTable(userName, mealName, showDate, addNewRow);
 
-    const btnContainerFirst = createElement('div', ['button-container', identifierClasses.btnContainers.onlyAdd]);
-    const addFirstBtn = generateWhiteButton('ADD', onClickFirstAdd);
+    // creating second table (results from api, before saving by user)
+    const apiTable = createTable(['Food', 'Qty', 'Unit', 'Calories']);
+    apiTable.classList.add(identifierClasses.tables.api);
+    const addNewRowAPI = addRow(apiTable);
+    const addNewRowAPIDetails = (meal: FoodDetails) => addNewRowAPI(prepareDataForTable(meal));
 
+    // 1st btn container [ADD]
+    const btnContainerAdd = createElement('div', ['button-container', identifierClasses.btnContainers.btnAdd]);
+    const btnAddFirst = generateWhiteButton('ADD', onClickFirstAdd);
+
+    // 2nd btn container [FIND] [CANCEL]
+    const btnContainerFindCancel = createElement('div', ['button-container', identifierClasses.btnContainers.btnFindCancel]);
+    const btnFind = generateWhiteButton('FIND', () => onClickFind(input.value, userData, [addNewRowAPIDetails, addMeals]));
+    const btnCancel = generateWhiteButton('CANCEL', onClickCancel);
+    btnContainerFindCancel.append(btnFind, btnCancel);
+
+    // 3rd btn container [FIND]
+    const btnContainerFind = createElement('div', ['button-container', identifierClasses.btnContainers.btnFind]);
+    const btnFindOnly = generateWhiteButton('FIND', () => onClickFind(input.value, userData, [addNewRowAPIDetails, addMeals]));
+    btnContainerFind.append(btnFindOnly);
+
+    // 4th btn container [ADD] [CANCEL]
+    const btnContainerAddCancel = createElement('div', ['button-container', identifierClasses.btnContainers.btnAddCancel]);
+    const btnAddSecond = generateWhiteButton('ADD', () => onClickAddMeal(userName, mealName, showDate, meals, addNewRow));
+    const btnCancelSecond = generateWhiteButton('CANCEL', onClickCancel);
+    btnContainerAddCancel.append(btnAddSecond, btnCancelSecond);
+
+    // input for meal name
     const inputLabel = createElement('h2', '', 'Enter your meal');
     const input = createTextInput('ex. 2 bananas and 1 cup of milk', identifierClasses.input);
-    const btnContainerSecond = createElement('div', ['button-container', identifierClasses.btnContainers.findCancel]);
-    const btnFind = generateWhiteButton('FIND', () => onClickFind(input.value, [addNewRowAPIDetails, addMeals]));
-    const btnFindOnly = generateWhiteButton('FIND', () => onClickFind(input.value, [addNewRowAPIDetails, addMeals]));
-    const btnCancel = generateWhiteButton('CANCEL', onClickCancel);
-    btnContainerSecond.append(btnFind, btnCancel);
-    const btnContainerFourth = createElement('div', ['button-container', identifierClasses.btnContainers.find]);
-    btnContainerFourth.append(btnFindOnly);
 
-    const btnContainerThird = createElement('div', ['button-container', identifierClasses.btnContainers.addCancel]);
-    const addSecondBtn = generateWhiteButton('ADD', () => onClickAddMeal(userName, mealName, showDate, meals, addNewRow));
-    const cancelSecondBtn = generateWhiteButton('CANCEL', onClickCancel);
-    btnContainerThird.append(addSecondBtn, cancelSecondBtn);
-
-    container.append(header, table, btnContainerFirst, inputLabel, input, btnContainerFourth, btnContainerSecond, tableAPI, btnContainerThird);
-    const authorizedFailed = createElement('p', 'failed-authorized');
-    authorizedFailed.appendChild(document.createTextNode('PODAJ API KEY I API ID'));
-
-    if (isUserAuthorized(userData)) {
-        btnContainerFirst.append(addFirstBtn);
+    // user logged in -> show button to add, not logged in -> show authorization message
+    if (isUserAuthorizedToUseApi(userData)) {
+        btnContainerAdd.append(btnAddFirst);
     } else {
-        btnContainerFirst.append(authorizedFailed);
+        const authorizedFailed = createElement('p', 'failed-authorized');
+        authorizedFailed.appendChild(document.createTextNode('Provide app key and app id to use this functionality.'));
+
+        btnContainerAdd.append(authorizedFailed);
     }
 
-    hideElements(inputLabel, input, btnContainerSecond, tableAPI, btnContainerThird, btnContainerFourth);
+    // bring whole layout together & hide elements not needed in the 1st view
+    container.append(header, mainTable, btnContainerAdd, inputLabel, input, btnContainerFind, btnContainerFindCancel, apiTable, btnContainerAddCancel);
+    hideElements(inputLabel, input, btnContainerFindCancel, apiTable, btnContainerAddCancel, btnContainerFind);
 
     return tile(container);
 }
@@ -93,59 +105,28 @@ function getMealDataFromUserData(userData: User, mealName: string, showDate: Dat
     return mealsOfTheDay.meals[mealName] || [];
 }
 
-function sameDay(d1: Date | string, d2: Date | string) {
-    const date1 = d1 instanceof Date ? d1 : new Date(d1);
-    const date2 = d2 instanceof Date ? d2 : new Date(d2);
-    
-    return date1.getFullYear() === date2.getFullYear() 
-        && date1.getMonth() === date2.getMonth() 
-        && date1.getDate() === date2.getDate();
-}
-
 function populateMainTable(userName: string, mealName: string, showDate: Date, addNewRow: (rowData: string[]) => void) {
     const userData = readFromLocalStorage(userName);
     const mealsFromLocalStorage = getMealDataFromUserData(userData, mealName, showDate);
 
     const table = document.querySelector(`.${identifierClasses.tables.main}`);
-    table && (table.innerHTML = '');
+    table && (table.innerHTML = ''); // clear table
     
     mealsFromLocalStorage.forEach(meal => addNewRow(prepareDataForTable(meal)));
-}
-
-function prepareDataForTable(data: FoodDetails): string[] {
-    return [
-        data.name, 
-        `${data.amount}`, 
-        data.unit, 
-        `${data.calories} kcal`
-    ];
-}
-
-function prepareAPIData(itemFromAPI: FoodItemData): FoodDetails {
-    return {
-        name: itemFromAPI.food_name,
-        amount: itemFromAPI.serving_qty,
-        unit: itemFromAPI.serving_unit,
-        calories: itemFromAPI.nf_calories
-    };
-}
-
-function isUserAuthorized(userData: User): boolean {
-    return !!(userData && userData.detailsAPI && userData.detailsAPI.id && userData.detailsAPI.key);
 }
 
 function onClickFirstAdd() {
     const {btnContainers, tables, input} = identifierClasses;
 
-    hideElementsByClassName(tables.main, btnContainers.onlyAdd);
-    showElementsByClassName(input, btnContainers.findCancel)
+    hideElementsByClassName(tables.main, btnContainers.btnAdd);
+    showElementsByClassName(input, btnContainers.btnFindCancel)
 }
 
 function onClickCancel() {
     const {btnContainers, tables, input} = identifierClasses;
 
-    hideElementsByClassName(btnContainers.findCancel, btnContainers.addCancel, btnContainers.find, tables.api, input);
-    showElementsByClassName(btnContainers.onlyAdd, tables.main);
+    hideElementsByClassName(btnContainers.btnFindCancel, btnContainers.btnAddCancel, btnContainers.btnFind, tables.api, input);
+    showElementsByClassName(btnContainers.btnAdd, tables.main);
 }
 
 function onClickAddMeal(
@@ -157,19 +138,19 @@ function onClickAddMeal(
 ) {
     const {btnContainers, tables, input} = identifierClasses;
 
-    hideElementsByClassName(btnContainers.findCancel, btnContainers.addCancel, btnContainers.find, tables.api, input);
-    showElementsByClassName(tables.main, btnContainers.onlyAdd);
+    hideElementsByClassName(btnContainers.btnFindCancel, btnContainers.btnAddCancel, btnContainers.btnFind, tables.api, input);
+    showElementsByClassName(tables.main, btnContainers.btnAdd);
     addMealsToLocalStorage(userName, mealName, showDate, mealsToAdd);
     populateMainTable(userName, mealName, showDate, addNewRow);
-    
 }
 
-async function onClickFind(inputValue: string, callbacks: Array<(data: FoodDetails) => void>) {
+async function onClickFind(inputValue: string, userData: User, callbacks: Array<(data: FoodDetails) => void>) {
     const {btnContainers, tables, input} = identifierClasses;
-    hideElementsByClassName(btnContainers.findCancel);
-    showElementsByClassName(input, btnContainers.find, tables.api, btnContainers.addCancel)
+    hideElementsByClassName(btnContainers.btnFindCancel);
+    showElementsByClassName(input, btnContainers.btnFind, tables.api, btnContainers.btnAddCancel)
+    const {appId, appKey} = getApiCredentialsForUser(userData);
 
-    const foodDetails = await fetchFoodData(inputValue);
+    const foodDetails = await fetchFoodData(inputValue, appId, appKey);
     if (!foodDetails || !foodDetails.foods) return;
 
     foodDetails.foods.forEach(food => callbacks.forEach(callback => callback(prepareAPIData(food))));
