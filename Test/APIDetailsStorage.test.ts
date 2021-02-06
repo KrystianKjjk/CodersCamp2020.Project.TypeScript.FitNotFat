@@ -9,7 +9,6 @@ const NO_USER_ERROR = `User doesn't exist!`;
 const NO_API_DETAILS_ERROR = `User doesn't contain API details.`;
 const SAVED_CORRECTLY_CONFIRM = 'API DETAILS saved correctly!';
 
-
 const username = 'TestUser';
 
 const user : User = {
@@ -34,8 +33,6 @@ const user : User = {
             })]
 }
 const detailsAPI = {key: 'PrzykladAPIOdczytZLocalStorage', id: 'OrazOdczytanegoID'};
-
-saveInLocalStorage(username, user);
 
 class LocalStorageMock {
     store: object;
@@ -65,7 +62,6 @@ class LocalStorageMock {
 
 global["localStorage"] = new LocalStorageMock;
 saveInLocalStorage(username,user);
-
 
 describe('GET APIDetails tests', () => {
 
