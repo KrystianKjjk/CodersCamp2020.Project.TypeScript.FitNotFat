@@ -10,6 +10,10 @@ const myGoals = document.createElement('div');
 myGoals.innerHTML = "Goals";
 const myWeights = document.createElement('div');
 myWeights.innerHTML = "Weights";
+const apiKey = document.createElement('div');
+apiKey.innerHTML = "API Key";
+const logOut = document.createElement('div');
+logOut.innerHTML = "Log Out";
 const myProfile = document.createElement('div');
 myProfile.innerHTML = "Profile";
 document.body.appendChild(dashboard(username, {
@@ -17,5 +21,7 @@ document.body.appendChild(dashboard(username, {
     'diary-food': myDiaryFood, 
     'diary-exercises': myDiaryExercises, 
     'goals': myGoals, 
-    'weights': myWeights, 
+    'weights': myWeights,
+    'apiKey': apiKey,
+    'logOut': logOut,
     'profile': myProfile}));
