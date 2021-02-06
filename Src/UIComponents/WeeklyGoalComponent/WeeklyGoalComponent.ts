@@ -52,7 +52,6 @@ function createWeightGoalSelect(onSelect:(selectedValue:WeightGoal)=>void){
       { key: WeightGoal[WeightGoal.KEEP], label: 'Keep weight' },
     ],
     (weightGoalString) => {
-      // selectedValue=WeightGoal[weightGoalString];
       onSelect(WeightGoal[weightGoalString]);
     },
     'What is your weekly goal',

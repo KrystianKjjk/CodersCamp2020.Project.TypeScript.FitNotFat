@@ -11,12 +11,15 @@ import {
 } from '../../../Src/UIComponents/WeeklyGoalComponent/WeeklyGoalComponent';
 import { ActivityLevel } from '../../../Models/ActivityLevel.model';
 
-export interface SecondStepValues{
-    weeklyGoal:WeightGoal;
-    activityLevel:ActivityLevel;
+export interface SecondStepValues {
+  weeklyGoal: WeightGoal;
+  activityLevel: ActivityLevel;
 }
 
-export function generateSecondStep(onBackClick:()=>void,onSignUpClick:(secondStepValues:SecondStepValues)=>void) {
+export function generateSecondStep(
+  onBackClick: () => void,
+  onSignUpClick: (secondStepValues: SecondStepValues) => void,
+) {
   const secondStepDiv = createElement('div', 'main-container');
   const title = createElement('p', 'main-title');
   title.appendChild(document.createTextNode('Join us'));
@@ -64,10 +67,17 @@ export function generateSecondStep(onBackClick:()=>void,onSignUpClick:(secondSte
     'How active are you?',
   );
 
-  const button1 = generateWhiteButton('Back', () => {onBackClick()});
+  const button1 = generateWhiteButton('Back', () => {
+    onBackClick();
+  });
   const button2 = generateRedButton('Sign Up', () => {
-    const secondStepValues:SecondStepValues={weeklyGoal:selectedValue, activityLevel:radioSelectedValue}  
-    onSignUpClick(secondStepValues)});
+    const secondStepValues: SecondStepValues = {
+      weeklyGoal: selectedValue,
+      activityLevel: radioSelectedValue,
+    };
+    onSignUpClick(secondStepValues);
+  });
+  button2.classList.add('sign-up-button');
 
   button1.style.width = '200px';
   button2.style.width = '200px';

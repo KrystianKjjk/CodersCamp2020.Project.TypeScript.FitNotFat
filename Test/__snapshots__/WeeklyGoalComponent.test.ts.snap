@@ -21,11 +21,16 @@ exports[`Tests for Weekly goal component should render weekly goal component 1`]
       class="container select-weekly-goal"
       style="width: 300px;"
     >
+      <p
+        class="select-header"
+      >
+        What is your weekly goal:
+      </p>
       <div
         class="select-box"
       >
         <span>
-          What is your weekly goal
+          Gain weight
         </span>
         <span>
           
@@ -50,9 +55,10 @@ exports[`Tests for Weekly goal component should render weekly goal component 1`]
       </div>
       <div
         class="options"
+        style="display: none;"
       >
         <div
-          class="option"
+          class="option selected"
           data-key="GAIN"
         >
           Gain weight

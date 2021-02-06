@@ -15,7 +15,8 @@ export default function generateForm(
   onNextStepClick: (firstStepFormValues: FirstStepFormValues) => void,
 ): HTMLFormElement {
   const form = document.createElement('form');
-  form.onsubmit = () => {
+  form.onsubmit = (event) => {
+    event.preventDefault();
     const gender = form.querySelector(
       'input[name="gender"]:checked',
     ) as HTMLInputElement;
