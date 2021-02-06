@@ -26,6 +26,7 @@
 .api-key-tile__section--text {
     font-size: 0.9rem;
     font-weight: 500;
+    color: #000;
 }
 .api-key-tile__section--input {
     text-align: center;
