@@ -15,7 +15,20 @@ export default function generateForm(
   onNextStepClick: (firstStepFormValues: FirstStepFormValues) => void,
 ): HTMLFormElement {
   const form = document.createElement('form');
-
+  form.onsubmit = () => {
+    const gender = form.querySelector(
+      'input[name="gender"]:checked',
+    ) as HTMLInputElement;
+    const formValues: FirstStepFormValues = {
+      name: nameInput.value,
+      gender: gender.value as 'Male' | 'Female',
+      dateOfBirth: new Date(dateInput.value),
+      height: parseInt(heightInput.value),
+      currentWeight: parseInt(weightInput.value),
+      goalWeight: parseInt(goalWeightInput.value),
+    };
+    onNextStepClick(formValues);
+  };
   const paragraph = generateParagraph();
   const progressBar = generateProgressBar();
 
@@ -39,21 +52,7 @@ export default function generateForm(
     'goal-weight',
   );
 
-  const submitButton = generateRedButton('Next step', () => {
-    const gender = form.querySelector(
-      'input[name="gender"]:checked',
-    ) as HTMLInputElement;
-    const formValues: FirstStepFormValues = {
-      name: nameInput.value,
-      gender: gender.value as 'Male' | 'Female',
-      dateOfBirth: new Date(dateInput.value),
-      height: parseInt(heightInput.value),
-      currentWeight: parseInt(weightInput.value),
-      goalWeight: parseInt(goalWeightInput.value),
-    };
-    console.log(formValues.dateOfBirth);
-    onNextStepClick(formValues);
-  });
+  const submitButton = generateRedButton('Next step', () => {}, "submit");
   submitButton.style.height = '50px';
   submitButton.style.width = '35%';
 

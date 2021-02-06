@@ -83,6 +83,7 @@ exports[`tests for Form Component Should render correctly 1`] = `
   <button
     class="button"
     style="background-color: rgb(218, 27, 54); color: white; height: 50px; width: 35%;"
+    type="submit"
   />
 </form>
 `;

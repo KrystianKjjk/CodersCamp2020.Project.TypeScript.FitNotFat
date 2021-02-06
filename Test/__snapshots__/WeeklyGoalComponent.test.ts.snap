@@ -25,7 +25,7 @@ exports[`Tests for Weekly goal component should render weekly goal component 1`]
         class="select-box"
       >
         <span>
-          Select your weekly goal
+          What is your weekly goal
         </span>
         <span>
           
@@ -74,6 +74,7 @@ exports[`Tests for Weekly goal component should render weekly goal component 1`]
     <button
       class="button button-save"
       style="background-color: white; color: rgb(218, 27, 54);"
+      type="button"
     />
   </div>
 </div>

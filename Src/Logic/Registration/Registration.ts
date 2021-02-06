@@ -1,14 +1,13 @@
 import generateFirstStepForm from '../../UIComponents/FormComponent/FormComponent';
 import { User } from '../../../Models/User.model';
-import { ActivityLevel } from '../../../Models/ActivityLevel.model';
 import { FirstStepFormValues } from '../../../Src/UIComponents/FormComponent/FormComponent';
 import {createElement} from '../../../Src/UIComponents/utils/utils';
 import {SecondStepValues,generateSecondStep} from '../../../Src/UIComponents/SecondStepComponent/SecondStepComponent';
-import { Goal } from '../../../Models/Goal.model';
 import { Weight } from '../../../Models/Weight.model';
+import { saveInLocalStorage } from '../../../Src/Logic/LocalStorage/LocalStorage';
 
 export default function generateRegistrationForm(
-  onRegistrationSuccess: Function,
+  onRegistrationSuccess: ()=>{},
 ): HTMLElement {
 const registrationDiv=createElement('div','div-registration');
 
@@ -37,6 +36,8 @@ const weight:Weight={date:new Date(), weight:firstStepValues.currentWeight};
   activityLevel: secondStepValues.activityLevel,
   weights:[weight],
 }
+saveInLocalStorage('user',user);
+onRegistrationSuccess();
 }
   return registrationDiv;
 }
