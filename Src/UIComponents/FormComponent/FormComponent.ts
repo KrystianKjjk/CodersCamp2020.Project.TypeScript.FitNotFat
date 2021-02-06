@@ -4,7 +4,7 @@ import { createElement, createTextInput, createNumberInput, createRadioInput } f
 export interface FirstStepFormValues {
   name: string;
   gender: 'Male' | 'Female';
-  dateOfBirth: Date | string;
+  dateOfBirth: Date;
   height: number;
   currentWeight: number;
   goalWeight: number;

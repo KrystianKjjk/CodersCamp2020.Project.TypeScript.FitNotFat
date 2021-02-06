@@ -11,7 +11,7 @@ export default function generateRegistrationForm(
 ): HTMLElement {
 const registrationDiv=createElement('div','div-registration');
 
-let firstStepValues;
+let firstStepValues:FirstStepFormValues;
 const firstStepForm = generateFirstStepForm(onNextStepClick);
 registrationDiv.appendChild(firstStepForm);
 const secondStepForm=generateSecondStep(onBackClick,onSignUpClick);
