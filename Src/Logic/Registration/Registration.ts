@@ -7,12 +7,13 @@ import { Weight } from '../../../Models/Weight.model';
 import { saveInLocalStorage } from '../../../Src/Logic/LocalStorage/LocalStorage';
 
 export default function generateRegistrationForm(
-  onRegistrationSuccess: ()=>{},
+  onRegistrationSuccess: ()=>void
 ): HTMLElement {
 const registrationDiv=createElement('div','div-registration');
 
 let firstStepValues:FirstStepFormValues;
 const firstStepForm = generateFirstStepForm(onNextStepClick);
+firstStepForm.className='first-step-form';
 registrationDiv.appendChild(firstStepForm);
 const secondStepForm=generateSecondStep(onBackClick,onSignUpClick);
 
@@ -36,7 +37,7 @@ const weight:Weight={date:new Date(), weight:firstStepValues.currentWeight};
   activityLevel: secondStepValues.activityLevel,
   weights:[weight],
 }
-saveInLocalStorage('user',user);
+saveInLocalStorage(`${user.name}`,user);
 onRegistrationSuccess();
 }
   return registrationDiv;

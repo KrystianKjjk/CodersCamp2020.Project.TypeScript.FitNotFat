@@ -1,6 +1,7 @@
 import generateTileComponent from '../TileComponent/TileComponent';
 import createSelectBox from '../Select/Select';
 import { generateWhiteButton } from '../Buttons/Buttons';
+import {createElement} from '../../../Src/UIComponents/utils/utils';
 
 export enum WeightGoal {
   GAIN = 'GAIN',
@@ -43,7 +44,7 @@ const select=createWeightGoalSelect(onSelect);
 }
 
 function createWeightGoalSelect(onSelect:(selectedValue:WeightGoal)=>void){
-  
+
   const select = createSelectBox(
     [
       { key: WeightGoal[WeightGoal.GAIN], label: 'Gain weight' },

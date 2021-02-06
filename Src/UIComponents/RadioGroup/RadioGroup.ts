@@ -16,7 +16,6 @@ const createRadioGroup = (options: RadioOption[], onClick: (selected: string) =>
         const singleRadioOption = createSingleRadio(singleInput, onClick);
         mainContainer.appendChild(singleRadioOption);
     })
-
     return mainContainer;
 }
 

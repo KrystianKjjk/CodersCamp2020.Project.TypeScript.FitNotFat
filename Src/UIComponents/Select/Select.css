@@ -65,3 +65,12 @@
 .option:hover {
     background-color: lightgrey;
 }
+
+.select-header {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.125em;
+    padding-left: 14px;
+    padding-bottom: 10px;
+    color: rgba(0, 0, 0, 0.95);
+}
