@@ -2,8 +2,7 @@ import { profileInfo } from "../../UIComponents/ProfileInfo/ProfileInfo";
 import {readFromLocalStorage} from '../../../Src/Logic/LocalStorage/LocalStorage';
 import {ActivityLevel} from "../../../Models/ActivityLevel.model";
 import {WeeklyGoal} from "../../../Models/WeeklyGoal.model";
-
-const NO_USER_ERROR = `User doesn't exist!`;
+import { User } from '../../../Models/User.model';
 
 interface SubUser {
     username: string,
@@ -16,16 +15,15 @@ interface SubUser {
     goalWeight: number, // kg
 }
 
-function setProfileInfo(username: string) {
-    const user = readFromLocalStorage(username);
+export function SetProfileInfo(user: User) {
+
     let subUser: SubUser;
 
-    if(!user) {
-
+    try {
         subUser = {
             username: user.name,
             gender: user.gender,
-            dateOfBirth: user.dateOfBirth,
+            dateOfBirth: user?.dateOfBirth,
             height: user.height,
             weight: user.weights[0].weight,
             activityLevel: user.activityLevel,
@@ -33,10 +31,7 @@ function setProfileInfo(username: string) {
             goalWeight: user.goalWeight
         }
     }
-    else {
-        alert(NO_USER_ERROR);
-        return;
-    }
+    catch { return; }
 
     return profileInfo(subUser);
 }
