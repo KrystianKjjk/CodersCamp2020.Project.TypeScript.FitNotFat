@@ -18,12 +18,13 @@ export function createTileAPIKey(username: string, getAPIDetails: GetAPIDetails,
     const sectionID = createElement('section', 'api-key-tile__section');
     const sectionIDText = createElement('p','api-key-tile__section--text', 'ENTER ID');
     const sectionIDInput = createTextInput(PLACEHOLDER_ID, 'api-key-tile__section--input')
+    const sectionError = createElement('p','api-key-tile__section--error');
     const saveButton = generateWhiteButton('SAVE', handleSaveButtonClick);
     saveButton.classList.add('my-weight-tile__button-section--tile-btn');
 
     sectionKey.append(sectionKeyText, sectionKeyInput);
     sectionID.append(sectionIDText, sectionIDInput);
-    containerAPIKey.append(header, sectionKey, sectionID, saveButton);
+    containerAPIKey.append(header, sectionKey, sectionID, sectionError, saveButton);
 
     getAPIDetails(username)
         .then((detailsAPI) => {
@@ -40,14 +41,14 @@ export function createTileAPIKey(username: string, getAPIDetails: GetAPIDetails,
         if(detailsAPI.key && detailsAPI.id) {
             setAPIDetails(username, detailsAPI)
                 .then( msg => {
-                    alert(msg);
+                    sectionError.innerText = msg;
                     sectionKeyInput.value = detailsAPI.key;
                     sectionIDInput.value = detailsAPI.id;
                 })
-                .catch(alert);
+                .catch(alert => sectionError.innerText = alert);
         }
         else {
-            alert('KEY and ID must be filled out!')
+            sectionError.innerText = 'KEY and ID must be filled out!'
         }
     }
     return containerAPIKey;
