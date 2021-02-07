@@ -1,11 +1,13 @@
-import {overviewSVG, myDiarySVG, myGoalsSVG, myWeightsSVG, userSVG, arrowSVG} from './Icons';
+import {overviewSVG, myDiarySVG, myGoalsSVG, myWeightsSVG, userSVG, apiKeySVG, logOutSVG, arrowSVG} from './Icons';
 import {createElement} from '../utils/utils';
 
-function dashboard(components: {'overview': HTMLElement, 
+function dashboard(username: string, components: {'overview': HTMLElement, 
                                 'diary-food': HTMLElement, 
                                 'diary-exercises': HTMLElement, 
                                 'goals': HTMLElement, 
-                                'weights': HTMLElement, 
+                                'weights': HTMLElement,
+                                'apiKey': HTMLElement,
+                                'logOut': HTMLElement,
                                 'profile': HTMLElement}): HTMLDivElement {
     const myDashboard = createElement('div', ['dashboard']) as HTMLDivElement;
     myDashboard.appendChild(createElement('div', ['ellipse1']));
@@ -21,29 +23,30 @@ function dashboard(components: {'overview': HTMLElement,
     const myDiaryExercises = createElement('li', ['submenu-option'], `Exercises`, 'diary-exercises');
     const myGoals = createElement('div', ['menu-option'], `${myGoalsSVG} My goals`, 'goals');
     const myWeights = createElement('div', ['menu-option'], `${myWeightsSVG} My weights`, 'weights');
-    const profileBtn = createElement('button', ['profile-btn'], `${userSVG} Username ${arrowSVG}`, 'profile');
-    [overview, myGoals, myDiary, myDiaryFood, myDiaryExercises, myWeights, profileBtn].forEach((element) => {
+    const apiKey = createElement('div', ['menu-option'], `${apiKeySVG} API Key`, 'apiKey');
+    const logOut = createElement('div', ['menu-option'], `${logOutSVG} Log out`, 'logOut');
+    const profileBtn = createElement('button', ['profile-btn'], `${userSVG} ${username} ${arrowSVG}`, 'profile');
+    const options = [overview, myDiary, myDiaryFood, myDiaryExercises, myGoals, myWeights, apiKey, logOut, profileBtn];
+
+    options.forEach((element) => {
         element.addEventListener('click', (e) => {
             e.stopPropagation();
             element.parentElement.querySelectorAll(".active").forEach((elem) => elem.classList.remove('active'));
             element.classList.add('active');
             const suboption = element.querySelector('li');
             if(suboption) suboption.classList.add('active');
-        });
-    });
-    [overview, myDiary, myDiaryFood, myDiaryExercises, myGoals, myWeights, profileBtn].forEach((element) => {
-        components[element.getAttribute('data-component')].style.display = "none";
-        element.addEventListener('click', (e) => {
             Object.values(components).forEach((element => {
                 element.style.display = 'none';
             }));
-            components[element.getAttribute('data-component')].style.display = "initial";
-        })
+            components[element.getAttribute('data-component')].style.display = "block";
+        });
+        components[element.getAttribute('data-component')].style.display = "none";
     });
-    components['overview'].style.display = "initial";
+    
+    components['overview'].style.display = "block";
     myDiarySubmenu.append(myDiaryFood, myDiaryExercises);
     myDiary.appendChild(myDiarySubmenu);
-    mainMenu.append(logo, overview, myDiary, myGoals, myWeights, profileBtn);
+    mainMenu.append(logo, overview, myDiary, myGoals, myWeights, apiKey, logOut, profileBtn);
     myDashboard.appendChild(mainMenu);
 
     const dashboardView = document.createElement('div');
