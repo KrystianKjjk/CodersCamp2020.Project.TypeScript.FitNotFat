@@ -25,7 +25,8 @@
     "start:tileMyWeight": "parcel -p 8765 watch ./UnitImplementations/UIComponents/TileMyWeight/TileMyWeight.html",
     "start:registration":"parcel -p 8765 watch ./UnitImplementations/Logic/Registration/Registration.html",
     "start:secondStep":"parcel -p 8765 watch ./UnitImplementations/UIComponents/SecondStepComponent/SecondStepComponent.html",
-    "start:myWeights": "parcel -p 8765 watch ./UnitImplementations/UIComponents/MyWeights/MyWeights.html"
+    "start:myWeights": "parcel -p 8765 watch ./UnitImplementations/UIComponents/MyWeights/MyWeights.html",
+    "start:apiKey": "parcel -p 8765 watch ./UnitImplementations/UIComponents/TileAPIKey/TileAPIKey.html"
   },
   "keywords": [
     "fitnotfat",

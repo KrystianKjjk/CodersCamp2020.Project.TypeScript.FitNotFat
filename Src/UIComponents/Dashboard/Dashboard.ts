@@ -1,11 +1,13 @@
-import {overviewSVG, myDiarySVG, myGoalsSVG, myWeightsSVG, userSVG, arrowSVG} from './Icons';
+import {overviewSVG, myDiarySVG, myGoalsSVG, myWeightsSVG, userSVG, apiKeySVG, logOutSVG, arrowSVG} from './Icons';
 import {createElement} from '../utils/utils';
 
 function dashboard(username: string, components: {'overview': HTMLElement, 
                                 'diary-food': HTMLElement, 
                                 'diary-exercises': HTMLElement, 
                                 'goals': HTMLElement, 
-                                'weights': HTMLElement, 
+                                'weights': HTMLElement,
+                                'apiKey': HTMLElement,
+                                'logOut': HTMLElement,
                                 'profile': HTMLElement}): HTMLDivElement {
     const myDashboard = createElement('div', ['dashboard']) as HTMLDivElement;
     myDashboard.appendChild(createElement('div', ['ellipse1']));
@@ -21,8 +23,11 @@ function dashboard(username: string, components: {'overview': HTMLElement,
     const myDiaryExercises = createElement('li', ['submenu-option'], `Exercises`, 'diary-exercises');
     const myGoals = createElement('div', ['menu-option'], `${myGoalsSVG} My goals`, 'goals');
     const myWeights = createElement('div', ['menu-option'], `${myWeightsSVG} My weights`, 'weights');
+    const apiKey = createElement('div', ['menu-option'], `${apiKeySVG} API Key`, 'apiKey');
+    const logOut = createElement('div', ['menu-option'], `${logOutSVG} Log out`, 'logOut');
     const profileBtn = createElement('button', ['profile-btn'], `${userSVG} ${username} ${arrowSVG}`, 'profile');
-    const options = [overview, myDiary, myDiaryFood, myDiaryExercises, myGoals, myWeights, profileBtn];
+    const options = [overview, myDiary, myDiaryFood, myDiaryExercises, myGoals, myWeights, apiKey, logOut, profileBtn];
+
     options.forEach((element) => {
         element.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -41,7 +46,7 @@ function dashboard(username: string, components: {'overview': HTMLElement,
     components['overview'].style.display = "block";
     myDiarySubmenu.append(myDiaryFood, myDiaryExercises);
     myDiary.appendChild(myDiarySubmenu);
-    mainMenu.append(logo, overview, myDiary, myGoals, myWeights, profileBtn);
+    mainMenu.append(logo, overview, myDiary, myGoals, myWeights, apiKey, logOut, profileBtn);
     myDashboard.appendChild(mainMenu);
 
     const dashboardView = document.createElement('div');
