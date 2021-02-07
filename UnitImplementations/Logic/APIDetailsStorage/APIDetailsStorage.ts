@@ -36,7 +36,7 @@ const user : User = {
 saveInLocalStorage(username, user);
 
 const tileMyWeight = generateTileComponent(
-    createTileAPIKey('w', getAPIDetails, setAPIDetails) );
+    createTileAPIKey(username, getAPIDetails, setAPIDetails) );
 
 document.body.appendChild(tileMyWeight);
 
