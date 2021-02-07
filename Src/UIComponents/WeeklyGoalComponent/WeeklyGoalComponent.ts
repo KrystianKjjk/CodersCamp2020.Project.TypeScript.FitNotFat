@@ -1,6 +1,7 @@
 import generateTileComponent from '../TileComponent/TileComponent';
 import createSelectBox from '../Select/Select';
 import { generateWhiteButton } from '../Buttons/Buttons';
+import {WeeklyGoal} from '../../../Models/WeeklyGoal.model';
 
 export enum WeightGoal {
   GAIN = 'GAIN',
@@ -8,7 +9,7 @@ export enum WeightGoal {
   KEEP = 'KEEP',
 }
 
-function generateWeeklyGoalComponent(weekNumber: string, onSaveButtonClick:(weightGoal:WeightGoal)=>void) {
+function generateWeeklyGoalComponent(date: string, onSaveButtonClick:(weightGoal:WeeklyGoal)=>void) {
   const component = document.createElement('div');
   component.className='weekly-goal-component';
   const title = document.createElement('p');
@@ -17,22 +18,22 @@ function generateWeeklyGoalComponent(weekNumber: string, onSaveButtonClick:(weig
   title.appendChild(titleContent);
   component.appendChild(title);
 
-  const weekNumberParagraph = document.createElement('p');
-  const weekNumberParagraphContent = document.createTextNode(
-    `Week ${weekNumber}`,
+  const dateParagraph = document.createElement('p');
+  const dateParagraphContent = document.createTextNode(
+    date,
   );
-  weekNumberParagraph.className='paragraph-week';
-  weekNumberParagraph.appendChild(weekNumberParagraphContent);
-  component.appendChild(weekNumberParagraph);
-  let selectedValue:WeightGoal = null; 
+  dateParagraph.className='paragraph-week';
+  dateParagraph.appendChild(dateParagraphContent);
+  component.appendChild(dateParagraph);
+  let selectedValue:WeeklyGoal = null; 
   const select = createSelectBox(
     [
-      { key: WeightGoal[WeightGoal.GAIN], label: 'Gain weight' },
-      { key: WeightGoal[WeightGoal.LOSE], label: 'Lose weight' },
-      { key: WeightGoal[WeightGoal.KEEP], label: 'Keep weight' },
+      { key: WeeklyGoal[WeeklyGoal.Gain], label: 'Gain weight' },
+      { key: WeeklyGoal[WeeklyGoal.Lose], label: 'Lose weight' },
+      { key: WeeklyGoal[WeeklyGoal.Keep], label: 'Keep weight' },
     ],
     (weightGoalString) => {
-      selectedValue=WeightGoal[weightGoalString];
+      selectedValue=WeeklyGoal[weightGoalString];
     },
     'Select your weekly goal',
   );
