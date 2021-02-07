@@ -1,6 +1,6 @@
 import { readFromLocalStorage, saveInLocalStorage } from '../../Logic/LocalStorage/LocalStorage';
 import { createTable, addRow } from '../../UIComponents/ReusableTable/ReusableTable';
-import { fetchFoodData, FoodItemFromAPI } from '../../APIConnection/Food';
+import { fetchFoodData } from '../../APIConnection/Food';
 import { FoodDetails } from '../../../Models/FoodDetails.model';
 import { generateWhiteButton } from '../Buttons/Buttons';
 import { User } from '../../../Models/User.model';
@@ -8,7 +8,7 @@ import { createElement, createTextInput } from '../utils/utils';
 import { sameDay, isUserAuthorizedToUseApi, getApiCredentialsForUser, prepareAPIData, prepareDataForTable } from './utils';
 import tile from '../TileComponent/TileComponent';
 
-const identifierClasses = {
+export const identifierClasses = {
     mainContainer: '.my-diary-food',
     btnContainers: {
         btnAdd: 'button-container-add',
@@ -109,9 +109,7 @@ function populateMainTable(userName: string, mealName: string, showDate: Date, a
     const userData = readFromLocalStorage(userName);
     const mealsFromLocalStorage = getMealDataFromUserData(userData, mealName, showDate);
 
-    const table = document.querySelector(`.${identifierClasses.tables.main}`);
-    table && (table.innerHTML = ''); // clear table
-    
+    const tableRows = document.querySelectorAll(`.${identifierClasses.tables.main} tr:nth-child(n+2)`).forEach(e => e.parentNode.removeChild(e));
     mealsFromLocalStorage.forEach(meal => addNewRow(prepareDataForTable(meal)));
 }
 
@@ -124,7 +122,8 @@ function onClickFirstAdd() {
 
 function onClickCancel() {
     const {btnContainers, tables, input} = identifierClasses;
-
+    window.location.reload();
+    
     hideElementsByClassName(btnContainers.btnFindCancel, btnContainers.btnAddCancel, btnContainers.btnFind, tables.api, input);
     showElementsByClassName(btnContainers.btnAdd, tables.main);
 }
@@ -179,7 +178,7 @@ function addMealsToLocalStorage(userName: string, mealName: string, showDate: Da
     const updatedUser: User = {
         ...currentState,
         diaryFood: [
-            ...currentState.diaryFood.filter(food => !sameDay(showDate, food.date)),
+            ...currentDiaryFood.filter(food => !sameDay(showDate, food.date)),
             updatedDayMeals
         ]
     };
