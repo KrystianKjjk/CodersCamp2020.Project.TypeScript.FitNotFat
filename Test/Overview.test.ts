@@ -1,7 +1,9 @@
 import overviewComponent from '../Src/UIComponents/Overview/Overview';
 import { User } from '../Models/User.model';
 import { ActivityLevel } from '../Models/ActivityLevel.model';
-import * as gauges from '../Src/UIComponents/GoalTile/Gauges'
+import { fn } from 'moment';
+import createGauge from '../Src/UIComponents/GoalTile/Gauges';
+
 jest.mock('../Src/UIComponents/GoalTile/Gauges');
 
 let dummyobject: User = {
@@ -53,18 +55,18 @@ describe('Overview full component check', () => {
     test('returns the overview-header', () => {
         expect(document.querySelectorAll('.overview-header')).toBeTruthy;
     })
-    //dont know how to write it :/
-    // test('whan data is inputted tiles change the values', () => {
-    //     const editButton = document.querySelector('section.my-weight-tile__button-section > button') as HTMLButtonElement;
-    //     editButton.click();
+    
+    test('when data is inputted tiles change the values', () => {
+        const editButton = document.querySelector('section.my-weight-tile__button-section > button') as HTMLButtonElement;
+        editButton.click();
 
-    //     const inputField = document.querySelector('section.my-weight-tile__data-section > div > input') as HTMLInputElement;
-    //     inputField.value = '100';
+        const inputField = document.querySelector('section.my-weight-tile__data-section > div > input') as HTMLInputElement;
+        inputField.value = '100';
 
-    //     const saveButton = document.querySelector('section.my-weight-tile__button-section > button:nth-child(1)') as HTMLButtonElement;
-    //     saveButton.click();
+        const saveButton = document.querySelector('section.my-weight-tile__button-section > button:nth-child(1)') as HTMLButtonElement;
+        saveButton.click();
         
-    //     expect(gauges).toHaveBeenCalledTimes(2);
-    // })
+        expect(createGauge).toHaveBeenCalledTimes(4);
+    })
 });
 
