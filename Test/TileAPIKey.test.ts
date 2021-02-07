@@ -32,11 +32,11 @@ describe('TileAPIKey component tests', ()=> {
         expect((element.querySelectorAll('.api-key-tile__section--input')[0] as HTMLInputElement).value).toBe(KEY_VALUE);
         expect((element.querySelectorAll('.api-key-tile__section--input')[1] as HTMLInputElement).value).toBe(ID_VALUE);
     })
-    test('if clicking button when inputs are empty triggers alert', async () => {
-        window.alert = jest.fn();
-        const apiKey = createTileAPIKey(username, getAPI, setAPI);
-        (apiKey.querySelector('.my-weight-tile__button-section--tile-btn') as HTMLButtonElement).click();
-        expect(window.alert).toHaveBeenCalledWith('KEY and ID must be filled out!');
+    test('if clicking button when inputs are empty displays information', async () => {
+        const element = createTileAPIKey(username, getAPI, setAPI);
+
+        (element.querySelector('.my-weight-tile__button-section--tile-btn') as HTMLButtonElement).click();
+        expect((element.querySelector('.api-key-tile__section--error') as HTMLElement).innerText).toBe('KEY and ID must be filled out!');
     })
     test('if clicking save button when inputs are filled up updates values in input fields', async () => {
         const KEY_VALUE = 'newapiKEY';

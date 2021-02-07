@@ -39,6 +39,9 @@ exports[`TileAPIKey component tests if renders properly 1`] = `
       type="text"
     />
   </section>
+  <p
+    class="api-key-tile__section--error"
+  />
   <button
     class="button my-weight-tile__button-section--tile-btn"
     style="background-color: white; color: rgb(218, 27, 54);"
