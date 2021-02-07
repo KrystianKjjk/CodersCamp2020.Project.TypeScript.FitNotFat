@@ -1,6 +1,7 @@
 import dashboard from '../Src/UIComponents/Dashboard/Dashboard';
 import { getByText } from '@testing-library/dom';
 
+const username = 'User5';
 const overview = document.createElement('div');
 overview.innerHTML = "Overview";
 const myDiaryFood = document.createElement('div');
@@ -11,15 +12,21 @@ const myGoals = document.createElement('div');
 myGoals.innerHTML = "Goals";
 const myWeights = document.createElement('div');
 myWeights.innerHTML = "Weights";
+const apiKey = document.createElement('div');
+apiKey.innerHTML = "API Key";
+const logOut = document.createElement('div');
+logOut.innerHTML = "Log Out";
 const myProfile = document.createElement('div');
 myProfile.innerHTML = "Profile";
 
-const testDashboard = dashboard({
+const testDashboard = dashboard(username, {
     'overview': overview, 
     'diary-food': myDiaryFood, 
     'diary-exercises': myDiaryExercises, 
     'goals': myGoals, 
-    'weights': myWeights, 
+    'weights': myWeights,
+    'apiKey': apiKey,
+    'logOut': logOut,
     'profile': myProfile});
 const mainMenu = testDashboard.querySelector('.main-menu') as HTMLElement;
 const overviewOpt = getByText(mainMenu, 'Overview');
@@ -28,6 +35,8 @@ const myDiaryFoodOpt = getByText(mainMenu, 'Food');
 const myDiaryExercisesOpt = getByText(mainMenu, 'Exercises');
 const myGoalsOpt = getByText(mainMenu, 'My goals');
 const myWeightsOpt = getByText(mainMenu, 'My weights');
+const apiKeyOpt = getByText(mainMenu, 'API Key');
+const logOutOpt = getByText(mainMenu, 'Log out');
 const myProfileBtn = mainMenu.querySelector('.profile-btn') as HTMLElement;
 
 const chosenView = testDashboard.lastElementChild as HTMLElement;
@@ -48,6 +57,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercisesOpt.classList).not.toContain('active');
             expect(myGoalsOpt.classList).not.toContain('active');
             expect(myWeightsOpt.classList).not.toContain('active');
+            expect(apiKeyOpt.classList).not.toContain('active');
+            expect(logOutOpt.classList).not.toContain('active');
             expect(myProfileBtn.classList).not.toContain('active');
         })
         test('only displayed view is Overview', () => {
@@ -56,6 +67,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercises.style.display).toBe('none');
             expect(myGoals.style.display).toBe('none');
             expect(myWeights.style.display).toBe('none');
+            expect(apiKey.style.display).toBe('none');
+            expect(logOut.style.display).toBe('none');
             expect(myProfile.style.display).toBe('none');
         })
     })
@@ -73,6 +86,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercisesOpt.classList).not.toContain('active');
             expect(myGoalsOpt.classList).not.toContain('active');
             expect(myWeightsOpt.classList).not.toContain('active');
+            expect(apiKeyOpt.classList).not.toContain('active');
+            expect(logOutOpt.classList).not.toContain('active');
             expect(myProfileBtn.classList).not.toContain('active');
         })
         test('only displayed view is Overview', () => {
@@ -81,6 +96,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercises.style.display).toBe('none');
             expect(myGoals.style.display).toBe('none');
             expect(myWeights.style.display).toBe('none');
+            expect(apiKey.style.display).toBe('none');
+            expect(logOut.style.display).toBe('none');
             expect(myProfile.style.display).toBe('none');
         })
     })
@@ -97,6 +114,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercisesOpt.classList).not.toContain('active');
             expect(myGoalsOpt.classList).not.toContain('active');
             expect(myWeightsOpt.classList).not.toContain('active');
+            expect(apiKeyOpt.classList).not.toContain('active');
+            expect(logOutOpt.classList).not.toContain('active');
             expect(myProfileBtn.classList).not.toContain('active');
         })
         test('only displayed view is Food', () => {
@@ -105,6 +124,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercises.style.display).toBe('none');
             expect(myGoals.style.display).toBe('none');
             expect(myWeights.style.display).toBe('none');
+            expect(apiKey.style.display).toBe('none');
+            expect(logOut.style.display).toBe('none');
             expect(myProfile.style.display).toBe('none');
         })
     })
@@ -122,6 +143,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercisesOpt.classList).not.toContain('active');
             expect(myGoalsOpt.classList).not.toContain('active');
             expect(myWeightsOpt.classList).not.toContain('active');
+            expect(apiKeyOpt.classList).not.toContain('active');
+            expect(logOutOpt.classList).not.toContain('active');
             expect(myProfileBtn.classList).not.toContain('active');
         })
         test('only displayed view is Food', () => {
@@ -130,6 +153,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercises.style.display).toBe('none');
             expect(myGoals.style.display).toBe('none');
             expect(myWeights.style.display).toBe('none');
+            expect(apiKey.style.display).toBe('none');
+            expect(logOut.style.display).toBe('none');
             expect(myProfile.style.display).toBe('none');
         })
     })
@@ -147,6 +172,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercisesOpt.classList).toContain('active');
             expect(myGoalsOpt.classList).not.toContain('active');
             expect(myWeightsOpt.classList).not.toContain('active');
+            expect(apiKeyOpt.classList).not.toContain('active');
+            expect(logOutOpt.classList).not.toContain('active');
             expect(myProfileBtn.classList).not.toContain('active');
         })
         test('only displayed view is Exercises', () => {
@@ -155,6 +182,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercises.style.display).not.toBe('none');
             expect(myGoals.style.display).toBe('none');
             expect(myWeights.style.display).toBe('none');
+            expect(apiKey.style.display).toBe('none');
+            expect(logOut.style.display).toBe('none');
             expect(myProfile.style.display).toBe('none');
         })
     })
@@ -171,6 +200,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercisesOpt.classList).not.toContain('active');
             expect(myGoalsOpt.classList).toContain('active');
             expect(myWeightsOpt.classList).not.toContain('active');
+            expect(apiKeyOpt.classList).not.toContain('active');
+            expect(logOutOpt.classList).not.toContain('active');
             expect(myProfileBtn.classList).not.toContain('active');
         })
         test('only displayed view is My goals', () => {
@@ -179,6 +210,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercises.style.display).toBe('none');
             expect(myGoals.style.display).not.toBe('none');
             expect(myWeights.style.display).toBe('none');
+            expect(apiKey.style.display).toBe('none');
+            expect(logOut.style.display).toBe('none');
             expect(myProfile.style.display).toBe('none');
         })
     })
@@ -195,6 +228,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercisesOpt.classList).not.toContain('active');
             expect(myGoalsOpt.classList).not.toContain('active');
             expect(myWeightsOpt.classList).toContain('active');
+            expect(apiKeyOpt.classList).not.toContain('active');
+            expect(logOutOpt.classList).not.toContain('active');
             expect(myProfileBtn.classList).not.toContain('active');
         })
         test('only displayed view is My weights', () => {
@@ -203,6 +238,64 @@ describe('Dashboard test', () => {
             expect(myDiaryExercises.style.display).toBe('none');
             expect(myGoals.style.display).toBe('none');
             expect(myWeights.style.display).not.toBe('none');
+            expect(apiKey.style.display).toBe('none');
+            expect(logOut.style.display).toBe('none');
+            expect(myProfile.style.display).toBe('none');
+        })
+    })
+
+    describe('after click option API Key display API Key component', () => {
+        test('', () => {
+            apiKeyOpt.click();
+            expect(chosenView.innerHTML.includes('API Key')).toBe(true);
+        })
+        test('only active option is API Key', () => {
+            expect(overviewOpt.classList).not.toContain('active');
+            expect(myDiaryOpt.classList).not.toContain('active');
+            expect(myDiaryFoodOpt.classList).not.toContain('active');
+            expect(myDiaryExercisesOpt.classList).not.toContain('active');
+            expect(myGoalsOpt.classList).not.toContain('active');
+            expect(myWeightsOpt.classList).not.toContain('active');
+            expect(apiKeyOpt.classList).toContain('active');
+            expect(logOutOpt.classList).not.toContain('active');
+            expect(myProfileBtn.classList).not.toContain('active');
+        })
+        test('only displayed view is API Key', () => {
+            expect(overview.style.display).toBe('none');
+            expect(myDiaryFood.style.display).toBe('none');
+            expect(myDiaryExercises.style.display).toBe('none');
+            expect(myGoals.style.display).toBe('none');
+            expect(myWeights.style.display).toBe('none');
+            expect(apiKey.style.display).not.toBe('none');
+            expect(logOut.style.display).toBe('none');
+            expect(myProfile.style.display).toBe('none');
+        })
+    })
+
+    describe('after click option LogOut display LogOut component', () => {
+        test('', () => {
+            logOutOpt.click();
+            expect(chosenView.innerHTML.includes('Log Out')).toBe(true);
+        })
+        test('only active option is Log out', () => {
+            expect(overviewOpt.classList).not.toContain('active');
+            expect(myDiaryOpt.classList).not.toContain('active');
+            expect(myDiaryFoodOpt.classList).not.toContain('active');
+            expect(myDiaryExercisesOpt.classList).not.toContain('active');
+            expect(myGoalsOpt.classList).not.toContain('active');
+            expect(myWeightsOpt.classList).not.toContain('active');
+            expect(apiKeyOpt.classList).not.toContain('active');
+            expect(logOutOpt.classList).toContain('active');
+            expect(myProfileBtn.classList).not.toContain('active');
+        })
+        test('only displayed view is Log out', () => {
+            expect(overview.style.display).toBe('none');
+            expect(myDiaryFood.style.display).toBe('none');
+            expect(myDiaryExercises.style.display).toBe('none');
+            expect(myGoals.style.display).toBe('none');
+            expect(myWeights.style.display).toBe('none');
+            expect(apiKey.style.display).toBe('none');
+            expect(logOut.style.display).not.toBe('none');
             expect(myProfile.style.display).toBe('none');
         })
     })
@@ -219,6 +312,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercisesOpt.classList).not.toContain('active');
             expect(myGoalsOpt.classList).not.toContain('active');
             expect(myWeightsOpt.classList).not.toContain('active');
+            expect(apiKeyOpt.classList).not.toContain('active');
+            expect(logOutOpt.classList).not.toContain('active');
             expect(myProfileBtn.classList).toContain('active');
         })
         test('only displayed view is My profile', () => {
@@ -227,6 +322,8 @@ describe('Dashboard test', () => {
             expect(myDiaryExercises.style.display).toBe('none');
             expect(myGoals.style.display).toBe('none');
             expect(myWeights.style.display).toBe('none');
+            expect(apiKey.style.display).toBe('none');
+            expect(logOut.style.display).toBe('none');
             expect(myProfile.style.display).not.toBe('none');
         })
     })

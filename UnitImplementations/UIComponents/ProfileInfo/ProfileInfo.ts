@@ -1,5 +1,6 @@
-import {profileInfo} from '../../../Src/UIComponents/ProfileInfo/ProfileInfo';
+import { profileInfo } from '../../../Src/UIComponents/ProfileInfo/ProfileInfo';
 import { ActivityLevel } from '../../../Models/ActivityLevel.model';
+import { WeeklyGoal } from '../../../Models/WeeklyGoal.model';
 
 const container = document.createElement('div');
 container.style.height = '500px';
@@ -17,7 +18,7 @@ container.appendChild(profileInfo({
     height: 170,
     weight: 60,
     activityLevel: ActivityLevel.Active,
-    weeklyGoal: 1,
+    weeklyGoal: WeeklyGoal.Gain,
     goalWeight: 70,
 }));
 document.body.appendChild(container);

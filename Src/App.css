@@ -1,6 +1,6 @@
 @import './UIComponents/Buttons/Buttons.css';
-@import'./UIComponents/FormComponent/FormComponent.css';
-@import'./UIComponents/TileComponent/TileComponent.css';
+@import './UIComponents/FormComponent/FormComponent.css';
+@import './UIComponents/TileComponent/TileComponent.css';
 @import './UIComponents/ModalWindow/ModalWindow.css';
 @import './UIComponents/ReusableTable/ReusableTable.css';
 @import './UIComponents/HistoricalWeeklyGoalsTable/HistoricalWeeklyGoalsTable.css';
@@ -12,8 +12,11 @@
 @import './UIComponents/ProfileInfo/ProfileInfo.css';
 @import './UIComponents/InitialView/InitialView.css';
 @import './UIComponents/TileMyWeight/TileMyWeight.css';
+@import './UIComponents/Dashboard/Dashboard.css';
 @import './UIComponents/MyWeights/MyWeights.css';
 @import './UIComponents/MyDiaryFood/MyDiaryFood.css';
+@import './UIComponents/LogIn/LogIn.css';
+@import './UIComponents/DashboardView/DashboardView.css';
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500;1,600&display=swap');
 
