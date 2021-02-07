@@ -3,12 +3,6 @@ import createSelectBox from '../Select/Select';
 import { generateWhiteButton } from '../Buttons/Buttons';
 import {WeeklyGoal} from '../../../Models/WeeklyGoal.model';
 
-export enum WeightGoal {
-  GAIN = 'GAIN',
-  LOSE = 'LOSE',
-  KEEP = 'KEEP',
-}
-
 function generateWeeklyGoalComponent(date: string, onSaveButtonClick:(weightGoal:WeeklyGoal)=>void) {
   const component = document.createElement('div');
   component.className='weekly-goal-component';
@@ -20,7 +14,7 @@ function generateWeeklyGoalComponent(date: string, onSaveButtonClick:(weightGoal
 
   const dateParagraph = document.createElement('p');
   const dateParagraphContent = document.createTextNode(
-    date,
+    date
   );
   dateParagraph.className='paragraph-week';
   dateParagraph.appendChild(dateParagraphContent);

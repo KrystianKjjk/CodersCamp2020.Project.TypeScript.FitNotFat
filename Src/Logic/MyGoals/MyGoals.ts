@@ -19,19 +19,18 @@ export function generateMyGoals(username: string): HTMLDivElement {
     actualDate.toLocaleDateString('en-GB'),
     onSaveButtonClick,
   );
-  let user = readFromLocalStorage(username);
+  const user = readFromLocalStorage(username);
   let historicalWeeklyGoalsTable = createHistoricalWeeklyGoalsTable(user.goals);
   myGoalsContainer.append(weeklyGoalComponent, historicalWeeklyGoalsTable);
 
   function onSaveButtonClick(weeklyGoalValue: WeeklyGoal) {
-    let user = readFromLocalStorage(username);
+    const user = readFromLocalStorage(username);
     const newGoal: Goal = {
       date: actualDate,
       weeklyGoal: weeklyGoalValue,
     };
     user.goals.unshift(newGoal);
     saveInLocalStorage(username, user);
-    user = readFromLocalStorage(username);
     const newhistoricalWeeklyGoalsTable = createHistoricalWeeklyGoalsTable(
       user.goals,
     );
@@ -41,6 +40,5 @@ export function generateMyGoals(username: string): HTMLDivElement {
     );
     historicalWeeklyGoalsTable = newhistoricalWeeklyGoalsTable;
   }
-
   return myGoalsContainer;
 }
