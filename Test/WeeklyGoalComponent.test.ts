@@ -1,7 +1,7 @@
 import {
-  generateWeeklyGoalComponent,
-  WeightGoal,
+  generateWeeklyGoalComponent
 } from '../Src/UIComponents/WeeklyGoalComponent/WeeklyGoalComponent';
+import { WeeklyGoal } from '../Models/WeeklyGoal.model';
 
 describe('Tests for Weekly goal component', () => {
   test('should render weekly goal component', () => {
@@ -16,6 +16,6 @@ describe('Tests for Weekly goal component', () => {
     firstOption.click();
     const saveButton:HTMLButtonElement=weeklyGoalComponent.querySelector('.button-save');
     saveButton.click();
-    expect(onClickFunction).toHaveBeenCalledWith(WeightGoal.GAIN);
+    expect(onClickFunction).toHaveBeenCalledWith(WeeklyGoal.Gain);
 })
 });
