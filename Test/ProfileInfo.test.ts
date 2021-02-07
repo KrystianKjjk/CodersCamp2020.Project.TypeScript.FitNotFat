@@ -1,5 +1,6 @@
 import {profileInfo} from '../Src/UIComponents/ProfileInfo/ProfileInfo';
 import { ActivityLevel } from '../Models/ActivityLevel.model';
+import { WeeklyGoal } from '../Models/WeeklyGoal.model';
 
 const username = 'User123';
 const gender: 'Male' | 'Female' = 'Male';
@@ -7,7 +8,7 @@ const dateOfBirth = new Date('2011-04-11T10:20:30Z');
 const height = 170;
 const weight = 60;
 const activityLevel: ActivityLevel = ActivityLevel.Active;
-const weeklyGoal = 1;
+const weeklyGoal = WeeklyGoal.Gain;
 const goalWeight = 70;
 
 const userData = {
@@ -44,15 +45,10 @@ describe('Profile info', () => {
     test('includes activity level', () => {
         expect(component.innerHTML.includes(activityLevel)).toBe(true);
     });
-    test('includes weekly goal with plus sign', () => {
-        expect(component.innerHTML.includes(`+${weeklyGoal}kg`)).toBe(true);
+    test('includes weekly goal', () => {
+        expect(component.innerHTML.includes(`${weeklyGoal}`)).toBe(true);
     });
     test('includes goal weight', () => {
         expect(component.innerHTML.includes(`${goalWeight}kg`)).toBe(true);
-    });
-    test('includes weekly goal with minus sign', () => {
-        userData['weeklyGoal'] = -1;
-        const componentMinus = profileInfo(userData);
-        expect(componentMinus.innerHTML.includes(`-${Math.abs(weeklyGoal)}`)).toBe(true);
     });
 });

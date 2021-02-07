@@ -24,7 +24,8 @@
     "start:diaryAdd": "parcel -p 8765 watch ./UnitImplementations/UIComponents/AddDiaryItem/AddDiaryItem.html",
     "start:tileMyWeight": "parcel -p 8765 watch ./UnitImplementations/UIComponents/TileMyWeight/TileMyWeight.html",
     "start:myWeights": "parcel -p 8765 watch ./UnitImplementations/UIComponents/MyWeights/MyWeights.html",
-    "start:overview": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Overview/Overview.html"
+    "start:overview": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Overview/Overview.html",
+    "start:apiKey": "parcel -p 8765 watch ./UnitImplementations/UIComponents/TileAPIKey/TileAPIKey.html"
   },
   "keywords": [
     "fitnotfat",
