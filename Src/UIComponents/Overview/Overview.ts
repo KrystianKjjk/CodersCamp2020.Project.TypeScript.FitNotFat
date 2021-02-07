@@ -22,7 +22,6 @@ import generateTileComponent from '../TileComponent/TileComponent';
     goalWeight.id = 'overviewGoalWeightTile';
     const weightTile = generateTileComponent(goalWeight);
 
-
     //create the 'today calories' tile
     const todayCalories = createElement('div', 'today-calories');
     todayCalories.id = 'overviewTodayCaloriesTile';

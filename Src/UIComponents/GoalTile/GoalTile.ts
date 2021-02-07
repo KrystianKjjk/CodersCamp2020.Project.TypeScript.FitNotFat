@@ -1,6 +1,5 @@
 import createGauge from './Gauges';
 import { createElement } from '../utils/utils';
-import { min } from 'moment';
 
 //elementID - element ID to append the tile to
 function generateGoalTile(name: string, elementID:string, currentValue:number, minValue:number, maxValue:number, unit:string, isReversed:boolean){
