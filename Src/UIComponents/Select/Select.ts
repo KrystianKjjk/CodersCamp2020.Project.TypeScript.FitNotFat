@@ -57,13 +57,8 @@ const createSelectBox = (
       option.click();
     }
   });
-  const paragraph = createElement('p');
-  const textNode = document.createTextNode('What is your weekly goal:');
-  paragraph.className='select-header';
-  paragraph.appendChild(textNode);
-  container.appendChild(paragraph);
-  container.appendChild(select);
-  container.appendChild(optionsContainer);
+  const paragraph = createElement('p','select-header','What is your weekly goal:');
+  container.append(paragraph,select,optionsContainer);
 
   window.addEventListener('click', () => {
     optionsContainer.style.display = 'none';
