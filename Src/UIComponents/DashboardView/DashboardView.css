@@ -1,0 +1,23 @@
+.dashboard-view {
+    padding: 2.5rem 4rem;
+}
+
+.dashboard-view > h1 {
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 44px;
+    letter-spacing: 0.035em;
+}
+
+.dashboard-view > h2 {
+    margin-top: 12px;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.035em;
+    color: #4A484E;
+}
+
+.dashboard-view > div {
+    margin-top: 3rem;
+}
