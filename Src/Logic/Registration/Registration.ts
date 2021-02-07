@@ -11,6 +11,7 @@ import {
   readFromLocalStorage,
   saveInLocalStorage,
 } from '../../../Src/Logic/LocalStorage/LocalStorage';
+import showModalWindow from '../../UIComponents/ModalWindow/ModalWindow';
 
 export default function generateRegistrationForm(
   onRegistrationSuccess: () => void,
@@ -49,7 +50,7 @@ export default function generateRegistrationForm(
 
     const userFromLocalStorage = readFromLocalStorage(user.name);
     if (userFromLocalStorage) {
-      alert('This nickname is taken. Please select another.');
+      showModalWindow('This nickname is taken. Please select another.');
     } else {
       saveInLocalStorage(user.name, user);
       onRegistrationSuccess();
