@@ -1,12 +1,11 @@
 import { createTable, addRow } from '../ReusableTable/ReusableTable';
 import generateTileComponent from '../TileComponent/TileComponent';
 import { Goal } from '../../../Models/Goal.model';
-
-
+import {createElement} from '../../../Src/UIComponents/utils/utils';
 
 function createHistoricalWeeklyGoalsTable(tableData: Goal[]): HTMLDivElement {
-  const container = document.createElement('div');
-  container.className = 'tile-container';
+  const container = createElement('div','historical-weekly-goals-table');
+  container.classList.add('tile-container');
   const title = document.createElement('p');
   title.className = 'tile-title';
   const titleContent = document.createTextNode('Historical weekly goals');

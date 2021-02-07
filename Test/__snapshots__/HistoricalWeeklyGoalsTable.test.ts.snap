@@ -5,7 +5,7 @@ exports[`Tests for createHistoricalWeeklyGoalsTable Should render only headers 1
   class="tile"
 >
   <div
-    class="tile-container"
+    class="historical-weekly-goals-table tile-container"
   >
     <p
       class="tile-title"
@@ -42,7 +42,7 @@ exports[`Tests for createHistoricalWeeklyGoalsTable Should render table with row
   class="tile"
 >
   <div
-    class="tile-container"
+    class="historical-weekly-goals-table tile-container"
   >
     <p
       class="tile-title"
