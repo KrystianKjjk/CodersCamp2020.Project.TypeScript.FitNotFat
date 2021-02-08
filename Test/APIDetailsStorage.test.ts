@@ -4,7 +4,7 @@ import {ActivityLevel} from "../Models/ActivityLevel.model";
 import {MyDiaryFood} from "../Models/DiaryFood.model";
 import {Meal} from "../Models/Meal.model";
 import {saveInLocalStorage} from "../Src/Logic/LocalStorage/LocalStorage";
-import { NO_USER_ERROR, NO_API_DETAILS_ERROR, SAVED_CORRECTLY_CONFIRM  } from "../Constants/const";
+import { NO_USER_ERROR, NO_API_DETAILS_ERROR, SAVED_CORRECTLY_CONFIRM  } from "../Constants/consts";
 
 const username = 'TestUser';
 

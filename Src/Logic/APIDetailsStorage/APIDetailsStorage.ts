@@ -1,6 +1,6 @@
 import { DetailsAPI } from "../../../Models/DetailsAPI.model";
 import { saveInLocalStorage, readFromLocalStorage } from "../../../Src/Logic/LocalStorage/LocalStorage"
-import { NO_USER_ERROR, NO_API_DETAILS_ERROR, SAVED_CORRECTLY_CONFIRM } from "../../../Constants/const";
+import { NO_USER_ERROR, NO_API_DETAILS_ERROR, SAVED_CORRECTLY_CONFIRM } from "../../../Constants/consts";
 
 function getAPIDetails(userName: string) {
     return new Promise<DetailsAPI>( (resolve, reject) => {
