@@ -7,6 +7,7 @@ import {WeeklyGoal} from '../../../Models/WeeklyGoal.model';
 import {User} from '../../../Models/User.model';
 import dashboard from '../../../Src/UIComponents/Dashboard/Dashboard';
 import {profileInfo} from '../../../Src/UIComponents/ProfileInfo/ProfileInfo';
+import dashboardView from '../../../Src/UIComponents/DashboardView/DashboardView'
 
 const username = 'User3';
 const user: User = {
@@ -28,17 +29,12 @@ const user: User = {
 saveInLocalStorage(username, user);
 
 function createDashboard(user: User): HTMLElement {
-  let overview = document.createElement('div');
-  overview.innerHTML = "Overview";
-  let myDiaryFood = document.createElement('div');
-  myDiaryFood.innerHTML = "Food";
-  let myDiaryExercises = document.createElement('div');
-  myDiaryExercises.innerHTML = "Exercises";
-  let myGoals = document.createElement('div');
-  myGoals.innerHTML = "Goals";
-  let myWeights = document.createElement('div');
-  myWeights.innerHTML = "Weights";
-  let myProfile = profileInfo({
+  const overview = dashboardView('Overview', createElement('div', [], 'overview content') as HTMLDivElement, `Hi <b>${username}</b>, welcome back!`);
+  const myDiaryFood = dashboardView('Food', createElement('div', [], 'food content') as HTMLDivElement);
+  const myDiaryExercises = dashboardView('Exercises', createElement('div', [], 'exercises content') as HTMLDivElement);
+  const myGoals = dashboardView('Goals', createElement('div', [], 'goals content') as HTMLDivElement);
+  const myWeights = dashboardView('Weights', createElement('div', [], 'weights content') as HTMLDivElement);
+  const profile = profileInfo({
     username: user.name,
     gender: user.gender,
     dateOfBirth: user.dateOfBirth,
@@ -48,6 +44,7 @@ function createDashboard(user: User): HTMLElement {
     weeklyGoal: user.goals[user.goals.length - 1].weeklyGoal,
     goalWeight: user.goalWeight,
   });
+  const myProfile = dashboardView('My profile', profile);
   return dashboard(user.name, {
     'overview': overview, 
     'diary-food': myDiaryFood, 
