@@ -6,7 +6,7 @@ const container = document.createElement('div');
 container.className = 'main-container';
 const title = document.createElement('p');
 title.className = 'main-title';
-title.appendChild(document.createTextNode('Join Us'));
+title.appendChild(document.createTextNode('Join us'));
 
 const line = document.createElement('hr');
 line.className = 'main-hr';

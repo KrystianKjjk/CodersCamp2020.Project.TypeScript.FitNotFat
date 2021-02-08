@@ -1,6 +1,7 @@
 import generateTileComponent from '../TileComponent/TileComponent';
 import createSelectBox from '../Select/Select';
 import { generateWhiteButton } from '../Buttons/Buttons';
+import {createElement} from '../../../Src/UIComponents/utils/utils';
 
 export enum WeightGoal {
   GAIN = 'GAIN',
@@ -24,18 +25,13 @@ function generateWeeklyGoalComponent(weekNumber: string, onSaveButtonClick:(weig
   weekNumberParagraph.className='paragraph-week';
   weekNumberParagraph.appendChild(weekNumberParagraphContent);
   component.appendChild(weekNumberParagraph);
-  let selectedValue:WeightGoal = null; 
-  const select = createSelectBox(
-    [
-      { key: WeightGoal[WeightGoal.GAIN], label: 'Gain weight' },
-      { key: WeightGoal[WeightGoal.LOSE], label: 'Lose weight' },
-      { key: WeightGoal[WeightGoal.KEEP], label: 'Keep weight' },
-    ],
-    (weightGoalString) => {
-      selectedValue=WeightGoal[weightGoalString];
-    },
-    'Select your weekly goal',
-  );
+  let selectedValue:WeightGoal = null;
+
+const onSelect=(selectedVal:WeightGoal)=>{
+  selectedValue=selectedVal;
+};
+
+const select=createWeightGoalSelect(onSelect);
   select.classList.add('select-weekly-goal');
   select.style.width='300px';
   component.appendChild(select);
@@ -47,4 +43,20 @@ function generateWeeklyGoalComponent(weekNumber: string, onSaveButtonClick:(weig
   return weeklyGoalComponent;
 }
 
-export { generateWeeklyGoalComponent };
+function createWeightGoalSelect(onSelect:(selectedValue:WeightGoal)=>void){
+
+  const select = createSelectBox(
+    [
+      { key: WeightGoal[WeightGoal.GAIN], label: 'Gain weight' },
+      { key: WeightGoal[WeightGoal.LOSE], label: 'Lose weight' },
+      { key: WeightGoal[WeightGoal.KEEP], label: 'Keep weight' },
+    ],
+    (weightGoalString) => {
+      onSelect(WeightGoal[weightGoalString]);
+    },
+    'What is your weekly goal',
+  )
+  return select;
+}
+
+export { generateWeeklyGoalComponent, createWeightGoalSelect };
