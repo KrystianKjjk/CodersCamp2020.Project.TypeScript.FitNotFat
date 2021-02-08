@@ -4,10 +4,7 @@ import {ActivityLevel} from "../Models/ActivityLevel.model";
 import {MyDiaryFood} from "../Models/DiaryFood.model";
 import {Meal} from "../Models/Meal.model";
 import {saveInLocalStorage} from "../Src/Logic/LocalStorage/LocalStorage";
-
-const NO_USER_ERROR = `User doesn't exist!`;
-const NO_API_DETAILS_ERROR = `User doesn't contain API details.`;
-const SAVED_CORRECTLY_CONFIRM = 'API DETAILS saved correctly!';
+import { NO_USER_ERROR, NO_API_DETAILS_ERROR, SAVED_CORRECTLY_CONFIRM  } from "../Constants/const";
 
 const username = 'TestUser';
 

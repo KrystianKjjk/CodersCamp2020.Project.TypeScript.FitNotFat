@@ -1,9 +1,6 @@
 import { DetailsAPI } from "../../../Models/DetailsAPI.model";
 import { saveInLocalStorage, readFromLocalStorage } from "../../../Src/Logic/LocalStorage/LocalStorage"
-
-const NO_USER_ERROR = `User doesn't exist!`;
-const NO_API_DETAILS_ERROR = `User doesn't contain API details.`;
-const SAVED_CORRECTLY_CONFIRM = 'API DETAILS saved correctly!';
+import { NO_USER_ERROR, NO_API_DETAILS_ERROR, SAVED_CORRECTLY_CONFIRM } from "../../../Constants/const";
 
 function getAPIDetails(userName: string) {
     return new Promise<DetailsAPI>( (resolve, reject) => {
