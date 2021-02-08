@@ -1,5 +1,4 @@
 import { SetProfileInfo } from '../../../Src/Logic/SetProfileInfo/SetProfileInfo';
-import  generateTileComponent  from '../../../Src/UIComponents/TileComponent/TileComponent'
 import { User } from '../../../Models/User.model';
 import { ActivityLevel } from '../../../Models/ActivityLevel.model';
 import { MyDiaryFood } from '../../../Models/DiaryFood.model';

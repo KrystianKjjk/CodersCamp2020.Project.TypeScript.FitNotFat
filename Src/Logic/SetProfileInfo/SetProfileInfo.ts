@@ -1,5 +1,4 @@
 import { profileInfo } from "../../UIComponents/ProfileInfo/ProfileInfo";
-import {readFromLocalStorage} from '../../../Src/Logic/LocalStorage/LocalStorage';
 import {ActivityLevel} from "../../../Models/ActivityLevel.model";
 import {WeeklyGoal} from "../../../Models/WeeklyGoal.model";
 import { User } from '../../../Models/User.model';
