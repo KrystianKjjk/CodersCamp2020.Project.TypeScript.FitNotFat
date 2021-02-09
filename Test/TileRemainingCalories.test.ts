@@ -32,7 +32,5 @@ describe('Tests of remaining calories component', ()=>{
         expect(nodeListRows[0].textContent).toEqual(pattern[0]);
         expect(nodeListRows[2].textContent).toEqual(pattern[2]);
         expect(nodeListRows[4].textContent).toEqual(pattern[4]);
-
     })
-
 })
