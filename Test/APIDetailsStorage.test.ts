@@ -34,6 +34,9 @@ const detailsAPI = {key: 'PrzykladAPIOdczytZLocalStorage', id: 'OrazOdczytanegoI
 saveInLocalStorage(username,user);
 
 describe('GET APIDetails tests', () => {
+    beforeEach(() => {
+        window.alert = jest.fn();
+      });
 
     test('GET - if user doesnt exist get error', async () => {
         const user = 'iDONTexist';
@@ -51,7 +54,10 @@ describe('GET APIDetails tests', () => {
 );
 
 describe('SET APIDetails tests', () => {
-
+    beforeEach(() => {
+        window.alert = jest.fn();
+      });
+      
         test('SET - if user doesnt exist - get error', async () => {
             const username = 'iDONTexist';
             await expect(setAPIDetails(username,detailsAPI)).rejects.toEqual(Error(NO_USER_ERROR));
