@@ -1,7 +1,5 @@
 import { generateMyGoals } from '../../../Src/Logic/MyGoals/MyGoals';
-import {
-  saveInLocalStorage,
-} from '../../../Src/Logic/LocalStorage/LocalStorage';
+import {saveInLocalStorage} from '../../../Src/Logic/LocalStorage/LocalStorage';
 import { User } from '../../../Models/User.model';
 import { ActivityLevel } from '../../../Models/ActivityLevel.model';
 import { Goal } from '../../../Models/Goal.model';
