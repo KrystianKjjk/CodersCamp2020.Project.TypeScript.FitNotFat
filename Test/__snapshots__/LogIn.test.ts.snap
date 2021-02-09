@@ -21,6 +21,7 @@ exports[`tests for Log In Form Component render correctly 1`] = `
     <button
       class="button"
       style="background-color: rgb(218, 27, 54); color: white;"
+      type="button"
     />
   </div>
 </div>

@@ -2,6 +2,7 @@ import generateTileComponent from '../TileComponent/TileComponent';
 import createSelectBox from '../Select/Select';
 import { generateWhiteButton } from '../Buttons/Buttons';
 import {WeeklyGoal} from '../../../Models/WeeklyGoal.model';
+import {createElement} from '../../../Src/UIComponents/utils/utils';
 
 function generateWeeklyGoalComponent(date: string, onSaveButtonClick:(weightGoal:WeeklyGoal)=>void) {
   const component = document.createElement('div');
@@ -16,21 +17,17 @@ function generateWeeklyGoalComponent(date: string, onSaveButtonClick:(weightGoal
   const dateParagraphContent = document.createTextNode(
     date
   );
+  
   dateParagraph.className='paragraph-week';
   dateParagraph.appendChild(dateParagraphContent);
   component.appendChild(dateParagraph);
-  let selectedValue:WeeklyGoal = null; 
-  const select = createSelectBox(
-    [
-      { key: WeeklyGoal[WeeklyGoal.Gain], label: 'Gain weight' },
-      { key: WeeklyGoal[WeeklyGoal.Lose], label: 'Lose weight' },
-      { key: WeeklyGoal[WeeklyGoal.Keep], label: 'Keep weight' },
-    ],
-    (weightGoalString) => {
-      selectedValue=WeeklyGoal[weightGoalString];
-    },
-    'Select your weekly goal',
-  );
+  let selectedValue:WeeklyGoal = null;
+
+const onSelect=(selectedVal:WeeklyGoal)=>{
+  selectedValue=selectedVal;
+};
+
+const select=createWeightGoalSelect(onSelect);
   select.classList.add('select-weekly-goal');
   select.style.width='300px';
   component.appendChild(select);
@@ -42,4 +39,20 @@ function generateWeeklyGoalComponent(date: string, onSaveButtonClick:(weightGoal
   return weeklyGoalComponent;
 }
 
-export { generateWeeklyGoalComponent };
+function createWeightGoalSelect(onSelect:(selectedValue:WeeklyGoal)=>void){
+  const select = createSelectBox(
+    [
+      { key: WeeklyGoal[WeeklyGoal.Gain], label: 'Gain weight' },
+      { key: WeeklyGoal[WeeklyGoal.Lose], label: 'Lose weight' },
+      { key: WeeklyGoal[WeeklyGoal.Keep], label: 'Keep weight' },
+    ],
+    (weightGoalString) => {
+      onSelect(WeeklyGoal[weightGoalString]);
+    },
+    'Select your weekly goal',
+  );
+
+  return select;
+}
+
+export { generateWeeklyGoalComponent, createWeightGoalSelect };

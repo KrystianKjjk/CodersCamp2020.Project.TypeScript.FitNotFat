@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TileAPIKey component tests if renders properly 1`] = `
+<div
+  class="api-key-tile"
+>
+  <header
+    class="api-key-tile__header"
+  >
+    API KEY
+  </header>
+  <section
+    class="api-key-tile__section"
+  >
+    <p
+      class="api-key-tile__section--text"
+    >
+      ENTER API KEY
+    </p>
+    <input
+      class="api-key-tile__section--input"
+      placeholder="ex. thisismyapikey"
+      required=""
+      type="text"
+    />
+  </section>
+  <section
+    class="api-key-tile__section"
+  >
+    <p
+      class="api-key-tile__section--text"
+    >
+      ENTER ID
+    </p>
+    <input
+      class="api-key-tile__section--input"
+      placeholder="ex. thisismyID"
+      required=""
+      type="text"
+    />
+  </section>
+  <p
+    class="api-key-tile__section--error"
+  />
+  <button
+    class="button my-weight-tile__button-section--tile-btn"
+    style="background-color: white; color: rgb(218, 27, 54);"
+    type="button"
+  />
+</div>
+`;

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test dashboardView  render correctly with second header: dashboardViewWith2ndHeader 1`] = `
+<div
+  class="dashboard-view"
+>
+  <h1>
+    View
+  </h1>
+  <h2>
+    Second header!
+  </h2>
+  <div>
+    Content
+  </div>
+</div>
+`;
+
+exports[`test dashboardView  render correctly without second header: dashboardViewWithout2ndHeader 1`] = `
+<div
+  class="dashboard-view"
+>
+  <h1>
+    View
+  </h1>
+  <div>
+    Content
+  </div>
+</div>
+`;
