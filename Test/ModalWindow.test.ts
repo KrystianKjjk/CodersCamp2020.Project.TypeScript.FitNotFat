@@ -1,4 +1,4 @@
-import modalWindow from '../Src/UIComponents/ModalWindow/ModalWindow';
+import {modalWindow} from '../Src/UIComponents/ModalWindow/ModalWindow';
 
 describe('Modal Window test', () => {
     const component = document.createElement('p');
