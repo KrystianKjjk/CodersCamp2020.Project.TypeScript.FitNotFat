@@ -4,6 +4,7 @@ import { createElement, calculateCalories } from '../utils/utils';
 import { User } from '../../../Models/User.model';
 import {saveInLocalStorage, readFromLocalStorage} from '../../Logic/LocalStorage/LocalStorage';
 import generateTileComponent from '../TileComponent/TileComponent';
+import { getAge } from '../utils/utils';
 
 
 //to call this function (due to the nature of how the gauges are created by the library) please first create a target container in body (make sure it's already in DOM) and only then call the function
@@ -39,10 +40,6 @@ import generateTileComponent from '../TileComponent/TileComponent';
 }
 
 export default overviewComponent;
-
-function getAge(date: Date) {     
-    return ((new Date(Date.now() - date.getTime()).getFullYear()) - 1970);
-}
 
 function saveWeightInLocalStorage(weight: number, date: Date, user:User){
     user.weights.unshift({
