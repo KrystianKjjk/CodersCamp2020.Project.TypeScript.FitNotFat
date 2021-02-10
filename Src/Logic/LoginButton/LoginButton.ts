@@ -1,6 +1,7 @@
 import {readFromLocalStorage} from '../LocalStorage/LocalStorage';
 import {User} from '../../../Models/User.model';
 import {setLoggedInUser, getLoggedInUser} from '../../UIComponents/utils/utils';
+import {USER_INPUT_EMPTY} from '../../../Constants/consts';
 function loginButton(username: string, userDashboard: (user: User) => HTMLElement, failComp: HTMLParagraphElement): void {
     const loggedIn = getLoggedInUser();
     const user = readFromLocalStorage(loggedIn ? loggedIn : username) as User | null;
@@ -17,7 +18,7 @@ function loginButton(username: string, userDashboard: (user: User) => HTMLElemen
         elem.remove();
     }))
     loginBtn.parentElement.append(failComp);
-    if (!username) failComp.innerHTML = "Enter a nickname";
+    if (!username) failComp.innerHTML = USER_INPUT_EMPTY;
 }
 
 export default loginButton;
