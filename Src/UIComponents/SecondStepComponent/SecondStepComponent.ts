@@ -1,18 +1,15 @@
 import { createRadioGroup } from '../../../Src/UIComponents/RadioGroup/RadioGroup';
-import createSelectBox from '../../../Src/UIComponents/Select/Select';
 import {
   generateRedButton,
   generateWhiteButton,
 } from '../../../Src/UIComponents/Buttons/Buttons';
 import { createElement } from '../../../Src/UIComponents/utils/utils';
-import {
-  WeightGoal,
-  createWeightGoalSelect,
-} from '../../../Src/UIComponents/WeeklyGoalComponent/WeeklyGoalComponent';
+import { createWeightGoalSelect } from '../../../Src/UIComponents/WeeklyGoalComponent/WeeklyGoalComponent';
 import { ActivityLevel } from '../../../Models/ActivityLevel.model';
+import { WeeklyGoal } from '../../../Models/WeeklyGoal.model';
 
 export interface SecondStepValues {
-  weeklyGoal: WeightGoal;
+  weeklyGoal: WeeklyGoal;
   activityLevel: ActivityLevel;
 }
 
@@ -28,7 +25,7 @@ export function generateSecondStep(
   let selectedValue;
   let radioSelectedValue;
 
-  function onWeightGoalSelect(selectedVal: WeightGoal) {
+  function onWeightGoalSelect(selectedVal: WeeklyGoal) {
     selectedValue = selectedVal;
   }
 

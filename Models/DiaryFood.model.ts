@@ -6,15 +6,15 @@ type MealMap = {
 
 export interface DiaryFood {
     date: Date,
-    recommendedKcal: number,
-    providedKcal: number,
+    recommendedKcal?: number,
+    providedKcal?: number,
     meals?: MealMap
 }
 
 export class MyDiaryFood implements DiaryFood {
     date: Date;
-    recommendedKcal: number;
-    providedKcal: number;
+    recommendedKcal?: number;
+    providedKcal?: number;
     meals: MealMap;
 
     constructor(data: DiaryFood) {
