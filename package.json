@@ -29,7 +29,8 @@
     "start:secondStep":"parcel -p 8765 watch ./UnitImplementations/UIComponents/SecondStepComponent/SecondStepComponent.html",
     "start:apiKey": "parcel -p 8765 watch ./UnitImplementations/UIComponents/TileAPIKey/TileAPIKey.html",
     "start:apiKeyLogic": "parcel -p 8765 watch ./UnitImplementations/Logic/APIDetailsStorage/APIDetailsStorage.html",
-    "start:logicProfileInfo": "parcel -p 8765 watch ./UnitImplementations/Logic/SetProfileInfo/SetProfileInfo.html"
+    "start:logicProfileInfo": "parcel -p 8765 watch ./UnitImplementations/Logic/SetProfileInfo/SetProfileInfo.html",
+    "start:registrationTransition": "parcel -p 8765 watch ./UnitImplementations/Logic/RegistrationLoginTransition/RegistrationLoginTransition.html"
   },
   "keywords": [
     "fitnotfat",
