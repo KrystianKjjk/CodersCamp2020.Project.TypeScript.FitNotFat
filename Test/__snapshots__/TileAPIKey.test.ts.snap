@@ -45,6 +45,7 @@ exports[`TileAPIKey component tests if renders properly 1`] = `
   <button
     class="button my-weight-tile__button-section--tile-btn"
     style="background-color: white; color: rgb(218, 27, 54);"
+    type="button"
   />
 </div>
 `;

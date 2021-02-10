@@ -1,9 +1,35 @@
 import { generateRedButton } from '../Buttons/Buttons';
 import { createElement, createTextInput, createNumberInput, createRadioInput } from '../utils/utils';
 
-export default function generateForm():HTMLFormElement{
-  const form = document.createElement('form');
+export interface FirstStepFormValues {
+  name: string;
+  gender: 'Male' | 'Female';
+  dateOfBirth: Date;
+  height: number;
+  currentWeight: number;
+  goalWeight: number;
+}
 
+
+export default function generateForm(
+  onNextStepClick: (firstStepFormValues: FirstStepFormValues) => void,
+): HTMLFormElement {
+  const form = document.createElement('form');
+  form.onsubmit = (event) => {
+    event.preventDefault();
+    const gender = form.querySelector(
+      'input[name="gender"]:checked',
+    ) as HTMLInputElement;
+    const formValues: FirstStepFormValues = {
+      name: nameInput.value,
+      gender: gender.value as 'Male' | 'Female',
+      dateOfBirth: new Date(dateInput.value),
+      height: parseInt(heightInput.value),
+      currentWeight: parseInt(weightInput.value),
+      goalWeight: parseInt(goalWeightInput.value),
+    };
+    onNextStepClick(formValues);
+  };
   const paragraph = generateParagraph();
   const progressBar = generateProgressBar();
 
@@ -27,11 +53,20 @@ export default function generateForm():HTMLFormElement{
     'goal-weight',
   );
 
-  const submitButton = generateRedButton('Next step', ()=>{});
+  const submitButton = generateRedButton('Next step', () => {}, "submit");
   submitButton.style.height = '50px';
   submitButton.style.width = '35%';
 
-  form.append(paragraph,progressBar,nameInput, genderSelectionDiv, dateInput, heightAndWeightDiv,goalWeightInput, submitButton);
+  form.append(
+    paragraph,
+    progressBar,
+    nameInput,
+    genderSelectionDiv,
+    dateInput,
+    heightAndWeightDiv,
+    goalWeightInput,
+    submitButton,
+  );
   return form;
 }
  
@@ -50,16 +85,16 @@ function generateProgressBar():HTMLDivElement {
 function generateGenderSelectionDiv():HTMLDivElement {
   const genderSelectionDiv = createElement('div', 'gender-selection') as HTMLDivElement;
 
-  const maleInput = createRadioInput('', 'gender', 'male');
-  const maleLabel = generateLabel('male');
+  const maleInput = createRadioInput('', 'gender', 'Male');
+  const maleLabel = generateLabel('Male');
   genderSelectionDiv.append(maleInput, maleLabel);
   maleLabel.innerHTML = 'Male';
 
   const genderSelectionSpan = document.createElement('span');
   genderSelectionDiv.appendChild(genderSelectionSpan);
 
-  const femaleInput = createRadioInput('radio-button', 'gender', 'female');
-  const femaleLabel = generateLabel('female');
+  const femaleInput = createRadioInput('radio-button', 'gender', 'Female');
+  const femaleLabel = generateLabel('Female');
   genderSelectionDiv.append(femaleInput,femaleLabel);
   femaleLabel.innerHTML = 'Female';
   return genderSelectionDiv;
