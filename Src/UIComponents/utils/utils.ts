@@ -95,7 +95,6 @@ export function getLoggedInUser(): string{
 
 export function setLoggedInUser(loggedUser: string): boolean{
     if(localStorage.getItem(KEY_LOGGED_USER)) return false;
-
     localStorage.setItem(KEY_LOGGED_USER, loggedUser);
     return true;
 }
