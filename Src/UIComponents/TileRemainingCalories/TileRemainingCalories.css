@@ -1,0 +1,46 @@
+.remaining-calories-tile {
+  background: inherit;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  width: 22rem;
+  height: 15rem;
+  letter-spacing: 0.035rem;
+  margin-left: 1.8rem;
+  margin-right: 1.8rem;
+  position: relative;
+}
+.remaining-calories-tile__header {
+  font-size: 0.8rem;
+  color: rgba(74, 72, 78, 0.7);
+  background: inherit;
+  margin: 1.2rem 0 2.4rem 0;
+}
+.remaining-calories-tile__number {
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: #DA1B36;
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+.remaining-calories-tile__number span {
+  color: #4A484E;
+}
+.remaining-calories-tile__section-details--table tr th {
+  font-weight: 500;
+  color: rgba(74, 72, 78, 0.7);
+  width: 40%;
+}
+.remaining-calories-tile__section-details--table tr td {
+  font-size: 1.2rem;
+  border-bottom: none;
+  color: #4A484E;
+  width: 40%;
+}
+.remaining-calories-tile__section-details--table tr th:nth-of-type(2n),
+.remaining-calories-tile__section-details tr td:nth-of-type(2n) {
+  width: 2rem;
+  padding: 0;
+  font-size: 1.2rem;
+}
+
