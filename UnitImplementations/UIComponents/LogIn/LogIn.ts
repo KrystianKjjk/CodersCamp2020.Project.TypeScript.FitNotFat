@@ -34,6 +34,8 @@ function createDashboard(user: User): HTMLElement {
   const myDiaryExercises = dashboardView('Exercises', createElement('div', [], 'exercises content') as HTMLDivElement);
   const myGoals = dashboardView('Goals', createElement('div', [], 'goals content') as HTMLDivElement);
   const myWeights = dashboardView('Weights', createElement('div', [], 'weights content') as HTMLDivElement);
+  const apiKey = dashboardView('API Key', createElement('div', [], 'api key content') as HTMLDivElement);
+  const logOut = dashboardView('Log Out', createElement('div', [], 'log out content') as HTMLDivElement);
   const profile = profileInfo({
     username: user.name,
     gender: user.gender,
@@ -46,12 +48,14 @@ function createDashboard(user: User): HTMLElement {
   });
   const myProfile = dashboardView('My profile', profile);
   return dashboard(user.name, {
-    'overview': overview, 
+    overview,
     'diary-food': myDiaryFood, 
     'diary-exercises': myDiaryExercises, 
-    'goals': myGoals, 
-    'weights': myWeights, 
-    'profile': myProfile
+    goals: myGoals, 
+    weights: myWeights, 
+    profile: myProfile,
+    apiKey,
+    logOut
   });
 }
 
