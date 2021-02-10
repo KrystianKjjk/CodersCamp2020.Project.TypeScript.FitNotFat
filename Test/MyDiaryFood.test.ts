@@ -127,7 +127,7 @@ describe('MyDiaryFood', () => {
 
         //@ts-ignore
         const saveMock = jest.fn();
-        LocalStorage.saveInLocalStorage = saveMock;
+        Object.defineProperty(LocalStorage, 'saveInLocalStorage', {value: saveMock});
 
         const mockedAPIResponse: FoodAPI.FoodDataFromResponse = {
             foods: [
@@ -142,7 +142,7 @@ describe('MyDiaryFood', () => {
         const myDiaryFoodComponent = createMealDiary('juan', 'breakfast', now);
         document.body.appendChild(myDiaryFoodComponent);
         const addBtn: HTMLElement = document.body.querySelector(`.${identifierClasses.btnContainers.btnAdd} button`);
-        addBtn.click();
+        addBtn.click(); 
 
         const input: HTMLInputElement = document.body.querySelector(`.${identifierClasses.input}`);
         input.value = '1 slice of pepperoni pizza'
