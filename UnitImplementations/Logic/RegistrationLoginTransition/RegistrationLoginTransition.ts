@@ -1,4 +1,4 @@
-import {anauthorizedUserLogic} from '../../../Src/Logic/RegistrationLoginTransition/RegistrationLoginTransition';
-import {generateHomePage} from '../../../Src/UIComponents/HomePage/HomePage';
+import {unauthorizedUserLogic} from '../../../Src/Logic/RegistrationLoginTransition/RegistrationLoginTransition';
+import {generateHomePageContent} from '../../../Src/UIComponents/HomePage/HomePage';
 
-document.body.appendChild(anauthorizedUserLogic());
+document.body.appendChild(unauthorizedUserLogic());

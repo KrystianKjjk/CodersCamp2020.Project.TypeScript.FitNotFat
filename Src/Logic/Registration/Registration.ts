@@ -16,7 +16,7 @@ import { Goal } from '../../../Models/Goal.model';
 
 export default function generateRegistrationForm(
   onRegistrationSuccess: () => void,
-): HTMLElement {
+): HTMLDivElement {
   const registrationDiv = createElement('div', 'div-registration');
 
   let firstStepValues: FirstStepFormValues;
@@ -61,5 +61,5 @@ export default function generateRegistrationForm(
     }
   }
 
-  return registrationDiv;
+  return registrationDiv as HTMLDivElement;
 }
