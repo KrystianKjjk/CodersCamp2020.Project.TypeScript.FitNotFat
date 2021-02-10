@@ -8,7 +8,6 @@ container.style.flexDirection = 'column';
 container.style.alignItems = 'center';
 container.style.justifyContent = 'space-around';
 
-
 const placeholder = 'ex. ran 3 miles or 30 min yoga';
 const table = createTable(['Exercise name', 'Met', 'Duration', 'Calories']);
 const addNewRow = addRow(table);
