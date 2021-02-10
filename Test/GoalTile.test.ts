@@ -5,7 +5,7 @@ jest.mock('../Src/UIComponents/GoalTile/Gauges');
 const goaltile = document.createElement('div');
 goaltile.id = "test";
 document.body.appendChild(goaltile);
-generateGoalTile("test", "test", 112, 0, 250, "kg");
+generateGoalTile("test", "test", 112, 0, 250, "kg", true);
 
 //just simple tests as the external library handles the displaying
 describe('Goal Tile test', () => {

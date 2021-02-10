@@ -1,5 +1,7 @@
 import { createTileMyWeight } from '../Src/UIComponents/TileMyWeight/TileMyWeight';
 const moment = require('moment');
+import { User } from '../Models/User.model';
+import { ActivityLevel } from '../Models/ActivityLevel.model';
 
 describe('createTileMyWeight tests', () => {
   let createTileMyWeightTest;
@@ -7,8 +9,33 @@ describe('createTileMyWeight tests', () => {
   const currentWeight = 65.7;
   const date = new Date(2020,0,22);
 
+  let dummyobject: User = {
+    name: "kotek",
+    gender: 'Male',
+    dateOfBirth: new Date,
+    height: 180,
+    goalWeight: 60,
+    activityLevel: ActivityLevel.Low,
+    weights:[
+        {date: new Date(2021, 1, 2), weight: 70}
+    ],
+    diaryFood: [{
+        date: new Date(),
+        recommendedKcal: 1200,
+        providedKcal: 1245,
+        meals: {
+            obiad: [{
+                name: 'test',
+                amount: 1,
+                unit: 'kg',
+                calories: 120
+            }]
+        }
+    }]
+};
+
   beforeEach(() => {
-    createTileMyWeightTest = createTileMyWeight(currentWeight,date,callback);
+    createTileMyWeightTest = createTileMyWeight(currentWeight,date, dummyobject, callback);
   });
 
   test('if returns HTMLElement', () => {
