@@ -1,5 +1,6 @@
 import { placeholder } from "@babel/types";
 import { User } from '../../../Models/User.model'
+import { KEY_LOGGED_USER } from "../../../Constants/consts";
 
 export function createElement(tagName: string, classNames?: string[] | string, innerHTML?: string, dataComponent?: string): HTMLElement {
     const element = document.createElement(tagName);
@@ -86,4 +87,19 @@ export function calculateCalories(gender: User["gender"], weight: number, height
     }   
 
     return calories;
+}
+
+export function getLoggedInUser(): string{
+    return localStorage.getItem(KEY_LOGGED_USER) || '';
+}
+
+export function setLoggedInUser(loggedUser: string): boolean{
+    if(localStorage.getItem(KEY_LOGGED_USER)) return false;
+    localStorage.setItem(KEY_LOGGED_USER, loggedUser);
+    return true;
+}
+
+export function clearLoggedInUser(): boolean{
+    localStorage.setItem(KEY_LOGGED_USER, '');
+    return true;
 }
