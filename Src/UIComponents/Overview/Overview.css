@@ -20,7 +20,7 @@
     line-height: 1.5;
 }
 
-h2 > span{
+.overview-container h2 > span{
     font-weight: 600;
 }
 
@@ -29,7 +29,7 @@ h2 > span{
     border-radius: 20px;
 }
 
-.tile, .my-weight-tile{
+.overview-container .tile, .overview-container .my-weight-tile{
     width: 35%;
     margin: 50px;
 }

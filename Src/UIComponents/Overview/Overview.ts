@@ -40,15 +40,8 @@ import generateTileComponent from '../TileComponent/TileComponent';
 
 export default overviewComponent;
 
-function getAge(date: Date) {
-    var today = new Date();
-    var birthDate = date;
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    return age;
+function getAge(date: Date) {     
+    return ((new Date(Date.now() - date.getTime()).getFullYear()) - 1970);
 }
 
 function saveWeightInLocalStorage(weight: number, date: Date, user:User){
