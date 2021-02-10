@@ -29,7 +29,7 @@ exports[`Tests for createHistoricalWeeklyGoalsTable Should render only headers 1
           END WEIGHT
         </th>
         <th>
-          ACHIEVED IN
+          ACHIEVED
         </th>
       </tr>
     </table>
@@ -66,7 +66,7 @@ exports[`Tests for createHistoricalWeeklyGoalsTable Should render table with row
           END WEIGHT
         </th>
         <th>
-          ACHIEVED IN
+          ACHIEVED
         </th>
       </tr>
       <tr>

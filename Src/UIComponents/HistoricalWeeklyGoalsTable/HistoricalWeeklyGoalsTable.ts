@@ -4,10 +4,8 @@ import { Goal } from '../../../Models/Goal.model';
 import {createElement} from '../../../Src/UIComponents/utils/utils';
 
 function createHistoricalWeeklyGoalsTable(tableData: Goal[]): HTMLDivElement {
-  const container = createElement('div','historical-weekly-goals-table');
-  container.classList.add('tile-container');
-  const title = document.createElement('p');
-  title.className = 'tile-title';
+  const container = createElement('div',['historical-weekly-goals-table', 'tile-container']);
+  const title = createElement('p','tile-title');
   const titleContent = document.createTextNode('Historical weekly goals');
   title.appendChild(titleContent);
   const tile = generateTileComponent(container);
@@ -17,7 +15,7 @@ function createHistoricalWeeklyGoalsTable(tableData: Goal[]): HTMLDivElement {
     'WEEKLY GOAL',
     'START WEIGHT',
     'END WEIGHT',
-    'ACHIEVED IN',
+    'ACHIEVED',
   ]);
   const addRowToHistoricalWeeklyGoalsTable = addRow(table);
 
