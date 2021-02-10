@@ -12,6 +12,7 @@ import {
   saveInLocalStorage,
 } from '../../../Src/Logic/LocalStorage/LocalStorage';
 import showModalWindow from '../../UIComponents/ModalWindow/ModalWindow';
+import { Goal } from '../../../Models/Goal.model';
 
 export default function generateRegistrationForm(
   onRegistrationSuccess: () => void,
@@ -34,10 +35,12 @@ export default function generateRegistrationForm(
   }
 
   function onSignUpClick(secondStepValues: SecondStepValues) {
+    const currentDate=new Date();
     const weight: Weight = {
-      date: new Date(),
-      weight: firstStepValues.currentWeight,
+      date: currentDate,
+      weight: firstStepValues.currentWeight
     };
+    const goal:Goal={date:currentDate, weeklyGoal:secondStepValues.weeklyGoal}
     const user: User = {
       name: firstStepValues.name,
       gender: firstStepValues.gender,
@@ -46,6 +49,7 @@ export default function generateRegistrationForm(
       goalWeight: firstStepValues.goalWeight,
       activityLevel: secondStepValues.activityLevel,
       weights: [weight],
+      goals:[goal]
     };
 
     const userFromLocalStorage = readFromLocalStorage(user.name);
