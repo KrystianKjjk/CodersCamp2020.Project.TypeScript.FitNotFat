@@ -17,6 +17,7 @@ function loginButton(username: string, userDashboard: (user: User) => HTMLElemen
         elem.remove();
     }))
     loginBtn.parentElement.append(failComp);
+    if (!username) failComp.innerHTML = "Enter a nickname";
 }
 
 export default loginButton;
