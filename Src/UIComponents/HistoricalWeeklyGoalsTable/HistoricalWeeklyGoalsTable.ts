@@ -1,35 +1,38 @@
-import {createTable, addRow} from "../ReusableTable/ReusableTable";
-import generateTileComponent from "../TileComponent/TileComponent";
+import { createTable, addRow } from '../ReusableTable/ReusableTable';
+import generateTileComponent from '../TileComponent/TileComponent';
+import { Goal } from '../../../Models/Goal.model';
+import {createElement} from '../../../Src/UIComponents/utils/utils';
 
-interface HistoricalWeeklyGoalsRow {
-    date: string;
-    weeklyGoal: string;
-    startWeight: string;
-    endWeight: string;
-    achievedIn: string;
-  }
+function createHistoricalWeeklyGoalsTable(tableData: Goal[]): HTMLDivElement {
+  const container = createElement('div',['historical-weekly-goals-table', 'tile-container']);
+  const title = createElement('p','tile-title');
+  const titleContent = document.createTextNode('Historical weekly goals');
+  title.appendChild(titleContent);
+  const tile = generateTileComponent(container);
 
-function createHistoricalWeeklyGoalsTable(tableData: HistoricalWeeklyGoalsRow[]):HTMLDivElement{
+  const table = createTable([
+    'DATE',
+    'WEEKLY GOAL',
+    'START WEIGHT',
+    'END WEIGHT',
+    'ACHIEVED',
+  ]);
+  const addRowToHistoricalWeeklyGoalsTable = addRow(table);
 
-    const container = document.createElement('div');
-    container.className = 'tile-container';
-    const title = document.createElement('p');
-    title.className = 'tile-title';
-    const titleContent = document.createTextNode('Historical weekly goals');
-    title.appendChild(titleContent);
-    const tile=generateTileComponent(container);
-
-    const table=createTable(['DATE','WEEKLY GOAL','START WEIGHT','END WEIGHT','ACHIEVED IN']);
-    const addRowToHistoricalWeeklyGoalsTable = addRow(table);
-
-    for(let i=0; i<tableData.length; i++){
-    const row=tableData[i];
-    const rowValues=Object.values(row);
+  for (let i = 0; i < tableData.length; i++) {
+    const row = tableData[i];
+    const date=new Date(row.date);
+    const rowValues: string[] = [
+      date.toLocaleDateString('en-GB'),
+      row.weeklyGoal,
+      row.startWeight?`${row.startWeight}`:"",
+      row.endWeight? `${row.endWeight}`:"",
+      row.achieved?`${row.achieved}`:"",
+    ];
     addRowToHistoricalWeeklyGoalsTable(rowValues);
-    }
-    container.append(title,table);
-    return tile;
+  }
+  container.append(title, table);
+  return tile;
 }
 
-export {createHistoricalWeeklyGoalsTable};
-
+export { createHistoricalWeeklyGoalsTable };

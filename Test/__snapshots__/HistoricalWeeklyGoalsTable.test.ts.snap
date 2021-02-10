@@ -5,7 +5,7 @@ exports[`Tests for createHistoricalWeeklyGoalsTable Should render only headers 1
   class="tile"
 >
   <div
-    class="tile-container"
+    class="historical-weekly-goals-table tile-container"
   >
     <p
       class="tile-title"
@@ -29,7 +29,7 @@ exports[`Tests for createHistoricalWeeklyGoalsTable Should render only headers 1
           END WEIGHT
         </th>
         <th>
-          ACHIEVED IN
+          ACHIEVED
         </th>
       </tr>
     </table>
@@ -42,7 +42,7 @@ exports[`Tests for createHistoricalWeeklyGoalsTable Should render table with row
   class="tile"
 >
   <div
-    class="tile-container"
+    class="historical-weekly-goals-table tile-container"
   >
     <p
       class="tile-title"
@@ -66,41 +66,41 @@ exports[`Tests for createHistoricalWeeklyGoalsTable Should render table with row
           END WEIGHT
         </th>
         <th>
-          ACHIEVED IN
+          ACHIEVED
         </th>
       </tr>
       <tr>
         <td>
-          12.06.2021
+          17/12/1995
         </td>
         <td>
-          +5kg
+          Gain
         </td>
         <td>
-          70kg
+          70
         </td>
         <td>
-          80kg
+          80
         </td>
         <td>
-          150%
+          Yes
         </td>
       </tr>
       <tr>
         <td>
-          10.01.2021
+          18/01/1995
         </td>
         <td>
-          -3kg
+          Lose
         </td>
         <td>
-          60kg
+          60
         </td>
         <td>
-          50kg
+          61
         </td>
         <td>
-          10%
+          No
         </td>
       </tr>
     </table>

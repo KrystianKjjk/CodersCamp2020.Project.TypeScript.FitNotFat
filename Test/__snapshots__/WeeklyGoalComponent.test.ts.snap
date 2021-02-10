@@ -15,7 +15,7 @@ exports[`Tests for Weekly goal component should render weekly goal component 1`]
     <p
       class="paragraph-week"
     >
-      Week 1
+      1
     </p>
     <div
       class="container select-weekly-goal"
@@ -59,19 +59,19 @@ exports[`Tests for Weekly goal component should render weekly goal component 1`]
       >
         <div
           class="option selected"
-          data-key="GAIN"
+          data-key="Gain"
         >
           Gain weight
         </div>
         <div
           class="option"
-          data-key="LOSE"
+          data-key="Lose"
         >
           Lose weight
         </div>
         <div
           class="option"
-          data-key="KEEP"
+          data-key="Keep"
         >
           Keep weight
         </div>
