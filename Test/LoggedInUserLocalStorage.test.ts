@@ -11,11 +11,11 @@ describe('LoggedInUser functions', () => {
     expect(getLoggedInUser()).toBe('testUser');
   })
   test('setLoggedInUser if user exists in local storage', () => {
-    expect(setLoggedInUser('user123')).toBe(false);
+    expect(setLoggedInUser('user123')).not.toBe('user123');
   })
   test('setLoggedInUser if user does not exists in local storage', () => {
     localStorage[KEY_LOGGED_USER] = ''
-    expect(setLoggedInUser('user123')).toBe(true);
+    expect(setLoggedInUser('user123')).toBe('user123');
   })
   test('clearLoggedInUser', () => {
     localStorage[KEY_LOGGED_USER] = 'testUser';
