@@ -40,7 +40,7 @@ import generateTileComponent from '../TileComponent/TileComponent';
 
 export default overviewComponent;
 
-function getAge(date: Date) {
+export function getAge(date: Date) {
     var today = new Date();
     var birthDate = date;
     var age = today.getFullYear() - birthDate.getFullYear();
