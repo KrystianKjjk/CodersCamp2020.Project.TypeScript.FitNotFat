@@ -3,7 +3,7 @@ import {saveInLocalStorage} from '../Src/Logic/LocalStorage/LocalStorage';
 import {User} from '../Models/User.model';
 import {ActivityLevel} from '../Models/ActivityLevel.model';
 import {clearLoggedInUser, setLoggedInUser} from '../Src/UIComponents/utils/utils';
-
+import {USER_INPUT_EMPTY} from '../Constants/consts';
 const username = 'User';
 const fakeUsername = 'UserNotFound';
 const user: User = {
@@ -40,6 +40,11 @@ describe('Login Button callback test', () => {
   test('if user does not exist', () => {
     loginButton.call(loginBtn, fakeUsername, userDashboard, failComp);
     expect(loginBtn.parentElement.children).toContainEqual(failComp);
+  });
+  test('if user input is empty', () => {
+    loginButton.call(loginBtn, '', userDashboard, failComp);
+    expect(loginBtn.parentElement.children).toContainEqual(failComp);
+    expect(failComp.innerHTML).toBe(USER_INPUT_EMPTY);
   });
   test('if user is logged in', () => {
     setLoggedInUser(username);
