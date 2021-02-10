@@ -94,7 +94,7 @@ export function getLoggedInUser(): string{
 }
 
 export function setLoggedInUser(loggedUser: string): string{
-    const loggedInUser = localStorage.getItem(KEY_LOGGED_USER);
+    const loggedInUser = getLoggedInUser();
     if(loggedInUser) return loggedInUser;
     localStorage.setItem(KEY_LOGGED_USER, loggedUser);
     return loggedUser;
