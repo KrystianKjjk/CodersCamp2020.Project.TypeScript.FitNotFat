@@ -1,0 +1,22 @@
+.main-text {
+    font-weight: 400;
+    font-size: 50px;
+    letter-spacing: 0.055em;
+    padding-bottom: 5%;
+}
+
+.features-text{
+    font-weight: 200; /*?*/
+    font-size: 35px;
+    line-height: 50px;
+    letter-spacing: 0.05em;
+    color:rgba(74, 72, 78, 0.9);
+   padding-bottom: 7%;
+}
+.container-button {
+    width: 70%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}

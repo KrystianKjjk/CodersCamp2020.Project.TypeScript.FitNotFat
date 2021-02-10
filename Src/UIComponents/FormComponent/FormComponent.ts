@@ -71,7 +71,7 @@ export default function generateForm(
 }
  
 function generateParagraph():HTMLParagraphElement{
-  const paragraph = createElement('p', [], 'Join us') as HTMLParagraphElement;
+  const paragraph = createElement('p', 'first-step-paragraph', 'Join us') as HTMLParagraphElement;
   return paragraph;
 }
 

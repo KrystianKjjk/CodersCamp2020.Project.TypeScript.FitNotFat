@@ -1,3 +1,4 @@
-import {registrationLoginTransition} from '../../../Src/Logic/RegistrationLoginTransition/RegistrationLoginTransition';
+import {anauthorizedUserLogic} from '../../../Src/Logic/RegistrationLoginTransition/RegistrationLoginTransition';
+import {generateHomePage} from '../../../Src/UIComponents/HomePage/HomePage';
 
-registrationLoginTransition();
+document.body.appendChild(anauthorizedUserLogic());
