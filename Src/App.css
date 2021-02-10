@@ -1,6 +1,6 @@
 @import './UIComponents/Buttons/Buttons.css';
-@import'./UIComponents/FormComponent/FormComponent.css';
-@import'./UIComponents/TileComponent/TileComponent.css';
+@import './UIComponents/FormComponent/FormComponent.css';
+@import './UIComponents/TileComponent/TileComponent.css';
 @import './UIComponents/ModalWindow/ModalWindow.css';
 @import './UIComponents/ReusableTable/ReusableTable.css';
 @import './UIComponents/HistoricalWeeklyGoalsTable/HistoricalWeeklyGoalsTable.css';
@@ -14,6 +14,7 @@
 @import './UIComponents/TileMyWeight/TileMyWeight.css';
 @import './UIComponents/Dashboard/Dashboard.css';
 @import './UIComponents/MyWeights/MyWeights.css';
+@import './UIComponents/MyDiaryFood/MyDiaryFood.css';
 @import './UIComponents/Overview/Overview.css';
 @import './UIComponents/SecondStepComponent/SecondStepComponent.css';
 @import './UIComponents/LogIn/LogIn.css';

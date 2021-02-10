@@ -17,10 +17,7 @@ function generateGoalTile(name: string, elementID:string, currentValue:number, m
         
         //adding an unit to the texts
         document.querySelectorAll(`#${elementID} .goalgauge > svg > text > tspan`).forEach(text =>{
-                const unitText = document.createTextNode(` ${unit}`);
-                if(text.innerHTML){
-                        text.appendChild(unitText);
-                }               
+                if(text.innerHTML) text.innerHTML += ` ${unit}`;              
         })
 
         //replacing the value with percentage

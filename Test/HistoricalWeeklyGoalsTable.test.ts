@@ -1,4 +1,6 @@
+import { WeeklyGoal } from '../Models/WeeklyGoal.model';
 import {createHistoricalWeeklyGoalsTable} from '../Src/UIComponents/HistoricalWeeklyGoalsTable/HistoricalWeeklyGoalsTable'
+
 
 describe('Tests for createHistoricalWeeklyGoalsTable',()=>{
     test('Should render only headers', ()=>{
@@ -8,18 +10,18 @@ describe('Tests for createHistoricalWeeklyGoalsTable',()=>{
 
     test('Should render table with rows', ()=>{
         const table=createHistoricalWeeklyGoalsTable([{
-            date: '12.06.2021',
-            weeklyGoal: '+5kg',
-            startWeight: '70kg',
-            endWeight: '80kg',
-            achievedIn: '150%',
+            date: new Date(1995,11,17),
+            weeklyGoal: WeeklyGoal.Gain,
+            startWeight: 70,
+            endWeight: 80,
+            achieved: 'Yes',
           },
           {
-            date: '10.01.2021',
-            weeklyGoal: '-3kg',
-            startWeight: '60kg',
-            endWeight: '50kg',
-            achievedIn: '10%',
+            date: new Date(1994,12,18),
+            weeklyGoal: WeeklyGoal.Lose,
+            startWeight: 60,
+            endWeight: 61,
+            achieved: 'No',
           }]);
         expect(table).toMatchSnapshot();
     })
