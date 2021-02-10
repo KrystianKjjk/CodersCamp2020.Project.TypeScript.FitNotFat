@@ -15,6 +15,7 @@
 @import './UIComponents/Dashboard/Dashboard.css';
 @import './UIComponents/MyWeights/MyWeights.css';
 @import './UIComponents/MyDiaryFood/MyDiaryFood.css';
+@import './UIComponents/Overview/Overview.css';
 @import './UIComponents/SecondStepComponent/SecondStepComponent.css';
 @import './UIComponents/LogIn/LogIn.css';
 @import './UIComponents/DashboardView/DashboardView.css';

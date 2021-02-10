@@ -1,12 +1,14 @@
 import { generateWhiteButton } from '../Buttons/Buttons';
 import { createElement, createInput } from '../utils/utils';
+import { User } from '../../../Models/User.model'
+
 const moment = require('moment');
 
 const EXAMPLE_PLACEHOLDER_WEIGHT: string = '61.5';
 const MIN_WEIGHT: number = 1;
 const MAX_WEIGHT: number = 150;
 
-export function createTileMyWeight(currentWeight: number, date: Date, callback: (newWeight: number, newDate: Date) => void): HTMLElement {
+export function createTileMyWeight(currentWeight: number, date: Date, user:User, callback: (newWeight: number, newDate: Date, user:User) => void): HTMLElement {
   const myWeightTileContainer = createElement('div','my-weight-tile');
   const dataSection = createElement('section','my-weight-tile__data-section');
   const dataSectionHeader = createElement('p','my-weight-tile__data-section--header', 'MY WEIGHT');
@@ -15,12 +17,12 @@ export function createTileMyWeight(currentWeight: number, date: Date, callback: 
   dataSection.appendChild(dataSectionHeader);
   myWeightTileContainer.append(dataSection, buttonSection);
 
-  _generateStepOne(dataSection, buttonSection, currentWeight, date, callback);
+  _generateStepOne(dataSection, buttonSection, currentWeight, date, user, callback);
 
   return myWeightTileContainer;
 }
 
-function _generateStepOne(dataSection: HTMLElement, buttonSection: HTMLElement, currentWeight: number, date: Date, callback: (newWeight: number, newDate: Date) => void) {
+function _generateStepOne(dataSection: HTMLElement, buttonSection: HTMLElement, currentWeight: number, date: Date, user:User, callback: (newWeight: number, newDate: Date, user:User) => void) {
 
   const dataSectionMain = createElement('p','my-weight-tile__data-section--main-text',`${currentWeight} kg`);
   const dataSectionFooter = createElement('p', 'my-weight-tile__data-section--footer', moment(date).format('DD/MM/YYYY'));
@@ -33,12 +35,12 @@ function _generateStepOne(dataSection: HTMLElement, buttonSection: HTMLElement, 
 
   function handleEditButtonClick() {
     _removeElements([dataSectionMain, dataSectionFooter, editButton]);
-    _generateStepTwo(dataSection, buttonSection, currentWeight, date, callback);
+    _generateStepTwo(dataSection, buttonSection, currentWeight, date, user, callback);
   }
 
 }
 
-function _generateStepTwo(dataSection: HTMLElement, buttonSection: HTMLElement, currentWeight: number, oldDate: Date, callback: (newWeight: number, newDate: Date) => void) {
+function _generateStepTwo(dataSection: HTMLElement, buttonSection: HTMLElement, currentWeight: number, oldDate: Date, user:User, callback: (newWeight: number, newDate: Date, user:User) => void) {
 
   const newDate = new Date();
 
@@ -72,14 +74,14 @@ function _generateStepTwo(dataSection: HTMLElement, buttonSection: HTMLElement, 
       }
       return;
     }
-    callback(newWeight, newDate);
+    callback(newWeight, newDate, user);
     _removeElements(elementsRemove);
-    _generateStepOne(dataSection, buttonSection, newWeight, newDate, callback)
+    _generateStepOne(dataSection, buttonSection, newWeight, newDate, user, callback)
   }
 
   function handleCancelButtonClick() {
     _removeElements(elementsRemove);
-    _generateStepOne(dataSection, buttonSection, currentWeight, oldDate, callback)
+    _generateStepOne(dataSection, buttonSection, currentWeight, oldDate, user, callback)
   }
 }
 
