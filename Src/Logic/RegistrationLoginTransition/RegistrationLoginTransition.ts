@@ -4,17 +4,15 @@ import { createElement } from '../../UIComponents/utils/utils';
 import generateRegistrationForm from '../../../Src/Logic/Registration/Registration';
 import generateLoginForm from '../../../Src/UIComponents/LogIn/LogIn';
 import loginButton from '../../../Src/Logic/LoginButton/LoginButton';
-// import {dashboardComponents} from '../../../UnitImplementations/UIComponents/Dashboard/Dashboard';
 import dashboard from '../../../Src/UIComponents/Dashboard/Dashboard';
 import dashboardView from '../../../Src/UIComponents/DashboardView/DashboardView';
-export function unauthorizedUserLogic() {
-  const container = createElement('div', 'unauthorized-user-container');
+
+export function unauthorizedUserLogic():HTMLDivElement{
+  const container = createElement('div', 'unauthorized-user-container')as HTMLDivElement;
   const homePage = generateInitialView(
     generateHomePageContent(onSignUpClick, onLogInClick),
   );
   container.appendChild(homePage);
-
-  
 
   function onSignUpClick() {
   const registrationForm=generateInitialView(generateRegistrationForm(onRegistrationSuccess));
@@ -28,9 +26,6 @@ export function unauthorizedUserLogic() {
  
   
   function onLogInClick() {
-    // const logInForm=generateLoginForm(loginBtnLogic());
-
- 
   const logInForm=generateInitialView(generateLogIn());
   container.replaceChild(logInForm,homePage);
     

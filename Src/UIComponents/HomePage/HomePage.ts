@@ -14,8 +14,10 @@ const signUpbutton = generateWhiteButton('Sign up', () => {
     onLogInClick();
   });
   
+  signUpbutton.classList.add('sign-up-button');
   signUpbutton.style.width = '200px';
   signUpbutton.style.height = '50px';
+  logInButton.classList.add('log-in-button');
   logInButton.style.width = '200px';
   logInButton.style.height = '50px';
   const containerButton = document.createElement('div');
