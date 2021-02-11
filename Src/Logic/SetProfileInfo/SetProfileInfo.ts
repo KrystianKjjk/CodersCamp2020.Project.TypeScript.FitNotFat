@@ -1,7 +1,7 @@
 import { profileInfo } from "../../UIComponents/ProfileInfo/ProfileInfo";
-import {ActivityLevel} from "../../../Models/ActivityLevel.model";
-import {WeeklyGoal} from "../../../Models/WeeklyGoal.model";
-import { User } from '../../../Models/User.model';
+import { ActivityLevel } from "../../../Models/ActivityLevel.model";
+import { WeeklyGoal } from "../../../Models/WeeklyGoal.model";
+import { User } from "../../../Models/User.model";
 
 interface SubUser {
     username: string,
@@ -20,14 +20,14 @@ export function SetProfileInfo(user: User) {
 
     try {
         subUser = {
-            username: user.name,
-            gender: user.gender,
-            dateOfBirth: user?.dateOfBirth,
-            height: user.height,
-            weight: user.weights[0].weight,
-            activityLevel: user.activityLevel,
-            weeklyGoal: user.goals[0].weeklyGoal,
-            goalWeight: user.goalWeight
+            username: user?.name || 'error',
+            gender: user?.gender || "Male",
+            dateOfBirth: user?.dateOfBirth || new Date(),
+            height: user?.height || 180,
+            weight: user?.weights?.[0]?.weight || 0,
+            activityLevel: user?.activityLevel || ActivityLevel.Regular,
+            weeklyGoal: user.goals?.[0]?.weeklyGoal || WeeklyGoal.Keep,
+            goalWeight: user?.goalWeight || 0
         }
     }
     catch { return; }
