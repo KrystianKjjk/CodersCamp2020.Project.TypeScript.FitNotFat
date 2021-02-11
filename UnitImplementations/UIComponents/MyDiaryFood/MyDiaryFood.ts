@@ -1,15 +1,5 @@
-import createMealDiary from '../../../Src/UIComponents/MyDiaryFood/MyDiaryFood';
+import { createMyDiaryFoodDashboard } from '../../../Src/UIComponents/MyDiaryFoodDashboard/MyDiaryFoodDashboard'
 
-const container = document.createElement('div');
-container.style.display = 'flex';
-container.style.height = '700px';
-container.style.flexDirection = 'column';
-container.style.alignItems = 'center';
-container.style.justifyContent = 'space-around';
+const MyDiaryFoodDashboard = createMyDiaryFoodDashboard();
 
-
-const main = createMealDiary('Kondzio', 'lunch', new Date());
-
-
-document.body.appendChild(container);
-container.appendChild(main);
+document.body.append(MyDiaryFoodDashboard);

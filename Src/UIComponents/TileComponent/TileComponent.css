@@ -5,3 +5,11 @@
     height: max-content;
     width: max-content;
 }
+
+.tile-full-width {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 16px;
+    height: 100%;
+    width: 100%;
+}
