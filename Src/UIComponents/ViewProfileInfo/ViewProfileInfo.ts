@@ -14,8 +14,6 @@ export function ViewProfileInfo(): HTMLElement {
   let profileInfoComponent;
 
   if(userName && userObject) {
-
-    console.log(userName, userObject)
     profileInfoComponent = SetProfileInfo(userObject);
     profileInfoView = dashboardView(myProfile, profileInfoComponent);
   }

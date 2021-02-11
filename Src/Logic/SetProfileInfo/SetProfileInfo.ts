@@ -23,7 +23,7 @@ export function SetProfileInfo(user: User) {
             username: user?.name || 'error',
             gender: user?.gender || "Male",
             dateOfBirth: user?.dateOfBirth || new Date(),
-            height: user?.height || 180,
+            height: user?.height || 0,
             weight: user?.weights?.[0]?.weight || 0,
             activityLevel: user?.activityLevel || ActivityLevel.Regular,
             weeklyGoal: user.goals?.[0]?.weeklyGoal || WeeklyGoal.Keep,
