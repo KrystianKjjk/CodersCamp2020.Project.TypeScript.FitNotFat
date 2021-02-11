@@ -1,10 +1,12 @@
 import { ViewProfileInfo } from "../../../Src/UIComponents/ViewProfileInfo/ViewProfileInfo";
 import { ViewAPIKey } from "../../../Src/UIComponents/ViewAPIKey/ViewAPIKey";
 import { ViewMyWeights } from "../../../Src/UIComponents/ViewMyWeights/ViewMyWeights";
+import { ViewMyGoals } from "../../../Src/UIComponents/ViewMyGoals/ViewMyGoals";
 
 const viewProfileInfo = ViewProfileInfo();
 const viewApiKey = ViewAPIKey();
 const viewMyWeights = ViewMyWeights();
+const viewMyGoals = ViewMyGoals();
 
 import dashboard from '../../../Src/UIComponents/Dashboard/Dashboard'
 import dashboardView from '../../../Src/UIComponents/DashboardView/DashboardView'
@@ -23,7 +25,7 @@ document.body.appendChild(dashboard(username, {
   'overview': overview,
   'diary-food': myDiaryFood,
   'diary-exercises': myDiaryExercises,
-  'goals': myGoals,
+  'goals': viewMyGoals,
   'weights': viewMyWeights,
   'apiKey': viewApiKey,
   'logOut': logOut,
