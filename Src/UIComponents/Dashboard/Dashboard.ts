@@ -1,5 +1,5 @@
 import {overviewSVG, myDiarySVG, myGoalsSVG, myWeightsSVG, userSVG, apiKeySVG, logOutSVG, arrowSVG} from './Icons';
-import {createElement} from '../utils/utils';
+import {createElement, clearLoggedInUser} from '../utils/utils';
 
 function dashboard(username: string, components: {'overview': HTMLElement, 
                                 'diary-food': HTMLElement, 
@@ -7,7 +7,6 @@ function dashboard(username: string, components: {'overview': HTMLElement,
                                 'goals': HTMLElement, 
                                 'weights': HTMLElement,
                                 'apiKey': HTMLElement,
-                                'logOut': HTMLElement,
                                 'profile': HTMLElement}): HTMLDivElement {
     const myDashboard = createElement('div', ['dashboard']) as HTMLDivElement;
     myDashboard.appendChild(createElement('div', ['ellipse1']));
@@ -24,9 +23,13 @@ function dashboard(username: string, components: {'overview': HTMLElement,
     const myGoals = createElement('div', ['menu-option'], `${myGoalsSVG} My goals`, 'goals');
     const myWeights = createElement('div', ['menu-option'], `${myWeightsSVG} My weights`, 'weights');
     const apiKey = createElement('div', ['menu-option'], `${apiKeySVG} API Key`, 'apiKey');
-    const logOut = createElement('div', ['menu-option'], `${logOutSVG} Log out`, 'logOut');
+    const logOut = createElement('div', ['menu-option'], `${logOutSVG} Log out`);
+    logOut.addEventListener('click', e => {
+        clearLoggedInUser();
+        location.reload();
+    })
     const profileBtn = createElement('button', ['profile-btn'], `${userSVG} ${username} ${arrowSVG}`, 'profile');
-    const options = [overview, myDiary, myDiaryFood, myDiaryExercises, myGoals, myWeights, apiKey, logOut, profileBtn];
+    const options = [overview, myDiary, myDiaryFood, myDiaryExercises, myGoals, myWeights, apiKey, profileBtn];
 
     options.forEach((element) => {
         element.addEventListener('click', (e) => {

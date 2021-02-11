@@ -14,20 +14,18 @@ const myWeights = document.createElement('div');
 myWeights.innerHTML = "Weights";
 const apiKey = document.createElement('div');
 apiKey.innerHTML = "API Key";
-const logOut = document.createElement('div');
-logOut.innerHTML = "Log Out";
 const myProfile = document.createElement('div');
 myProfile.innerHTML = "Profile";
-
-const testDashboard = dashboard(username, {
+const components = {
     'overview': overview, 
     'diary-food': myDiaryFood, 
     'diary-exercises': myDiaryExercises, 
     'goals': myGoals, 
     'weights': myWeights,
     'apiKey': apiKey,
-    'logOut': logOut,
-    'profile': myProfile});
+    'profile': myProfile};
+const testDashboard = dashboard(username, components);
+
 const mainMenu = testDashboard.querySelector('.main-menu') as HTMLElement;
 const overviewOpt = getByText(mainMenu, 'Overview');
 const myDiaryOpt = getByText(mainMenu, 'My diary');
@@ -38,6 +36,7 @@ const myWeightsOpt = getByText(mainMenu, 'My weights');
 const apiKeyOpt = getByText(mainMenu, 'API Key');
 const logOutOpt = getByText(mainMenu, 'Log out');
 const myProfileBtn = mainMenu.querySelector('.profile-btn') as HTMLElement;
+const options = [overviewOpt, myDiaryOpt, myDiaryFoodOpt, myDiaryExercisesOpt, myGoalsOpt, myWeightsOpt, apiKeyOpt, logOutOpt, myProfileBtn];
 
 const chosenView = testDashboard.lastElementChild as HTMLElement;
 describe('Dashboard test', () => {
@@ -51,25 +50,16 @@ describe('Dashboard test', () => {
             expect(chosenView.innerHTML.includes('Overview')).toBe(true);
         })
         test('only active option is Overview', () => {
-            expect(overviewOpt.classList).toContain('active');
-            expect(myDiaryOpt.classList).not.toContain('active');
-            expect(myDiaryFoodOpt.classList).not.toContain('active');
-            expect(myDiaryExercisesOpt.classList).not.toContain('active');
-            expect(myGoalsOpt.classList).not.toContain('active');
-            expect(myWeightsOpt.classList).not.toContain('active');
-            expect(apiKeyOpt.classList).not.toContain('active');
-            expect(logOutOpt.classList).not.toContain('active');
-            expect(myProfileBtn.classList).not.toContain('active');
+            options.forEach(opt => {
+                if (opt === overviewOpt) expect(overviewOpt.classList).toContain('active');
+                else expect(opt.classList).not.toContain('active');
+            });
         })
         test('only displayed view is Overview', () => {
-            expect(overview.style.display).not.toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
+            Object.values(components).forEach(comp => {
+                if (comp === overview) expect(overview.style.display).not.toBe('none');
+                else expect(comp.style.display).toBe('none');
+            });
         })
     })
 
@@ -80,25 +70,16 @@ describe('Dashboard test', () => {
             expect(chosenView.innerHTML.includes('Overview')).toBe(true);
         })
         test('only active option is Overview', () => {
-            expect(overviewOpt.classList).toContain('active');
-            expect(myDiaryOpt.classList).not.toContain('active');
-            expect(myDiaryFoodOpt.classList).not.toContain('active');
-            expect(myDiaryExercisesOpt.classList).not.toContain('active');
-            expect(myGoalsOpt.classList).not.toContain('active');
-            expect(myWeightsOpt.classList).not.toContain('active');
-            expect(apiKeyOpt.classList).not.toContain('active');
-            expect(logOutOpt.classList).not.toContain('active');
-            expect(myProfileBtn.classList).not.toContain('active');
+            options.forEach(opt => {
+                if (opt === overviewOpt) expect(overviewOpt.classList).toContain('active');
+                else expect(opt.classList).not.toContain('active');
+            });
         })
         test('only displayed view is Overview', () => {
-            expect(overview.style.display).not.toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
+            Object.values(components).forEach(comp => {
+                if (comp === overview) expect(overview.style.display).not.toBe('none');
+                else expect(comp.style.display).toBe('none');
+            });
         })
     })
 
@@ -108,25 +89,16 @@ describe('Dashboard test', () => {
             expect(chosenView.innerHTML.includes('Food')).toBe(true);
         })
         test('only active option are My diary and Food', () => {
-            expect(overviewOpt.classList).not.toContain('active');
-            expect(myDiaryOpt.classList).toContain('active');
-            expect(myDiaryFoodOpt.classList).toContain('active');
-            expect(myDiaryExercisesOpt.classList).not.toContain('active');
-            expect(myGoalsOpt.classList).not.toContain('active');
-            expect(myWeightsOpt.classList).not.toContain('active');
-            expect(apiKeyOpt.classList).not.toContain('active');
-            expect(logOutOpt.classList).not.toContain('active');
-            expect(myProfileBtn.classList).not.toContain('active');
+            options.forEach(opt => {
+                if (opt === myDiaryOpt) expect(opt.classList).toContain('active');
+                else expect(opt.classList).not.toContain('active');
+            });
         })
         test('only displayed view is Food', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).not.toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
+            Object.values(components).forEach(comp => {
+                if (comp === myDiaryFood) expect(comp.style.display).not.toBe('none');
+                else expect(comp.style.display).toBe('none');
+            });
         })
     })
 
@@ -148,14 +120,10 @@ describe('Dashboard test', () => {
             expect(myProfileBtn.classList).not.toContain('active');
         })
         test('only displayed view is Food', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).not.toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
+            Object.values(components).forEach(comp => {
+                if (comp === myDiaryFood) expect(comp.style.display).not.toBe('none');
+                else expect(comp.style.display).toBe('none');
+            });
         })
     })
 
@@ -177,14 +145,10 @@ describe('Dashboard test', () => {
             expect(myProfileBtn.classList).not.toContain('active');
         })
         test('only displayed view is Exercises', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).not.toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
+            Object.values(components).forEach(comp => {
+                if (comp === myDiaryExercises) expect(comp.style.display).not.toBe('none');
+                else expect(comp.style.display).toBe('none');
+            });
         })
     })
 
@@ -205,14 +169,10 @@ describe('Dashboard test', () => {
             expect(myProfileBtn.classList).not.toContain('active');
         })
         test('only displayed view is My goals', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).not.toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
+            Object.values(components).forEach(comp => {
+                if (comp === myGoals) expect(comp.style.display).not.toBe('none');
+                else expect(comp.style.display).toBe('none');
+            });
         })
     })
 
@@ -233,14 +193,10 @@ describe('Dashboard test', () => {
             expect(myProfileBtn.classList).not.toContain('active');
         })
         test('only displayed view is My weights', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).not.toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
+            Object.values(components).forEach(comp => {
+                if (comp === myWeights) expect(comp.style.display).not.toBe('none');
+                else expect(comp.style.display).toBe('none');
+            });
         })
     })
 
@@ -261,14 +217,10 @@ describe('Dashboard test', () => {
             expect(myProfileBtn.classList).not.toContain('active');
         })
         test('only displayed view is API Key', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).not.toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
+            Object.values(components).forEach(comp => {
+                if (comp === apiKey) expect(comp.style.display).not.toBe('none');
+                else expect(comp.style.display).toBe('none');
+            });
         })
     })
 
@@ -289,14 +241,10 @@ describe('Dashboard test', () => {
             expect(myProfileBtn.classList).not.toContain('active');
         })
         test('only displayed view is Log out', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).not.toBe('none');
-            expect(myProfile.style.display).toBe('none');
+            Object.values(components).forEach(comp => {
+                if (comp === myDiaryFood) expect(comp.style.display).not.toBe('none');
+                else expect(comp.style.display).toBe('none');
+            });
         })
     })
 
