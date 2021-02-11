@@ -164,8 +164,6 @@ function addExercisesToLocalStorage(userName: string, exerciseName: string, show
     const currentDiaryExercise = currentState.diaryExercises || [];
     const currentDayExercises = currentDiaryExercise.find(exercise => sameDay(showDate, exercise.date));
     let updatedDayExercises = {...currentDayExercises};
-
-    console.log(currentDayExercises?.totalCalories);
     
     if (currentDayExercises) {
         let exerciseItems = currentDayExercises.exercises[exerciseName] || [];
