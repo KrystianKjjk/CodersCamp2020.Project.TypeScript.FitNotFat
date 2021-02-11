@@ -1,11 +1,11 @@
 import { readFromLocalStorage, saveInLocalStorage } from '../../Logic/LocalStorage/LocalStorage';
 import { createTable, addRow } from '../../UIComponents/ReusableTable/ReusableTable';
-import { fetchFoodData } from '../../APIConnection/Food';
-import { FoodDetails } from '../../../Models/FoodDetails.model';
+import { fetchExercisesData } from '../../APIConnection/Exercises';
+import { ExercisesDetails } from '../../../Models/ExercisesDetails.model';
 import { generateWhiteButton } from '../Buttons/Buttons';
 import { User } from '../../../Models/User.model';
 import { createElement, createTextInput } from '../utils/utils';
-import { sameDay, isUserAuthorizedToUseApi, getApiCredentialsForUser, prepareAPIData, prepareDataForTable } from '../MyDiaryFood/utils';
+import { sameDay, isUserAuthorizedToUseApi, getApiCredentialsForUser, prepareAPIData, prepareDataForTable } from './utils';
 import tile from '../TileComponent/TileComponent';
 
 export const identifierClasses = {
@@ -27,30 +27,31 @@ export const identifierClasses = {
     input: 'my-diary-food-input',
 };
 
-export default function createExercisesDiary(userName: string, mealName: string, showDate: Date) {
+export default function createExercisesDiary(userName: string, exerciseName: string, showDate: Date) {
     // from local storage
     const userData = readFromLocalStorage(userName);
 
-    // temporary saving meals
-    let meals: FoodDetails[] = [];
-    const addMeals = (newMeal: FoodDetails) => meals = [...meals, newMeal];
-    const resetMeals = () => meals = [];
+    // temporary saving exercises
+    let exercises: ExercisesDetails[] = [];
+    const addExercises = (newExercise: ExercisesDetails) => exercises = [...exercises, newExercise];
+    const resetExercises = () => exercises = [];
+
 
     // building layout
     const container = createElement('div', 'my-diary-food');
-    const header = createElement('h3', '', mealName);
+    const header = createElement('h3', '', exerciseName);
     
     // creating first table (populated by local storage data)
-    const mainTable = createTable(['Food', 'Qty', 'Unit', 'Calories']);
+    const mainTable = createTable(['Exercise', 'Met', 'Duration', 'Calories']);
     mainTable.classList.add(identifierClasses.tables.main);
     const addNewRow = addRow(mainTable);
-    populateMainTable(userName, mealName, showDate, addNewRow);
+    populateMainTable(userName, exerciseName, showDate, addNewRow);
 
     // creating second table (results from api, before saving by user)
-    const apiTable = createTable(['Food', 'Qty', 'Unit', 'Calories']);
+    const apiTable = createTable(['Exercise', 'Met', 'Duration', 'Calories']);
     apiTable.classList.add(identifierClasses.tables.api);
     const addNewRowAPI = addRow(apiTable);
-    const addNewRowAPIDetails = (meal: FoodDetails) => addNewRowAPI(prepareDataForTable(meal));
+    const addNewRowAPIDetails = (exercise: ExercisesDetails) => addNewRowAPI(prepareDataForTable(exercise));
 
     // 1st btn container [ADD]
     const btnContainerAdd = createElement('div', ['button-container', identifierClasses.btnContainers.btnAdd]);
@@ -58,24 +59,25 @@ export default function createExercisesDiary(userName: string, mealName: string,
 
     // 2nd btn container [FIND] [CANCEL]
     const btnContainerFindCancel = createElement('div', ['button-container', identifierClasses.btnContainers.btnFindCancel]);
-    const btnFind = generateWhiteButton('FIND', () => onClickFind(input.value, userData, [addNewRowAPIDetails, addMeals]));
+    const btnFind = generateWhiteButton('FIND', () => onClickFind(input.value, userData, [resetExercises, addNewRowAPIDetails, addExercises]));
     const btnCancel = generateWhiteButton('CANCEL', onClickCancel);
     btnContainerFindCancel.append(btnFind, btnCancel);
 
     // 3rd btn container [FIND]
     const btnContainerFind = createElement('div', ['button-container', identifierClasses.btnContainers.btnFind]);
-    const btnFindOnly = generateWhiteButton('FIND', () => onClickFind(input.value, userData, [addNewRowAPIDetails, addMeals]));
+    const btnFindOnly = generateWhiteButton('FIND', () => onClickFind(input.value, userData, [addNewRowAPIDetails, addExercises]));
     btnContainerFind.append(btnFindOnly);
-
+    
     // 4th btn container [ADD] [CANCEL]
     const btnContainerAddCancel = createElement('div', ['button-container', identifierClasses.btnContainers.btnAddCancel]);
-    const btnAddSecond = generateWhiteButton('ADD', () => onClickAddMeal(userName, mealName, showDate, meals, addNewRow));
+    const btnAddSecond = generateWhiteButton('ADD', () => onClickAddExercise(userName, exerciseName, showDate, exercises, addNewRow));
+    
     const btnCancelSecond = generateWhiteButton('CANCEL', onClickCancel);
     btnContainerAddCancel.append(btnAddSecond, btnCancelSecond);
 
-    // input for meal name
-    const inputLabel = createElement('h2', '', 'Enter your meal');
-    const input = createTextInput('ex. 2 bananas and 1 cup of milk', identifierClasses.input);
+    // input for exercise name
+    const inputLabel = createElement('h2', '', 'Enter your exercise');
+    const input = createTextInput('ex. run 5 miles, 30 min weightlifting', identifierClasses.input);
 
     // user logged in -> show button to add, not logged in -> show authorization message
     if (isUserAuthorizedToUseApi(userData)) {
@@ -95,29 +97,29 @@ export default function createExercisesDiary(userName: string, mealName: string,
 }
 
 
-function getMealDataFromUserData(userData: User, mealName: string, showDate: Date): FoodDetails[] {
-    if (!userData || !userData.diaryFood) { return [];}
+function getExercisesDataFromUserData(userData: User, exerciseName: string, showDate: Date): ExercisesDetails[] {
+    if (!userData || !userData.diaryExercises) { return [];}
     
-    const mealsOfTheDay = userData.diaryFood.find(food => sameDay(showDate, food.date));
+    const exercisesOfTheDay = userData.diaryExercises.find(exercises => sameDay(showDate, exercises.date));
 
-    if (!mealsOfTheDay) { return [];}
+    if (!exercisesOfTheDay) { return [];}
 
-    return mealsOfTheDay.meals[mealName] || [];
+    return exercisesOfTheDay.exercises[exerciseName] || [];
 }
 
-function populateMainTable(userName: string, mealName: string, showDate: Date, addNewRow: (rowData: string[]) => void) {
+function populateMainTable(userName: string, exerciseName: string, showDate: Date, addNewRow: (rowData: string[]) => void) {
     const userData = readFromLocalStorage(userName);
-    const mealsFromLocalStorage = getMealDataFromUserData(userData, mealName, showDate);
+    const exercisesFromLocalStorage = getExercisesDataFromUserData(userData, exerciseName, showDate);
 
     const tableRows = document.querySelectorAll(`.${identifierClasses.tables.main} tr:nth-child(n+2)`).forEach(e => e.parentNode.removeChild(e));
-    mealsFromLocalStorage.forEach(meal => addNewRow(prepareDataForTable(meal)));
+    exercisesFromLocalStorage.forEach(exercise => addNewRow(prepareDataForTable(exercise)));
 }
 
 function onClickFirstAdd() {
     const {btnContainers, tables, input} = identifierClasses;
 
     hideElementsByClassName(tables.main, btnContainers.btnAdd);
-    showElementsByClassName(input, btnContainers.btnFindCancel)
+    showElementsByClassName(input, btnContainers.btnFindCancel);
 }
 
 function onClickCancel() {
@@ -128,58 +130,63 @@ function onClickCancel() {
     showElementsByClassName(btnContainers.btnAdd, tables.main);
 }
 
-function onClickAddMeal(
+function onClickAddExercise(
     userName: string, 
-    mealName: string, 
+    exerciseName: string, 
     showDate: Date, 
-    mealsToAdd: FoodDetails[], 
-    addNewRow: (rowData: string[]) => void
-) {
+    exercisesToAdd: ExercisesDetails[], 
+    addNewRow: (rowData: string[]) => void) {
+
     const {btnContainers, tables, input} = identifierClasses;
+    
 
     hideElementsByClassName(btnContainers.btnFindCancel, btnContainers.btnAddCancel, btnContainers.btnFind, tables.api, input);
     showElementsByClassName(tables.main, btnContainers.btnAdd);
-    addMealsToLocalStorage(userName, mealName, showDate, mealsToAdd);
-    populateMainTable(userName, mealName, showDate, addNewRow);
+    addExercisesToLocalStorage(userName, exerciseName, showDate, exercisesToAdd);
+    populateMainTable(userName, exerciseName, showDate, addNewRow);  
 }
 
-async function onClickFind(inputValue: string, userData: User, callbacks: Array<(data: FoodDetails) => void>) {
+async function onClickFind(inputValue: string, userData: User, callbacks: Array<(data: ExercisesDetails) => void>) {
     const {btnContainers, tables, input} = identifierClasses;
     hideElementsByClassName(btnContainers.btnFindCancel);
     showElementsByClassName(input, btnContainers.btnFind, tables.api, btnContainers.btnAddCancel)
     const {appId, appKey} = getApiCredentialsForUser(userData);
 
-    const foodDetails = await fetchFoodData(inputValue, appId, appKey);
-    if (!foodDetails || !foodDetails.foods) return;
 
-    foodDetails.foods.forEach(food => callbacks.forEach(callback => callback(prepareAPIData(food))));
+    const exercisesDetails = await fetchExercisesData(userData, inputValue, appId, appKey);
+    if (!exercisesDetails || !exercisesDetails.exercises) return;
+
+    exercisesDetails.exercises.forEach(exercise => callbacks.forEach(callback => callback(prepareAPIData(exercise))));
 }
 
-function addMealsToLocalStorage(userName: string, mealName: string, showDate: Date, mealsToAdd: FoodDetails[]) {
+function addExercisesToLocalStorage(userName: string, exerciseName: string, showDate: Date, exercisesToAdd: ExercisesDetails[]) {
     const currentState = readFromLocalStorage(userName);
-    const currentDiaryFood = currentState.diaryFood || [];
-    const currentDayMeals = currentDiaryFood.find(food => sameDay(showDate, food.date));
+    const currentDiaryExercise = currentState.diaryExercises || [];
+    const currentDayExercises = currentDiaryExercise.find(exercise => sameDay(showDate, exercise.date));
+    let updatedDayExercises = {...currentDayExercises};
 
-    let updatedDayMeals = {...currentDayMeals};
-
-    if (currentDayMeals) {
-        let foodItems = currentDayMeals.meals[mealName] || [];
-        foodItems = [...foodItems, ...mealsToAdd];
-        updatedDayMeals.meals[mealName] = foodItems;
+    console.log(currentDayExercises?.totalCalories);
+    
+    if (currentDayExercises) {
+        let exerciseItems = currentDayExercises.exercises[exerciseName] || [];
+        exerciseItems = [...exerciseItems, ...exercisesToAdd];
+        updatedDayExercises.exercises[exerciseName] = exerciseItems;
+        updatedDayExercises.totalCalories = exercisesToAdd.reduce(function(acc, val) { return acc + val.calories }, currentDayExercises.totalCalories)
     } else {
-        updatedDayMeals = {
+        updatedDayExercises = {
             date: showDate,
-            meals: {
-                [mealName]: mealsToAdd
+            totalCalories: exercisesToAdd.reduce(function(acc, val) { return acc + val.calories }, 0),
+            exercises: {
+                [exerciseName]: exercisesToAdd
             }
         }
     }
 
     const updatedUser: User = {
         ...currentState,
-        diaryFood: [
-            ...currentDiaryFood.filter(food => !sameDay(showDate, food.date)),
-            updatedDayMeals
+        diaryExercises: [
+            ...currentDiaryExercise.filter(exercises => !sameDay(showDate, exercises.date)),
+            updatedDayExercises
         ]
     };
 
