@@ -1,12 +1,15 @@
 import { ViewProfileInfo } from "../../../Src/UIComponents/ViewProfileInfo/ViewProfileInfo";
 import { ViewAPIKey } from "../../../Src/UIComponents/ViewAPIKey/ViewAPIKey";
+import { ViewMyWeights } from "../../../Src/UIComponents/ViewMyWeights/ViewMyWeights";
 
 const viewProfileInfo = ViewProfileInfo();
 const viewApiKey = ViewAPIKey();
+const viewMyWeights = ViewMyWeights();
 
 import dashboard from '../../../Src/UIComponents/Dashboard/Dashboard'
 import dashboardView from '../../../Src/UIComponents/DashboardView/DashboardView'
 import { createElement } from '../../../Src/UIComponents/utils/utils'
+
 
 const username = 'User';
 const overview = dashboardView('Overview', createElement('div', [], 'overview content') as HTMLDivElement, `Hi ${username}!`);
@@ -21,7 +24,7 @@ document.body.appendChild(dashboard(username, {
   'diary-food': myDiaryFood,
   'diary-exercises': myDiaryExercises,
   'goals': myGoals,
-  'weights': myWeights,
+  'weights': viewMyWeights,
   'apiKey': viewApiKey,
   'logOut': logOut,
   'profile': viewProfileInfo}));
