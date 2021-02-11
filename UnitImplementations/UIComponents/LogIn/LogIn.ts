@@ -51,11 +51,13 @@ function createDashboard(user: User): HTMLElement {
     'diary-exercises': myDiaryExercises, 
     'goals': myGoals, 
     'weights': myWeights, 
-    'profile': myProfile
+    'profile': myProfile,
+    'apiKey': createElement('div'),
+    'logOut':createElement('div')
   });
 }
 
-function createFailMsg(username: string): HTMLElement {
+export function createFailMsg(username: string): HTMLElement {
   const failMsg = createElement('p');
   failMsg.innerHTML = `User ${username} does not exist`;
   return failMsg;
