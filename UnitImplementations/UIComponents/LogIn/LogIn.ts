@@ -35,7 +35,6 @@ function createDashboard(user: User): HTMLElement {
   const myGoals = dashboardView('Goals', createElement('div', [], 'goals content') as HTMLDivElement);
   const myWeights = dashboardView('Weights', createElement('div', [], 'weights content') as HTMLDivElement);
   const apiKey = dashboardView('API Key', createElement('div', [], 'api key content') as HTMLDivElement);
-  const logOut = dashboardView('Log Out', createElement('div', [], 'log out content') as HTMLDivElement);
   const profile = profileInfo({
     username: user.name,
     gender: user.gender,
@@ -54,8 +53,7 @@ function createDashboard(user: User): HTMLElement {
     goals: myGoals, 
     weights: myWeights, 
     profile: myProfile,
-    apiKey,
-    logOut
+    apiKey
   });
 }
 
