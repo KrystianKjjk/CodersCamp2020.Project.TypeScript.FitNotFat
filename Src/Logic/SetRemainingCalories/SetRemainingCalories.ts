@@ -4,34 +4,34 @@ import { getLoggedInUser } from "../../UIComponents/utils/utils";
 import { readFromLocalStorage } from "../LocalStorage/LocalStorage";
 import { getAge } from "../../UIComponents/Overview/Overview";
 
-export function SetRemainingCalories(): HTMLElement {
+export function SetRemainingCalories(){
 
     const loggedUser = getLoggedInUser();
+    if(!loggedUser) return;
     const userObject = readFromLocalStorage(loggedUser);
     if(!userObject) return;
 
     const userAge = getAge(userObject.dateOfBirth);
 
-    const goalCalories = calculateCalories(userObject.gender, userObject.weights[0].weight, userObject.height, userAge, userObject.activityLevel);
+    const goalCalories = Math.floor(calculateCalories(userObject.gender, userObject.weights[0].weight, userObject.height, userAge, userObject.activityLevel));
 
-    const dateDiaryExercises = userObject?.diaryExercises[0]?.date;
+    const dateDiaryExercises = userObject.diaryExercises?.[0]?.date;
     let exercisesCalories: number;
 
     if(dateDiaryExercises) {
         const diaryIsToday: boolean = _isToday(new Date(dateDiaryExercises));
-        exercisesCalories = (userObject?.diaryExercises[0]?.totalCalories && diaryIsToday) ? userObject?.diaryExercises[0]?.totalCalories : 0;
+        exercisesCalories = (userObject?.diaryExercises?.[0]?.totalCalories && diaryIsToday) ? userObject?.diaryExercises?.[0]?.totalCalories : 0;
     }
     else {
         exercisesCalories = 0;
     }
 
-
-    const dateDiaryFood = userObject?.diaryFood[0]?.date;
+    const dateDiaryFood = userObject?.diaryFood?.[0]?.date;
     let foodCalories: number;
 
     if(dateDiaryFood) {
         const foodIsToday: boolean = _isToday(new Date(dateDiaryFood));
-        foodCalories = (userObject?.diaryFood[0]?.providedKcal && foodIsToday) ? userObject?.diaryFood[0]?.providedKcal : 0;
+        foodCalories = (userObject?.diaryFood?.[0]?.providedKcal && foodIsToday) ? userObject?.diaryFood?.[0]?.providedKcal : 0;
     }
     else {
         foodCalories = 0;
