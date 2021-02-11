@@ -25,12 +25,12 @@ exports[`home page tests should render home page component 1`] = `
   >
     <button
       class="button sign-up-button"
-      style="background-color: white; color: rgb(218, 27, 54); width: 200px; height: 50px;"
+      style="background-color: white; color: rgb(218, 27, 54);"
       type="button"
     />
     <button
       class="button log-in-button"
-      style="background-color: rgb(218, 27, 54); color: white; width: 200px; height: 50px;"
+      style="background-color: rgb(218, 27, 54); color: white;"
       type="button"
     />
   </div>

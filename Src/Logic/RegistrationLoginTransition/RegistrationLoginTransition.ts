@@ -57,6 +57,6 @@ function generateLogIn():HTMLDivElement{
         'logOut': logOut,
         'profile': myProfile}
 
-loginButton.call(button, username, (user)=>dashboard(user,dashboardComponents), createFailMsg(username))})as HTMLDivElement;
+loginButton.call(button, username, (user)=>dashboard(user,dashboardComponents))})as HTMLDivElement;
 return logInDiv;
  } 

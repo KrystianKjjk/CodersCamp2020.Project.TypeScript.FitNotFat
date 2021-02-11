@@ -1,6 +1,7 @@
 import {readFromLocalStorage} from '../LocalStorage/LocalStorage';
 import {User} from '../../../Models/User.model';
-function loginButton(username: string, userDashboard: (user: User) => HTMLElement, failComp: HTMLParagraphElement): void {
+import showModalWindow from '../../../Src/UIComponents/ModalWindow/ModalWindow';
+function loginButton(username: string, userDashboard: (user: User) => HTMLElement): void {
     const user = readFromLocalStorage(username) as User;
     const loginBtn = this as HTMLButtonElement;
     if(user) {
@@ -9,10 +10,7 @@ function loginButton(username: string, userDashboard: (user: User) => HTMLElemen
         });
         document.body.append(userDashboard(user));
     } else {
-        loginBtn.parentElement.querySelectorAll('p').forEach((elem => {
-            elem.remove();
-        }))
-        loginBtn.parentElement.append(failComp);
+        showModalWindow('User with given nickname does not exist.');
     }
 }
 
