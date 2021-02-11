@@ -43,7 +43,7 @@ function createDashboard(user: User): HTMLElement {
     height: user.height,
     weight: user.weights[user.weights.length - 1].weight,
     activityLevel: user.activityLevel,
-    weeklyGoal: user.goals[user.goals.length - 1].weeklyGoal,
+    weeklyGoal: user?.goals?.[user.goals.length - 1]?.weeklyGoal,
     goalWeight: user.goalWeight,
   });
   const myProfile = dashboardView('My profile', profile);
