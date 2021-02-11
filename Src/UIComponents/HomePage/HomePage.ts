@@ -1,7 +1,6 @@
 import {createElement} from '../../../Src/UIComponents/utils/utils';
 import {generateRedButton,generateWhiteButton} from '../../../Src/UIComponents/Buttons/Buttons';
 
-
 export function generateHomePageContent(onSignUpClick,onLogInClick):HTMLDivElement{
 const homePageContentDiv=createElement('div','home-page-content-div')as HTMLDivElement;
 const mainText=createElement('p','main-text','A little progress each day<br> adds up to big results')as HTMLParagraphElement;
@@ -15,11 +14,7 @@ const signUpbutton = generateWhiteButton('Sign up', () => {
   });
   
   signUpbutton.classList.add('sign-up-button');
-  signUpbutton.style.width = '200px';
-  signUpbutton.style.height = '50px';
   logInButton.classList.add('log-in-button');
-  logInButton.style.width = '200px';
-  logInButton.style.height = '50px';
   const containerButton = document.createElement('div');
   containerButton.classList.add('container-button');
   containerButton.append(signUpbutton, logInButton);
@@ -27,8 +22,3 @@ const signUpbutton = generateWhiteButton('Sign up', () => {
   homePageContentDiv.append(mainText,paragraph,containerButton);
   return homePageContentDiv;
 }
-// function generateParagraph():HTMLParagraphElement{
-//     const paragraph = createElement('p', [], 'Join us') as HTMLParagraphElement;
-//     return paragraph;
-//   }
-// 

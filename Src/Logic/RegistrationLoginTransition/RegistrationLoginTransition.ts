@@ -14,28 +14,25 @@ export function unauthorizedUserLogic():HTMLDivElement{
   );
   container.appendChild(homePage);
 
-  function onSignUpClick() {
+  function onSignUpClick():void {
   const registrationForm=generateInitialView(generateRegistrationForm(onRegistrationSuccess));
     container.replaceChild(registrationForm,homePage);
     
-    function onRegistrationSuccess(){
-      const logInForm=generateInitialView(generateLogIn());
-      container.replaceChild(logInForm,registrationForm);
+    function onRegistrationSuccess():void{
+      const logInDiv=generateInitialView(generateLogIn());
+      container.replaceChild(logInDiv,registrationForm);
     }
   }
  
-  
-  function onLogInClick() {
-  const logInForm=generateInitialView(generateLogIn());
-  container.replaceChild(logInForm,homePage);
-    
-    // document.body.appendChild(logForm);
+  function onLogInClick():void {
+  const logInDiv=generateInitialView(generateLogIn());
+  container.replaceChild(logInDiv,homePage);
   }
   return container;
 }
 
-function generateLogIn(){
-  const logForm = generateLoginForm((button, username) => {
+function generateLogIn():HTMLDivElement{
+  const logInDiv = generateLoginForm((button, username) => {
     function createFailMsg(username: string): HTMLElement {
       const failMsg = createElement('p');
       failMsg.innerHTML = `User ${username} does not exist`;
@@ -60,7 +57,6 @@ function generateLogIn(){
         'logOut': logOut,
         'profile': myProfile}
 
-
-    loginButton.call(button, username, (user)=>dashboard(user,dashboardComponents), createFailMsg(username))})as HTMLDivElement;
-return logForm;
+loginButton.call(button, username, (user)=>dashboard(user,dashboardComponents), createFailMsg(username))})as HTMLDivElement;
+return logInDiv;
  } 
