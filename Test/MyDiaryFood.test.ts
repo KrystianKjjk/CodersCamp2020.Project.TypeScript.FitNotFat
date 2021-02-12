@@ -1,6 +1,6 @@
 import { ActivityLevel } from '../Models/ActivityLevel.model';
 import { User } from '../Models/User.model';
-import {getApiCredentialsForUser, isUserAuthorizedToUseApi, sameDay} from '../Src/UIComponents/MyDiaryFood/utils';
+import { getApiCredentialsForUser, isUserAuthorizedToUseApi, sameDay, generateUniqueClassName } from '../Src/UIComponents/MyDiaryFood/utils';
 import createMealDiary, {identifierClasses} from '../Src/UIComponents/MyDiaryFood/MyDiaryFood';
 import * as LocalStorage from '../Src/Logic/LocalStorage/LocalStorage';
 import * as FoodAPI from '../Src/APIConnection/Food';
@@ -56,7 +56,7 @@ describe('MyDiaryFood', () => {
         
         const myDiaryFoodComponent = createMealDiary('juan', 'breakfast', new Date());
         expect(LocalStorage.readFromLocalStorage).toHaveBeenCalledTimes(2);
-        const mainTable = myDiaryFoodComponent.querySelector(`.${identifierClasses.tables.main}`);
+        const mainTable = myDiaryFoodComponent.querySelector(`.${generateUniqueClassName('breakfast', identifierClasses.tables.main)}`);
         expect(Array.from(mainTable.querySelectorAll('tr'))).toHaveLength(2); // header + 1 row
         expect(Array.from(mainTable.querySelectorAll('td'))).toHaveLength(4); // 4 cells in the 1st row
         expect(Array.from(mainTable.querySelectorAll('th'))).toHaveLength(4); // 4 cells in the header
@@ -78,16 +78,16 @@ describe('MyDiaryFood', () => {
 
         const myDiaryFoodComponent = createMealDiary('juan', 'breakfast', new Date());
         document.body.appendChild(myDiaryFoodComponent);
-        const addBtn: HTMLElement = document.body.querySelector(`.${identifierClasses.btnContainers.btnAdd} button`);
+        const addBtn: HTMLElement = document.body.querySelector(`.${generateUniqueClassName('breakfast', identifierClasses.btnContainers.btnAdd)} button`);
         
         // input and two buttons are hidden
-        const inputBefore: HTMLElement = document.body.querySelector(`.${identifierClasses.input}`);
-        const btnContainerBefore: HTMLElement = document.body.querySelector(`.${identifierClasses.btnContainers.btnFindCancel}`);
+        const inputBefore: HTMLElement = document.body.querySelector(`.${generateUniqueClassName('breakfast', identifierClasses.input)}`);
+        const btnContainerBefore: HTMLElement = document.body.querySelector(`.${generateUniqueClassName('breakfast', identifierClasses.btnContainers.btnFindCancel)}`);
         expect(inputBefore.style.display).toEqual('none');
         expect(btnContainerBefore.style.display).toEqual('none');
         addBtn.click();
-        const inputAfter: HTMLElement = document.body.querySelector(`.${identifierClasses.input}`);
-        const btnContainerAfter: HTMLElement = document.body.querySelector(`.${identifierClasses.btnContainers.btnFindCancel}`);
+        const inputAfter: HTMLElement = document.body.querySelector(`.${generateUniqueClassName('breakfast', identifierClasses.input)}`);
+        const btnContainerAfter: HTMLElement = document.body.querySelector(`.${generateUniqueClassName('breakfast', identifierClasses.btnContainers.btnFindCancel)}`);
         expect(inputAfter.style.display).toEqual('');
         expect(btnContainerAfter.style.display).toEqual('');
     });
@@ -105,13 +105,13 @@ describe('MyDiaryFood', () => {
 
         const myDiaryFoodComponent = createMealDiary('juan', 'breakfast', new Date());
         document.body.appendChild(myDiaryFoodComponent);
-        const addBtn: HTMLElement = document.body.querySelector(`.${identifierClasses.btnContainers.btnAdd} button`);
+        const addBtn: HTMLElement = document.body.querySelector(`.${generateUniqueClassName('breakfast', identifierClasses.btnContainers.btnAdd)} button`);
         addBtn.click();
 
-        const input: HTMLInputElement = document.body.querySelector(`.${identifierClasses.input}`);
+        const input: HTMLInputElement = document.body.querySelector(`.${generateUniqueClassName('breakfast', identifierClasses.input)}`);
         input.value = '1 slice of pepperoni pizza'
 
-        const findBtn: HTMLButtonElement = document.body.querySelector(`.${identifierClasses.btnContainers.btnFindCancel} button:first-child`);
+        const findBtn: HTMLButtonElement = document.body.querySelector(`.${generateUniqueClassName('breakfast', identifierClasses.btnContainers.btnFindCancel)} button:first-child`);
         findBtn.click();
 
         expect(FoodAPI.fetchFoodData).toHaveBeenCalledWith('1 slice of pepperoni pizza', 'id', 'key');
@@ -141,17 +141,17 @@ describe('MyDiaryFood', () => {
         const now = new Date();
         const myDiaryFoodComponent = createMealDiary('juan', 'breakfast', now);
         document.body.appendChild(myDiaryFoodComponent);
-        const addBtn: HTMLElement = document.body.querySelector(`.${identifierClasses.btnContainers.btnAdd} button`);
+        const addBtn: HTMLElement = document.body.querySelector(`.${generateUniqueClassName('breakfast', identifierClasses.btnContainers.btnAdd)} button`);
         addBtn.click(); 
 
-        const input: HTMLInputElement = document.body.querySelector(`.${identifierClasses.input}`);
+        const input: HTMLInputElement = document.body.querySelector(`.${generateUniqueClassName('breakfast', identifierClasses.input)}`);
         input.value = '1 slice of pepperoni pizza'
 
-        const findBtn: HTMLButtonElement = document.body.querySelector(`.${identifierClasses.btnContainers.btnFindCancel} button:first-child`);
+        const findBtn: HTMLButtonElement = document.body.querySelector(`.${generateUniqueClassName('breakfast', identifierClasses.btnContainers.btnFindCancel)} button:first-child`);
         findBtn.click();
         await tick(); // a way to ensure that mocked promise resolves inside after clicking find button (https://stackoverflow.com/questions/37408834/testing-with-reacts-jest-and-enzyme-when-simulated-clicks-call-a-function-that)
 
-        const finalAddBtn: HTMLButtonElement = document.body.querySelector(`.${identifierClasses.btnContainers.btnAddCancel} button:first-child`);
+        const finalAddBtn: HTMLButtonElement = document.body.querySelector(`.${generateUniqueClassName('breakfast', identifierClasses.btnContainers.btnAddCancel)} button:first-child`);
         finalAddBtn.click();
 
         const passedArguments = saveMock.mock.calls[0];
