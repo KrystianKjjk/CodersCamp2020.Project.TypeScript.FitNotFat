@@ -4,7 +4,7 @@ import { createElement, calculateCalories } from '../utils/utils';
 import { User } from '../../../Models/User.model';
 import { saveInLocalStorage, readFromLocalStorage } from '../../Logic/LocalStorage/LocalStorage';
 import generateTileComponent from '../TileComponent/TileComponent';
-import { RemainingCalories } from "../TileRemainingCalories/TileRemainingCalories";
+import { SetRemainingCalories } from "../../Logic/SetRemainingCalories/SetRemainingCalories";
 
 
 //to call this function (due to the nature of how the gauges are created by the library)
@@ -24,14 +24,12 @@ import { RemainingCalories } from "../TileRemainingCalories/TileRemainingCalorie
 
     //create the 'remaining calories' tile and pass the arguments
     //TO BE ADDED
-   const remainingCalories = createElement('div', 'remaining-calories');
-   
-
+    const remainingCalories = SetRemainingCalories();
 
     //create the weight input tile, save the input to localstorage
     const myWeightInputTile = createTileMyWeight(User.weights?.[0]?.weight || 0, new Date(), User, saveWeightInLocalStorage);
 
-    overviewContainer.append(weightTile, todayCaloriesTile, myWeightInputTile);
+    overviewContainer.append(weightTile, todayCaloriesTile, remainingCalories, myWeightInputTile);
     document.querySelector(`.${targetDivClass}`).appendChild(overviewContainer);
     generateGaugesContent(User);
 }

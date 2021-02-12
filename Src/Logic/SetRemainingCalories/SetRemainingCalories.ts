@@ -1,3 +1,4 @@
+import generateTileComponent from "../../UIComponents/TileComponent/TileComponent";
 import { createTileRemainingCalories, RemainingCalories } from "../../UIComponents/TileRemainingCalories/TileRemainingCalories";
 import { calculateCalories } from "../../UIComponents/utils/utils";
 import { getLoggedInUser } from "../../UIComponents/utils/utils";
@@ -47,7 +48,7 @@ export function SetRemainingCalories(){
         food: foodCalories
     }
 
-    return createTileRemainingCalories(remainingCaloriesObject);
+    return generateTileComponent(createTileRemainingCalories(remainingCaloriesObject));
 }
 
 function _isToday(dateToCheck: Date): boolean{
