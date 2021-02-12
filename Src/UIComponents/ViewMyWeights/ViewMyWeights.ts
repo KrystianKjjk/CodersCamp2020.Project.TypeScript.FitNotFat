@@ -1,6 +1,6 @@
-import myWeightsComponent from "../MyWeights/MyWeights";
+import { myWeightsComponent } from "../MyWeights/MyWeights";
 import dashboardView from "../DashboardView/DashboardView";
-import { getLoggedInUser } from "../utils/utils";
+import { createElement, getLoggedInUser } from '../utils/utils';
 import { readFromLocalStorage } from "../../Logic/LocalStorage/LocalStorage";
 
 const myWeights = 'My weights';
@@ -19,7 +19,7 @@ export function ViewMyWeights(): HTMLElement {
     myWeightsView = dashboardView(myWeights, weightsComponent);
   }
   else {
-    //profileInfoView = dashboardView(myProfile, (createElement('div', '', 'Something went wrong') as HTMLDivElement));
+    myWeightsView = dashboardView(myWeights, (createElement('div', '', 'Something went wrong') as HTMLDivElement));
   }
 
   return myWeightsView;

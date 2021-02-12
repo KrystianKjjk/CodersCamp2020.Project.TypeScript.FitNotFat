@@ -2,6 +2,7 @@ import { profileInfo } from "../../UIComponents/ProfileInfo/ProfileInfo";
 import { ActivityLevel } from "../../../Models/ActivityLevel.model";
 import { WeeklyGoal } from "../../../Models/WeeklyGoal.model";
 import { User } from "../../../Models/User.model";
+import { myWeightsComponent } from '../../UIComponents/MyWeights/MyWeights';
 
 interface SubUser {
     username: string,
@@ -33,4 +34,11 @@ export function SetProfileInfo(user: User) {
     catch { return; }
 
     return profileInfo(subUser);
+}
+
+export function RefreshProfileInfo(userObject) {
+    const component = document.querySelector('.user-profile');
+    if(component) {
+        (component.parentNode.parentNode).replaceChild(SetProfileInfo(userObject), component.parentNode);
+    }
 }

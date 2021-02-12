@@ -37,13 +37,11 @@ saveInLocalStorage(username, userObject);
 
 const userObject = readFromLocalStorage(username);
 
-
 const viewProfileInfo = ViewProfileInfo();
 const viewApiKey = ViewAPIKey();
 const viewMyWeights = ViewMyWeights();
 const viewMyGoals = ViewMyGoals();
 const { viewOverview, viewOverviewContainerName } = ViewOverview();
-
 
 //-------- to replace when finished --------------------------------------------
 import dashboard from '../../../Src/UIComponents/Dashboard/Dashboard'
@@ -53,7 +51,6 @@ const myDiaryFood = dashboardView('Food', createElement('div', [], 'food content
 const myDiaryExercises = dashboardView('Exercises', createElement('div', [], 'exercises content') as HTMLDivElement);
 //------------------------------------------------------------------------------
 
-const el = createElement('div');
   document.body.appendChild(dashboard(username, {
     'overview': viewOverview,
     'diary-food': myDiaryFood,
