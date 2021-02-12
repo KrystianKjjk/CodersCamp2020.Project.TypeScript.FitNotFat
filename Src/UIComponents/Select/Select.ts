@@ -73,3 +73,4 @@ const createSelectBox = (
 };
 
 export default createSelectBox;
+export {ArrowDownIcon};

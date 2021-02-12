@@ -43,4 +43,8 @@ function prepareAPIData(itemFromAPI: FoodItemFromAPI): FoodDetails {
     };
 }
 
-export { sameDay, isUserAuthorizedToUseApi, getApiCredentialsForUser, prepareDataForTable, prepareAPIData };
+function generateUniqueClassName(mealName: string, className: string) {
+    return `${className}-${mealName}`;
+}
+
+export { sameDay, isUserAuthorizedToUseApi, getApiCredentialsForUser, prepareDataForTable, prepareAPIData, generateUniqueClassName };
