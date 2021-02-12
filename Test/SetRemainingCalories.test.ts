@@ -2,9 +2,9 @@ import { SetRemainingCalories } from "../Src/Logic/SetRemainingCalories/SetRemai
 import { User } from "../Models/User.model";
 import { ActivityLevel } from "../Models/ActivityLevel.model";
 import { MyDiaryFood } from "../Models/DiaryFood.model";
-import { KEY_LOGGED_USER } from "../Constants/consts";
-import { calculateCalories } from "../Src/UIComponents/utils/utils";
+import { calculateCalories, setLoggedInUser } from '../Src/UIComponents/utils/utils';
 import { getAge } from "../Src/UIComponents/Overview/Overview";
+import { saveInLocalStorage } from '../Src/Logic/LocalStorage/LocalStorage';
 
 const loggedInUser = 'testUser';
 let testUser: User = {
@@ -17,7 +17,7 @@ let testUser: User = {
 
   diaryFood: [
     new MyDiaryFood({
-      date: new Date(2021, 1, 11),
+      date: new Date(),
       providedKcal: 1000,
       recommendedKcal: 2500,
       meals: {}
@@ -56,21 +56,17 @@ const spareDiaryExercises = [
 const userAge = getAge(testUser.dateOfBirth);
 const goalCalories = Math.floor(calculateCalories(testUser.gender, testUser.weights[0].weight, testUser.height, userAge, testUser.activityLevel));
 
-localStorage[KEY_LOGGED_USER] = '';
-localStorage[loggedInUser] = '';
-
 describe('set remaining calories component test', () => {
 
   test('no logged user in local storage',()=>{
     expect(SetRemainingCalories()).toBe(undefined);
   });
   test('logged user - no user object in ls',()=>{
-    localStorage[KEY_LOGGED_USER] = loggedInUser;
+    setLoggedInUser(loggedInUser);
     expect(SetRemainingCalories()).toBe(undefined);
   });
   test('logged user and set correct user object in ls',()=>{
-    localStorage[KEY_LOGGED_USER] = loggedInUser;
-    localStorage[loggedInUser] = JSON.stringify(testUser);
+    saveInLocalStorage(loggedInUser,testUser);
     expect(SetRemainingCalories()).toBeInstanceOf(HTMLElement);
   });
   test('diaryExercises correct date and provided kcal',()=>{
@@ -80,21 +76,21 @@ describe('set remaining calories component test', () => {
   });
   test('no diaryExercises field (diaryFood works the same)',()=>{
     delete testUser.diaryExercises;
-    localStorage[loggedInUser] = JSON.stringify(testUser);
+    saveInLocalStorage(loggedInUser,testUser);
     const component = SetRemainingCalories();
     const nodeListRows = component.querySelectorAll('.remaining-calories-tile__section-details--table tr td');
     expect(nodeListRows[2].textContent).toEqual("0");
   });
   test('no diaryExercises.date field (diaryFood works the same)',()=>{
     testUser.diaryExercises = [];
-    localStorage[loggedInUser] = JSON.stringify(testUser);
+    saveInLocalStorage(loggedInUser,testUser);
     const component = SetRemainingCalories();
     const nodeListRows = component.querySelectorAll('.remaining-calories-tile__section-details--table tr td');
     expect(nodeListRows[2].textContent).toEqual("0");
   });
   test('diaryExercises not today date',()=>{
     testUser.diaryExercises = spareDiaryExercises;
-    localStorage[loggedInUser] = JSON.stringify(testUser);
+    saveInLocalStorage(loggedInUser,testUser);
     const component = SetRemainingCalories();
     const nodeListRows = component.querySelectorAll('.remaining-calories-tile__section-details--table tr td');
     expect(nodeListRows[2].textContent).toEqual("0");
@@ -102,7 +98,7 @@ describe('set remaining calories component test', () => {
   test('all values correctly set',()=>{
     //set today date
     testUser.diaryExercises[0].date = new Date();
-    localStorage[loggedInUser] = JSON.stringify(testUser);
+    saveInLocalStorage(loggedInUser,testUser);
 
     const totalNeededCalories = goalCalories + testUser.diaryExercises[0].totalCalories;
     const remainingCalories = totalNeededCalories - testUser.diaryFood[0].providedKcal;

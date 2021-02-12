@@ -71,7 +71,7 @@ exports[`Tests for createHistoricalWeeklyGoalsTable Should render table with row
       </tr>
       <tr>
         <td>
-          17/12/1995
+          12/17/1995
         </td>
         <td>
           Gain
@@ -88,7 +88,7 @@ exports[`Tests for createHistoricalWeeklyGoalsTable Should render table with row
       </tr>
       <tr>
         <td>
-          18/01/1995
+          1/18/1995
         </td>
         <td>
           Lose
