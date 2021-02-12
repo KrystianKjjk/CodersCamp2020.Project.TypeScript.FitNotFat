@@ -42,6 +42,8 @@ export function createTileAPIKey(username: string, getAPIDetails: GetAPIDetails,
             setAPIDetails(username, detailsAPI)
                 .then( msg => {
                     sectionError.innerText = msg;
+                    setTimeout(_clearError, 2000 );
+
                     sectionKeyInput.value = detailsAPI.key;
                     sectionIDInput.value = detailsAPI.id;
                 })
@@ -51,5 +53,10 @@ export function createTileAPIKey(username: string, getAPIDetails: GetAPIDetails,
             sectionError.innerText = 'KEY and ID must be filled out!'
         }
     }
+
+    function _clearError() {
+        sectionError.innerText = '';
+    }
+
     return containerAPIKey;
 }

@@ -5,7 +5,7 @@ import { getLoggedInUser } from "../../UIComponents/utils/utils";
 import { readFromLocalStorage } from "../LocalStorage/LocalStorage";
 import { getAge } from "../../UIComponents/Overview/Overview";
 
-export function SetRemainingCalories(){
+export function SetRemainingCalories() :HTMLElement{
 
     const loggedUser = getLoggedInUser();
     if(!loggedUser) return;
@@ -60,4 +60,11 @@ function _isToday(dateToCheck: Date): boolean{
       || dateToCheck.getFullYear() !== today.getFullYear()) return false;
 
     return true;
+}
+
+export function refreshRemainingCalories() {
+    const remainingCaloriesTile = document.querySelector('.remaining-calories-tile');
+    if(remainingCaloriesTile) {
+        (remainingCaloriesTile.parentNode.parentNode).replaceChild(SetRemainingCalories(),remainingCaloriesTile.parentNode);
+    }
 }

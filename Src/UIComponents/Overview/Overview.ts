@@ -4,12 +4,14 @@ import { createElement, calculateCalories } from '../utils/utils';
 import { User } from '../../../Models/User.model';
 import { saveInLocalStorage, readFromLocalStorage } from '../../Logic/LocalStorage/LocalStorage';
 import generateTileComponent from '../TileComponent/TileComponent';
-import { SetRemainingCalories } from "../../Logic/SetRemainingCalories/SetRemainingCalories";
+import { SetRemainingCalories } from '../../Logic/SetRemainingCalories/SetRemainingCalories';
+import { createTileRemainingCalories } from '../TileRemainingCalories/TileRemainingCalories';
+import { saveWeightInLocalStorage } from '../../Logic/SaveWeightInLocalStorage/SaveWeightInLocalStorage';
 
 
 //to call this function (due to the nature of how the gauges are created by the library)
 // please first create a target container in body (make sure it's already in DOM) and only then call the function
- function overviewComponent(User: User, targetDivClass: string): void{
+export function overviewComponent(User: User, targetDivClass: string): void{
     const overviewContainer = createElement('div', 'overview-container') as HTMLDivElement;
 
     //create the 'goal weight' tile 
@@ -33,24 +35,12 @@ import { SetRemainingCalories } from "../../Logic/SetRemainingCalories/SetRemain
     generateGaugesContent(User);
 }
 
-export default overviewComponent;
-
 
 export function getAge(date: Date) {
     return ((new Date(Date.now() - date.getTime()).getFullYear()) - 1970);
 }
 
-function saveWeightInLocalStorage(weight: number, date: Date, user:User){
-    user.weights.unshift({
-        date: date,
-        weight: weight
-    });
-
-    generateGaugesContent(user);
-    saveInLocalStorage(user.name, user);
-}
-
-function generateGaugesContent(User: User){
+export function generateGaugesContent(User: User){
     //calculate age and max calories
     const age = getAge(User.dateOfBirth);
     const maxCalories = calculateCalories(User.gender, User.weights[0].weight, User.height, age, User.activityLevel)
@@ -76,5 +66,4 @@ function generateGaugesContent(User: User){
     }
 
     generateGoalTile("Today Calories", "overviewTodayCaloriesTile", User.diaryFood?.[0]?.providedKcal || 0, 0, maxCalories ,"kcal", false);
-  
 }

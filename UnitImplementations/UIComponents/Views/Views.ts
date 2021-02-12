@@ -1,4 +1,4 @@
-import overviewComponent from "../../../Src/UIComponents/Overview/Overview";
+import { overviewComponent } from "../../../Src/UIComponents/Overview/Overview";
 import { readFromLocalStorage, saveInLocalStorage } from "../../../Src/Logic/LocalStorage/LocalStorage";
 import { createElement, getLoggedInUser, setLoggedInUser, clearLoggedInUser } from "../../../Src/UIComponents/utils/utils";
 import { ViewProfileInfo } from "../../../Src/UIComponents/ViewProfileInfo/ViewProfileInfo";
