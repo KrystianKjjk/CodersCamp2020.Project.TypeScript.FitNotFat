@@ -41,10 +41,6 @@ import { getAge } from '../utils/utils';
 
 export default overviewComponent;
 
-export function getAge(date: Date) {
-    return ((new Date(Date.now() - date.getTime()).getFullYear()) - 1970);
-}
-
 function saveWeightInLocalStorage(weight: number, date: Date, user:User){
     user.weights.unshift({
         date: date,
