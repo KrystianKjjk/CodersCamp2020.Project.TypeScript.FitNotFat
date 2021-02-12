@@ -5,9 +5,7 @@ import {USER_INPUT_EMPTY} from '../../../Constants/consts';
 import showModalWindow from '../../../Src/UIComponents/ModalWindow/ModalWindow';
 function loginButton(username: string, userDashboard: (user: User) => HTMLElement): void {
      
-    const loggedIn = getLoggedInUser();
-    const user = readFromLocalStorage(loggedIn ? loggedIn : username) as User | null;
-    const loginBtn = this as HTMLButtonElement;
+    const user=readFromLocalStorage(username) as User|null;
     if (!username){
         showModalWindow(USER_INPUT_EMPTY);  
     }

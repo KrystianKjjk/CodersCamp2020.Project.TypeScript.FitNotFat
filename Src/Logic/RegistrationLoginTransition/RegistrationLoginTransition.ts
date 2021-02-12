@@ -40,7 +40,6 @@ function generateLogIn():HTMLDivElement{
     const myGoals = dashboardView('Goals', createElement('div', [], 'goals content') as HTMLDivElement);
     const myWeights = dashboardView('Weights', createElement('div', [], 'weights content') as HTMLDivElement);
     const apiKey = dashboardView('API Key', createElement('div', [], 'api key content') as HTMLDivElement);
-    const logOut = dashboardView('Log Out', createElement('div', [], 'log out content') as HTMLDivElement);
     const myProfile = dashboardView('My profile', createElement('div', [], 'profile content') as HTMLDivElement);
     
     const dashboardComponents={'overview': overview, 
@@ -49,7 +48,6 @@ function generateLogIn():HTMLDivElement{
         'goals': myGoals, 
         'weights': myWeights,
         'apiKey': apiKey,
-        'logOut': logOut,
         'profile': myProfile}
 
 loginButton.call(button, username, (user)=>dashboard(user,dashboardComponents))})as HTMLDivElement;
