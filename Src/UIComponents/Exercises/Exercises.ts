@@ -5,7 +5,8 @@ import { ExercisesDetails } from '../../../Models/ExercisesDetails.model';
 import { generateWhiteButton } from '../Buttons/Buttons';
 import { User } from '../../../Models/User.model';
 import { createElement, createTextInput } from '../utils/utils';
-import { sameDay, isUserAuthorizedToUseApi, getApiCredentialsForUser, prepareAPIData, prepareDataForTable } from './utils';
+import { sameDay, isUserAuthorizedToUseApi, getApiCredentialsForUser} from '../MyDiaryFood/utils'
+import { prepareAPIData, prepareDataForTable } from './utils';
 import tile from '../TileComponent/TileComponent';
 
 export const identifierClasses = {
@@ -130,7 +131,7 @@ function onClickCancel() {
     showElementsByClassName(btnContainers.btnAdd, tables.main);
 }
 
-function onClickAddExercise(
+export function onClickAddExercise(
     userName: string, 
     exerciseName: string, 
     showDate: Date, 

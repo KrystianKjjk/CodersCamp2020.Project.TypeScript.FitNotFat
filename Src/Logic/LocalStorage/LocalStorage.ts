@@ -13,7 +13,7 @@ function readFromLocalStorage(name:string):User | null {
         return retrievedObject;
     }
     catch(error){
-        alert("No user with this name found!");
+        return null;
     }      
 }
 

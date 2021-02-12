@@ -9,7 +9,7 @@ export interface ExerciseItemFromAPI {
 }
 
 export interface ExerciseDataFromResponse {
-    foods: ExerciseItemFromAPI[];
+    exercises: ExerciseItemFromAPI[];
 }
 
 
