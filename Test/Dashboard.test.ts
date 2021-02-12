@@ -1,33 +1,26 @@
 import dashboard from '../Src/UIComponents/Dashboard/Dashboard';
 import { getByText } from '@testing-library/dom';
+import { getLoggedInUser, setLoggedInUser, createElement } from '../Src/UIComponents/utils/utils';
 
 const username = 'User5';
-const overview = document.createElement('div');
-overview.innerHTML = "Overview";
-const myDiaryFood = document.createElement('div');
-myDiaryFood.innerHTML = "Food";
-const myDiaryExercises = document.createElement('div');
-myDiaryExercises.innerHTML = "Exercises";
-const myGoals = document.createElement('div');
-myGoals.innerHTML = "Goals";
-const myWeights = document.createElement('div');
-myWeights.innerHTML = "Weights";
-const apiKey = document.createElement('div');
-apiKey.innerHTML = "API Key";
-const logOut = document.createElement('div');
-logOut.innerHTML = "Log Out";
-const myProfile = document.createElement('div');
-myProfile.innerHTML = "Profile";
-
-const testDashboard = dashboard(username, {
+setLoggedInUser(username);
+const overview = createElement('div', [], "Overview");
+const myDiaryFood = createElement('div', [], "Food");
+const myDiaryExercises = createElement('div', [], "Exercises");
+const myGoals = createElement('div', [], "Goals");
+const myWeights = createElement('div', [], "Weights");
+const apiKey = createElement('div', [], "API Key");
+const myProfile = createElement('div', [], "Profile");
+const components = {
     'overview': overview, 
     'diary-food': myDiaryFood, 
     'diary-exercises': myDiaryExercises, 
     'goals': myGoals, 
     'weights': myWeights,
     'apiKey': apiKey,
-    'logOut': logOut,
-    'profile': myProfile});
+    'profile': myProfile};
+const testDashboard = dashboard(username, components);
+
 const mainMenu = testDashboard.querySelector('.main-menu') as HTMLElement;
 const overviewOpt = getByText(mainMenu, 'Overview');
 const myDiaryOpt = getByText(mainMenu, 'My diary');
@@ -38,293 +31,56 @@ const myWeightsOpt = getByText(mainMenu, 'My weights');
 const apiKeyOpt = getByText(mainMenu, 'API Key');
 const logOutOpt = getByText(mainMenu, 'Log out');
 const myProfileBtn = mainMenu.querySelector('.profile-btn') as HTMLElement;
+const testedOptions = [overviewOpt, myDiaryOpt, myDiaryFoodOpt, myDiaryExercisesOpt, myGoalsOpt, myWeightsOpt, apiKeyOpt, myProfileBtn];
 
 const chosenView = testDashboard.lastElementChild as HTMLElement;
+let viewName: string;
+let view: HTMLDivElement;
 describe('Dashboard test', () => {
-
     test('returns div', () => {
         expect(testDashboard).toBeInstanceOf(HTMLDivElement);
     })
-
     describe('after create dashboard component display overview component', () => {
         test('', () => {
             expect(chosenView.innerHTML.includes('Overview')).toBe(true);
         })
         test('only active option is Overview', () => {
             expect(overviewOpt.classList).toContain('active');
-            expect(myDiaryOpt.classList).not.toContain('active');
-            expect(myDiaryFoodOpt.classList).not.toContain('active');
-            expect(myDiaryExercisesOpt.classList).not.toContain('active');
-            expect(myGoalsOpt.classList).not.toContain('active');
-            expect(myWeightsOpt.classList).not.toContain('active');
-            expect(apiKeyOpt.classList).not.toContain('active');
-            expect(logOutOpt.classList).not.toContain('active');
-            expect(myProfileBtn.classList).not.toContain('active');
         })
         test('only displayed view is Overview', () => {
-            expect(overview.style.display).not.toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
+            const displayed = Object.values(components)
+                .filter(comp => comp.style.display !== 'none');
+            expect(displayed).toHaveLength(1);
+            expect(displayed[0]).toBe(overview);
         })
     })
 
-    describe('after click option "Overview" display overview component', () => {
-        test('', () => {
-            myWeightsOpt.click();
-            overviewOpt.click();
-            expect(chosenView.innerHTML.includes('Overview')).toBe(true);
-        })
-        test('only active option is Overview', () => {
-            expect(overviewOpt.classList).toContain('active');
-            expect(myDiaryOpt.classList).not.toContain('active');
-            expect(myDiaryFoodOpt.classList).not.toContain('active');
-            expect(myDiaryExercisesOpt.classList).not.toContain('active');
-            expect(myGoalsOpt.classList).not.toContain('active');
-            expect(myWeightsOpt.classList).not.toContain('active');
-            expect(apiKeyOpt.classList).not.toContain('active');
-            expect(logOutOpt.classList).not.toContain('active');
-            expect(myProfileBtn.classList).not.toContain('active');
-        })
-        test('only displayed view is Overview', () => {
-            expect(overview.style.display).not.toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
+    testedOptions.forEach(opt => {
+        describe(`after click option "${opt.textContent.trim()}" display ${viewName} component`, () => {
+            beforeEach(() => {
+                viewName = opt.getAttribute('data-component');
+                view = components[viewName];
+                myDiaryOpt.click();
+                opt.click();
+            })
+            test('', () => {
+                expect(chosenView.innerHTML.includes(`${view.innerHTML}`)).toBe(true);
+            })
+            test(`only active option is "${opt.textContent.trim()}"`, () => {
+                expect(opt.classList).toContain('active');
+            })
+            test(`only displayed view is ${viewName}`, () => {
+                const displayed = Object.values(components)
+                    .filter(comp => comp.style.display !== 'none');
+                expect(displayed).toHaveLength(1);
+                expect(displayed[0]).toBe(view);
+            })
         })
     })
 
-    describe('after click option "My diary" display Food component', () => {        
-        test('', () => {
-            myDiaryOpt.click();
-            expect(chosenView.innerHTML.includes('Food')).toBe(true);
-        })
-        test('only active option are My diary and Food', () => {
-            expect(overviewOpt.classList).not.toContain('active');
-            expect(myDiaryOpt.classList).toContain('active');
-            expect(myDiaryFoodOpt.classList).toContain('active');
-            expect(myDiaryExercisesOpt.classList).not.toContain('active');
-            expect(myGoalsOpt.classList).not.toContain('active');
-            expect(myWeightsOpt.classList).not.toContain('active');
-            expect(apiKeyOpt.classList).not.toContain('active');
-            expect(logOutOpt.classList).not.toContain('active');
-            expect(myProfileBtn.classList).not.toContain('active');
-        })
-        test('only displayed view is Food', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).not.toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
-        })
-    })
-
-    describe('after click option "Food" display Food component', () => {        
-        test('', () => {
-            myDiaryOpt.click();
-            myDiaryFoodOpt.click();
-            expect(chosenView.innerHTML.includes('Food')).toBe(true);
-        })
-        test('only active option are My diary and Food', () => {
-            expect(overviewOpt.classList).not.toContain('active');
-            expect(myDiaryOpt.classList).toContain('active');
-            expect(myDiaryFoodOpt.classList).toContain('active');
-            expect(myDiaryExercisesOpt.classList).not.toContain('active');
-            expect(myGoalsOpt.classList).not.toContain('active');
-            expect(myWeightsOpt.classList).not.toContain('active');
-            expect(apiKeyOpt.classList).not.toContain('active');
-            expect(logOutOpt.classList).not.toContain('active');
-            expect(myProfileBtn.classList).not.toContain('active');
-        })
-        test('only displayed view is Food', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).not.toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
-        })
-    })
-
-    describe('after click option "Exercises" display Exercises component', () => {        
-        test('', () => {
-            myDiaryOpt.click();
-            myDiaryExercisesOpt.click();
-            expect(chosenView.innerHTML.includes('Exercises')).toBe(true);
-        })
-        test('only active option are My diary and Exercises', () => {
-            expect(overviewOpt.classList).not.toContain('active');
-            expect(myDiaryOpt.classList).toContain('active');
-            expect(myDiaryFoodOpt.classList).not.toContain('active');
-            expect(myDiaryExercisesOpt.classList).toContain('active');
-            expect(myGoalsOpt.classList).not.toContain('active');
-            expect(myWeightsOpt.classList).not.toContain('active');
-            expect(apiKeyOpt.classList).not.toContain('active');
-            expect(logOutOpt.classList).not.toContain('active');
-            expect(myProfileBtn.classList).not.toContain('active');
-        })
-        test('only displayed view is Exercises', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).not.toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
-        })
-    })
-
-    describe('after click option "My goals" display My goals component', () => {        
-        test('', () => {
-            myGoalsOpt.click();
-            expect(chosenView.innerHTML.includes('Goals')).toBe(true);
-        })
-        test('only active option is My goals', () => {
-            expect(overviewOpt.classList).not.toContain('active');
-            expect(myDiaryOpt.classList).not.toContain('active');
-            expect(myDiaryFoodOpt.classList).not.toContain('active');
-            expect(myDiaryExercisesOpt.classList).not.toContain('active');
-            expect(myGoalsOpt.classList).toContain('active');
-            expect(myWeightsOpt.classList).not.toContain('active');
-            expect(apiKeyOpt.classList).not.toContain('active');
-            expect(logOutOpt.classList).not.toContain('active');
-            expect(myProfileBtn.classList).not.toContain('active');
-        })
-        test('only displayed view is My goals', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).not.toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
-        })
-    })
-
-    describe('after click option "My weights" display My weights component', () => {        
-        test('', () => {
-            myWeightsOpt.click();
-            expect(chosenView.innerHTML.includes('Weights')).toBe(true);
-        })
-        test('only active option is My weights', () => {
-            expect(overviewOpt.classList).not.toContain('active');
-            expect(myDiaryOpt.classList).not.toContain('active');
-            expect(myDiaryFoodOpt.classList).not.toContain('active');
-            expect(myDiaryExercisesOpt.classList).not.toContain('active');
-            expect(myGoalsOpt.classList).not.toContain('active');
-            expect(myWeightsOpt.classList).toContain('active');
-            expect(apiKeyOpt.classList).not.toContain('active');
-            expect(logOutOpt.classList).not.toContain('active');
-            expect(myProfileBtn.classList).not.toContain('active');
-        })
-        test('only displayed view is My weights', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).not.toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
-        })
-    })
-
-    describe('after click option API Key display API Key component', () => {
-        test('', () => {
-            apiKeyOpt.click();
-            expect(chosenView.innerHTML.includes('API Key')).toBe(true);
-        })
-        test('only active option is API Key', () => {
-            expect(overviewOpt.classList).not.toContain('active');
-            expect(myDiaryOpt.classList).not.toContain('active');
-            expect(myDiaryFoodOpt.classList).not.toContain('active');
-            expect(myDiaryExercisesOpt.classList).not.toContain('active');
-            expect(myGoalsOpt.classList).not.toContain('active');
-            expect(myWeightsOpt.classList).not.toContain('active');
-            expect(apiKeyOpt.classList).toContain('active');
-            expect(logOutOpt.classList).not.toContain('active');
-            expect(myProfileBtn.classList).not.toContain('active');
-        })
-        test('only displayed view is API Key', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).not.toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).toBe('none');
-        })
-    })
-
-    describe('after click option LogOut display LogOut component', () => {
-        test('', () => {
-            logOutOpt.click();
-            expect(chosenView.innerHTML.includes('Log Out')).toBe(true);
-        })
-        test('only active option is Log out', () => {
-            expect(overviewOpt.classList).not.toContain('active');
-            expect(myDiaryOpt.classList).not.toContain('active');
-            expect(myDiaryFoodOpt.classList).not.toContain('active');
-            expect(myDiaryExercisesOpt.classList).not.toContain('active');
-            expect(myGoalsOpt.classList).not.toContain('active');
-            expect(myWeightsOpt.classList).not.toContain('active');
-            expect(apiKeyOpt.classList).not.toContain('active');
-            expect(logOutOpt.classList).toContain('active');
-            expect(myProfileBtn.classList).not.toContain('active');
-        })
-        test('only displayed view is Log out', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).not.toBe('none');
-            expect(myProfile.style.display).toBe('none');
-        })
-    })
-
-    describe('after click option "My profile" button display My profile component', () => {        
-        test('', () => {
-            myProfileBtn.click();
-            expect(chosenView.innerHTML.includes('Profile')).toBe(true);
-        })
-        test('only active is My profile button', () => {
-            expect(overviewOpt.classList).not.toContain('active');
-            expect(myDiaryOpt.classList).not.toContain('active');
-            expect(myDiaryFoodOpt.classList).not.toContain('active');
-            expect(myDiaryExercisesOpt.classList).not.toContain('active');
-            expect(myGoalsOpt.classList).not.toContain('active');
-            expect(myWeightsOpt.classList).not.toContain('active');
-            expect(apiKeyOpt.classList).not.toContain('active');
-            expect(logOutOpt.classList).not.toContain('active');
-            expect(myProfileBtn.classList).toContain('active');
-        })
-        test('only displayed view is My profile', () => {
-            expect(overview.style.display).toBe('none');
-            expect(myDiaryFood.style.display).toBe('none');
-            expect(myDiaryExercises.style.display).toBe('none');
-            expect(myGoals.style.display).toBe('none');
-            expect(myWeights.style.display).toBe('none');
-            expect(apiKey.style.display).toBe('none');
-            expect(logOut.style.display).toBe('none');
-            expect(myProfile.style.display).not.toBe('none');
-        })
+    test('log out after click "Log out" option', () => {
+        expect(getLoggedInUser()).toBe(username);
+        logOutOpt.click();
+        expect(getLoggedInUser()).toBe('');
     })
 })

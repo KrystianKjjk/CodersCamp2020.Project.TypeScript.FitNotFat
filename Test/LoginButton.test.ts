@@ -2,7 +2,8 @@ import loginButton from '../Src/Logic/LoginButton/LoginButton';
 import {saveInLocalStorage} from '../Src/Logic/LocalStorage/LocalStorage';
 import {User} from '../Models/User.model';
 import {ActivityLevel} from '../Models/ActivityLevel.model';
-
+import {clearLoggedInUser, setLoggedInUser} from '../Src/UIComponents/utils/utils';
+import {USER_INPUT_EMPTY} from '../Constants/consts';
 const username = 'User';
 const fakeUsername = 'UserNotFound';
 const user: User = {
@@ -24,6 +25,8 @@ window.alert = (str: string) => {console.log(str)};
 
 describe('Login Button callback test', () => {
   beforeEach(() => {
+    userDashboard.mockClear();
+    clearLoggedInUser();
     document.body.innerHTML = "";
     document.body.appendChild(loginView);
   });
@@ -36,6 +39,18 @@ describe('Login Button callback test', () => {
   });
   test('if user does not exist', () => {
     loginButton.call(loginBtn, fakeUsername, userDashboard, failComp);
-    expect(loginBtn.parentElement.children).toContain(failComp);
+    expect(loginBtn.parentElement.children).toContainEqual(failComp);
+  });
+  test('if user input is empty', () => {
+    loginButton.call(loginBtn, '', userDashboard, failComp);
+    expect(loginBtn.parentElement.children).toContainEqual(failComp);
+    expect(failComp.innerHTML).toBe(USER_INPUT_EMPTY);
+  });
+  test('if user is logged in', () => {
+    setLoggedInUser(username);
+    loginButton.call(loginBtn, fakeUsername, userDashboard, failComp);
+    expect(document.body.children).toHaveLength(1);
+    expect(userDashboard).toHaveBeenCalledTimes(1);
+    expect(userDashboard).toHaveBeenCalledWith(user);
   });
 });
