@@ -34,6 +34,7 @@ function createDashboard(user: User): HTMLElement {
   const myDiaryExercises = dashboardView('Exercises', createElement('div', [], 'exercises content') as HTMLDivElement);
   const myGoals = dashboardView('Goals', createElement('div', [], 'goals content') as HTMLDivElement);
   const myWeights = dashboardView('Weights', createElement('div', [], 'weights content') as HTMLDivElement);
+  const apiKey = dashboardView('API Key', createElement('div', [], 'api key content') as HTMLDivElement);
   const profile = profileInfo({
     username: user.name,
     gender: user.gender,
@@ -41,23 +42,22 @@ function createDashboard(user: User): HTMLElement {
     height: user.height,
     weight: user.weights[user.weights.length - 1].weight,
     activityLevel: user.activityLevel,
-    weeklyGoal: user.goals[user.goals.length - 1].weeklyGoal,
+    weeklyGoal: user?.goals?.[user.goals.length - 1]?.weeklyGoal,
     goalWeight: user.goalWeight,
   });
   const myProfile = dashboardView('My profile', profile);
   return dashboard(user.name, {
-    'overview': overview, 
+    overview,
     'diary-food': myDiaryFood, 
     'diary-exercises': myDiaryExercises, 
-    'goals': myGoals, 
-    'weights': myWeights, 
-    'profile': myProfile,
-    'apiKey': createElement('div'),
-    'logOut':createElement('div')
+    goals: myGoals, 
+    weights: myWeights, 
+    profile: myProfile,
+    apiKey
   });
 }
 
-export function createFailMsg(username: string): HTMLElement {
+function createFailMsg(username: string): HTMLElement {
   const failMsg = createElement('p');
   failMsg.innerHTML = `User ${username} does not exist`;
   return failMsg;

@@ -1,0 +1,41 @@
+.date-button {
+    width: 200px;
+    background: white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    flex-grow: 1;
+    margin: 0 12px;
+    color: #DA1B36;
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.arrow-button {
+    border-radius: 10px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.left-arrow-button {
+    transform: rotate(90deg);
+    box-shadow: 2px -2px 4px rgba(0, 0, 0, 0.25);
+    position: relative;
+    left: -4px;
+}
+
+.right-arrow-button {
+    transform: rotate(-90deg);
+    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.25);
+    position: relative;
+    right: -4px;
+}
+
+.date-container {
+    display: flex;
+    height: 40px;
+    width: 300px;
+}
