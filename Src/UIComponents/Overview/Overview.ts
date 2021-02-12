@@ -2,20 +2,15 @@ import generateGoalTile from '../GoalTile/GoalTile';
 import { createTileMyWeight } from '../TileMyWeight/TileMyWeight';
 import { createElement, calculateCalories } from '../utils/utils';
 import { User } from '../../../Models/User.model';
-import {saveInLocalStorage, readFromLocalStorage} from '../../Logic/LocalStorage/LocalStorage';
+import { saveInLocalStorage, readFromLocalStorage } from '../../Logic/LocalStorage/LocalStorage';
 import generateTileComponent from '../TileComponent/TileComponent';
+import { RemainingCalories } from "../TileRemainingCalories/TileRemainingCalories";
 
 
-//to call this function (due to the nature of how the gauges are created by the library) please first create a target container in body (make sure it's already in DOM) and only then call the function
- function overviewComponent(User: User, targetDivClass:string):void{
+//to call this function (due to the nature of how the gauges are created by the library)
+// please first create a target container in body (make sure it's already in DOM) and only then call the function
+ function overviewComponent(User: User, targetDivClass: string): void{
     const overviewContainer = createElement('div', 'overview-container') as HTMLDivElement;
-
-    //create a header div
-    const overviewHeader = createElement('div', 'overview-header');
-    const overviewHeaderH1 = createElement('h1', '', 'Overview');
-    const overviewHeaderH2 = createElement('h2', '');
-    overviewHeaderH2.innerHTML = `Hi <span>${User.name}</span>, welcome back!`;
-    overviewHeader.append(overviewHeaderH1, overviewHeaderH2);
 
     //create the 'goal weight' tile 
     const goalWeight = createElement('div', 'weight-goal');
@@ -29,11 +24,14 @@ import generateTileComponent from '../TileComponent/TileComponent';
 
     //create the 'remaining calories' tile and pass the arguments
     //TO BE ADDED
+   const remainingCalories = createElement('div', 'remaining-calories');
+   
+
 
     //create the weight input tile, save the input to localstorage
-    const myWeightInputTile = createTileMyWeight(User.weights[0].weight, new Date(), User, saveWeightInLocalStorage);
+    const myWeightInputTile = createTileMyWeight(User.weights?.[0]?.weight || 0, new Date(), User, saveWeightInLocalStorage);
 
-    overviewContainer.append(overviewHeader, weightTile, todayCaloriesTile, myWeightInputTile);
+    overviewContainer.append(weightTile, todayCaloriesTile, myWeightInputTile);
     document.querySelector(`.${targetDivClass}`).appendChild(overviewContainer);
     generateGaugesContent(User);
 }
@@ -79,6 +77,6 @@ function generateGaugesContent(User: User){
         generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0].weight,  userMinWeight, User.goalWeight,  "kg", false);
     }
 
-    generateGoalTile("Today Calories", "overviewTodayCaloriesTile", User.diaryFood[0].providedKcal, 0, maxCalories ,"kcal", false);
+    generateGoalTile("Today Calories", "overviewTodayCaloriesTile", User.diaryFood?.[0]?.providedKcal || 0, 0, maxCalories ,"kcal", false);
   
 }
