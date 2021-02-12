@@ -32,12 +32,13 @@ describe('Login Button callback test', () => {
     document.body.innerHTML = "";
     document.body.appendChild(loginView);
   });
-  test('if user exists', () => {
+ 
+  test('should render dashboard if user exists', () => {
     loginButton.call(loginBtn, username, userDashboard, failComp);
     expect(document.body.children[0]).toBeInstanceOf(HTMLDivElement);
     expect(document.body.children).toHaveLength(1);
     expect(userDashboard).toHaveBeenCalledTimes(1);
-    expect(userDashboard).toHaveBeenCalledWith(user);
+    expect(userDashboard).toHaveBeenCalledWith(user.name);
   });
   test('if user does not exist', () => {
     loginButton.call(loginBtn, fakeUsername, userDashboard, failComp);
@@ -47,12 +48,5 @@ describe('Login Button callback test', () => {
     loginButton.call(loginBtn, '', userDashboard);
     expect(showModalWindow).toBeCalled();
   
-  });
-  test('if user is logged in', () => {
-    setLoggedInUser(username);
-    loginButton.call(loginBtn, fakeUsername, userDashboard, failComp);
-    expect(document.body.children).toHaveLength(1);
-    expect(userDashboard).toHaveBeenCalledTimes(1);
-    expect(userDashboard).toHaveBeenCalledWith(user);
   });
 });
