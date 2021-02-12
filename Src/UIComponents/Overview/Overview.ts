@@ -38,7 +38,8 @@ import { RemainingCalories } from "../TileRemainingCalories/TileRemainingCalorie
 
 export default overviewComponent;
 
-function getAge(date: Date) {     
+
+export function getAge(date: Date) {
     return ((new Date(Date.now() - date.getTime()).getFullYear()) - 1970);
 }
 
