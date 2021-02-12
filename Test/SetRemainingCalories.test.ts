@@ -2,7 +2,6 @@ import { SetRemainingCalories } from "../Src/Logic/SetRemainingCalories/SetRemai
 import { User } from "../Models/User.model";
 import { ActivityLevel } from "../Models/ActivityLevel.model";
 import { MyDiaryFood } from "../Models/DiaryFood.model";
-import { KEY_LOGGED_USER } from "../Constants/consts";
 import { calculateCalories, setLoggedInUser } from '../Src/UIComponents/utils/utils';
 import { getAge } from "../Src/UIComponents/Overview/Overview";
 import { saveInLocalStorage } from '../Src/Logic/LocalStorage/LocalStorage';
@@ -18,7 +17,7 @@ let testUser: User = {
 
   diaryFood: [
     new MyDiaryFood({
-      date: new Date(2021, 1, 11),
+      date: new Date(),
       providedKcal: 1000,
       recommendedKcal: 2500,
       meals: {}
