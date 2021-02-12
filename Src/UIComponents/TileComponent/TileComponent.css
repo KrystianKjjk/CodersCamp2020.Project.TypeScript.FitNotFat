@@ -6,3 +6,12 @@
     width: max-content;
     margin: 0 1.5rem 1.5rem 0;
 }
+
+.tile-full-width {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 16px;
+    height: 100%;
+    width: 100%;
+}
+

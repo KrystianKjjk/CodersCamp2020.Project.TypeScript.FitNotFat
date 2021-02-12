@@ -93,10 +93,11 @@ export function getLoggedInUser(): string{
     return localStorage.getItem(KEY_LOGGED_USER) || '';
 }
 
-export function setLoggedInUser(loggedUser: string): boolean{
-    if(localStorage.getItem(KEY_LOGGED_USER)) return false;
+export function setLoggedInUser(loggedUser: string): string{
+    const loggedInUser = getLoggedInUser();
+    if(loggedInUser) return loggedInUser;
     localStorage.setItem(KEY_LOGGED_USER, loggedUser);
-    return true;
+    return loggedUser;
 }
 
 export function clearLoggedInUser(): boolean{

@@ -1,0 +1,36 @@
+.myfood-meals-container {
+    display: grid;
+    grid-template-areas: 
+    "time time"
+    "breakfast lunch"
+    "dinner snacks";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 4vw;
+    padding: 0px 20px 20px 20px;
+}
+
+.myfood-time {
+    grid-area: time;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.myfood-breakfast {
+    grid-area: breakfast;
+
+}
+
+.myfood-lunch {
+    grid-area: lunch;
+}
+
+.myfood-dinner {
+    grid-area: dinner;
+}
+
+.myfood-snacks {
+    grid-area: snacks;
+}

@@ -82,6 +82,14 @@
     cursor: pointer;
 }
 
+.log-out-opt {
+    color: black;
+    text-decoration: none;
+}
+.log-out-opt:hover {
+    color: #DA1B36;
+}
+
 .menu-option path {
     fill: #4A484E;
 }
