@@ -33,7 +33,7 @@
     margin-top: 1em;
     color: red;
     font-size: 22px;
-    line-height: 27;
+    line-height: 27px;
     letter-spacing: 0.06em;
-    justify-content: space-around;
+    text-align: center;
 } 
