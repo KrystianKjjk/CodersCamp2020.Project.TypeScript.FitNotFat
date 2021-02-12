@@ -33,11 +33,6 @@ export function unauthorizedUserLogic():HTMLDivElement{
 
 function generateLogIn():HTMLDivElement{
   const logInDiv = generateLoginForm((button, username) => {
-    function createFailMsg(username: string): HTMLElement {
-      const failMsg = createElement('p');
-      failMsg.innerHTML = `User ${username} does not exist`;
-      return failMsg;
-    }
     
     const overview = dashboardView('Overview', createElement('div', [], 'overview content') as HTMLDivElement, `Hi ${username}!`);
     const myDiaryFood = dashboardView('Food', createElement('div', [], 'food content') as HTMLDivElement);
