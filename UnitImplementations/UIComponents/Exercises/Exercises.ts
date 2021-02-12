@@ -3,6 +3,7 @@ import { ActivityLevel } from '../../../Models/ActivityLevel.model';
 import { User } from '../../../Models/User.model';
 import createExercisesDiary  from '../../../Src/UIComponents/Exercises/Exercises'
 
+//to test - put your apikey and api id in the object below
 let dummyobject: User = {
     name: "kotek",
     gender: 'Male',
@@ -11,8 +12,8 @@ let dummyobject: User = {
     goalWeight: 60,
     activityLevel: ActivityLevel.Low,
     detailsAPI: {
-        key: "171b07c6a5a9039aae68a1d3b5e5055d",
-        id: "d3c7316a"
+        key: "", // <-- here key
+        id: "" // <-- here id
     },
     weights:[
         {date: new Date(2021, 1, 2), weight: 70}

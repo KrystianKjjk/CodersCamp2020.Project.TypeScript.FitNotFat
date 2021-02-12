@@ -9,7 +9,7 @@ import { sameDay, isUserAuthorizedToUseApi, getApiCredentialsForUser, prepareAPI
 import tile from '../TileComponent/TileComponent';
 
 export const identifierClasses = {
-    mainContainer: '.my-diary-food',
+    mainContainer: '.my-diary-exercises',
     btnContainers: {
         btnAdd: 'button-container-add',
         btnFindCancel: 'button-container-find-cancel',
@@ -21,10 +21,10 @@ export const identifierClasses = {
         api: 'table-api',
     },
     headers: {
-        mealName: '.my-diary-food h3',
-        inputLabel: '.my-diary-food h2',
+        mealName: '.my-diary-exercises h3',
+        inputLabel: '.my-diary-exercises h2',
     },
-    input: 'my-diary-food-input',
+    input: 'my-diary-exercises-input',
 };
 
 export default function createExercisesDiary(userName: string, exerciseName: string, showDate: Date) {
