@@ -23,7 +23,6 @@ import { SetRemainingCalories } from "../../Logic/SetRemainingCalories/SetRemain
     const todayCaloriesTile = generateTileComponent(todayCalories);
 
     //create the 'remaining calories' tile and pass the arguments
-    //TO BE ADDED
     const remainingCalories = SetRemainingCalories();
 
     //create the weight input tile, save the input to localstorage

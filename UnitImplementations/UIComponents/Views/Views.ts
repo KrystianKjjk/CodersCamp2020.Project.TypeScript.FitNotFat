@@ -24,7 +24,6 @@ import dashboardView from '../../../Src/UIComponents/DashboardView/DashboardView
 
 const myDiaryFood = dashboardView('Food', createElement('div', [], 'food content') as HTMLDivElement);
 const myDiaryExercises = dashboardView('Exercises', createElement('div', [], 'exercises content') as HTMLDivElement);
-const logOut = dashboardView('Log Out', createElement('div', [], 'log out content') as HTMLDivElement);
 //------------------------------------------------------------------------------
 
 const el = createElement('div');
@@ -35,7 +34,6 @@ const el = createElement('div');
     'goals': viewMyGoals,
     'weights': viewMyWeights,
     'apiKey': viewApiKey,
-    'logOut': logOut,
     'profile': viewProfileInfo}));
 
   overviewComponent(userObject, viewOverviewContainerName);
