@@ -15,8 +15,7 @@ const signUpbutton = generateWhiteButton('Sign up', () => {
   
   signUpbutton.classList.add('sign-up-button');
   logInButton.classList.add('log-in-button');
-  const containerButton = document.createElement('div');
-  containerButton.classList.add('container-button');
+  const containerButton = createElement('div','container-button');
   containerButton.append(signUpbutton, logInButton);
 
   homePageContentDiv.append(mainText,paragraph,containerButton);
