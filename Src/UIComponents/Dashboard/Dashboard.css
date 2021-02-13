@@ -213,6 +213,7 @@
         display: none;
         margin-top: 1em;
         align-items: baseline;
+        border: none;
     }
 
     .dashboard .menu-btn {
