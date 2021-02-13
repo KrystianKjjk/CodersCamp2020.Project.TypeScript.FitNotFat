@@ -36,6 +36,7 @@
     grid-template-columns: 300px 1fr;
 
     background: #E6E6E6;
+
 }
 
 .dashboard > .menu-container {
@@ -73,6 +74,12 @@
     line-height: 34px;
     padding-bottom: 1em;
 }
+
+/*scrollbar removal*/
+.dashboard > div::-webkit-scrollbar{
+    width: 0;
+}
+
 @media (max-width: 1000px) {
     .logo {
         margin: 0;
