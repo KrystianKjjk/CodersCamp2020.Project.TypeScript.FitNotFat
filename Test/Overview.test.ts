@@ -1,4 +1,4 @@
-import overviewComponent from '../Src/UIComponents/Overview/Overview';
+import { overviewComponent } from '../Src/UIComponents/Overview/Overview';
 import { User } from '../Models/User.model';
 import { ActivityLevel } from '../Models/ActivityLevel.model';
 import { fn } from 'moment';

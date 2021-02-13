@@ -7,6 +7,7 @@ import {
   readFromLocalStorage,
   saveInLocalStorage,
 } from '../../../Src/Logic/LocalStorage/LocalStorage';
+import { RefreshProfileInfo } from '../SetProfileInfo/SetProfileInfo';
 
 export function generateMyGoals(username: string): HTMLDivElement {
   const myGoalsContainer = createElement(
@@ -39,6 +40,7 @@ export function generateMyGoals(username: string): HTMLDivElement {
       historicalWeeklyGoalsTable,
     );
     historicalWeeklyGoalsTable = newhistoricalWeeklyGoalsTable;
+    RefreshProfileInfo(user);
   }
   return myGoalsContainer;
 }

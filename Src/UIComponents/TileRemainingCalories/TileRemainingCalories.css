@@ -11,7 +11,7 @@
   position: relative;
 }
 .remaining-calories-tile__header {
-  font-size: 0.8rem;
+  font-size: 1.0rem;
   color: rgba(74, 72, 78, 0.7);
   background: inherit;
   margin: 1.2rem 0 2.4rem 0;

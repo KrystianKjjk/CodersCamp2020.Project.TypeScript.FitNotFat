@@ -32,9 +32,10 @@
     "start:apiKey": "parcel -p 8765 watch ./UnitImplementations/UIComponents/TileAPIKey/TileAPIKey.html",
     "start:apiKeyLogic": "parcel -p 8765 watch ./UnitImplementations/Logic/APIDetailsStorage/APIDetailsStorage.html",
     "start:logicProfileInfo": "parcel -p 8765 watch ./UnitImplementations/Logic/SetProfileInfo/SetProfileInfo.html",
-    "start:registrationTransition": "parcel -p 8765 watch ./UnitImplementations/Logic/RegistrationLoginTransition/RegistrationLoginTransition.html",
     "start:remainingCal": "parcel -p 8765 watch ./UnitImplementations/UIComponents/TileRemainingCalories/TileRemainingCalories.html",
-    "start:remCalLogic": "parcel -p 8765 watch ./UnitImplementations/Logic/SetRemainingCalories/SetRemainingCalories.html"
+    "start:remCalLogic": "parcel -p 8765 watch ./UnitImplementations/Logic/SetRemainingCalories/SetRemainingCalories.html",
+    "start:views": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Views/Views.html",
+    "start:registrationTransition": "parcel -p 8765 watch ./UnitImplementations/Logic/RegistrationLoginTransition/RegistrationLoginTransition.html"
   },
   "keywords": [
     "fitnotfat",

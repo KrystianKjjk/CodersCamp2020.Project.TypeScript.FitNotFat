@@ -151,7 +151,7 @@
     cursor: default;
 }
 
-.dashboard div:last-child {
+.dashboard > div:last-child {
     position: relative;
 }
 .dashboard div:last-child > * {

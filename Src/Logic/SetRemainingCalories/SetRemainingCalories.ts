@@ -1,11 +1,11 @@
+import generateTileComponent from "../../UIComponents/TileComponent/TileComponent";
 import { createTileRemainingCalories, RemainingCalories } from "../../UIComponents/TileRemainingCalories/TileRemainingCalories";
 import { calculateCalories } from "../../UIComponents/utils/utils";
 import { getLoggedInUser } from "../../UIComponents/utils/utils";
 import { readFromLocalStorage } from "../LocalStorage/LocalStorage";
 import { getAge } from "../../UIComponents/Overview/Overview";
 
-export function SetRemainingCalories(){
-
+export function SetRemainingCalories(): HTMLElement{
     const loggedUser = getLoggedInUser();
     if(!loggedUser) return;
     const userObject = readFromLocalStorage(loggedUser);
@@ -46,8 +46,7 @@ export function SetRemainingCalories(){
         exercises: exercisesCalories,
         food: foodCalories
     }
-
-    return createTileRemainingCalories(remainingCaloriesObject);
+    return generateTileComponent(createTileRemainingCalories(remainingCaloriesObject));
 }
 
 function _isToday(dateToCheck: Date): boolean{
@@ -60,3 +59,11 @@ function _isToday(dateToCheck: Date): boolean{
 
     return true;
 }
+
+export function refreshRemainingCalories() {
+    const remainingCaloriesTile = document.querySelector('.remaining-calories-tile');
+    if(remainingCaloriesTile) {
+        (remainingCaloriesTile.parentNode.parentNode).replaceChild(SetRemainingCalories(),remainingCaloriesTile.parentNode);
+    }
+}
+
