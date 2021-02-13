@@ -1,9 +1,8 @@
-import overviewComponent from "../Overview/Overview";
+import { overviewComponent } from "../Overview/Overview";
 import dashboardView from "../DashboardView/DashboardView";
 import { createElement, getLoggedInUser } from "../utils/utils";
 import { readFromLocalStorage } from "../../Logic/LocalStorage/LocalStorage";
-
-const overview = 'Overview'
+import { VIEW_NAME } from '../../../Constants/consts';
 
 export function ViewOverview() {
 
@@ -15,10 +14,10 @@ export function ViewOverview() {
   if(userName && userObject) {
     const welcomeHeader = `Hi <span>${userObject.name}</span>, welcome back!`;
     const overviewComponent = createElement('div', componentsClassName)
-    overviewView = dashboardView(overview, (overviewComponent as HTMLDivElement), welcomeHeader);
+    overviewView = dashboardView(VIEW_NAME.Overview, (overviewComponent as HTMLDivElement), welcomeHeader);
   }
   else {
-    overviewView = dashboardView(overview, (createElement('div', '', 'Something went wrong') as HTMLDivElement));
+    overviewView = dashboardView(VIEW_NAME.Overview, (createElement('div', 'error-view', 'Something went wrong') as HTMLDivElement));
   }
 
   return { viewOverview: overviewView, viewOverviewContainerName: componentsClassName };

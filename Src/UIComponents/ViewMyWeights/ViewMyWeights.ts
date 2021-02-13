@@ -2,8 +2,7 @@ import { myWeightsComponent } from "../MyWeights/MyWeights";
 import dashboardView from "../DashboardView/DashboardView";
 import { createElement, getLoggedInUser } from '../utils/utils';
 import { readFromLocalStorage } from "../../Logic/LocalStorage/LocalStorage";
-
-const myWeights = 'My weights';
+import { VIEW_NAME } from '../../../Constants/consts';
 
 export function ViewMyWeights(): HTMLElement {
   const userName = getLoggedInUser();
@@ -16,10 +15,10 @@ export function ViewMyWeights(): HTMLElement {
       userObject.weights[key].date = new Date(userObject.weights[key].date);
     }
     weightsComponent = myWeightsComponent(userObject);
-    myWeightsView = dashboardView(myWeights, weightsComponent);
+    myWeightsView = dashboardView(VIEW_NAME.MyWeights, weightsComponent);
   }
   else {
-    myWeightsView = dashboardView(myWeights, (createElement('div', '', 'Something went wrong') as HTMLDivElement));
+    myWeightsView = dashboardView(VIEW_NAME.MyWeights, (createElement('div', 'error-view', 'Something went wrong') as HTMLDivElement));
   }
 
   return myWeightsView;

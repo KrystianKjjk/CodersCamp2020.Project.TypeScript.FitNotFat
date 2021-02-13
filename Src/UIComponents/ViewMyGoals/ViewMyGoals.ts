@@ -1,8 +1,7 @@
 import { generateMyGoals } from "../../Logic/MyGoals/MyGoals";
 import { createElement, getLoggedInUser } from "../utils/utils";
+import { VIEW_NAME } from '../../../Constants/consts';
 import dashboardView from "../DashboardView/DashboardView";
-
-const myGoals = 'My goals';
 
 export function ViewMyGoals() {
 
@@ -12,10 +11,10 @@ export function ViewMyGoals() {
 
   if(userName) {
     myGoalsComponent = generateMyGoals(userName);
-    myGoalsView = dashboardView(myGoals, myGoalsComponent)
+    myGoalsView = dashboardView(VIEW_NAME.MyGoals, myGoalsComponent)
   }
   else {
-    myGoalsView = dashboardView(myGoals, (createElement('div', '', 'Something went wrong') as HTMLDivElement));
+    myGoalsView = dashboardView(VIEW_NAME.MyGoals, (createElement('div', 'error-view', 'Something went wrong') as HTMLDivElement));
 
   }
 

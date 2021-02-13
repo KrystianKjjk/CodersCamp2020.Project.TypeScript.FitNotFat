@@ -1,10 +1,9 @@
-import { SetProfileInfo } from "../../Logic/SetProfileInfo/SetProfileInfo";
 import dashboardView from "../DashboardView/DashboardView";
+import { SetProfileInfo } from "../../Logic/SetProfileInfo/SetProfileInfo";
 import { readFromLocalStorage } from "../../Logic/LocalStorage/LocalStorage";
 import { getLoggedInUser } from "../utils/utils";
 import { createElement } from "../../UIComponents/utils/utils";
-
-const myProfile = 'My profile';
+import { VIEW_NAME } from '../../../Constants/consts';
 
 export function ViewProfileInfo(): HTMLElement {
 
@@ -15,10 +14,10 @@ export function ViewProfileInfo(): HTMLElement {
 
   if(userName && userObject) {
     profileInfoComponent = SetProfileInfo(userObject);
-    profileInfoView = dashboardView(myProfile, profileInfoComponent);
+    profileInfoView = dashboardView(VIEW_NAME.MyProfile, profileInfoComponent);
   }
   else {
-    profileInfoView = dashboardView(myProfile, (createElement('div', '', 'Something went wrong') as HTMLDivElement));
+    profileInfoView = dashboardView(VIEW_NAME.MyProfile, (createElement('div', 'error-view', 'Something went wrong') as HTMLDivElement));
   }
 
   return profileInfoView;
