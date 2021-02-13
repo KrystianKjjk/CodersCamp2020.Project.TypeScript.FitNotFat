@@ -26,7 +26,7 @@ export function createTileRemainingCalories(calories: RemainingCalories): HTMLEl
 
     detailsRemCal.append(detailsTable);
 
-    containerRemCal.append(header, numberRemCal,detailsRemCal);
+    containerRemCal.append(header, numberRemCal, detailsRemCal);
 
     return containerRemCal;
 }

@@ -2,7 +2,6 @@ import generateTileComponent from '../TileComponent/TileComponent';
 import createSelectBox from '../Select/Select';
 import { generateWhiteButton } from '../Buttons/Buttons';
 import {WeeklyGoal} from '../../../Models/WeeklyGoal.model';
-import {createElement} from '../../../Src/UIComponents/utils/utils';
 
 function generateWeeklyGoalComponent(date: string, onSaveButtonClick:(weightGoal:WeeklyGoal)=>void) {
   const component = document.createElement('div');

@@ -13,7 +13,8 @@
     margin-bottom: 1rem;
 }
 .api-key-tile__header {
-    font-size: 0.8rem;
+    font-size: 1.1rem;
+    font-weight: 400;
     color: rgba(74, 72, 78, 0.7);
     background: inherit;
     margin: 1.5rem 0 1rem 0;

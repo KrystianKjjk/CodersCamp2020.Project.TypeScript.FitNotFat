@@ -4,7 +4,6 @@ import { User } from '../../../Models/User.model'
 
 const moment = require('moment');
 
-const EXAMPLE_PLACEHOLDER_WEIGHT: string = '61.5';
 const MIN_WEIGHT: number = 1;
 const MAX_WEIGHT: number = 150;
 
@@ -45,7 +44,7 @@ function _generateStepTwo(dataSection: HTMLElement, buttonSection: HTMLElement, 
   const newDate = new Date();
 
   const dataSectionMainContainer = createElement('div','my-weight-tile__data-section--container');
-  const dataSectionMainInput = createInput('my-weight-tile__data-section--input', 'number', EXAMPLE_PLACEHOLDER_WEIGHT);
+  const dataSectionMainInput = createInput('my-weight-tile__data-section--input', 'number', `${currentWeight}`);
   const dataSectionMainText = createElement('p','my-weight-tile__data-section--main-text-step-two', ' kg');
   const dataSectionMainIncorrect = createElement('p','my-weight-tile__data-section--incorrect', 'Invalid value!');
 
