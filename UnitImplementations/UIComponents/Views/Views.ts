@@ -6,7 +6,7 @@ import { ViewAPIKey } from "../../../Src/UIComponents/ViewAPIKey/ViewAPIKey";
 import { ViewMyWeights } from "../../../Src/UIComponents/ViewMyWeights/ViewMyWeights";
 import { ViewMyGoals } from "../../../Src/UIComponents/ViewMyGoals/ViewMyGoals";
 import { ViewOverview } from "../../../Src/UIComponents/ViewOverview/ViewOverview";
-import { ViewExercises } from "../../../Src/UIComponents/ViewExercises/ViewExercises"
+import { ViewExercises } from "../../../Src/UIComponents/ViewExercises/ViewExercises";
 import { ActivityLevel } from "../../../Models/ActivityLevel.model";
 import { User } from "../../../Models/User.model";
 import { WeeklyGoal } from "../../../Models/WeeklyGoal.model";
