@@ -28,7 +28,7 @@
 }
 
 @media (max-height: 700px) {
-    .app-name {
+    /* .app-name {
         position: static;
         justify-self: flex-start;
         align-self: flex-start;
@@ -37,7 +37,7 @@
         margin-top: 0.5em;
         margin-bottom: 1em;
         margin-left: 1em;
-    }
+    } */
     .initial-view {
         height: auto;
         flex-direction: column;
@@ -48,7 +48,7 @@
         display: none;
     }
     .initial-view-injected-component {
-        z-index: 0;
+        margin-top: 8em;
     }
 }
 

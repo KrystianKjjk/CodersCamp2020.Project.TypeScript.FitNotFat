@@ -38,8 +38,7 @@
     }
     .initial-view-injected-component {
         position: static;
-        margin: auto;
-        padding: 2em;
+        padding: auto 2em;
     }
     .initial-view-image {
         display: none;
@@ -60,7 +59,7 @@
 
 @media (max-width: 450px) {
     .initial-view-injected-component {
-        margin: 0;
+        margin: auto 0;
         padding: 0 1rem;
     }
     .main-text {

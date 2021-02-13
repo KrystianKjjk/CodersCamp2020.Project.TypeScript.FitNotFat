@@ -18,8 +18,19 @@
     height: 10px;
 }
 
-.container-button {
+.div-registration .container-button {
     padding-top: 20px;
     display: flex;
     justify-content: space-around;
+}
+
+.div-registration .container-button > button {
+    width: 45%;
+    max-width: 200px;
+}
+
+@media (max-width: 350px) {
+    .div-registration .main-container {
+        padding: 0;
+    }
 }
