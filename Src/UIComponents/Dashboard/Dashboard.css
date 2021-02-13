@@ -42,15 +42,12 @@
     position: relative;
     z-index: 10;
     
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
 
     padding: 2em;
     border-right: solid rgba(255, 255, 255, 0.1) 2px;
-}
-
-.dashboard .menu {
-    list-style-type: none;
 }
 
 .dashboard .vertical-line {
@@ -143,6 +140,13 @@
     border: none;
     border-radius: 30px;
     outline: none;
+}
+@media (max-height: 700px) {
+    .dashboard .profile-btn {
+        position: static;
+        width: 100%;
+        margin: 2em auto;
+    }
 }
 .dashboard .profile-btn:hover {
     cursor: pointer;
