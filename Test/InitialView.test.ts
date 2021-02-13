@@ -13,7 +13,7 @@ describe('Initial View generator tests', () => {
     })
 
     test('Initial View container contains the app name text', () => {
-        expect(document.querySelector('.app-name').innerHTML).toEqual("<span>Fit</span><span>notFat</span>");
+        expect(document.querySelector('.app-name').innerHTML).toEqual("<span>Fit</span><span>NotFat</span>");
     })
 
     test('Initial View container has the images', () => {
