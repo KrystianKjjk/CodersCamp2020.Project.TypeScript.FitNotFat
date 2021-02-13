@@ -90,6 +90,12 @@ describe('registration tests', () => {
       dateOfBirth: new Date('2021-02-10T00:00:00.000Z'),
       gender: 'Male',
       goalWeight: 90,
+      goals: [
+        {
+          date: expect.any(Date),
+          weeklyGoal: 'Gain',
+        },
+      ],
       height: 160,
       name: 'John',
       weights: [{ date: expect.any(Date), weight: 80 }],

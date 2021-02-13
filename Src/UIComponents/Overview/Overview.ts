@@ -36,6 +36,7 @@ export function overviewComponent(User: User, targetDivClass: string): void{
 }
 
 
+
 export function getAge(date: Date) {
     return ((new Date(Date.now() - date.getTime()).getFullYear()) - 1970);
 }

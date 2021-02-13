@@ -5,8 +5,7 @@ import { getLoggedInUser } from "../../UIComponents/utils/utils";
 import { readFromLocalStorage } from "../LocalStorage/LocalStorage";
 import { getAge } from "../../UIComponents/Overview/Overview";
 
-export function SetRemainingCalories() :HTMLElement{
-
+export function SetRemainingCalories(): HTMLElement{
     const loggedUser = getLoggedInUser();
     if(!loggedUser) return;
     const userObject = readFromLocalStorage(loggedUser);
@@ -47,7 +46,6 @@ export function SetRemainingCalories() :HTMLElement{
         exercises: exercisesCalories,
         food: foodCalories
     }
-
     return generateTileComponent(createTileRemainingCalories(remainingCaloriesObject));
 }
 
@@ -68,3 +66,4 @@ export function refreshRemainingCalories() {
         (remainingCaloriesTile.parentNode.parentNode).replaceChild(SetRemainingCalories(),remainingCaloriesTile.parentNode);
     }
 }
+

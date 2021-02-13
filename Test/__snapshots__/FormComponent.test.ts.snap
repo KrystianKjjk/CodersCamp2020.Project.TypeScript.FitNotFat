@@ -2,7 +2,9 @@
 
 exports[`tests for Form Component Should render correctly 1`] = `
 <form>
-  <p>
+  <p
+    class="first-step-paragraph"
+  >
     Join us
   </p>
   <div

@@ -22,6 +22,7 @@
 @import './UIComponents/LogIn/LogIn.css';
 @import './UIComponents/DashboardView/DashboardView.css';
 @import './UIComponents/ModalWindow/ModalWindow.css';
+@import './UIComponents/HomePage/HomePage.css';
 @import './UIComponents/TileRemainingCalories/TileRemainingCalories.css';
 @import './UIComponents/TileAPIKey/TileAPIKey.css';
 
@@ -32,6 +33,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: #4A484E;
 }
 
 body {

@@ -2,10 +2,10 @@ function showModalWindow(message: string) {
     const modeNotSelectedMessage = document.createElement('div');
     modeNotSelectedMessage.innerHTML = message;
     modeNotSelectedMessage.style.padding = "30px";
-    modeNotSelectedMessage.style.color = "white";
-    modeNotSelectedMessage.style.backgroundColor = "black";
+    modeNotSelectedMessage.style.color = "#4A484E";
+    modeNotSelectedMessage.style.backgroundColor = "white";
     modeNotSelectedMessage.style.textAlign = "center";
-    modeNotSelectedMessage.style.fontSize = "1.5rem";
+    modeNotSelectedMessage.style.fontSize = "1.1rem";
     document.body.appendChild(modalWindow(modeNotSelectedMessage, removeModalWindow));
 }
 

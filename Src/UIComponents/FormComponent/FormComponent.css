@@ -1,4 +1,4 @@
-p {
+.first-step-paragraph {
     font-weight: 400;
     font-size: 50px;
     color: #4A484E;
@@ -34,7 +34,7 @@ form {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 30%;
+    width: 100%;
     height: 70vh;
 }
 

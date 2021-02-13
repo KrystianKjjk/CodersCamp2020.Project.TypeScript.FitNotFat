@@ -35,6 +35,7 @@
     "start:remainingCal": "parcel -p 8765 watch ./UnitImplementations/UIComponents/TileRemainingCalories/TileRemainingCalories.html",
     "start:remCalLogic": "parcel -p 8765 watch ./UnitImplementations/Logic/SetRemainingCalories/SetRemainingCalories.html",
     "start:views": "parcel -p 8765 watch ./UnitImplementations/UIComponents/Views/Views.html"
+    "start:registrationTransition": "parcel -p 8765 watch ./UnitImplementations/Logic/RegistrationLoginTransition/RegistrationLoginTransition.html",
   },
   "keywords": [
     "fitnotfat",
