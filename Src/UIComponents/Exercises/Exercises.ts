@@ -39,7 +39,7 @@ export default function createExercisesDiary(userName: string, exerciseName: str
 
 
     // building layout
-    const container = createElement('div', 'my-diary-food');
+    const container = createElement('div', 'my-diary-exercises');
     const header = createElement('h3', '', exerciseName);
     
     // creating first table (populated by local storage data)

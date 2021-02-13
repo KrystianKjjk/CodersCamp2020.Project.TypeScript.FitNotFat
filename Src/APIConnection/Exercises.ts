@@ -20,7 +20,7 @@ async function fetchExercisesData(user: User, exercise: string, appId: string, a
         "gender": user.gender,
         "weight_kg": user?.weights[0].weight ?? user.goalWeight, //fallback goalweight just in case the user has not provided us with anything, not sure if possible
         "height_cm": user.height,
-        "age": getAge(user.dateOfBirth)
+        "age": getAge(user.dateOfBirth) > 0 ? getAge(user.dateOfBirth) : 1
     }
     
     const response = await fetch(url, {
