@@ -8,7 +8,6 @@ import { SetRemainingCalories } from '../../Logic/SetRemainingCalories/SetRemain
 import { createTileRemainingCalories } from '../TileRemainingCalories/TileRemainingCalories';
 import { saveWeightInLocalStorage } from '../../Logic/SaveWeightInLocalStorage/SaveWeightInLocalStorage';
 
-
 //to call this function (due to the nature of how the gauges are created by the library)
 // please first create a target container in body (make sure it's already in DOM) and only then call the function
 export function overviewComponent(User: User, targetDivClass: string): void{
@@ -34,8 +33,6 @@ export function overviewComponent(User: User, targetDivClass: string): void{
     document.querySelector(`.${targetDivClass}`).appendChild(overviewContainer);
     generateGaugesContent(User);
 }
-
-
 
 export function getAge(date: Date) {
     return ((new Date(Date.now() - date.getTime()).getFullYear()) - 1970);

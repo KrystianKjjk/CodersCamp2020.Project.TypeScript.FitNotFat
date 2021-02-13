@@ -3,7 +3,7 @@ import { createTileRemainingCalories, RemainingCalories } from "../../UIComponen
 import { calculateCalories } from "../../UIComponents/utils/utils";
 import { getLoggedInUser } from "../../UIComponents/utils/utils";
 import { readFromLocalStorage } from "../LocalStorage/LocalStorage";
-import { getAge } from "../../UIComponents/Overview/Overview";
+import { getAge } from "../../UIComponents/utils/utils";
 
 export function SetRemainingCalories(): HTMLElement{
     const loggedUser = getLoggedInUser();

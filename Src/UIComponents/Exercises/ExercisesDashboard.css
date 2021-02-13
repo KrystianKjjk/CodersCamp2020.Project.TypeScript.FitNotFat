@@ -1,0 +1,17 @@
+.exercises{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4vh auto;
+}
+
+.exercises-time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.exercises > .tile{
+    width: 50%;
+}
