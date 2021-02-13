@@ -1,9 +1,8 @@
-import { placeholder } from "@babel/types";
 import { User } from '../../../Models/User.model'
 import { KEY_LOGGED_USER } from "../../../Constants/consts";
 
-export function createElement(tagName: string, classNames?: string[] | string, innerHTML?: string, dataComponent?: string): HTMLElement {
-    const element = document.createElement(tagName);
+export function createElement<T extends HTMLElement>(tagName: string, classNames?: string[] | string, innerHTML?: string, dataComponent?: string): T {
+    const element = document.createElement(tagName) as T;
     if(classNames){
         if(classNames instanceof(Array)) element.classList.add(...classNames);
         else element.classList.add(classNames);
