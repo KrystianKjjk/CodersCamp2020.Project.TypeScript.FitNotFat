@@ -56,11 +56,11 @@ export function generateGaugesContent(User: User){
     //generate tile content
     //if user is heavier than goal
     if (User.goalWeight <= User.weights[0].weight){
-        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0].weight, User.goalWeight, userMaxWeight, "kg", true);
+        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0]?.weight, User.goalWeight, userMaxWeight, "kg", true);
     } 
     //if user is lighter than goal
     else{
-        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0].weight,  userMinWeight, User.goalWeight,  "kg", false);
+        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0]?.weight,  userMinWeight, User.goalWeight,  "kg", false);
     }
 
     generateGoalTile("Today Calories", "overviewTodayCaloriesTile", User.diaryFood?.[0]?.providedKcal || 0, 0, maxCalories ,"kcal", false);

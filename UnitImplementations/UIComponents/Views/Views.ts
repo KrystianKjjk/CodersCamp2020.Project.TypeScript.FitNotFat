@@ -13,30 +13,30 @@ import { WeeklyGoal } from "../../../Models/WeeklyGoal.model";
 
 
 
-const username = 'User3';
-const userObject: User = {
-  name: username,
-  gender: 'Male',
-  dateOfBirth: new Date(),
-  height: 177,
-  activityLevel: ActivityLevel.Low,
-  goalWeight: 70,
-  goals: [{
-    date: new Date(),
-    weeklyGoal: WeeklyGoal.Gain,
-    startWeight: 60,
-    endWeight: 71,
-    achieved: 'No'
-  }],
-  weights: [{date: new Date(), weight: 60}]
-};
+// const username = 'User3';
+// const userObject: User = {
+//   name: username,
+//   gender: 'Male',
+//   dateOfBirth: new Date(),
+//   height: 177,
+//   activityLevel: ActivityLevel.Low,
+//   goalWeight: 70,
+//   goals: [{
+//     date: new Date(),
+//     weeklyGoal: WeeklyGoal.Gain,
+//     startWeight: 60,
+//     endWeight: 71,
+//     achieved: 'No'
+//   }],
+//   weights: [{date: new Date(), weight: 60}]
+// };
 
-clearLoggedInUser();
-setLoggedInUser(username);
-saveInLocalStorage(username, userObject);
+// clearLoggedInUser();
+// setLoggedInUser(username);
+// saveInLocalStorage(username, userObject);
 
-// const username  = getLoggedInUser();
-// const userObject = readFromLocalStorage(username);
+const username  = getLoggedInUser();
+const userObject = readFromLocalStorage(username);
 
 const viewProfileInfo = ViewProfileInfo();
 const viewApiKey = ViewAPIKey();
