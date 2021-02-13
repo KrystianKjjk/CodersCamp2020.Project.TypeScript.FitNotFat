@@ -21,7 +21,7 @@ const components = {
     'profile': myProfile};
 const testDashboard = dashboard(username, components);
 
-const mainMenu = testDashboard.querySelector('.main-menu') as HTMLElement;
+const mainMenu = testDashboard.querySelector('.menu') as HTMLElement;
 const overviewOpt = getByText(mainMenu, 'Overview');
 const myDiaryOpt = getByText(mainMenu, 'My diary');
 const myDiaryFoodOpt = getByText(mainMenu, 'Food');
@@ -82,5 +82,13 @@ describe('Dashboard test', () => {
         expect(getLoggedInUser()).toBe(username);
         logOutOpt.click();
         expect(getLoggedInUser()).toBe('');
+    })
+
+    test('menu button tests', () => {
+        const menuBtn = testDashboard.querySelector('.menu-btn') as HTMLButtonElement;
+        menuBtn.click();
+        expect(mainMenu.style.display).toBe('flex');
+        menuBtn.click();
+        expect(mainMenu.style.display).toBe('none');
     })
 })

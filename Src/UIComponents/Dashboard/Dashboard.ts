@@ -12,9 +12,13 @@ function dashboard(username: string, components: {'overview': HTMLElement,
     myDashboard.appendChild(createElement('div', ['ellipse1']));
     myDashboard.appendChild(createElement('div', ['ellipse2']));
     
-    const mainMenu = createElement('div', ['main-menu'])
+    const mainMenu = createElement('div', ['menu-container'])
     mainMenu.appendChild(createElement('div', ['vertical-line']))
+    const titleDiv = createElement('div', ['title-container'])
     const logo = createElement('div', ['logo'], '<span>Fit</span>NotFat');
+    const menuBtn = createElement('button', ['menu-btn'], `Show menu`);
+    titleDiv.append(menuBtn, logo);
+    const menu = createElement('div', ['menu'])
     const overview = createElement('div', ['menu-option', 'active'], `${overviewSVG} Overview`, 'overview');
     const myDiary = createElement('div', ['menu-option'], `${myDiarySVG} My diary`, 'diary-food');
     const myDiarySubmenu = createElement('ul', ['my-diary-submenu']);
@@ -34,13 +38,16 @@ function dashboard(username: string, components: {'overview': HTMLElement,
     options.forEach((element) => {
         element.addEventListener('click', (e) => {
             e.stopPropagation();
+            const smallScreen = window.innerWidth <= 1000;
             element.parentElement.querySelectorAll(".active").forEach((elem) => elem.classList.remove('active'));
             element.classList.add('active');
             const suboption = element.querySelector('li');
-            if(suboption) suboption.classList.add('active');
+            if(suboption && !smallScreen) suboption.classList.add('active');
             Object.values(components).forEach((element => {
                 element.style.display = 'none';
             }));
+            if (smallScreen && element !== myDiary) 
+                menuBtn.click();
             components[element.getAttribute('data-component')].style.display = "block";
         });
         components[element.getAttribute('data-component')].style.display = "none";
@@ -49,12 +56,19 @@ function dashboard(username: string, components: {'overview': HTMLElement,
     components['overview'].style.display = "block";
     myDiarySubmenu.append(myDiaryFood, myDiaryExercises);
     myDiary.appendChild(myDiarySubmenu);
-    mainMenu.append(logo, overview, myDiary, myGoals, myWeights, apiKey, logOut, profileBtn);
+    menu.append(overview, myDiary, myGoals, myWeights, apiKey, logOut, profileBtn);
+    mainMenu.append(titleDiv, menu);
     myDashboard.appendChild(mainMenu);
 
     const dashboardView = document.createElement('div');
     dashboardView.append(...Object.values(components));
     myDashboard.appendChild(dashboardView)
+    menuBtn.addEventListener('click', e => {
+        const show = menuBtn.innerHTML === 'Show menu';
+        menu.style.display = show ? 'flex' : 'none';
+        menuBtn.innerHTML = show ? 'Hide menu' : 'Show menu';
+        dashboardView.style.display = show ? 'none' : 'block';
+    });
     return myDashboard;
 }
 
