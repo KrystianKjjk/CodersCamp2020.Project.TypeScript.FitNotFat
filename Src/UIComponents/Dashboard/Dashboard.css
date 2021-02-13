@@ -141,6 +141,7 @@
 
 .dashboard .profile-btn {
     width: 80%;
+    max-width: 300px;
     height: 70px;
     position: absolute;
     bottom: 10%;
@@ -160,7 +161,7 @@
     .dashboard .profile-btn {
         position: static;
         width: 100%;
-        margin: 2em auto;
+        margin: 2em 0;
     }
 }
 .dashboard .profile-btn:hover {

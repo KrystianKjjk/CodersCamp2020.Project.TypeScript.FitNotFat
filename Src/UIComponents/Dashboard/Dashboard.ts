@@ -38,14 +38,15 @@ function dashboard(username: string, components: {'overview': HTMLElement,
     options.forEach((element) => {
         element.addEventListener('click', (e) => {
             e.stopPropagation();
+            const smallScreen = window.innerWidth <= 1000;
             element.parentElement.querySelectorAll(".active").forEach((elem) => elem.classList.remove('active'));
             element.classList.add('active');
             const suboption = element.querySelector('li');
-            if(suboption) suboption.classList.add('active');
+            if(suboption && !smallScreen) suboption.classList.add('active');
             Object.values(components).forEach((element => {
                 element.style.display = 'none';
             }));
-            if (window.innerWidth <= 1000) 
+            if (smallScreen && element !== myDiary) 
                 menuBtn.click();
             components[element.getAttribute('data-component')].style.display = "block";
         });
