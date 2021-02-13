@@ -6,12 +6,13 @@ import { ViewAPIKey } from "../../../Src/UIComponents/ViewAPIKey/ViewAPIKey";
 import { ViewMyWeights } from "../../../Src/UIComponents/ViewMyWeights/ViewMyWeights";
 import { ViewMyGoals } from "../../../Src/UIComponents/ViewMyGoals/ViewMyGoals";
 import { ViewOverview } from "../../../Src/UIComponents/ViewOverview/ViewOverview";
+import { ViewExercises } from "../../../Src/UIComponents/ViewExercises/ViewExercises"
 import { ActivityLevel } from "../../../Models/ActivityLevel.model";
 import { User } from "../../../Models/User.model";
 import { WeeklyGoal } from "../../../Models/WeeklyGoal.model";
 
 
-/*
+
 const username = 'User3';
 const userObject: User = {
   name: username,
@@ -33,22 +34,22 @@ const userObject: User = {
 clearLoggedInUser();
 setLoggedInUser(username);
 saveInLocalStorage(username, userObject);
-*/
-const username  = getLoggedInUser();
-const userObject = readFromLocalStorage(username);
+
+// const username  = getLoggedInUser();
+// const userObject = readFromLocalStorage(username);
 
 const viewProfileInfo = ViewProfileInfo();
 const viewApiKey = ViewAPIKey();
 const viewMyWeights = ViewMyWeights();
 const viewMyGoals = ViewMyGoals();
 const { viewOverview, viewOverviewContainerName } = ViewOverview();
+const myDiaryExercises = ViewExercises();
 
 //-------- to replace when finished --------------------------------------------
 import dashboard from '../../../Src/UIComponents/Dashboard/Dashboard'
 import dashboardView from '../../../Src/UIComponents/DashboardView/DashboardView'
 
 const myDiaryFood = dashboardView('Food', createElement('div', [], 'food content') as HTMLDivElement);
-const myDiaryExercises = dashboardView('Exercises', createElement('div', [], 'exercises content') as HTMLDivElement);
 //------------------------------------------------------------------------------
 
   document.body.appendChild(dashboard(username, {
