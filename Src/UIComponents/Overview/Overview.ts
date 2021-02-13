@@ -34,19 +34,6 @@ export function overviewComponent(User: User, targetDivClass: string): void{
     generateGaugesContent(User);
 }
 
-
-
-function saveWeightInLocalStorage(weight: number, date: Date, user:User){
-    user.weights.unshift({
-        date: date,
-        weight: weight
-    });
-
-    generateGaugesContent(user);
-    saveInLocalStorage(user.name, user);
-}
-
-
 export function getAge(date: Date) {
     return ((new Date(Date.now() - date.getTime()).getFullYear()) - 1970);
 }
