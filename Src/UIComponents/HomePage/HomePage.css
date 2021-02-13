@@ -4,6 +4,11 @@
     letter-spacing: 0.055em;
     padding-bottom: 5%;
 }
+@media (max-width: 1300px) {
+    .main-text br {
+        display: none;
+    }
+}
 
 .features-text{
     font-size: 35px;
@@ -22,5 +27,52 @@
 
 .container-button .sign-up-button,
 .container-button .log-in-button{
-    width: 200px;
+    max-width: 200px;
+    width: 45%;
+}
+
+@media (max-width: 850px) {
+    .initial-view {
+        width: auto;
+        padding: 1rem;
+    }
+    .initial-view-injected-component {
+        position: static;
+        margin: auto;
+        padding: 2em;
+    }
+    .initial-view-image {
+        display: none;
+    }
+}
+
+@media (max-width: 550px) {
+    .main-text {
+        font-size: 40px;
+    }
+    .features-text {
+        font-size: 25px;
+    }
+    .container-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 450px) {
+    .initial-view-injected-component {
+        margin: 0;
+        padding: 0 1rem;
+    }
+    .main-text {
+        font-size: 30px;
+    }
+    .features-text {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 350px) {
+    .initial-view-injected-component {
+        padding: 0;
+    }
 }
