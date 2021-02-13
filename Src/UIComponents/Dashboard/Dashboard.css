@@ -156,7 +156,7 @@
     border-radius: 30px;
     outline: none;
 }
-@media (max-height: 700px) {
+@media (max-height: 700px), (max-width: 1000px) {
     .dashboard .profile-btn {
         position: static;
         width: 100%;
@@ -217,7 +217,7 @@
 
 @media (max-width: 450px) {
     .dashboard .title-container {
-        justify-content: space-between;
+        justify-content: space-around;
     }
     .dashboard .menu-btn {
         order: -1;

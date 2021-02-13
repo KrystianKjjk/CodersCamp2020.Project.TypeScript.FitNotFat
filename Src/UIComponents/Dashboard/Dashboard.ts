@@ -45,7 +45,7 @@ function dashboard(username: string, components: {'overview': HTMLElement,
             Object.values(components).forEach((element => {
                 element.style.display = 'none';
             }));
-            if (menuBtn.style.display !== 'none') 
+            if (window.innerWidth <= 1000) 
                 menuBtn.click();
             components[element.getAttribute('data-component')].style.display = "block";
         });
