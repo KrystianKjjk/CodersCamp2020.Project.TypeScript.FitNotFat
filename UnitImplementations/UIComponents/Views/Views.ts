@@ -10,9 +10,9 @@ import { ActivityLevel } from "../../../Models/ActivityLevel.model";
 import { User } from "../../../Models/User.model";
 import { WeeklyGoal } from "../../../Models/WeeklyGoal.model";
 
-const username = 'User3';
 
 /*
+const username = 'User3';
 const userObject: User = {
   name: username,
   gender: 'Male',
@@ -34,7 +34,7 @@ clearLoggedInUser();
 setLoggedInUser(username);
 saveInLocalStorage(username, userObject);
 */
-
+const username  = getLoggedInUser();
 const userObject = readFromLocalStorage(username);
 
 const viewProfileInfo = ViewProfileInfo();
