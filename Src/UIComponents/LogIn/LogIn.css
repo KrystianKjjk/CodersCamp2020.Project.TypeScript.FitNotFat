@@ -6,28 +6,27 @@
     letter-spacing: 0.055em;
     color: #4A484E;
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 .login-container {
-    max-width: 400px;
+    width: 400px;
     align-items: center;
-    padding: 20px;
-}
-
-.login-container button {
-    width: auto;
-    height: auto;
-    margin: 1em auto;
-    padding: 0.5em 1.5em;
-}
-
-.container-button {
-    padding-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+}
+
+.container-button button {
+    width: 80%;
+    height: 50px;
+    margin: 1em auto;
+    padding: 0.5em 0.5em;
+}
+
+.container-button {
+    padding-top: 20px;
 }
 .container-button > p {
     margin-top: 1em;

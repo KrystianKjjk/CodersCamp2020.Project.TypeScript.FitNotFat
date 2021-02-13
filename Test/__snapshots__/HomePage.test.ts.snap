@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`home page tests should render home page component 1`] = `
+<div
+  class="home-page-content-div"
+>
+  <p
+    class="main-text"
+  >
+    A little progress each day
+    <br />
+     adds up to big results
+  </p>
+  <p
+    class="features-text"
+  >
+    Track calories
+    <br />
+    Break down ingredients
+    <br />
+    Log activities
+  </p>
+  <div
+    class="container-button"
+  >
+    <button
+      class="button sign-up-button"
+      style="background-color: white; color: rgb(218, 27, 54);"
+      type="button"
+    />
+    <button
+      class="button log-in-button"
+      style="background-color: rgb(218, 27, 54); color: white;"
+      type="button"
+    />
+  </div>
+</div>
+`;
