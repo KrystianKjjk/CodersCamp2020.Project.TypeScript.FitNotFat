@@ -3,7 +3,7 @@ import { User } from "../Models/User.model";
 import { ActivityLevel } from "../Models/ActivityLevel.model";
 import { MyDiaryFood } from "../Models/DiaryFood.model";
 import { calculateCalories, setLoggedInUser } from '../Src/UIComponents/utils/utils';
-import { getAge } from "../Src/UIComponents/Overview/Overview";
+import { getAge } from "../Src/UIComponents/utils/utils";
 import { saveInLocalStorage } from '../Src/Logic/LocalStorage/LocalStorage';
 
 const loggedInUser = 'testUser';
@@ -26,13 +26,14 @@ let testUser: User = {
     {
       date: new Date(),
       totalCalories: 2000,
-      exercises: [
-        {
-          name: 'running',
-          met: 9.8,
-          duration: 60,
-          calories: 686
+      exercises: {
+        'exercise': [{
+            name: "test exercise",
+            met: 1,
+            duration: 1,
+            calories: 1
         }]
+    }
     } ],
   weights: [
     {
@@ -41,17 +42,19 @@ let testUser: User = {
     } ]
 };
 
-const spareDiaryExercises = [
-  { date: new Date(2020,10,10),
-    totalCalories: 2000,
-    exercises: [
-      {
-        name: 'running',
-        met: 9.8,
-        duration: 60,
-        calories: 686
+const spareDiaryExercises = [{
+  name: 'username',
+  date: new Date(),
+  totalCalories: 0,
+  exercises: {
+      'exercise': [{
+          name: "test exercise",
+          met: 1,
+          duration: 1,
+          calories: 1
       }]
-  } ];
+  }
+}];
 
 const userAge = getAge(testUser.dateOfBirth);
 const goalCalories = Math.floor(calculateCalories(testUser.gender, testUser.weights[0].weight, testUser.height, userAge, testUser.activityLevel));

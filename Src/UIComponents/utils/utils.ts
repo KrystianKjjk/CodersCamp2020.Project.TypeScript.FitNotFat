@@ -89,6 +89,9 @@ export function calculateCalories(gender: User["gender"], weight: number, height
     return calories;
 }
 
+export function getAge(date: Date) {     
+    return ((new Date(Date.now() - date.getTime()).getFullYear()) - 1970);
+}
 export function getLoggedInUser(): string{
     return localStorage.getItem(KEY_LOGGED_USER) || '';
 }
