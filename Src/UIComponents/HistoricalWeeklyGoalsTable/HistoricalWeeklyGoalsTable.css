@@ -11,5 +11,5 @@
 .tile-container {
     padding: 0px 20px 10px 20px;
     max-height: 35vh;
-    overflow-y: scroll;
+    overflow-y: auto;
 }

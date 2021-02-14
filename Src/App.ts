@@ -1,8 +1,11 @@
 import { unauthorizedUserLogic } from '../Src/Logic/RegistrationLoginTransition/RegistrationLoginTransition';
 import { getLoggedInUser } from '../Src/UIComponents/utils/utils';
 import { viewDashboard } from '../Src/UIComponents/ViewDashboard/ViewDashboard';
+import { readFromLocalStorage } from './Logic/LocalStorage/LocalStorage';
+import { overviewComponent, OVERVIEW_CONTAINER_CLASS_NAME } from './UIComponents/Overview/Overview';
 
 const userName = getLoggedInUser();
+const userObject = readFromLocalStorage(userName);
 
 function showView(){
     if (userName) {
@@ -13,3 +16,5 @@ function showView(){
 };
 
 document.body.appendChild(showView());
+
+overviewComponent(userObject, OVERVIEW_CONTAINER_CLASS_NAME);

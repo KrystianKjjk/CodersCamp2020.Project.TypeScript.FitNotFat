@@ -11,13 +11,14 @@ import {getLoggedInUser} from '../../UIComponents/utils/utils';
 
 export function viewDashboard():HTMLDivElement{ 
     const username = getLoggedInUser()
+    
     const myDiaryExercises = dashboardView('Exercises', createElement('div', [], 'exercises content') as HTMLDivElement);
     const viewProfileInfo = ViewProfileInfo();
     const viewApiKey = ViewAPIKey();
     const viewMyWeights = ViewMyWeights();
     const viewMyGoals = ViewMyGoals();
     const viewMyFood = ViewMyFood();
-    const { viewOverview, viewOverviewContainerName } = ViewOverview();
+    const viewOverview = ViewOverview();
       
     const dashboardComponents = {
         'overview': viewOverview,
@@ -27,8 +28,7 @@ export function viewDashboard():HTMLDivElement{
         'weights': viewMyWeights,
         'apiKey': viewApiKey,
         'profile': viewProfileInfo };
-  
- return dashboard(username, dashboardComponents);
 
+    return dashboard(username, dashboardComponents);
 } 
   

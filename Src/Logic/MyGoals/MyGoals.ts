@@ -21,7 +21,7 @@ export function generateMyGoals(username: string): HTMLDivElement {
     onSaveButtonClick,
   );
   const user = readFromLocalStorage(username);
-  let historicalWeeklyGoalsTable = createHistoricalWeeklyGoalsTable(user.goals);
+  let historicalWeeklyGoalsTable = createHistoricalWeeklyGoalsTable(user.goals || []);
   myGoalsContainer.append(weeklyGoalComponent, historicalWeeklyGoalsTable);
 
   function onSaveButtonClick(weeklyGoalValue: WeeklyGoal) {

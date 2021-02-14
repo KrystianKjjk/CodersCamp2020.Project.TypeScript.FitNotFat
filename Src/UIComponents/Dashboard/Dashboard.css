@@ -153,6 +153,7 @@
 
 .dashboard > div:last-child {
     position: relative;
+    overflow: auto;
 }
 .dashboard div:last-child > * {
     z-index: 1;
