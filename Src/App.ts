@@ -18,6 +18,4 @@ function showView(){
 document.body.appendChild(showView());
 
 //generate the gauges for the overview if user is logged in
-if(userName) {
-    overviewComponent(userObject, OVERVIEW_CONTAINER_CLASS_NAME);
-}
+if(userName) overviewComponent(userObject, OVERVIEW_CONTAINER_CLASS_NAME);
