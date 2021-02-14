@@ -17,7 +17,7 @@ export function createTileRemainingCalories(calories: RemainingCalories): HTMLEl
     const numberRemCal = createElement('p', 'remaining-calories-tile__number');
     const detailsRemCal = createElement('section','remaining-calories-tile__section-details');
 
-    numberRemCal.innerHTML = `${calories.remaining} <span>kcal</span>`
+    numberRemCal.innerHTML = `${calories.remaining.toFixed(2)} <span>kcal</span>`
 
     const detailsTable = createTable(HEADERS);
     detailsTable.classList.add('remaining-calories-tile__section-details--table');
