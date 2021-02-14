@@ -16,9 +16,9 @@ Zespół, którego mentorem był Krystian wspólnie pracował nad pisaniem kodu,
 W skład repozytorium projektu wchodzą:
 * `index.html`, `App.ts` - pliki wyjściowe projektu,
 * folder `Src` - pliki z funkcjonalnościami na stronie, podzielony na podfoldery:
- *	`Src/Apiconnection` - pliki dotyczące łączenia się z zewnętrznym API,
- *	`Src/Logic` - pliki z kodem logiki aplikacji,
- *	`src/UIComponents` - pliki zawierające komponenty oraz style CSS,
+   *	`Src/Apiconnection` - pliki dotyczące łączenia się z zewnętrznym API,
+   *	`Src/Logic` - pliki z kodem logiki aplikacji,
+   *	`src/UIComponents` - pliki zawierające komponenty oraz style CSS,
 *	folder `Test` - pliki z testami jednostkowymi dla funkcjonalności aplikacji
 *	folder `Static` - pliki graficzne wykorzystywane w aplikacji
 *	folder `Constants` –pliki zawierające stałe wykorzystywane w projekcie
