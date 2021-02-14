@@ -72,3 +72,41 @@
 .info:nth-of-type(3) {
     grid-area: info3;
 }
+
+@media (max-width: 1400px) {
+    .tile.profile-tile {
+        width: min-content;
+        padding: 1em;
+    }
+    .user-profile {
+        width: 400px;
+        grid-template-areas:    'username'
+                                'user-info'
+                                'health-info'
+                                'goals-info';
+        grid-template-columns: 1fr;
+    }
+    .username {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .user-info, .health-info, .goals-info {
+        width: 100%;
+        height: max-content;
+        padding: 1em;
+        gap: 1em;
+        grid-template-columns: 1fr;
+        grid-template-areas:    'header'
+                                'info1' 
+                                'info2'
+                                'info3';
+    }
+}
+
+@media (max-width: 500px) {
+    .tile.profile-tile, .user-profile {
+        width: 100%;
+        max-width: 400px;
+    }
+}
