@@ -51,7 +51,7 @@ function dashboard(username: string, components: {'overview': HTMLElement,
                 menuBtn.click();
             components[element.getAttribute('data-component')].style.display = "block";
             
-            if (e?.target?.dataset?.component === "overview") {
+            if ((e.target as HTMLElement)?.dataset?.component === "overview") {
                 refreshRemainingCalories();
             }
         });
