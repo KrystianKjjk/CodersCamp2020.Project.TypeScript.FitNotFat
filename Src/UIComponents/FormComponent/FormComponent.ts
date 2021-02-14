@@ -54,8 +54,6 @@ export default function generateForm(
   );
 
   const submitButton = generateRedButton('Next step', () => {}, "submit");
-  submitButton.style.height = '50px';
-  submitButton.style.width = '35%';
 
   form.append(
     paragraph,
