@@ -48,19 +48,27 @@ Sekcja Overview umożliwia użytkownikowi:
 *	kontrolowanie dziennego spożycia kalorii, dzięki dwóm wskaźnikom reprezentującym: procentową ilość spożytych kalorii oraz pozostałe kalorie. Wskaźniki są wyliczane indywidualnie dla każdego użytkownika na podstawie danych wprowadzonych podczas rejestracji. Aktualizacja wskaźników następuje każdorazowo po dodaniu w dzienniku spożytych produktów i/lub wykonanych danego dnia ćwiczeń, 
 *	śledzenie postępu w dążeniu do założonej wagi, dzięki procentowemu wskaźnikowi goal weight.
 
+![overview](/Static/overview.png)
+
 ### My diary
 Korzystanie z sekcji My diary jest możliwe po uzupełnieniu Nutritionix API Key – klucz niezbędny do połączenia z API, z którego korzysta aplikacja.
 
 Sekcja My diary dzieli się na dwie części: *Food* oraz *Exercises*. W części *Food* użytkownik ma możliwość wprowadzania wszystkich produktów, które spożył danego dnia w podziale na cztery kategorie: śniadanie, obiad kolację oraz przekąski. Po naciśnięciu przycisku *ADD* pojawia się pole umożliwiające wpisanie nazwy produktu. Kliknięcie przycisku *FIND* powoduje połączenie z API Nutritionix i wyszukanie wybranego artykułu spożywczego. Ponowne naciśnięcie opcji *ADD* skutkuje dodaniem i zapisaniem produktu oraz wyświetleniem zaktualizowanej listy. Pojedynczy wiersz listy zawiera nazwę, ilość, jednostkę oraz kaloryczność prodktu. W części *Exercises* użytkownik może wprowadzać wszystkie aktywności fizyczne, które wykonał danego dnia. Komponent działa analogicznie jak w części *Food*, z tą różnicą, że wyświetlana jest lista ćwiczeń uwzględniająca rodzaj, czas wykonywania ćwiczenia oraz spalone kalorie. 
 
+![myDiary](/Static/myDiary.png)
+
 ### My goals
 W sekcji My goals użytkownik ma możliwość dodawania celów tygodniowych(schudnąć, przytyć lub utrzymać wagę) oraz sprawdzania jak wygląda historia celów tygodniowych, które cele zostały osiągnięte, które nie zostały osiągnięte, jaka była waga początkowa a jaka była waga końcowa. 
+
+![myGoals](/Static/myGoals.png)
 
 ### My weights 
 W sekcji My weights użytkownik może sprawdzać jak zmieniała się jego waga w czasie od dnia rozpoczęcia korzystania z aplikacji. 
 
 ### API Key 
 Możliwość korzystania z Nutritionix API w darmowej wersji jest ograniczona do dwóch aktywnych użytkowników. Z tego względu korzystanie ze wszystkich funkcjonalności aplikacji jest możliwe po wygenerowaniu własnego klucza dostępu do API Nutritionix oraz Application ID. W celu wygenerowania kliknij [TUTAJ](https://www.nutritionix.com/business/api). W sekcji API Key należy wprowadzić swój klucz dostępu do API oraz Application ID. Uzupełnienie powyższych  danych jest konieczne do prawidłowego funkcjonowania sekcji My Diary. 
+
+![apiKey](/Static/apiKey.png)
 
 ### Testy jednostkowe
 Każda funkcjonalność użyta w projekcie została przetestowana testami jednostkowymi. 
