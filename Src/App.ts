@@ -16,5 +16,3 @@ function showView(){
 };
 
 document.body.appendChild(showView());
-
-overviewComponent(userObject, OVERVIEW_CONTAINER_CLASS_NAME);
