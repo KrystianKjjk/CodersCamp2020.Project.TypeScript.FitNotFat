@@ -2,7 +2,7 @@ import {createDatePicker} from '../MyDiaryDate/MyDiaryDate'
 import createExercisesDiary from './Exercises'
 import { createElement, getLoggedInUser } from '../../../Src/UIComponents/utils/utils';
 
-function createMyDiaryFoodDashboard() {
+function createMyDiaryExercisesDashboard():HTMLElement {
     const container = createElement('div', 'exercises-container');
     const exercisesContainer = createElement('div', 'exercises');
     const today = new Date();
@@ -13,8 +13,7 @@ function createMyDiaryFoodDashboard() {
     container.append(dateContainer, exercisesContainer);
 
     const diary = renderExercisesForDate(today); // render for the 1st time
-    exercisesContainer.append(diary);
-    
+    exercisesContainer.append(diary);    
     return container;
 };
 
@@ -29,4 +28,4 @@ function handleDateChange (date: Date, containerToUpdate: HTMLElement) {
     containerToUpdate.append(renderExercisesForDate(date));
 }
 
-export {createMyDiaryFoodDashboard}
+export { createMyDiaryExercisesDashboard }
