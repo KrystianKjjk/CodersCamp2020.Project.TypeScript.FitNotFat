@@ -5,6 +5,7 @@ import generateRegistrationForm from '../../../Src/Logic/Registration/Registrati
 import generateLoginForm from '../../../Src/UIComponents/LogIn/LogIn';
 import loginButton from '../../../Src/Logic/LoginButton/LoginButton';
 import {viewDashboard} from "../../../Src/UIComponents/ViewDashboard/ViewDashboard";
+import { overviewComponent, OVERVIEW_CONTAINER_CLASS_NAME } from '../../UIComponents/Overview/Overview';
 
 export function unauthorizedUserLogic():HTMLDivElement{
   const container = createElement('div', 'unauthorized-user-container')as HTMLDivElement;
@@ -31,7 +32,7 @@ export function unauthorizedUserLogic():HTMLDivElement{
 }
 
 function generateLogIn(): HTMLDivElement {
-  const logInDiv = generateLoginForm((button, username) => loginButton.call(button, username, () => viewDashboard())) as HTMLDivElement;
+  const logInDiv = generateLoginForm((button, username) => loginButton.call(button, username, () => viewDashboard(), overviewComponent, [ OVERVIEW_CONTAINER_CLASS_NAME ])) as HTMLDivElement;
 
   return logInDiv;
 };
