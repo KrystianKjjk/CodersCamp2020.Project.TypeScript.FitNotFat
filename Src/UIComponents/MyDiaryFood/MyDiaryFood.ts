@@ -59,7 +59,7 @@ export default function createMealDiary(userName: string, mealName: string, show
     // 2nd btn container [FIND] [CANCEL]
     const btnContainerFindCancel = createElement('div', ['button-container', generateUniqueClassName(mealName, identifierClasses.btnContainers.btnFindCancel)]);
     const btnFind = generateWhiteButton('FIND', () => onClickFind(input.value, userData, [addNewRowAPIDetails, addMeals], mealName));
-    const btnCancel = generateWhiteButton('CANCEL', onClickCancel);
+    const btnCancel = generateWhiteButton('CANCEL', onClickCancel(mealName, [resetMeals, resetTemporaryTable(mealName)]));
     btnContainerFindCancel.append(btnFind, btnCancel);
 
     // 3rd btn container [FIND]
@@ -70,7 +70,7 @@ export default function createMealDiary(userName: string, mealName: string, show
     // 4th btn container [ADD] [CANCEL]
     const btnContainerAddCancel = createElement('div', ['button-container', generateUniqueClassName(mealName, identifierClasses.btnContainers.btnAddCancel)]);
     const btnAddSecond = generateWhiteButton('ADD', () => onClickAddMeal(userName, mealName, showDate, meals, addNewRow));
-    const btnCancelSecond = generateWhiteButton('CANCEL', onClickCancel);
+    const btnCancelSecond = generateWhiteButton('CANCEL', onClickCancel(mealName, [resetMeals, resetTemporaryTable(mealName)]));
     btnContainerAddCancel.append(btnAddSecond, btnCancelSecond);
 
     // input for meal name
@@ -113,6 +113,12 @@ function populateMainTable(userName: string, mealName: string, showDate: Date, a
     mealsFromLocalStorage.forEach(meal => addNewRow(prepareDataForTable(meal)));
 }
 
+function resetTemporaryTable(mealName: string) {
+    return function() {
+        const tableRows = document.querySelectorAll(`.${generateUniqueClassName(mealName, identifierClasses.tables.api)} tr:nth-child(n+2)`).forEach(e => e.parentNode.removeChild(e));
+    }
+}
+
 function onClickFirstAdd(mealName: string) {
     return function() {
         const {btnContainers, tables, input} = identifierClasses;
@@ -122,12 +128,13 @@ function onClickFirstAdd(mealName: string) {
     }
 }
 
-function onClickCancel(mealName: string) {
-    const {btnContainers, tables, input} = identifierClasses;
-    window.location.reload();
-    
-    hideElementsByClassNameWithSuffix(mealName, btnContainers.btnFindCancel, btnContainers.btnAddCancel, btnContainers.btnFind, tables.api, input);
-    showElementsByClassNameWithSuffix(mealName, btnContainers.btnAdd, tables.main);
+function onClickCancel(mealName: string, onCancels: Array<() => void>) {
+    return function() {
+        const {btnContainers, tables, input} = identifierClasses;
+        onCancels.forEach(onCancel => onCancel());
+        hideElementsByClassNameWithSuffix(mealName, btnContainers.btnFindCancel, btnContainers.btnAddCancel, btnContainers.btnFind, tables.api, input);
+        showElementsByClassNameWithSuffix(mealName, btnContainers.btnAdd, tables.main);
+    }
 }
 
 function onClickAddMeal(
@@ -163,14 +170,18 @@ function addMealsToLocalStorage(userName: string, mealName: string, showDate: Da
     const currentDayMeals = currentDiaryFood.find(food => sameDay(showDate, food.date));
 
     let updatedDayMeals = {...currentDayMeals};
+    const totalAddedKcal = mealsToAdd.reduce((prev, cur) => prev + cur.calories, 0);
 
     if (currentDayMeals) {
         let foodItems = currentDayMeals.meals[mealName] || [];
         foodItems = [...foodItems, ...mealsToAdd];
+        let totalCalories = currentDayMeals.providedKcal || 0;
         updatedDayMeals.meals[mealName] = foodItems;
+        updatedDayMeals.providedKcal = totalCalories + totalAddedKcal;
     } else {
         updatedDayMeals = {
             date: showDate,
+            providedKcal: totalAddedKcal,
             meals: {
                 [mealName]: mealsToAdd
             }
