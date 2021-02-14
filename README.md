@@ -29,6 +29,8 @@ W skład repozytorium projektu wchodzą:
 ### Strona główna 
 Na stronie głównej dostępne są dwie opcje: *Sign up* oraz *Log In*. *Sign up* przekierowuje do formularza tworzenia konta użytkownika, natomiast *Log In* przenosi użytkownika bezpośrednio do okna logowania. 
 
+![homePage](/Static/form.png)
+
 ### Tworzenie konta użytkownika
 Korzystanie z aplikacji jest uwarunkowane stworzeniem konta użytkownika. W tym celu konieczne jest wypełnienie formularza. Użytkownik musi podać następujące informacje: nickname, płeć, data urodzenia, wzrost, obecna waga, docelowa waga, cel tygodniowy oraz poziom aktywności fizycznej. Powyższe dane zostaną zapisane do Local Storage i wykorzystane do ustalenia optymalnej liczby kalorii, które użytkownik powinien spożywać, aby osiągnąć wybrany cel.
 
