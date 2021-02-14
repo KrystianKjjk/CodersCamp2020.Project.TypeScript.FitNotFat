@@ -14,7 +14,7 @@ const user: User = {
   dateOfBirth: new Date(),
   height: 177,
   activityLevel: ActivityLevel.Low,
-  goalWeight: 70,  
+  goalWeight: 70
 };
 saveInLocalStorage(username, user);
 
@@ -34,7 +34,7 @@ describe('Login Button callback test', () => {
   });
  
   test('should render dashboard if user exists', () => {
-    loginButton.call(loginBtn, username, userDashboard, failComp);
+    loginButton.call(loginBtn, username, userDashboard);
     expect(document.body.children[0]).toBeInstanceOf(HTMLDivElement);
     expect(document.body.children).toHaveLength(1);
     expect(userDashboard).toHaveBeenCalledTimes(1);
