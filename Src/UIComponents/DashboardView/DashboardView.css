@@ -23,7 +23,7 @@
 }
 @media (max-width: 600px){
     .tile {
-        margin: 0;
+        margin: 2em 0;
     }
     .dashboard-view {
         padding: 1rem;

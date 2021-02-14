@@ -13,3 +13,12 @@
     max-height: 35vh;
     overflow-y: auto;
 }
+
+.my-goals-container .tile {
+    width: 100%;
+}
+
+.historical-weekly-goals-table {
+    width: 100%;
+    overflow-x: scroll;
+}
