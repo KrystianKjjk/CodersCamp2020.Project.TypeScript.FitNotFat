@@ -38,3 +38,23 @@
 .myfood-snacks {
     grid-area: snacks;
 }
+
+@media (max-width: 1300px) {
+    .myfood-meals-container {
+        grid-template-areas: 
+        "time"
+        "breakfast"
+        "lunch"
+        "dinner"
+        "snacks";
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .myfood-meals-container {
+        margin: 0;
+        padding: 0;
+    }
+}
