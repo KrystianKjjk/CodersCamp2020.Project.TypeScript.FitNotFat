@@ -10,8 +10,7 @@
 }
 
 .login-container {
-    max-width: 400px;
-    width: 100%;
+    width: 400px;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -39,7 +38,9 @@
     text-align: center;
 } 
 
-.initial-view-injected-component {
-    width: 100%;
-    max-width: 400px;
+@media (max-width: 500px) {
+    .initial-view-injected-component, .login-container {
+        max-width: 400px;
+        width: 100%;
+    }
 }
