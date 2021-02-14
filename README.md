@@ -39,6 +39,8 @@ Korzystanie z aplikacji jest uwarunkowane stworzeniem konta użytkownika. W tym 
 ### Logowanie
 Po utworzeniu konta użytkownika, aby przejść do kolejnych sekcji aplikacji należy zalogować się podając nickname. W przypadku, kiedy użytkownik nie uzupełni pola logowania lub poda nieprawidłowy nickname, na ekranie zostaje wyświetlone okno modalne z odpowiednim błędem. Poprawnie przeprowadzone logowanie skutkuje zapisaniem zalogowanego użytkownika do LocalStorage jako loggedInUser i przeniesieniem do sekcji Overview menu konta użytkownika.  
 
+![login](/Static/login.png)
+
 ### Menu konta użytkownika
 W menu konta użytkownika dostępne są zakładki przenoszące użytkownika do odpowiednich sekcji: *Overview* , *My diary*, *My goals*, *My weights*, *API Key*, *Log out* oraz opcja *Username*, przenosząca użytkownika do sekcji *My profile* zawierającej podstawowe informacje o zalogowanym użytkowniku. 
 
@@ -56,6 +58,7 @@ Korzystanie z sekcji My diary jest możliwe po uzupełnieniu Nutritionix API Key
 Sekcja My diary dzieli się na dwie części: *Food* oraz *Exercises*. W części *Food* użytkownik ma możliwość wprowadzania wszystkich produktów, które spożył danego dnia w podziale na cztery kategorie: śniadanie, obiad kolację oraz przekąski. Po naciśnięciu przycisku *ADD* pojawia się pole umożliwiające wpisanie nazwy produktu. Kliknięcie przycisku *FIND* powoduje połączenie z API Nutritionix i wyszukanie wybranego artykułu spożywczego. Ponowne naciśnięcie opcji *ADD* skutkuje dodaniem i zapisaniem produktu oraz wyświetleniem zaktualizowanej listy. Pojedynczy wiersz listy zawiera nazwę, ilość, jednostkę oraz kaloryczność prodktu. W części *Exercises* użytkownik może wprowadzać wszystkie aktywności fizyczne, które wykonał danego dnia. Komponent działa analogicznie jak w części *Food*, z tą różnicą, że wyświetlana jest lista ćwiczeń uwzględniająca rodzaj, czas wykonywania ćwiczenia oraz spalone kalorie. 
 
 ![myDiary](/Static/myDiary.png)
+![exercises](/Static/exercises.png)
 
 ### My goals
 W sekcji My goals użytkownik ma możliwość dodawania celów tygodniowych(schudnąć, przytyć lub utrzymać wagę) oraz sprawdzania jak wygląda historia celów tygodniowych, które cele zostały osiągnięte, które nie zostały osiągnięte, jaka była waga początkowa a jaka była waga końcowa. 
