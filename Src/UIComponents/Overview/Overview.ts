@@ -29,7 +29,7 @@ export function overviewComponent(User: User, targetDivClass: string): void{
     const remainingCalories = SetRemainingCalories();
 
     //create the weight input tile, save the input to localstorage
-    const myWeightInputTile = createTileMyWeight(User.weights?.[0]?.weight || 0, new Date(), User, saveWeightInLocalStorage);
+    const myWeightInputTile = createTileMyWeight(User?.weights?.[0]?.weight || 0, new Date(), User, saveWeightInLocalStorage);
 
     overviewContainer.append(weightTile, todayCaloriesTile, remainingCalories, myWeightInputTile);
     document.querySelector(`.${targetDivClass}`).appendChild(overviewContainer);
