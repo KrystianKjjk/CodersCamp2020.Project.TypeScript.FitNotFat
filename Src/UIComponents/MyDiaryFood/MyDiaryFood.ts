@@ -69,7 +69,7 @@ export default function createMealDiary(userName: string, mealName: string, show
 
     // 4th btn container [ADD] [CANCEL]
     const btnContainerAddCancel = createElement('div', ['button-container', generateUniqueClassName(mealName, identifierClasses.btnContainers.btnAddCancel)]);
-    const btnAddSecond = generateWhiteButton('ADD', () => onClickAddMeal(userName, mealName, showDate, meals, addNewRow));
+    const btnAddSecond = generateWhiteButton('ADD', () => onClickAddMeal(userName, mealName, showDate, meals, addNewRow, [resetMeals, resetTemporaryTable(mealName)]));
     const btnCancelSecond = generateWhiteButton('CANCEL', onClickCancel(mealName, [resetMeals, resetTemporaryTable(mealName)]));
     btnContainerAddCancel.append(btnAddSecond, btnCancelSecond);
 
@@ -142,7 +142,8 @@ function onClickAddMeal(
     mealName: string, 
     showDate: Date, 
     mealsToAdd: FoodDetails[], 
-    addNewRow: (rowData: string[]) => void
+    addNewRow: (rowData: string[]) => void,
+    onAdds: Array<() => void>
 ) {
     const {btnContainers, tables, input} = identifierClasses;
 
@@ -150,6 +151,7 @@ function onClickAddMeal(
     showElementsByClassNameWithSuffix(mealName, tables.main, btnContainers.btnAdd);
     addMealsToLocalStorage(userName, mealName, showDate, mealsToAdd);
     populateMainTable(userName, mealName, showDate, addNewRow);
+    onAdds.forEach(onAdd => onAdd());
 }
 
 async function onClickFind(inputValue: string, userData: User, callbacks: Array<(data: FoodDetails) => void>, mealName: string) {
