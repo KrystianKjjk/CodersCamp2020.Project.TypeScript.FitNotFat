@@ -76,14 +76,8 @@ export function generateSecondStep(
   });
   button2.classList.add('sign-up-button');
 
-  button1.style.width = '200px';
-  button2.style.width = '200px';
-
-  button1.style.height = '50px';
-  button2.style.height = '50px';
-
   const containerButton = document.createElement('div');
-  containerButton.className = 'container-button';
+  containerButton.className = 'secondstep-container-button';
   containerButton.append(button1, button2);
 
   secondStepDiv.append(title, line, select, radio, containerButton);

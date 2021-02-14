@@ -4,6 +4,7 @@ import { getApiCredentialsForUser, isUserAuthorizedToUseApi, sameDay, generateUn
 import createMealDiary, {identifierClasses} from '../Src/UIComponents/MyDiaryFood/MyDiaryFood';
 import * as LocalStorage from '../Src/Logic/LocalStorage/LocalStorage';
 import * as FoodAPI from '../Src/APIConnection/Food';
+import * as Overview from '../Src/UIComponents/Overview/Overview';
 
 describe('MyDiaryFood', () => {
     test('should correctly determine two dates are the same', () => {
@@ -124,6 +125,9 @@ describe('MyDiaryFood', () => {
                 id: 'id',
             }
         });
+        
+        //@ts-ignore
+        Overview.generateGaugesContent = jest.fn();
 
         //@ts-ignore
         const saveMock = jest.fn();

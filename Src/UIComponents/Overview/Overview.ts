@@ -8,6 +8,7 @@ import { SetRemainingCalories } from '../../Logic/SetRemainingCalories/SetRemain
 import { createTileRemainingCalories } from '../TileRemainingCalories/TileRemainingCalories';
 import { saveWeightInLocalStorage } from '../../Logic/SaveWeightInLocalStorage/SaveWeightInLocalStorage';
 
+export const OVERVIEW_CONTAINER_CLASS_NAME = 'overview-components-container';
 
 //to call this function (due to the nature of how the gauges are created by the library)
 // please first create a target container in body (make sure it's already in DOM) and only then call the function
@@ -35,8 +36,6 @@ export function overviewComponent(User: User, targetDivClass: string): void{
     generateGaugesContent(User);
 }
 
-
-
 export function getAge(date: Date) {
     return ((new Date(Date.now() - date.getTime()).getFullYear()) - 1970);
 }
@@ -44,7 +43,7 @@ export function getAge(date: Date) {
 export function generateGaugesContent(User: User){
     //calculate age and max calories
     const age = getAge(User.dateOfBirth);
-    const maxCalories = calculateCalories(User.gender, User.weights[0].weight, User.height, age, User.activityLevel)
+    const maxCalories = calculateCalories(User.gender, User.weights?.[0]?.weight, User.height, age, User.activityLevel)
     
     //calculate the highest and lowest weight values 
     const userMaxWeight = Math.max(...(User.weights.map(a => a.weight)));
@@ -59,11 +58,11 @@ export function generateGaugesContent(User: User){
     //generate tile content
     //if user is heavier than goal
     if (User.goalWeight <= User.weights[0].weight){
-        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0].weight, User.goalWeight, userMaxWeight, "kg", true);
+        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights?.[0]?.weight, User.goalWeight, userMaxWeight, "kg", true);
     } 
     //if user is lighter than goal
     else{
-        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights[0].weight,  userMinWeight, User.goalWeight,  "kg", false);
+        generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights?.[0]?.weight,  userMinWeight, User.goalWeight,  "kg", false);
     }
 
     generateGoalTile("Today Calories", "overviewTodayCaloriesTile", User.diaryFood?.[0]?.providedKcal || 0, 0, maxCalories ,"kcal", false);
