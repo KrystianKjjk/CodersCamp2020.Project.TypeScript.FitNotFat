@@ -36,18 +36,18 @@ Korzystanie z aplikacji jest uwarunkowane stworzeniem konta użytkownika. W tym 
 Po utworzeniu konta użytkownika, aby przejść do kolejnych sekcji aplikacji należy zalogować się podając nickname. W przypadku, kiedy użytkownik nie uzupełni pola logowania lub poda nieprawidłowy nickname, na ekranie zostaje wyświetlone okno modalne z odpowiednim błędem. Poprawnie przeprowadzone logowanie skutkuje zapisaniem zalogowanego użytkownika do LocalStorage jako loggedInUser i przeniesieniem do sekcji Overview menu konta użytkownika.  
 
 ### Menu konta użytkownika
-W menu konta użytkownika dostępne są zakładki przenoszące użytkownika do odpowiednich sekcji: *Overview* , *My diary*, *My goals*, *My weights*, *API Key*, *Log out* oraz opcja *username*, przenosząca użytkownika do sekcji *My profile* zawierającej podstawowe informacje o zalogowanym użytkowniku. 
+W menu konta użytkownika dostępne są zakładki przenoszące użytkownika do odpowiednich sekcji: *Overview* , *My diary*, *My goals*, *My weights*, *API Key*, *Log out* oraz opcja *Username*, przenosząca użytkownika do sekcji *My profile* zawierającej podstawowe informacje o zalogowanym użytkowniku. 
 
 ### Overview
 Sekcja Overview umożliwia użytkownikowi: 
-*	codzienną aktualizację wagi – kliknięcie przycisku edit pozwala wprowadzić wagę, która po naciśnięciu przycisku save zostaje zapisana do obiektu użytkownika w Local Storage,   
+*	codzienną aktualizację wagi – kliknięcie przycisku *EDIT* pozwala wprowadzić wagę, która po naciśnięciu przycisku *SAVE* zostaje zapisana do obiektu użytkownika w Local Storage,   
 *	kontrolowanie dziennego spożycia kalorii, dzięki dwóm wskaźnikom reprezentującym: procentową ilość spożytych kalorii oraz pozostałe kalorie. Wskaźniki są wyliczane indywidualnie dla każdego użytkownika na podstawie danych wprowadzonych podczas rejestracji. Aktualizacja wskaźników następuje każdorazowo po dodaniu w dzienniku spożytych produktów i/lub wykonanych danego dnia ćwiczeń, 
 *	śledzenie postępu w dążeniu do założonej wagi, dzięki procentowemu wskaźnikowi goal weight.
 
 ### My diary
 Korzystanie z sekcji My diary jest możliwe po uzupełnieniu Nutritionix API Key – klucz niezbędny do połączenia z API, z którego korzysta aplikacja.
 
-Sekcja My diary dzieli się na dwie części: Food oraz Exercises. W części Food użytkownik ma możliwość wprowadzania wszystkich produktów, które spożył danego dnia w podziale na cztery kategorie: śniadanie, obiad kolację oraz przekąski. Po naciśnięciu przycisku *ADD* pojawia się pole umożliwiające wpisanie nazwy produktu. Kliknięcie przycisku *FIND* powoduje połączenie z API Nutritionix i wyszukanie wybranego artykułu spożywczego. Ponowne naciśnięcie opcji *ADD* skutkuje dodaniem i zapisaniem produktu oraz wyświetleniem zaktualizowanej listy. Pojedynczy wiersz listy zawiera nazwę, ilość, jednostkę oraz kaloryczność prodktu. W części Exercises użytkownik może wprowadzać wszystkie aktywności fizyczne, które wykonał danego dnia. Komponent działa analogicznie jak w części Food, z tą różnicą, że wyświetlana jest lista ćwiczeń uwzględniająca rodzaj, czas wykonywania ćwiczenia oraz spalone kalorie. 
+Sekcja My diary dzieli się na dwie części: *Food* oraz *Exercises*. W części *Food* użytkownik ma możliwość wprowadzania wszystkich produktów, które spożył danego dnia w podziale na cztery kategorie: śniadanie, obiad kolację oraz przekąski. Po naciśnięciu przycisku *ADD* pojawia się pole umożliwiające wpisanie nazwy produktu. Kliknięcie przycisku *FIND* powoduje połączenie z API Nutritionix i wyszukanie wybranego artykułu spożywczego. Ponowne naciśnięcie opcji *ADD* skutkuje dodaniem i zapisaniem produktu oraz wyświetleniem zaktualizowanej listy. Pojedynczy wiersz listy zawiera nazwę, ilość, jednostkę oraz kaloryczność prodktu. W części *Exercises* użytkownik może wprowadzać wszystkie aktywności fizyczne, które wykonał danego dnia. Komponent działa analogicznie jak w części *Food*, z tą różnicą, że wyświetlana jest lista ćwiczeń uwzględniająca rodzaj, czas wykonywania ćwiczenia oraz spalone kalorie. 
 
 ### My goals
 W sekcji My goals użytkownik ma możliwość dodawania celów tygodniowych(schudnąć, przytyć lub utrzymać wagę) oraz sprawdzania jak wygląda historia celów tygodniowych, które cele zostały osiągnięte, które nie zostały osiągnięte, jaka była waga początkowa a jaka była waga końcowa. 
@@ -56,7 +56,7 @@ W sekcji My goals użytkownik ma możliwość dodawania celów tygodniowych(schu
 W sekcji My weights użytkownik może sprawdzać jak zmieniała się jego waga w czasie od dnia rozpoczęcia korzystania z aplikacji. 
 
 ### API Key 
-Możliwość korzystania z Nutritionix API w darmowej wersji jest ograniczona do dwóch aktywnych użytkowników. Z tego względu korzystanie ze wszystkich funkcjonalności aplikacji jest możliwe po wygenerowaniu własnego klucza dostępu do API Nutritionix oraz Application ID. W celu wygenerowania kliknij [TUTAJ]: https://developer.nutritionix.com/signup . W sekcji API Key należy wprowadzić swój klucz dostępu do API oraz Application ID. Uzupełnienie powyższych  danych jest konieczne do prawidłowego funkcjonowania sekcji My Diary. 
+Możliwość korzystania z Nutritionix API w darmowej wersji jest ograniczona do dwóch aktywnych użytkowników. Z tego względu korzystanie ze wszystkich funkcjonalności aplikacji jest możliwe po wygenerowaniu własnego klucza dostępu do API Nutritionix oraz Application ID. W celu wygenerowania kliknij [TUTAJ]:https://developer.nutritionix.com/signup . W sekcji *API Key* należy wprowadzić swój klucz dostępu do API oraz Application ID. Uzupełnienie powyższych  danych jest konieczne do prawidłowego funkcjonowania sekcji My Diary. 
 
 ### Testy jednostkowe
 Każda funkcjonalność użyta w projekcie została przetestowana testami jednostkowymi. 
