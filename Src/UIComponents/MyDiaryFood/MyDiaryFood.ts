@@ -7,6 +7,7 @@ import { User } from '../../../Models/User.model';
 import { createElement, createTextInput } from '../utils/utils';
 import { sameDay, isUserAuthorizedToUseApi, getApiCredentialsForUser, prepareAPIData, prepareDataForTable, generateUniqueClassName } from './utils';
 import tile from '../TileComponent/TileComponent';
+import { generateGaugesContent } from '../Overview/Overview';
 
 export const identifierClasses = {
     mainContainer: '.my-diary-food',
@@ -146,12 +147,13 @@ function onClickAddMeal(
     onAdds: Array<() => void>
 ) {
     const {btnContainers, tables, input} = identifierClasses;
-
+    
     hideElementsByClassNameWithSuffix(mealName, btnContainers.btnFindCancel, btnContainers.btnAddCancel, btnContainers.btnFind, tables.api, input);
     showElementsByClassNameWithSuffix(mealName, tables.main, btnContainers.btnAdd);
     addMealsToLocalStorage(userName, mealName, showDate, mealsToAdd);
     populateMainTable(userName, mealName, showDate, addNewRow);
     onAdds.forEach(onAdd => onAdd());
+
 }
 
 async function onClickFind(inputValue: string, userData: User, callbacks: Array<(data: FoodDetails) => void>, mealName: string) {
@@ -199,6 +201,8 @@ function addMealsToLocalStorage(userName: string, mealName: string, showDate: Da
     };
 
     saveInLocalStorage(userName, updatedUser);
+    const userData = readFromLocalStorage(userName);
+    generateGaugesContent(userData);
 }
 
 // hide and show helpers
