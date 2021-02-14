@@ -7,6 +7,7 @@ import { User } from '../../../Models/User.model';
 import { createElement, createTextInput } from '../utils/utils';
 import { sameDay, isUserAuthorizedToUseApi, getApiCredentialsForUser, prepareAPIData, prepareDataForTable, generateUniqueClassName } from './utils';
 import tile from '../TileComponent/TileComponent';
+import { generateGaugesContent } from '../Overview/Overview';
 
 export const identifierClasses = {
     mainContainer: '.my-diary-food',
@@ -59,7 +60,7 @@ export default function createMealDiary(userName: string, mealName: string, show
     // 2nd btn container [FIND] [CANCEL]
     const btnContainerFindCancel = createElement('div', ['button-container', generateUniqueClassName(mealName, identifierClasses.btnContainers.btnFindCancel)]);
     const btnFind = generateWhiteButton('FIND', () => onClickFind(input.value, userData, [addNewRowAPIDetails, addMeals], mealName));
-    const btnCancel = generateWhiteButton('CANCEL', onClickCancel);
+    const btnCancel = generateWhiteButton('CANCEL', onClickCancel(mealName, [resetMeals, resetTemporaryTable(mealName)]));
     btnContainerFindCancel.append(btnFind, btnCancel);
 
     // 3rd btn container [FIND]
@@ -69,8 +70,8 @@ export default function createMealDiary(userName: string, mealName: string, show
 
     // 4th btn container [ADD] [CANCEL]
     const btnContainerAddCancel = createElement('div', ['button-container', generateUniqueClassName(mealName, identifierClasses.btnContainers.btnAddCancel)]);
-    const btnAddSecond = generateWhiteButton('ADD', () => onClickAddMeal(userName, mealName, showDate, meals, addNewRow));
-    const btnCancelSecond = generateWhiteButton('CANCEL', onClickCancel);
+    const btnAddSecond = generateWhiteButton('ADD', () => onClickAddMeal(userName, mealName, showDate, meals, addNewRow, [resetMeals, resetTemporaryTable(mealName)]));
+    const btnCancelSecond = generateWhiteButton('CANCEL', onClickCancel(mealName, [resetMeals, resetTemporaryTable(mealName)]));
     btnContainerAddCancel.append(btnAddSecond, btnCancelSecond);
 
     // input for meal name
@@ -113,6 +114,12 @@ function populateMainTable(userName: string, mealName: string, showDate: Date, a
     mealsFromLocalStorage.forEach(meal => addNewRow(prepareDataForTable(meal)));
 }
 
+function resetTemporaryTable(mealName: string) {
+    return function() {
+        const tableRows = document.querySelectorAll(`.${generateUniqueClassName(mealName, identifierClasses.tables.api)} tr:nth-child(n+2)`).forEach(e => e.parentNode.removeChild(e));
+    }
+}
+
 function onClickFirstAdd(mealName: string) {
     return function() {
         const {btnContainers, tables, input} = identifierClasses;
@@ -122,12 +129,13 @@ function onClickFirstAdd(mealName: string) {
     }
 }
 
-function onClickCancel(mealName: string) {
-    const {btnContainers, tables, input} = identifierClasses;
-    window.location.reload();
-    
-    hideElementsByClassNameWithSuffix(mealName, btnContainers.btnFindCancel, btnContainers.btnAddCancel, btnContainers.btnFind, tables.api, input);
-    showElementsByClassNameWithSuffix(mealName, btnContainers.btnAdd, tables.main);
+function onClickCancel(mealName: string, onCancels: Array<() => void>) {
+    return function() {
+        const {btnContainers, tables, input} = identifierClasses;
+        onCancels.forEach(onCancel => onCancel());
+        hideElementsByClassNameWithSuffix(mealName, btnContainers.btnFindCancel, btnContainers.btnAddCancel, btnContainers.btnFind, tables.api, input);
+        showElementsByClassNameWithSuffix(mealName, btnContainers.btnAdd, tables.main);
+    }
 }
 
 function onClickAddMeal(
@@ -135,14 +143,17 @@ function onClickAddMeal(
     mealName: string, 
     showDate: Date, 
     mealsToAdd: FoodDetails[], 
-    addNewRow: (rowData: string[]) => void
+    addNewRow: (rowData: string[]) => void,
+    onAdds: Array<() => void>
 ) {
     const {btnContainers, tables, input} = identifierClasses;
-
+    
     hideElementsByClassNameWithSuffix(mealName, btnContainers.btnFindCancel, btnContainers.btnAddCancel, btnContainers.btnFind, tables.api, input);
     showElementsByClassNameWithSuffix(mealName, tables.main, btnContainers.btnAdd);
     addMealsToLocalStorage(userName, mealName, showDate, mealsToAdd);
     populateMainTable(userName, mealName, showDate, addNewRow);
+    onAdds.forEach(onAdd => onAdd());
+
 }
 
 async function onClickFind(inputValue: string, userData: User, callbacks: Array<(data: FoodDetails) => void>, mealName: string) {
@@ -163,14 +174,18 @@ function addMealsToLocalStorage(userName: string, mealName: string, showDate: Da
     const currentDayMeals = currentDiaryFood.find(food => sameDay(showDate, food.date));
 
     let updatedDayMeals = {...currentDayMeals};
+    const totalAddedKcal = mealsToAdd.reduce((prev, cur) => prev + cur.calories, 0);
 
     if (currentDayMeals) {
         let foodItems = currentDayMeals.meals[mealName] || [];
         foodItems = [...foodItems, ...mealsToAdd];
+        let totalCalories = currentDayMeals.providedKcal || 0;
         updatedDayMeals.meals[mealName] = foodItems;
+        updatedDayMeals.providedKcal = totalCalories + totalAddedKcal;
     } else {
         updatedDayMeals = {
             date: showDate,
+            providedKcal: totalAddedKcal,
             meals: {
                 [mealName]: mealsToAdd
             }
@@ -186,6 +201,8 @@ function addMealsToLocalStorage(userName: string, mealName: string, showDate: Da
     };
 
     saveInLocalStorage(userName, updatedUser);
+    const userData = readFromLocalStorage(userName);
+    generateGaugesContent(userData);
 }
 
 // hide and show helpers

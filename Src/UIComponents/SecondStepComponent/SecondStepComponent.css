@@ -9,7 +9,6 @@
 .main-container {
     max-width: 500px;
     align-items: center;
-    padding: 20px;
 }
 .main-hr {
     background: #DA1B36;
@@ -18,7 +17,7 @@
     height: 10px;
 }
 
-.div-registration .container-button {
+.secondstep-container-button {
     padding-top: 20px;
     display: flex;
     justify-content: space-around;

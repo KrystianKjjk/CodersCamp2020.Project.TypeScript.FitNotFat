@@ -6,7 +6,7 @@
     "dinner snacks";
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    grid-gap: 4vw;
+    grid-gap: 2vw;
     padding: 0px 20px 20px 20px;
 }
 
@@ -15,7 +15,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 75px;
+}
+
+.myfood-container {
+    margin-top: 1rem !important;
 }
 
 .myfood-breakfast {

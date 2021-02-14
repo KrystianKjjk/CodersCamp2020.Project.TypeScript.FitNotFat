@@ -33,7 +33,7 @@ saveInLocalStorage(username, userObject);
 describe('Views are created correctly', () => {
 
   test('overview view is created properly', () => {
-    const { viewOverview, viewOverviewContainerName } = ViewOverview();
+    const viewOverview  = ViewOverview();
     expect(viewOverview.querySelector('.overview-components-container')).not.toBeNull();
   })
   test('myGoals view is created properly',()=>{
@@ -54,7 +54,7 @@ describe('Views are created correctly', () => {
   })
   test('views something went wrong', () => {
     clearLoggedInUser();
-    const { viewOverview, viewOverviewContainerName } = ViewOverview();
+    const viewOverview = ViewOverview();
     const myGoals = ViewMyGoals();
     const myWeights = ViewMyWeights();
     const apiKey = ViewAPIKey();

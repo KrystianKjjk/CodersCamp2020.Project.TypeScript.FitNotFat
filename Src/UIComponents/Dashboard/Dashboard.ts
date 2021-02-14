@@ -1,5 +1,6 @@
 import {overviewSVG, myDiarySVG, myGoalsSVG, myWeightsSVG, userSVG, apiKeySVG, logOutSVG, arrowSVG} from './Icons';
 import {createElement, clearLoggedInUser} from '../utils/utils';
+import { refreshRemainingCalories } from '../../Logic/SetRemainingCalories/SetRemainingCalories';
 
 function dashboard(username: string, components: {'overview': HTMLElement, 
                                 'diary-food': HTMLElement, 
@@ -49,6 +50,10 @@ function dashboard(username: string, components: {'overview': HTMLElement,
             if (smallScreen && element !== myDiary) 
                 menuBtn.click();
             components[element.getAttribute('data-component')].style.display = "block";
+            
+            if ((e.target as HTMLElement)?.dataset?.component === "overview") {
+                refreshRemainingCalories();
+            }
         });
         components[element.getAttribute('data-component')].style.display = "none";
     });

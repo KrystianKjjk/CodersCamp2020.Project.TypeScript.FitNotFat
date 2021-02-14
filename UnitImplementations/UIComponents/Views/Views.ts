@@ -6,6 +6,7 @@ import { ViewAPIKey } from "../../../Src/UIComponents/ViewAPIKey/ViewAPIKey";
 import { ViewMyWeights } from "../../../Src/UIComponents/ViewMyWeights/ViewMyWeights";
 import { ViewMyGoals } from "../../../Src/UIComponents/ViewMyGoals/ViewMyGoals";
 import { ViewOverview } from "../../../Src/UIComponents/ViewOverview/ViewOverview";
+import { ViewMyFood } from "../../../Src/UIComponents/ViewMyFood/ViewMyFood";
 import { ViewExercises } from "../../../Src/UIComponents/ViewExercises/ViewExercises";
 import { ActivityLevel } from "../../../Models/ActivityLevel.model";
 import { User } from "../../../Models/User.model";
@@ -42,6 +43,7 @@ const viewProfileInfo = ViewProfileInfo();
 const viewApiKey = ViewAPIKey();
 const viewMyWeights = ViewMyWeights();
 const viewMyGoals = ViewMyGoals();
+const viewMyFood = ViewMyFood();
 const { viewOverview, viewOverviewContainerName } = ViewOverview();
 const myDiaryExercises = ViewExercises();
 
@@ -54,7 +56,7 @@ const myDiaryFood = dashboardView('Food', createElement('div', [], 'food content
 
   document.body.appendChild(dashboard(username, {
     'overview': viewOverview,
-    'diary-food': myDiaryFood,
+    'diary-food': viewMyFood,
     'diary-exercises': myDiaryExercises,
     'goals': viewMyGoals,
     'weights': viewMyWeights,

@@ -8,6 +8,8 @@ import { SetRemainingCalories } from '../../Logic/SetRemainingCalories/SetRemain
 import { createTileRemainingCalories } from '../TileRemainingCalories/TileRemainingCalories';
 import { saveWeightInLocalStorage } from '../../Logic/SaveWeightInLocalStorage/SaveWeightInLocalStorage';
 
+export const OVERVIEW_CONTAINER_CLASS_NAME = 'overview-components-container';
+
 //to call this function (due to the nature of how the gauges are created by the library)
 // please first create a target container in body (make sure it's already in DOM) and only then call the function
 export function overviewComponent(User: User, targetDivClass: string): void{

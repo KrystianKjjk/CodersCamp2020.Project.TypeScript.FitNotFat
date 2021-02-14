@@ -22,6 +22,7 @@ describe('MyDiaryFood', () => {
         expect(dateButton.innerHTML).toEqual('2020/12/04');
         const passedArguments = changeHandler.mock.calls[0];
         expect(sameDay(passedArguments[0], new Date('2020-12-04'))).toBeTruthy();
+        document.body.innerHTML = '';
 
     });
     test('click right button will change date to tomorrow and fire onChange function', () => {

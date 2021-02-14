@@ -77,7 +77,7 @@ export function generateSecondStep(
   button2.classList.add('sign-up-button');
 
   const containerButton = document.createElement('div');
-  containerButton.className = 'container-button';
+  containerButton.className = 'secondstep-container-button';
   containerButton.append(button1, button2);
 
   secondStepDiv.append(title, line, select, radio, containerButton);

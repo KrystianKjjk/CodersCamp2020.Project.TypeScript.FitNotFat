@@ -180,7 +180,7 @@
 
 .dashboard > div:last-child {
     position: relative;
-    overflow-y: scroll;
+    overflow: auto;
 }
 .dashboard div:last-child > * {
     z-index: 1;

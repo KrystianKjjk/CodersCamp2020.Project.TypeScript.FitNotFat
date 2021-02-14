@@ -1,5 +1,7 @@
 .my-diary-food {
     padding: 8px;
+    max-height: 50vh;
+    overflow-y: auto;
 }
 
 .my-diary-food h3 {

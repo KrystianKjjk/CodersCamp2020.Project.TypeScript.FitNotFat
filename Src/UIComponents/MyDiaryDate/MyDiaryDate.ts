@@ -9,8 +9,8 @@ const createDatePicker = (date: Date, onDateChange: (newDate: Date) => void) => 
     const dateToString = date.toISOString().slice(0,10).replace(/-/g,"/");
     dateButton.appendChild(document.createTextNode(dateToString));
 
-    leftButton.onclick = () => onClickButton(date, 'left', onDateChange);
-    rightButton.onclick = () => onClickButton(date, 'right', onDateChange);
+    leftButton.onclick = () => onClickButton(date, 'left', onDateChange, dateButton);
+    rightButton.onclick = () => onClickButton(date, 'right', onDateChange, dateButton);
     
     rightButton.innerHTML = ArrowDownIcon;
     leftButton.innerHTML = ArrowDownIcon;
@@ -20,8 +20,7 @@ const createDatePicker = (date: Date, onDateChange: (newDate: Date) => void) => 
     return container;
 }
 
-function onClickButton(date: Date, method: 'left' | 'right', onDateChange: (newDate: Date) => void) {
-    const dateButton = document.querySelector('.date-button');
+function onClickButton(date: Date, method: 'left' | 'right', onDateChange: (newDate: Date) => void, dateButton: HTMLElement) {
     const updatedDate = date.setDate(date.getDate() + (method === 'left' ? -1 : 1));
     onDateChange(new Date(updatedDate));
 
