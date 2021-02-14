@@ -60,8 +60,8 @@ export default function createExercisesDiary(userName: string, exerciseName: str
 
     // 2nd btn container [FIND] [CANCEL]
     const btnContainerFindCancel = createElement('div', ['button-container', identifierClasses.btnContainers.btnFindCancel]);
-    const btnFind = generateWhiteButton('FIND', () => onClickFind(input.value, userData, [resetExercises, addNewRowAPIDetails, addExercises]));
-    const btnCancel = generateWhiteButton('CANCEL', onClickCancel);
+    const btnFind = generateWhiteButton('FIND', () => onClickFind(input.value, userData, [resetExercises, resetTemporaryTable, addNewRowAPIDetails, addExercises]));
+    const btnCancel = generateWhiteButton('CANCEL', onClickCancel([resetExercises, resetTemporaryTable()]));
     btnContainerFindCancel.append(btnFind, btnCancel);
 
     // 3rd btn container [FIND]
@@ -73,7 +73,7 @@ export default function createExercisesDiary(userName: string, exerciseName: str
     const btnContainerAddCancel = createElement('div', ['button-container', identifierClasses.btnContainers.btnAddCancel]);
     const btnAddSecond = generateWhiteButton('ADD', () => onClickAddExercise(userName, exerciseName, showDate, exercises, addNewRow));
     
-    const btnCancelSecond = generateWhiteButton('CANCEL', onClickCancel);
+    const btnCancelSecond = generateWhiteButton('CANCEL',  onClickCancel([resetExercises, resetTemporaryTable()]));
     btnContainerAddCancel.append(btnAddSecond, btnCancelSecond);
 
     // input for exercise name
@@ -116,6 +116,12 @@ function populateMainTable(userName: string, exerciseName: string, showDate: Dat
     exercisesFromLocalStorage.forEach(exercise => addNewRow(prepareDataForTable(exercise)));
 }
 
+function resetTemporaryTable() {
+    return function() {
+        const tableRows = document.querySelectorAll(`.${identifierClasses.tables.api} tr:nth-child(n+2)`).forEach(e => e.parentNode.removeChild(e));
+    }
+}
+
 function onClickFirstAdd() {
     const {btnContainers, tables, input} = identifierClasses;
 
@@ -123,12 +129,15 @@ function onClickFirstAdd() {
     showElementsByClassName(input, btnContainers.btnFindCancel);
 }
 
-function onClickCancel() {
-    const {btnContainers, tables, input} = identifierClasses;
-    window.location.reload();
-    
-    hideElementsByClassName(btnContainers.btnFindCancel, btnContainers.btnAddCancel, btnContainers.btnFind, tables.api, input);
-    showElementsByClassName(btnContainers.btnAdd, tables.main);
+function onClickCancel(onCancels: Array<() => void>) {
+    return function () {
+
+        const { btnContainers, tables, input } = identifierClasses;
+        onCancels.forEach(onCancel => onCancel());
+
+        hideElementsByClassName(btnContainers.btnFindCancel, btnContainers.btnAddCancel, btnContainers.btnFind, tables.api, input);
+        showElementsByClassName(btnContainers.btnAdd, tables.main);
+    }
 }
 
 export function onClickAddExercise(
