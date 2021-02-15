@@ -14,7 +14,7 @@ export function generateMyGoals(username: string): HTMLDivElement {
     'div',
     'my-goals-container',
   ) as HTMLDivElement;
-  const actualDate = new Date();
+  const actualDate = new Date(Date.now());
 
   const weeklyGoalComponent = generateWeeklyGoalComponent(
     actualDate.toLocaleDateString('en-GB'),
@@ -26,11 +26,18 @@ export function generateMyGoals(username: string): HTMLDivElement {
 
   function onSaveButtonClick(weeklyGoalValue: WeeklyGoal) {
     const user = readFromLocalStorage(username);
+    const currentWeight = user.weights[0].weight;
+    const previousGoal = user.goals[0];
+    previousGoal.endWeight=currentWeight;
     const newGoal: Goal = {
       date: actualDate,
       weeklyGoal: weeklyGoalValue,
+      startWeight:currentWeight
     };
+
     user.goals.unshift(newGoal);
+
+    previousGoal.achieved=checkIfGoalIsAchieved(previousGoal);
     saveInLocalStorage(username, user);
     const newhistoricalWeeklyGoalsTable = createHistoricalWeeklyGoalsTable(
       user.goals,
@@ -43,4 +50,18 @@ export function generateMyGoals(username: string): HTMLDivElement {
     RefreshProfileInfo(user);
   }
   return myGoalsContainer;
+}
+
+function checkIfGoalIsAchieved(goal: Goal): boolean{
+  const startWeight=goal.startWeight;
+  const endWeight=goal.endWeight;
+  if(goal.weeklyGoal===WeeklyGoal.Gain){
+  return endWeight>startWeight; 
+  }
+  else if(goal.weeklyGoal===WeeklyGoal.Lose){
+    return endWeight<startWeight;
+    }
+  else if(goal.weeklyGoal===WeeklyGoal.Keep){
+    return endWeight===startWeight;
+  }
 }
