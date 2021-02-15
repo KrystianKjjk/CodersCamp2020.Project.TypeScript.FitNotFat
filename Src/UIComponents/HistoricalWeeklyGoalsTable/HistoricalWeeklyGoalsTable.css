@@ -15,7 +15,8 @@
 }
 
 .my-goals-container .tile {
-    width: 100%;
+    width: min-content;
+    max-width: 100%;
 }
 
 .historical-weekly-goals-table {
