@@ -26,15 +26,13 @@
     width: 100%;
 }
 
-.div-registration .container-button > button, .secondstep-container-button > button {
-    width: 45%;
+.div-registration .container-button > button, .secondstep-container-button>button{
+    margin:4% 4% 0% 4%;
+    padding: 0.4em 0.4em;
     min-width: 150px;
     max-width: 200px;
-    margin-top: 1em;
-    padding: 0.5em 1em;
     border-radius: 0.5em;
 }
-
 @media (max-width: 400px) {
     .div-registration .main-container {
         padding: 0;
