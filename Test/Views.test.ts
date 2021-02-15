@@ -22,7 +22,7 @@ const userObject: User = {
     weeklyGoal: WeeklyGoal.Gain,
     startWeight: 60,
     endWeight: 71,
-    achieved: 'No'
+    achieved: false
   }],
   weights: [{date: new Date(), weight: 60}]
 };
