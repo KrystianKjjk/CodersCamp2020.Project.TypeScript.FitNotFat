@@ -17,12 +17,12 @@ export function createTileRemainingCalories(calories: RemainingCalories): HTMLEl
     const numberRemCal = createElement('p', 'remaining-calories-tile__number');
     const detailsRemCal = createElement('section','remaining-calories-tile__section-details');
 
-    numberRemCal.innerHTML = `${+calories.remaining.toFixed(2)} <span>kcal</span>`
+    numberRemCal.innerHTML = `${+calories.remaining.toFixed()} <span>kcal</span>`
 
     const detailsTable = createTable(HEADERS);
     detailsTable.classList.add('remaining-calories-tile__section-details--table');
     const detailsTableRow= addRow(detailsTable);
-    detailsTableRow([calories.goal.toString(10),'+', calories.exercises.toString(10),'-', calories.food.toString(10)]);
+    detailsTableRow([calories.goal.toString(10),'+', calories.exercises.toFixed(),'-', calories.food.toFixed()]);
 
     detailsRemCal.append(detailsTable);
 

@@ -71,7 +71,7 @@ export default function createExercisesDiary(userName: string, exerciseName: str
     
     // 4th btn container [ADD] [CANCEL]
     const btnContainerAddCancel = createElement('div', ['button-container', identifierClasses.btnContainers.btnAddCancel]);
-    const btnAddSecond = generateWhiteButton('ADD', () => onClickAddExercise(userName, exerciseName, showDate, exercises, addNewRow));
+    const btnAddSecond = generateWhiteButton('ADD', () => onClickAddExercise(userName, exerciseName, showDate, exercises, addNewRow, ([resetExercises, resetTemporaryTable()])));
     
     const btnCancelSecond = generateWhiteButton('CANCEL',  onClickCancel([resetExercises, resetTemporaryTable()]));
     btnContainerAddCancel.append(btnAddSecond, btnCancelSecond);
@@ -145,7 +145,9 @@ export function onClickAddExercise(
     exerciseName: string, 
     showDate: Date, 
     exercisesToAdd: ExercisesDetails[], 
-    addNewRow: (rowData: string[]) => void) {
+    addNewRow: (rowData: string[]) => void,
+    onAdds: Array<() => void>
+    ) {
 
     const {btnContainers, tables, input} = identifierClasses;
     
@@ -153,7 +155,8 @@ export function onClickAddExercise(
     hideElementsByClassName(btnContainers.btnFindCancel, btnContainers.btnAddCancel, btnContainers.btnFind, tables.api, input);
     showElementsByClassName(tables.main, btnContainers.btnAdd);
     addExercisesToLocalStorage(userName, exerciseName, showDate, exercisesToAdd);
-    populateMainTable(userName, exerciseName, showDate, addNewRow);  
+    populateMainTable(userName, exerciseName, showDate, addNewRow); 
+    onAdds.forEach(onAdd => onAdd()); 
 }
 
 async function onClickFind(inputValue: string, userData: User, callbacks: Array<(data: ExercisesDetails) => void>) {
