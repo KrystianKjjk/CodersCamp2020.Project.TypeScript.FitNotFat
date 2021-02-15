@@ -6,8 +6,8 @@
     width: 37rem;
     height: 24rem;
     letter-spacing: 0.035rem;
-    margin-left: 1.8rem;
     position: relative;
+    border-radius: 1em;
 }
 .api-key-tile:last-child {
     margin-bottom: 1rem;
@@ -17,7 +17,7 @@
     font-weight: 400;
     color: rgba(74, 72, 78, 0.7);
     background: inherit;
-    margin: 1.5rem 0 1rem 0;
+    margin: 1.5rem 0 1rem 1rem;
 }
 .api-key-tile__section {
     margin-top: 2rem;
@@ -58,7 +58,6 @@
     .api-key-tile, .tile{
         width: 100%;
         margin-left: 0;
-        overflow: hidden;
     }
     .api-key-tile__section--input {
         width: 80%;
