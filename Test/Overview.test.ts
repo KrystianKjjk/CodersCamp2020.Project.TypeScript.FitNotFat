@@ -3,6 +3,7 @@ import { User } from '../Models/User.model';
 import { ActivityLevel } from '../Models/ActivityLevel.model';
 import { fn } from 'moment';
 import createGauge from '../Src/UIComponents/GoalTile/Gauges';
+import * as LocalStorage from '../Src/Logic/LocalStorage/LocalStorage';
 
 jest.mock('../Src/UIComponents/GoalTile/Gauges');
 
@@ -57,6 +58,7 @@ describe('Overview full component check', () => {
     })
     
     test('when data is inputted tiles change the values', () => {
+        jest.spyOn(LocalStorage,'readFromLocalStorage').mockReturnValue(dummyobject);
         const editButton = document.querySelector('section.my-weight-tile__button-section > button') as HTMLButtonElement;
         editButton.click();
 

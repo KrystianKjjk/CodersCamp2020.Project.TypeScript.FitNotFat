@@ -40,7 +40,11 @@ export default function generateRegistrationForm(
       date: currentDate,
       weight: firstStepValues.currentWeight
     };
-    const goal:Goal={date:currentDate, weeklyGoal:secondStepValues.weeklyGoal}
+    const goal:Goal={
+      date:currentDate, 
+      weeklyGoal:secondStepValues.weeklyGoal,
+      startWeight:firstStepValues.currentWeight
+    }
     const user: User = {
       name: firstStepValues.name,
       gender: firstStepValues.gender,

@@ -14,14 +14,14 @@ describe('Tests for createHistoricalWeeklyGoalsTable',()=>{
             weeklyGoal: WeeklyGoal.Gain,
             startWeight: 70,
             endWeight: 80,
-            achieved: 'Yes',
+            achieved: true,
           },
           {
             date: new Date(1994,12,18),
             weeklyGoal: WeeklyGoal.Lose,
             startWeight: 60,
             endWeight: 61,
-            achieved: 'No',
+            achieved: false,
           }]);
         expect(table).toMatchSnapshot();
     })
