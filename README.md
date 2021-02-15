@@ -25,7 +25,13 @@ W skład repozytorium projektu wchodzą:
 *	folder `Models` – pliki zawierające interfejsy modeli danych wykorzystywanych w aplikacji
 *	folder `UnitImplementations` – pliki przedstawiające wygląd i działanie poszczególnych komponentów (przydatne podczas przeprowadzania code review)
 
-## III. Funkcjonalności aplikacji
+## III. Wykorzystane technologie
+* TypeScript
+* HTML
+* CSS
+* Nutritionix API 
+
+## IV. Funkcjonalności aplikacji
 ### Strona główna 
 Na stronie głównej dostępne są dwie opcje: *Sign up* oraz *Log In*. *Sign up* przekierowuje do formularza tworzenia konta użytkownika, natomiast *Log In* przenosi użytkownika bezpośrednio do okna logowania. 
 
@@ -78,14 +84,8 @@ Możliwość korzystania z Nutritionix API w darmowej wersji jest ograniczona do
 ### Testy jednostkowe
 Każda funkcjonalność użyta w projekcie została przetestowana testami jednostkowymi. 
 
-## IV. Wykorzystane technologie
-* TypeScript
-* HTML
-* CSS
-* Nutritionix API 
-
 ## V. Użyte zagadnienia
-W projekcie można znaleźć przykłady zastosowania wszystkich tych zagadnień: basic types, custom types, merged types, classes/interfaces, generic types.
+W projekcie można znaleźć przykłady zastosowania wszystkich tych zagadnień: typy podstawowe, definiowanie własnych typów, składanie typów, typy / klasy / interfejsy, implementacja / dziedziczenie / kompozycja / implementacja interfejsu, typy generyczne, testy jednostkowe i TDD. 
 
 ## VI. Uruchomienie projektu i testów
 ### Uruchomienie projektu
