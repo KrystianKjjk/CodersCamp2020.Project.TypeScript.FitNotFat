@@ -8,6 +8,7 @@ import { createElement, createTextInput } from '../utils/utils';
 import { sameDay, isUserAuthorizedToUseApi, getApiCredentialsForUser} from '../MyDiaryFood/utils'
 import { prepareAPIData, prepareDataForTable } from './utils';
 import tile from '../TileComponent/TileComponent';
+import showModalWindow from '../ModalWindow/ModalWindow';
 
 export const identifierClasses = {
     mainContainer: '.my-diary-exercises',
@@ -165,9 +166,11 @@ async function onClickFind(inputValue: string, userData: User, callbacks: Array<
     showElementsByClassName(input, btnContainers.btnFind, tables.api, btnContainers.btnAddCancel)
     const {appId, appKey} = getApiCredentialsForUser(userData);
 
-
     const exercisesDetails = await fetchExercisesData(userData, inputValue, appId, appKey);
     if (!exercisesDetails || !exercisesDetails.exercises) return;
+    if (!exercisesDetails.exercises.length) {
+        showModalWindow(`${inputValue} not found in API Database`);
+    }
 
     exercisesDetails.exercises.forEach(exercise => callbacks.forEach(callback => callback(prepareAPIData(exercise))));
 }
