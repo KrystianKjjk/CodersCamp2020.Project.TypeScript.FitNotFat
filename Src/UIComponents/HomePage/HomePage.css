@@ -60,7 +60,7 @@
 @media (max-width: 450px) {
     .initial-view-injected-component {
         margin: 8em auto 0;
-        padding: 0 1rem;
+        padding: 0;
     }
     .main-text {
         font-size: 30px;
