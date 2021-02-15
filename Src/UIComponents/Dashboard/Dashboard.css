@@ -190,6 +190,9 @@
     .dashboard .menu {
         display: flex !important;
     }
+    .dashboard > div:last-child {
+        display: block !important;
+    }
 }
 @media (max-width: 1000px) {
     .dashboard {
