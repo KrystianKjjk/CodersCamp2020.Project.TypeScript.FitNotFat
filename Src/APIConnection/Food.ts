@@ -1,3 +1,5 @@
+import showModalWindow from "../UIComponents/ModalWindow/ModalWindow";
+
 export interface FoodItemFromAPI {
     food_name: string;
     serving_qty: number;
@@ -23,6 +25,12 @@ async function fetchFoodData(food: string, appId: string, appKey: string): Promi
             'x-app-key': appKey,
           },
     });
+
+    if (response.status === 401) {
+        showModalWindow('Incorrect API KEY or API ID');
+    } else if (response.status === 404) {
+        showModalWindow(`${food} not found in API Database`);
+    }
     
     return response.json();
 }

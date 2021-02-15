@@ -1,4 +1,5 @@
 import { User } from '../../Models/User.model'
+import showModalWindow from '../UIComponents/ModalWindow/ModalWindow';
 import { getAge } from '../UIComponents/utils/utils'
 
 export interface ExerciseItemFromAPI {
@@ -34,6 +35,10 @@ async function fetchExercisesData(user: User, exercise: string, appId: string, a
           },
     });
     
+    if (response.status === 401) {
+        showModalWindow('Incorrect API KEY or API ID');
+    }; 
+
     return response.json();
 }
 
