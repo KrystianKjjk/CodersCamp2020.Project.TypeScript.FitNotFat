@@ -4,7 +4,6 @@
   flex-direction: column;
   font-weight: 500;
   width: 22rem;
-  height: 15rem;
   letter-spacing: 0.035rem;
   margin-left: 1.8rem;
   margin-right: 1.8rem;
@@ -29,13 +28,13 @@
 .remaining-calories-tile__section-details--table tr th {
   font-weight: 500;
   color: rgba(74, 72, 78, 0.7);
-  width: 40%;
+  /* width: 40%; */
 }
 .remaining-calories-tile__section-details--table tr td {
   font-size: 1.2rem;
   border-bottom: none;
   color: #4A484E;
-  width: 40%;
+  /* width: 40%; */
 }
 .remaining-calories-tile__section-details--table tr th:nth-of-type(2n),
 .remaining-calories-tile__section-details tr td:nth-of-type(2n) {
@@ -44,3 +43,11 @@
   font-size: 1.2rem;
 }
 
+@media (max-width: 700px) {
+  .remaining-calories-tile {
+    width: 100%;
+  }
+  .remaining-calories-tile__section-details--table tr td th {
+    width: 30%;
+  }
+}

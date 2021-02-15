@@ -3,6 +3,11 @@
     max-height: 50vh;
     overflow-y: auto;
 }
+@media (max-width: 600px) {
+    .my-diary-food {
+        padding: 0;
+    }
+}
 
 .my-diary-food h3 {
     color: rgba(74, 72, 78, 0.7);

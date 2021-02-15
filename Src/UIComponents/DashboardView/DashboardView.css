@@ -21,3 +21,11 @@
 .dashboard-view > div {
     margin-top: 3rem;
 }
+@media (max-width: 600px){
+    .tile {
+        margin: 2em 0;
+    }
+    .dashboard-view {
+        padding: 1rem;
+    }
+}

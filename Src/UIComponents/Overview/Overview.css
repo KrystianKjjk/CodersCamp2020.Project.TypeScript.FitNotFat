@@ -15,4 +15,31 @@
 .overview-container .tile, .overview-container .my-weight-tile{
     width: 38%;
     margin: 0 1.5rem 1.5rem 0;
+    overflow: hidden;
+}
+
+@media (max-width: 1500px){
+    .overview-container .tile, .overview-container .my-weight-tile{
+        min-width: 400px;
+    }
+}
+
+@media (max-width: 1000px){
+    .overview-container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 500px){
+    .overview-container .tile, .overview-container .my-weight-tile{
+        min-width: auto;
+        width: 100%;
+        padding: 1em;
+    }
+
+    .overview-container .tile *, .overview-container .my-weight-tile *{
+        position: static;
+        padding: 0;
+        margin: 0.5em 0;
+    }
 }
