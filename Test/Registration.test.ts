@@ -94,6 +94,7 @@ describe('registration tests', () => {
         {
           date: expect.any(Date),
           weeklyGoal: 'Gain',
+          startWeight: 80
         },
       ],
       height: 160,

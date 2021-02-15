@@ -18,7 +18,7 @@ const user: User = {
     weeklyGoal: WeeklyGoal.Gain,
     startWeight: 66,
     endWeight: 68,
-    achieved: 'Yes'
+    achieved: true
   }],
   diaryFood: [
     new MyDiaryFood({

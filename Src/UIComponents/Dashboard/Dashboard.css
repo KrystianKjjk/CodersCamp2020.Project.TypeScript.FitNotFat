@@ -186,6 +186,11 @@
     z-index: 1;
 }
 
+@media (min-width: 1001px) {
+    .dashboard .menu {
+        display: flex !important;
+    }
+}
 @media (max-width: 1000px) {
     .dashboard {
         display: flex;

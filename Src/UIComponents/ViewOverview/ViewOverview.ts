@@ -1,4 +1,4 @@
-import { overviewComponent, OVERVIEW_CONTAINER_CLASS_NAME } from "../Overview/Overview";
+import { OVERVIEW_CONTAINER_CLASS_NAME } from "../Overview/Overview";
 import dashboardView from "../DashboardView/DashboardView";
 import { createElement, getLoggedInUser } from "../utils/utils";
 import { readFromLocalStorage } from "../../Logic/LocalStorage/LocalStorage";

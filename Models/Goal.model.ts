@@ -5,5 +5,5 @@ export interface Goal {
     weeklyGoal: WeeklyGoal,
     startWeight?: number,
     endWeight?: number,
-    achieved?: 'Yes' | 'No';
+    achieved?: boolean;
 }
