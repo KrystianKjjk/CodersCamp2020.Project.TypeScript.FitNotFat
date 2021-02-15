@@ -42,7 +42,7 @@ export function createTileAPIKey(username: string, getAPIDetails: GetAPIDetails,
             setAPIDetails(username, detailsAPI)
                 .then( msg => {
                     sectionError.innerText = msg;
-                    setTimeout(_clearError, 2000 );
+                    setTimeout(_clearConfirm, 2000 );
 
                     sectionKeyInput.value = detailsAPI.key;
                     sectionIDInput.value = detailsAPI.id;
@@ -54,8 +54,13 @@ export function createTileAPIKey(username: string, getAPIDetails: GetAPIDetails,
         }
     }
 
-    function _clearError() {
-        sectionError.innerText = '';
+    function _clearConfirm() {
+        sectionError.innerText = 'Reloading the page...';
+        setTimeout(_refreshApp,2000)
+    }
+
+    function _refreshApp() {
+        location.reload();
     }
 
     return containerAPIKey;
