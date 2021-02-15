@@ -29,7 +29,7 @@ function dashboard(username: string, components: {'overview': HTMLElement,
     const myWeights = createElement('div', ['menu-option'], `${myWeightsSVG} My weights`, 'weights');
     const apiKey = createElement('div', ['menu-option'], `${apiKeySVG} API Key`, 'apiKey');
     const logOut = createElement('a', ['menu-option', 'log-out-opt'], `${logOutSVG} Log out`) as HTMLAnchorElement;
-    logOut.href = '/';
+    logOut.href = './';
     logOut.addEventListener('click', e => {
         clearLoggedInUser();
     })
