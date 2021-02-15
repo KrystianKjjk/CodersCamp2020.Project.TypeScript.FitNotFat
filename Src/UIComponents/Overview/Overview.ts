@@ -57,7 +57,7 @@ export function generateGaugesContent(User: User){
 
     //generate tile content
     //if user is heavier than goal
-    if (User.goalWeight <= User.weights[0].weight){
+    if (User.goalWeight <= userMinWeight){
         generateGoalTile("Weight Goal", "overviewGoalWeightTile", User.weights?.[0]?.weight, User.goalWeight, userMaxWeight, "kg", true);
     } 
     //if user is lighter than goal
