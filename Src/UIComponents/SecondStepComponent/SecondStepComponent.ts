@@ -18,7 +18,7 @@ export function generateSecondStep(
   onSignUpClick: (secondStepValues: SecondStepValues) => void,
 ) {
   const secondStepDiv = createElement('div', 'main-container');
-  const title = createElement('p', 'main-title');
+  const title = createElement('p', 'secondstep-main-title');
   title.appendChild(document.createTextNode('Join us'));
   const line = createElement('hr', 'main-hr');
 
