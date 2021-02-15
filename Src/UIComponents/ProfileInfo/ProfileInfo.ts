@@ -40,7 +40,9 @@ function profileInfo(profileData: {
     
     component.append(usernameDiv, profile, health, goals);
     
-    return tile(component);
+    const profileTile = tile(component);
+    profileTile.classList.add('profile-tile');
+    return profileTile;
 }
 
 export { profileInfo };
